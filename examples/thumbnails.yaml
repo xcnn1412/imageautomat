@@ -1,0 +1,9 @@
+# Thumbnail creation configuration
+input_directory: ./images
+output_directory: ./thumbnails
+recursive: true
+operations:
+  - type: resize
+    width: 200
+    height: 200
+  - type: sharpen

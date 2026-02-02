@@ -1,0 +1,12 @@
+# Photo enhancement configuration
+input_directory: ./photos
+output_directory: ./enhanced
+recursive: false
+operations:
+  - type: resize
+    width: 1920
+  - type: sharpen
+  - type: brightness
+    factor: 1.1
+  - type: contrast
+    factor: 1.2

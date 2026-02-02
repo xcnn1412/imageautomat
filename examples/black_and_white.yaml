@@ -1,0 +1,9 @@
+# Black and white conversion
+input_directory: ./color_images
+output_directory: ./bw_images
+recursive: true
+operations:
+  - type: grayscale
+  - type: contrast
+    factor: 1.3
+  - type: sharpen

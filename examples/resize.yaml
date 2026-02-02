@@ -1,0 +1,8 @@
+# Basic resize configuration
+input_directory: ./input
+output_directory: ./output
+recursive: false
+operations:
+  - type: resize
+    width: 800
+    height: 600
