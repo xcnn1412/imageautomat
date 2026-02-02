@@ -25,11 +25,10 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled
           ? "bg-white/80 backdrop-blur-2xl"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-20 lg:h-24 items-center justify-between">
@@ -56,7 +55,7 @@ export function Navigation() {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button 
+            <Button
               className="bg-deep-space-blue hover:bg-deep-space-blue/90 text-white font-medium px-8 py-6 rounded-full transition-all duration-300 group"
             >
               Get Quote
@@ -70,6 +69,7 @@ export function Navigation() {
             className="lg:hidden relative w-10 h-10 flex items-center justify-center text-deep-space-blue"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
+            suppressHydrationWarning
           >
             <span className={`absolute w-6 h-px bg-current transform transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45' : '-translate-y-2'}`} />
             <span className={`absolute w-6 h-px bg-current transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
@@ -90,7 +90,7 @@ export function Navigation() {
                 {link.label}
               </a>
             ))}
-            <Button 
+            <Button
               className="mt-4 bg-deep-space-blue hover:bg-deep-space-blue/90 text-white font-medium px-6 py-6 rounded-full w-full group"
             >
               Get Quote

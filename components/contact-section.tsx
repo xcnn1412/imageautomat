@@ -165,7 +165,7 @@ export function ContactSection() {
                             setFormData({ ...formData, phone: e.target.value })
                           }
                           className="w-full h-12 px-0 bg-transparent border-0 border-b border-[#023047]/20 rounded-none focus:border-[#FB8500] focus:ring-0 text-[#023047] placeholder:text-[#023047]/30"
-                          placeholder="+66 XX XXX XXXX"
+                          placeholder="+66 62 424 9936"
                         />
                       </div>
                       <div>

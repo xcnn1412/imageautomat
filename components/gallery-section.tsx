@@ -79,11 +79,11 @@ export function GallerySection() {
             <button
               key={category}
               onClick={() => setActiveFilter(category)}
-              className={`px-6 py-3 text-sm tracking-wider transition-all duration-500 ${
-                activeFilter === category
+              suppressHydrationWarning
+              className={`px-6 py-3 text-sm tracking-wider transition-all duration-500 ${activeFilter === category
                   ? "bg-[#023047] text-white"
                   : "bg-white text-[#023047]/60 hover:text-[#023047]"
-              }`}
+                }`}
               aria-pressed={activeFilter === category}
             >
               {category}
@@ -108,26 +108,23 @@ export function GallerySection() {
                 src={item.src || "/placeholder.svg"}
                 alt={item.alt}
                 fill
-                className={`object-cover transition-all duration-700 ease-out ${
-                  hoveredIndex === index ? "scale-105" : "scale-100"
-                }`}
+                className={`object-cover transition-all duration-700 ease-out ${hoveredIndex === index ? "scale-105" : "scale-100"
+                  }`}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
 
               {/* Subtle Overlay */}
               <div
-                className={`absolute inset-0 bg-gradient-to-t from-[#023047]/80 via-transparent to-transparent transition-opacity duration-500 ${
-                  hoveredIndex === index ? "opacity-100" : "opacity-0"
-                }`}
+                className={`absolute inset-0 bg-gradient-to-t from-[#023047]/80 via-transparent to-transparent transition-opacity duration-500 ${hoveredIndex === index ? "opacity-100" : "opacity-0"
+                  }`}
               />
 
               {/* Category Label */}
               <div
-                className={`absolute bottom-0 left-0 right-0 p-8 transition-all duration-500 ${
-                  hoveredIndex === index
+                className={`absolute bottom-0 left-0 right-0 p-8 transition-all duration-500 ${hoveredIndex === index
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-4"
-                }`}
+                  }`}
               >
                 <p className="text-white/60 text-xs tracking-[0.2em] uppercase mb-2">
                   {item.category}
