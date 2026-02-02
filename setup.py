@@ -18,7 +18,7 @@ setup(
     ],
     python_requires=">=3.7",
     install_requires=[
-        "Pillow>=10.0.0",
+        "Pillow>=10.2.0",
         "PyYAML>=6.0",
         "click>=8.0.0",
     ],
