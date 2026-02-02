@@ -1,22 +1,22 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Plus_Jakarta_Sans, Noto_Sans_Thai, Playfair_Display } from 'next/font/google'
+import { Montserrat, IBM_Plex_Sans_Thai, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const plusJakartaSans = Plus_Jakarta_Sans({ 
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: '--font-plus-jakarta',
-  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-montserrat',
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
 });
 
-const notoSansThai = Noto_Sans_Thai({ 
+const ibmPlexSansThai = IBM_Plex_Sans_Thai({
   subsets: ["thai"],
-  variable: '--font-noto-thai',
+  variable: '--font-ibm-plex-thai',
   weight: ['300', '400', '500', '600', '700'],
 });
 
-const playfairDisplay = Playfair_Display({ 
+const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: '--font-playfair',
   weight: ['400', '500', '600', '700', '800', '900'],
@@ -167,7 +167,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${plusJakartaSans.variable} ${notoSansThai.variable} ${playfairDisplay.variable} font-sans antialiased`}>
+      <body className={`${montserrat.variable} ${ibmPlexSansThai.variable} ${playfairDisplay.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>
