@@ -134,6 +134,19 @@ class TestImageProcessor(unittest.TestCase):
         for result in results:
             self.assertTrue(os.path.exists(result))
     
+    def test_format_conversion(self):
+        """Test format conversion."""
+        operations = [{'type': 'format', 'format': 'png'}]
+        result = self.processor.process_image(self.test_image_path, operations)
+        
+        self.assertIsNotNone(result)
+        self.assertTrue(result.endswith('.png'))
+        self.assertTrue(os.path.exists(result))
+        
+        # Verify it's actually a PNG
+        with Image.open(result) as img:
+            self.assertEqual(img.format, 'PNG')
+    
     def test_process_directory(self):
         """Test processing all images in a directory."""
         # Create multiple test images in a directory

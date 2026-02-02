@@ -36,6 +36,7 @@ class ImageProcessor:
         """
         try:
             img = Image.open(image_path)
+            output_format = None
             
             for operation in operations:
                 op_type = operation.get('type')
@@ -54,12 +55,16 @@ class ImageProcessor:
                     img = self._contrast(img, operation)
                 elif op_type == 'sharpen':
                     img = self._sharpen(img)
+                elif op_type == 'format':
+                    output_format = operation.get('format')
                 else:
                     print(f"Warning: Unknown operation type '{op_type}'")
             
             # Generate output filename
             input_path = Path(image_path)
-            output_format = operation.get('format', input_path.suffix[1:]).lower()
+            if output_format is None:
+                output_format = input_path.suffix[1:]
+            output_format = output_format.lower()
             output_filename = f"{input_path.stem}_processed.{output_format}"
             output_path = self.output_dir / output_filename
             
