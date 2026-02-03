@@ -18,7 +18,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="relative min-h-screen bg-background overflow-hidden">
+    <section className="relative min-h-screen bg-background overflow-hidden pb-24 lg:pb-32">
       {/* Subtle background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--sky-blue-light)_0%,_transparent_50%)] opacity-20" />
 
@@ -85,40 +85,61 @@ export function HeroSection() {
               </span>
             </a>
           </div>
+
+          {/* Phone CTA Section */}
+          <div
+            className={`mt-8 flex flex-col items-center transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          >
+            {/* Divider with text */}
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-12 h-px bg-deep-space-blue/10" />
+              <span className="text-sm text-deep-space-blue/40 font-medium tracking-wider uppercase">
+                หรือโทรหาเรา
+              </span>
+              <span className="w-12 h-px bg-deep-space-blue/10" />
+            </div>
+
+            {/* Phone Numbers - Elegant Cards */}
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                { number: "065 646 6414", tel: "0656466414" },
+                { number: "063 594 4429", tel: "0635944429" },
+                { number: "062 424 9936", tel: "0624249936" },
+              ].map((phone, index) => (
+                <a
+                  key={phone.tel}
+                  href={`tel:${phone.tel}`}
+                  className="group relative inline-flex items-center gap-2.5 bg-white/60 backdrop-blur-sm border border-deep-space-blue/10 hover:border-tiger-orange/30 hover:bg-white px-5 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-tiger-orange/10 hover:scale-105 active:scale-95"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  {/* Phone Icon */}
+                  <span className="relative flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-tiger-orange to-tiger-orange/80 text-white shadow-sm group-hover:shadow-md group-hover:shadow-tiger-orange/30 transition-all duration-300">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="group-hover:animate-wiggle"
+                    >
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  </span>
+
+                  {/* Phone Number */}
+                  <span className="font-semibold text-deep-space-blue/80 group-hover:text-deep-space-blue tracking-wide transition-colors duration-300">
+                    {phone.number}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Hero Image */}
-        <div
-          className={`mt-20 lg:mt-28 relative transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-        >
-          <div className="relative aspect-[16/9] lg:aspect-[21/9] rounded-t-[2rem] lg:rounded-t-[3rem] overflow-hidden">
-            <Image
-              src="/images/photobooth-hero.jpg"
-              alt="Premium IMAGEAUTOMAT photobooth experience"
-              fill
-              className="object-cover"
-              priority
-            />
-            {/* Subtle gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-          </div>
 
-          {/* Floating stats - Positioned at bottom */}
-          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-6 md:gap-12">
-            <div className="bg-white rounded-2xl px-8 py-5 shadow-xl shadow-deep-space-blue/10 text-center">
-              <span className="block text-3xl md:text-4xl font-serif font-bold text-deep-space-blue">500+</span>
-              <span className="text-sm text-deep-space-blue/50 mt-1">Events</span>
-            </div>
-            <div className="bg-tiger-orange rounded-2xl px-8 py-5 shadow-xl shadow-tiger-orange/30 text-center">
-              <span className="block text-3xl md:text-4xl font-serif font-bold text-white">50K+</span>
-              <span className="text-sm text-white/80 mt-1">Photos</span>
-            </div>
-            <div className="hidden md:block bg-white rounded-2xl px-8 py-5 shadow-xl shadow-deep-space-blue/10 text-center">
-              <span className="block text-3xl md:text-4xl font-serif font-bold text-deep-space-blue">100%</span>
-              <span className="text-sm text-deep-space-blue/50 mt-1">Satisfaction</span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   )

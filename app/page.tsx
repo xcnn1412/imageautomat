@@ -12,9 +12,10 @@ export default function Home() {
         <main className="min-h-screen bg-white">
             <Navigation />
             <HeroSection />
+            <GallerySection />
             <ServicesSection />
             <FeaturesSection />
-            <GallerySection />
+            {/* <GallerySection /> */}
             <ProductSection />
             <ContactSection />
             <Footer />
