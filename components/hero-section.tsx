@@ -69,7 +69,7 @@ export function HeroSection() {
               className="inline-flex items-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-10 py-6 text-base rounded-full transition-all duration-300 shadow-lg shadow-[#06C755]/30 hover:shadow-xl hover:shadow-[#06C755]/50 hover:scale-105 active:scale-95"
             >
               <LineIcon />
-              <span className="tracking-wide">ADD FRIEND</span>
+              <span className="tracking-wide">ขอราคาพิเศษ</span>
             </a>
           </div>
         </div>
