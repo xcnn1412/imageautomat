@@ -21,61 +21,74 @@ export function HeroSection() {
     <section className="relative min-h-screen bg-background overflow-hidden">
       {/* Subtle background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--sky-blue-light)_0%,_transparent_50%)] opacity-20" />
-      
+
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 pt-32 lg:pt-40">
         {/* Main Content - Centered Elegant Layout */}
         <div className="text-center max-w-5xl mx-auto">
           {/* Small tagline */}
-          <div 
+          <div
             className={`mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           >
             <span className="text-sm font-medium text-deep-space-blue/50 uppercase tracking-[0.3em]">
               Premium Photobooth Experiences
             </span>
           </div>
-          
+
           {/* Main headline - Elegant Serif */}
-          <h1 
+          <h1
             className={`font-serif text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-deep-space-blue tracking-tight leading-[1.05] transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             Capturing moments
             <br />
             <span className="italic text-tiger-orange">worth remembering</span>
           </h1>
-          
+
           {/* Description */}
-          <p 
+          <p
             className={`mt-10 text-lg md:text-xl text-deep-space-blue/60 leading-relaxed max-w-2xl mx-auto transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           >
-            Transform your events with cutting-edge photobooth technology. 
+            Transform your events with cutting-edge photobooth technology.
             Premium experiences for weddings, corporate events, and brand activations.
           </p>
-          
+
           {/* Thai text */}
-          <p 
+          <p
             className={`mt-4 text-base text-deep-space-blue/40 font-thai leading-[1.8] transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           >
             สร้างความทรงจำที่ไม่มีวันลืมด้วยเทคโนโลยีถ่ายภาพระดับพรีเมียม
           </p>
-          
-          {/* CTA Button - LINE Add Friend */}
-          <div 
+
+          {/* CTA Button - LINE Add Friend with Premium Motion */}
+          <div
             className={`mt-12 flex justify-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           >
             <a
               href="https://line.me/ti/p/~@imageautomat"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-10 py-6 text-base rounded-full transition-all duration-300 shadow-lg shadow-[#06C755]/30 hover:shadow-xl hover:shadow-[#06C755]/50 hover:scale-105 active:scale-95"
+              className="group relative inline-flex items-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-10 py-6 text-base rounded-full transition-all duration-300 shadow-lg shadow-[#06C755]/30 hover:shadow-2xl hover:shadow-[#06C755]/60 hover:scale-105 active:scale-95 animate-subtle-bounce overflow-hidden"
             >
-              <LineIcon />
-              <span className="tracking-wide">ขอราคาพิเศษ</span>
+              {/* Animated glow ring */}
+              <span className="absolute inset-0 rounded-full animate-pulse-glow" />
+
+              {/* Shimmer effect */}
+              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12" />
+
+              {/* LINE Icon with wiggle animation */}
+              <span className="relative z-10 transition-transform duration-300 group-hover:animate-wiggle">
+                <LineIcon />
+              </span>
+
+              {/* Text with slight lift on hover */}
+              <span className="relative z-10 tracking-wide transition-transform duration-300 group-hover:-translate-y-0.5">
+                ขอราคาพิเศษ
+              </span>
             </a>
           </div>
         </div>
 
         {/* Hero Image */}
-        <div 
+        <div
           className={`mt-20 lg:mt-28 relative transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
         >
           <div className="relative aspect-[16/9] lg:aspect-[21/9] rounded-t-[2rem] lg:rounded-t-[3rem] overflow-hidden">
@@ -89,7 +102,7 @@ export function HeroSection() {
             {/* Subtle gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
           </div>
-          
+
           {/* Floating stats - Positioned at bottom */}
           <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-6 md:gap-12">
             <div className="bg-white rounded-2xl px-8 py-5 shadow-xl shadow-deep-space-blue/10 text-center">

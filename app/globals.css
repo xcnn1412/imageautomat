@@ -127,3 +127,56 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom animations for LINE CTA button */
+@keyframes subtle-bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 20px 4px rgba(6, 199, 85, 0.3);
+  }
+}
+
+@keyframes wiggle {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-8deg);
+  }
+
+  75% {
+    transform: rotate(8deg);
+  }
+}
+
+.animate-subtle-bounce {
+  animation: subtle-bounce 2.5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.group:hover .group-hover\:animate-wiggle {
+  animation: wiggle 0.4s ease-in-out;
+}
