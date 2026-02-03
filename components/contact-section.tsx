@@ -104,7 +104,7 @@ export function ContactSection() {
               ) : (
                 <>
                   <h3 className="font-serif text-2xl text-[#023047] mb-8">
-                    Request a Quote
+                    Get in Touch
                   </h3>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
