@@ -21,8 +21,6 @@ const SLIDESHOW_IMAGES = [
     '/slideshow/slideshow-11.jpg',
     '/slideshow/slideshow-12.jpg',
     '/slideshow/slideshow-13.jpg',
-    '/slideshow/slideshow-14.jpg',
-    '/slideshow/slideshow-15.jpg',
     '/slideshow/slideshow-16.jpg',
     '/slideshow/slideshow-20.jpg',
     '/slideshow/slideshow-24.webp',
@@ -91,7 +89,7 @@ export function SlideshowSection() {
         <section 
             ref={sectionRef}
             id="slideshow" 
-            className="py-32 lg:py-40 bg-gradient-to-b from-background to-deep-space-blue/5 relative overflow-hidden"
+            className="py-8 lg:py-12 bg-gradient-to-b from-background to-deep-space-blue/5 relative overflow-hidden"
         >
             {/* Animated Background Decoration */}
             <motion.div 
@@ -127,7 +125,7 @@ export function SlideshowSection() {
                 animate={isInView ? "visible" : "hidden"}
             >
                 <motion.div 
-                    className="max-w-3xl mb-16 lg:mb-20"
+                    className="max-w-3xl mb-6 lg:mb-8"
                     variants={itemVariants}
                 >
                     <motion.span 
@@ -148,7 +146,7 @@ export function SlideshowSection() {
                         Gallery
                     </motion.span>
                     <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-deep-space-blue tracking-tight leading-[1.1]">
-                        Capturing{' '}
+                        Precision{' '}
                         <motion.span 
                             className="italic text-tiger-orange inline-block"
                             animate={{ 
@@ -160,12 +158,12 @@ export function SlideshowSection() {
                             }}
                             transition={{ duration: 3, repeat: Infinity }}
                         >
-                            moments
+                            in every structure
                         </motion.span>{' '}
-                        that matter
+                        Designed for stability
                     </h2>
                     <p className="mt-8 text-lg text-deep-space-blue/70 leading-relaxed max-w-2xl">
-                        From intimate gatherings to grand celebrations, we bring the perfect photobooth experience to your event.
+                    ออกแบบและผลิตตู้โฟโต้บูธครบวงจร แข็งแรง ทนทาน พร้อมติดตั้ง
                     </p>
                 </motion.div>
 
@@ -190,7 +188,7 @@ export function SlideshowSection() {
                                         <div className="absolute inset-0 rounded-3xl shadow-[inset_0_1px_2px_rgba(255,255,255,0.3)] pointer-events-none" />
                                         <Image
                                             src={image}
-                                            alt={`Gallery image ${index + 1}`}
+                                            alt={`ผลงานตู้โฟโต้บูธ Photobooth Structure ผลิตภายในประเทศไทย แข็งแรงทนทาน - งานที่ ${index + 1}`}
                                             fill
                                             className="object-contain transition-all duration-700 group-hover:scale-105 group-hover:brightness-105"
                                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 85vw, 70vw"
