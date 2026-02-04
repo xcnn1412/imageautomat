@@ -6,6 +6,7 @@ import { GallerySection } from "@/components/gallery-section"
 import { ProductSection } from "@/components/product-section"
 import { ContactSection } from "@/components/contact-section"
 import { SlideshowSection } from "@/components/slideshow-section"
+import { TextSlideshow } from "@/components/text-slideshow"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
         <main className="min-h-screen bg-white">
             <Navigation />
             <HeroSection />
+            <TextSlideshow />
             <SlideshowSection />
             <GallerySection />
             <ServicesSection />
