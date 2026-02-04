@@ -18,11 +18,11 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="relative min-h-screen bg-background overflow-hidden pb-24 lg:pb-32">
+    <section className="relative bg-background overflow-hidden pt-20 pb-16 md:pt-24 md:pb-20 lg:pt-28 lg:pb-24">
       {/* Subtle background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--sky-blue-light)_0%,_transparent_50%)] opacity-20" />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 pt-32 lg:pt-40">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Main Content - Centered Elegant Layout */}
         <div className="text-center max-w-5xl mx-auto">
           {/* Small tagline */}
