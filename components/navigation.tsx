@@ -99,38 +99,40 @@ export function Navigation() {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-500 ${isMobileMenuOpen ? 'max-h-[400px] pb-8' : 'max-h-0'}`}>
-          <div className="flex flex-col gap-1 pt-4 border-t border-deep-space-blue/5">
-            {navLinks.map((link) => (
+        <div className={`lg:hidden overflow-hidden transition-all duration-500 ${isMobileMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className="mt-4 mx-2 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-deep-space-blue/10 ring-1 ring-deep-space-blue/5">
+            <div className="flex flex-col gap-1 p-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-lg font-medium text-deep-space-blue/70 hover:text-deep-space-blue hover:bg-deep-space-blue/5 rounded-lg transition-all duration-200 py-3 px-4"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
               <a
-                key={link.href}
-                href={link.href}
-                className="text-lg font-medium text-deep-space-blue/70 hover:text-deep-space-blue transition-colors py-4"
+                href="https://line.me/ti/p/~@imageautomat"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative mt-2 inline-flex items-center justify-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-6 py-5 text-base rounded-full w-full transition-all duration-300 shadow-lg shadow-[#06C755]/30 hover:shadow-xl hover:shadow-[#06C755]/50 active:scale-95 overflow-hidden"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                {link.label}
+                {/* Shimmer effect */}
+                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12" />
+
+                {/* LINE Icon */}
+                <span className="relative z-10">
+                  <LineIcon className="w-6 h-6" />
+                </span>
+
+                {/* Text */}
+                <span className="relative z-10 tracking-wide">
+                  ขอราคาพิเศษ
+                </span>
               </a>
-            ))}
-            <a
-              href="https://line.me/ti/p/~@imageautomat"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative mt-4 inline-flex items-center justify-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-6 py-5 text-base rounded-full w-full transition-all duration-300 shadow-lg shadow-[#06C755]/30 hover:shadow-xl hover:shadow-[#06C755]/50 active:scale-95 overflow-hidden"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {/* Shimmer effect */}
-              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12" />
-
-              {/* LINE Icon */}
-              <span className="relative z-10">
-                <LineIcon className="w-6 h-6" />
-              </span>
-
-              {/* Text */}
-              <span className="relative z-10 tracking-wide">
-                ขอราคาพิเศษ
-              </span>
-            </a>
+            </div>
           </div>
         </div>
       </div>
