@@ -63,10 +63,10 @@ export function GallerySection() {
             id="gallery-heading"
             className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#023047] mb-6"
           >
-            Moments We Captured
+            บันทึกผลงานของเรา
           </h2>
           <p className="text-lg text-[#023047]/60 max-w-xl mx-auto leading-relaxed">
-            A glimpse into the unforgettable experiences we have created
+            ส่วนหนึ่งของประสบการณ์สุดประทับใจที่เราสร้างขึ้น
           </p>
         </div>
 
