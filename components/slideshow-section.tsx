@@ -78,34 +78,10 @@ export function SlideshowSection() {
         <section 
             ref={sectionRef}
             id="slideshow" 
-            className="py-8 lg:py-12 bg-gradient-to-b from-background to-deep-space-blue/5 relative overflow-hidden"
+            className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white relative overflow-hidden"
         >
-            {/* Animated Background Decoration */}
-            <motion.div 
-                className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,127,80,0.03),transparent_50%)]"
-                animate={{
-                    scale: [1, 1.05, 1],
-                    opacity: [0.3, 0.5, 0.3]
-                }}
-                transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }}
-            />
-            <motion.div 
-                className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(25,42,86,0.03),transparent_50%)]"
-                animate={{
-                    scale: [1.05, 1, 1.05],
-                    opacity: [0.5, 0.3, 0.5]
-                }}
-                transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 4
-                }}
-            />
+            {/* Subtle Background Decoration */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-deep-space-blue/3 to-transparent pointer-events-none" />
 
             <motion.div 
                 className="mx-auto max-w-7xl px-6 lg:px-8 relative"
@@ -114,16 +90,16 @@ export function SlideshowSection() {
                 animate={isInView ? "visible" : "hidden"}
             >
                 <motion.div 
-                    className="max-w-3xl mb-6 lg:mb-8"
+                    className="max-w-4xl mb-8 sm:mb-10 md:mb-12 lg:mb-16 text-center mx-auto"
                     variants={itemVariants}
                 >
                     <motion.span 
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-tiger-orange uppercase tracking-[0.3em] mb-6"
+                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-tiger-orange uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-4 sm:mb-6"
                         whileHover={{ x: 4 }}
                         transition={{ duration: 0.3 }}
                     >
                         <motion.svg 
-                            className="w-4 h-4" 
+                            className="w-3 h-3 sm:w-4 sm:h-4" 
                             fill="currentColor" 
                             viewBox="0 0 20 20"
                             animate={{ rotate: [0, 5, 0] }}
@@ -132,10 +108,10 @@ export function SlideshowSection() {
                             <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
                             <path fillRule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clipRule="evenodd" />
                         </motion.svg>
-                        Gallery
+                        Photobooth Structure
                     </motion.span>
-                    <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-deep-space-blue tracking-tight leading-[1.1]">
-                        Precision{' '}
+                    <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-deep-space-blue tracking-tight leading-[1.1] mb-4">
+                        รับผลิต{' '}
                         <motion.span 
                             className="italic text-tiger-orange inline-block"
                             animate={{ 
@@ -147,12 +123,14 @@ export function SlideshowSection() {
                             }}
                             transition={{ duration: 3, repeat: Infinity }}
                         >
-                            in every structure
-                        </motion.span>{' '}
-                        Designed for stability
+                            โครงสร้างโฟโต้บูธ
+                        </motion.span>
                     </h2>
-                    <p className="mt-8 text-lg text-deep-space-blue/70 leading-relaxed max-w-2xl">
-                    ออกแบบและผลิตตู้โฟโต้บูธครบวงจร แข็งแรง ทนทาน พร้อมติดตั้ง
+                    <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-deep-space-blue font-medium mb-6 sm:mb-8" style={{ lineHeight: '1.4' }}>
+                        Designed for stability
+                    </p>
+                    <p className="text-sm sm:text-base md:text-lg text-deep-space-blue/70 leading-relaxed max-w-2xl mx-auto" style={{ lineHeight: '1.6' }}>
+                        ออกแบบและผลิตตู้โฟโต้บูธครบวงจร แข็งแรง ทนทาน พร้อมติดตั้ง
                     </p>
                 </motion.div>
 
@@ -170,11 +148,9 @@ export function SlideshowSection() {
                                     whileHover={{ scale: 1.02 }}
                                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                                 >
-                                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-white/10 backdrop-blur-md shadow-2xl shadow-deep-space-blue/20 border border-white/20 group">
-                                        {/* Gradient border effect */}
-                                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/30 via-transparent to-tiger-orange/20 opacity-50 pointer-events-none" />
-                                        {/* Inner glow */}
-                                        <div className="absolute inset-0 rounded-3xl shadow-[inset_0_1px_2px_rgba(255,255,255,0.3)] pointer-events-none" />
+                                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl sm:rounded-3xl bg-white shadow-xl shadow-deep-space-blue/10 group">
+                                        {/* Subtle border effect */}
+                                        <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-tiger-orange/5 via-transparent to-deep-space-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                                         <Image
                                             src={image}
                                             alt={`ผลงานตู้โฟโต้บูธ Photobooth Structure ผลิตภายในประเทศไทย แข็งแรงทนทาน - งานที่ ${index + 1}`}
@@ -183,8 +159,8 @@ export function SlideshowSection() {
                                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 85vw, 70vw"
                                             priority={index === 0}
                                         />
-                                        {/* Subtle gradient overlay on hover */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-deep-space-blue/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                        {/* Hover overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-deep-space-blue/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                     </div>
                                 </motion.div>
                             ))}
@@ -196,24 +172,23 @@ export function SlideshowSection() {
                         onClick={scrollPrev}
                         onHoverStart={() => setHoveredButton('prev')}
                         onHoverEnd={() => setHoveredButton(null)}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white text-deep-space-blue rounded-full p-4 shadow-xl shadow-deep-space-blue/20 focus:outline-none focus:ring-2 focus:ring-tiger-orange focus:ring-offset-2 border border-deep-space-blue/10"
+                        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white text-deep-space-blue rounded-full p-2.5 sm:p-3 md:p-4 shadow-lg shadow-deep-space-blue/15 focus:outline-none focus:ring-2 focus:ring-tiger-orange focus:ring-offset-2"
                         aria-label="Previous image"
                         whileHover={{ 
-                            scale: 1.15,
-                            rotate: -5,
-                            backgroundColor: "rgba(255, 255, 255, 1)",
-                            boxShadow: "0 20px 40px rgba(25, 42, 86, 0.3)"
+                            scale: 1.1,
+                            rotate: -3,
+                            boxShadow: "0 12px 30px rgba(25, 42, 86, 0.25)"
                         }}
                         whileTap={{ scale: 0.95 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     >
                         <motion.svg 
-                            className="w-6 h-6" 
+                            className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" 
                             fill="none" 
                             stroke="currentColor" 
                             strokeWidth={2.5} 
                             viewBox="0 0 24 24"
-                            animate={hoveredButton === 'prev' ? { x: [-2, 2, -2] } : {}}
+                            animate={hoveredButton === 'prev' ? { x: [-1, 1, -1] } : {}}
                             transition={{ duration: 0.5, repeat: hoveredButton === 'prev' ? Infinity : 0 }}
                         >
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -224,24 +199,23 @@ export function SlideshowSection() {
                         onClick={scrollNext}
                         onHoverStart={() => setHoveredButton('next')}
                         onHoverEnd={() => setHoveredButton(null)}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white text-deep-space-blue rounded-full p-4 shadow-xl shadow-deep-space-blue/20 focus:outline-none focus:ring-2 focus:ring-tiger-orange focus:ring-offset-2 border border-deep-space-blue/10"
+                        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white text-deep-space-blue rounded-full p-2.5 sm:p-3 md:p-4 shadow-lg shadow-deep-space-blue/15 focus:outline-none focus:ring-2 focus:ring-tiger-orange focus:ring-offset-2"
                         aria-label="Next image"
                         whileHover={{ 
-                            scale: 1.15,
-                            rotate: 5,
-                            backgroundColor: "rgba(255, 255, 255, 1)",
-                            boxShadow: "0 20px 40px rgba(25, 42, 86, 0.3)"
+                            scale: 1.1,
+                            rotate: 3,
+                            boxShadow: "0 12px 30px rgba(25, 42, 86, 0.25)"
                         }}
                         whileTap={{ scale: 0.95 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     >
                         <motion.svg 
-                            className="w-6 h-6" 
+                            className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" 
                             fill="none" 
                             stroke="currentColor" 
                             strokeWidth={2.5} 
                             viewBox="0 0 24 24"
-                            animate={hoveredButton === 'next' ? { x: [-2, 2, -2] } : {}}
+                            animate={hoveredButton === 'next' ? { x: [-1, 1, -1] } : {}}
                             transition={{ duration: 0.5, repeat: hoveredButton === 'next' ? Infinity : 0 }}
                         >
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -249,24 +223,24 @@ export function SlideshowSection() {
                     </motion.button>
                 </motion.div>
 
-                {/* Decorative Elements with Animation */}
+                {/* Decorative Auto Scroll Indicator */}
                 <motion.div 
-                    className="mt-12 flex justify-center gap-8"
+                    className="mt-8 sm:mt-10 md:mt-12 flex justify-center gap-4 sm:gap-6 md:gap-8"
                     variants={itemVariants}
                 >
                     <motion.div 
-                        className="flex items-center gap-2 text-sm text-deep-space-blue/50"
-                        animate={{ opacity: [0.3, 0.6, 0.3] }}
+                        className="flex items-center gap-2 text-xs sm:text-sm text-deep-space-blue/50"
+                        animate={{ opacity: [0.4, 0.7, 0.4] }}
                         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                     >
                         <motion.div 
-                            className="w-12 h-px bg-gradient-to-r from-transparent via-tiger-orange to-transparent"
+                            className="w-8 sm:w-10 md:w-12 h-px bg-gradient-to-r from-transparent via-tiger-orange to-transparent"
                             animate={{ scaleX: [0.8, 1.2, 0.8] }}
                             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                         />
-                        <span className="uppercase tracking-widest font-medium">Auto Scroll</span>
+                        <span className="uppercase tracking-wider sm:tracking-widest font-medium">Auto Scroll</span>
                         <motion.div 
-                            className="w-12 h-px bg-gradient-to-r from-transparent via-tiger-orange to-transparent"
+                            className="w-8 sm:w-10 md:w-12 h-px bg-gradient-to-r from-transparent via-tiger-orange to-transparent"
                             animate={{ scaleX: [1.2, 0.8, 1.2] }}
                             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                         />

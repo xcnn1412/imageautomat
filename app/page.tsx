@@ -17,12 +17,14 @@ export default function Home() {
         <main className="min-h-screen bg-white">
             <Navigation />
             <HeroSection />
-            {/* <TextSlideshow /> */}
-            <SlideshowSection />        
             <TextSlideshow2 />
+            
+            {/* <TextSlideshow /> */}
+            
             <ProductSection />
             <TextSlideshowProgram />
             <VideoGallery />
+            <SlideshowSection /> 
             <ServicesSection />
             <FeaturesSection />
             <ContactSection />

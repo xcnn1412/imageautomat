@@ -1,29 +1,29 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ShoppingBag, ShoppingCart, Monitor, ArrowRight } from "lucide-react"
+import { CreditCard, Ticket, CalendarDays, ArrowRight } from "lucide-react"
 
 const services = [
   {
     id: 1,
-    title: "เช่าโฟโต้บูธ",
-    subtitle: "RENT",
-    icon: ShoppingBag,
-    description: "บริการเช่าโฟโต้บูธครบวงจรพร้อมทีมงาน"
+    title: "ระบบชำระเงิน",
+    subtitle: "PAYMENT",
+    icon: CreditCard,
+    description: "รองรับการชำระเงินหลากหลายช่องทาง ปลอดภัย รวดเร็ว"
   },
   {
     id: 2,
-    title: "ซื้อโฟโต้บูธ",
-    subtitle: "BUY",
-    icon: ShoppingCart,
-    description: "จำหน่ายโฟโต้บูธพร้อมใช้งาน คุณภาพสูง"
+    title: "ระบบคูปอง",
+    subtitle: "COUPON",
+    icon: Ticket,
+    description: "สร้างและจัดการคูปองส่วนลดได้ง่าย ยืดหยุ่น"
   },
   {
     id: 3,
-    title: "โปรแกรมถ่ายภาพ",
-    subtitle: "SOFTWARE",
-    icon: Monitor,
-    description: "ซอฟต์แวร์โฟโต้บูธที่ยืดหยุ่นตามความต้องการ"
+    title: "ระบบอีเวนต์",
+    subtitle: "EVENT",
+    icon: CalendarDays,
+    description: "จัดการงานอีเวนต์ได้อย่างมีประสิทธิภาพ ครบวงจร"
   }
 ]
 
@@ -51,7 +51,7 @@ export function TextSlideshowProgram() {
 
           {/* Description */}
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-deep-space-blue/70 max-w-3xl mx-auto" style={{ lineHeight: '1.6' }}>
-            บริการครบวงจรด้านโฟโต้บูธ ทั้งเช่า ซื้อ และโปรแกรมถ่ายภาพ
+             Photobooth Software โดยคนไทย มาตราฐานระดับโลก
           </p>
 
           {/* Decorative Line */}
