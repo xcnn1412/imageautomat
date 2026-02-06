@@ -7,32 +7,13 @@ import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
-const SLIDESHOW_IMAGES = [
-    '/slideshow/photobooth_1.webp',
-    '/slideshow/photobooth_2.webp',
-    '/slideshow/photobooth_3.webp',
-    '/slideshow/photobooth_4.webp',
-    '/slideshow/photobooth_5.webp',
-    '/slideshow/photobooth_6.webp',
-    '/slideshow/photobooth_7.webp',
-    '/slideshow/photobooth_8.webp',
-    '/slideshow/photobooth_9.webp',
-    '/slideshow/photobooth_10.webp',
-    '/slideshow/photobooth_11.webp',
-    '/slideshow/photobooth_12.webp',
-    '/slideshow/photobooth_13.webp',
-    '/slideshow/photobooth_14.webp',
-    '/slideshow/photobooth_15.webp',
-    '/slideshow/photobooth_16.webp',
-    '/slideshow/photobooth_17.webp',
-    '/slideshow/photobooth_18.webp',
-    '/slideshow/photobooth_19.webp',
-    '/slideshow/photobooth_20.webp',
-    '/slideshow/photobooth_21.webp',
-    '/slideshow/photobooth_22.webp',
-    '/slideshow/photobooth_23.webp',
-    '/slideshow/photobooth_24.webp',
-]
+// 🎯 วิธีใช้: เมื่อเพิ่มรูปใหม่ ให้เปลี่ยนแค่ตัวเลข MAX_IMAGES ด้านล่างนี้
+const MAX_IMAGES = 24; // เปลี่ยนตัวเลขนี้เมื่อเพิ่มรูปใหม่ (เช่น มีรูปใหม่เป็น photobooth_25.webp ให้เปลี่ยนเป็น 25)
+
+// Auto-generate image paths
+const SLIDESHOW_IMAGES = Array.from({ length: MAX_IMAGES }, (_, i) => 
+    `/slideshow/images/photobooth_${i + 1}.webp`
+)
 
 export function SlideshowSection() {
     const sectionRef = useRef(null)

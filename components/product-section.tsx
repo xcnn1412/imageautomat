@@ -7,7 +7,7 @@ import { ArrowRight, Star, Sparkles } from "lucide-react"
 const products = [
     {
         id: 1,
-        src: "/models/product-08-768x768.webp",
+        src: "/models/images/product-08-768x768.webp",
         name: "MODEL 1",
         nameTh: "คลาสสิค บูธ",
         description: "ตู้ถ่ายรูปแบบคลาสสิค ดีไซน์เรียบหรู เหมาะสำหรับงานแต่งงานและงานทางการ",
@@ -17,7 +17,7 @@ const products = [
     },
     {
         id: 2,
-        src: "/models/product-09-768x768.webp",
+        src: "/models/images/product-09-768x768.webp",
         name: "Mirror Booth",
         nameTh: "มิเรอร์ บูธ",
         description: "กระจกวิเศษ ถ่ายรูปเต็มตัว พร้อมไฟ LED และหน้าจอสัมผัส",
@@ -27,7 +27,7 @@ const products = [
     },
     {
         id: 3,
-        src: "/models/product-10-768x768.webp",
+        src: "/models/images/product-10-768x768.webp",
         name: "360° Booth",
         nameTh: "360 องศา บูธ",
         description: "แพลตฟอร์มหมุน 360 องศา สร้างวิดีโอสุดเท่ที่ไวรัลได้ง่าย",
@@ -37,7 +37,7 @@ const products = [
     },
     {
         id: 4,
-        src: "/models/product-11-768x768.webp",
+        src: "/models/images/product-11-768x768.webp",
         name: "Compact Booth",
         nameTh: "คอมแพค บูธ",
         description: "ตู้ถ่ายรูปขนาดกะทัดรัด เคลื่อนย้ายง่าย เหมาะกับทุกขนาดงาน",
@@ -47,7 +47,7 @@ const products = [
     },
     {
         id: 5,
-        src: "/models/product-12-768x768.webp",
+        src: "/models/images/product-12-768x768.webp",
         name: "Vintage Booth",
         nameTh: "วินเทจ บูธ",
         description: "ดีไซน์ย้อนยุค สไตล์วินเทจ สร้างบรรยากาศพิเศษให้งานของคุณ",
@@ -57,7 +57,7 @@ const products = [
     },
     {
         id: 6,
-        src: "/models/product-13-768x768.webp",
+        src: "/models/images/product-13-768x768.webp",
         name: "LED Frame Booth",
         nameTh: "แอลอีดี เฟรม บูธ",
         description: "กรอบไฟ LED เปลี่ยนสีได้ ปรับแต่งตามธีมงานได้อย่างอิสระ",
@@ -67,7 +67,7 @@ const products = [
     },
     {
         id: 7,
-        src: "/models/product-14-768x768.webp",
+        src: "/models/images/product-14-768x768.webp",
         name: "Premium Suite",
         nameTh: "พรีเมียม สวีท",
         description: "ชุดพรีเมียมครบเซ็ต รวมตู้ถ่ายรูป ไฟสตูดิโอ และอุปกรณ์ครบครัน",
