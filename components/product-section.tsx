@@ -10,6 +10,7 @@ const products = [
         src: "/models/images/product-08-768x768.webp",
         name: "MODEL 1",
         nameTh: "คลาสสิค บูธ",
+        label: "PHOTOBOX",
         description: "ตู้ถ่ายรูปแบบคลาสสิค ดีไซน์เรียบหรู เหมาะสำหรับงานแต่งงานและงานทางการ",
         features: ["ใช้พื้นที่น้อย", "พิมพ์ได้ไม่จำกัด", "warp ตกแต่งตู้ได้", "เหมาะสำหรับงานอีเวนต์"],
         badge: "ขายดี",
@@ -18,18 +19,20 @@ const products = [
     {
         id: 2,
         src: "/models/images/product-09-768x768.webp",
-        name: "Mirror Booth",
-        nameTh: "มิเรอร์ บูธ",
-        description: "กระจกวิเศษ ถ่ายรูปเต็มตัว พร้อมไฟ LED และหน้าจอสัมผัส",
-        features: ["หน้าจอสัมผัส Full HD", "เอฟเฟกต์กระจก", "ไฟ LED รอบด้าน"],
+        name: "PHOTOBOX MODEL 2",
+        nameTh: "โฟโต้บูธ โมเดลที่2",
+        label: "PHOTOBOOTH",
+        description: "โฟโต้บูธสไตล์วินเทจร่วมสมัย",
+        features: ["หน้าจอสัมผัส Full HD", "ผ้าม่านเลือกสีได้", "ไฟสตูดิโอ"],
         badge: "Premium",
         badgeColor: "bg-purple-600",
     },
     {
         id: 3,
         src: "/models/images/product-10-768x768.webp",
-        name: "360° Booth",
-        nameTh: "360 องศา บูธ",
+        name: "PHOTOBOX MODEL 3",
+        nameTh: "โฟโต้บูธ โมเดลที่3",
+        label: "PHOTOBOOTH",
         description: "แพลตฟอร์มหมุน 360 องศา สร้างวิดีโอสุดเท่ที่ไวรัลได้ง่าย",
         features: ["วิดีโอ Slow-motion", "แชร์โซเชียลทันที", "พื้นที่กว้าง 1.2 ม."],
         badge: "ยอดนิยม",
@@ -38,8 +41,9 @@ const products = [
     {
         id: 4,
         src: "/models/images/product-11-768x768.webp",
-        name: "Compact Booth",
-        nameTh: "คอมแพค บูธ",
+        name: "PHOTOBOX MODEL 4",
+        nameTh: "โฟโต้บูธ โมเดลที่4",
+        label: "PHOTOBOOTH",
         description: "ตู้ถ่ายรูปขนาดกะทัดรัด เคลื่อนย้ายง่าย เหมาะกับทุกขนาดงาน",
         features: ["น้ำหนักเบา", "ติดตั้งใน 15 นาที", "ประหยัดพื้นที่"],
         badge: null,
@@ -48,8 +52,9 @@ const products = [
     {
         id: 5,
         src: "/models/images/product-12-768x768.webp",
-        name: "Vintage Booth",
-        nameTh: "วินเทจ บูธ",
+        name: "PHOTOBOX MODEL 5",
+        nameTh: "โฟโต้บูธ โมเดลที่5",
+        label: "PHOTOBOOTH",
         description: "ดีไซน์ย้อนยุค สไตล์วินเทจ สร้างบรรยากาศพิเศษให้งานของคุณ",
         features: ["ฟิลเตอร์วินเทจ", "กรอบรูปคลาสสิค", "ม่านแดงหรูหรา"],
         badge: null,
@@ -58,8 +63,9 @@ const products = [
     {
         id: 6,
         src: "/models/images/product-13-768x768.webp",
-        name: "LED Frame Booth",
-        nameTh: "แอลอีดี เฟรม บูธ",
+        name: "Camera 360",
+        nameTh: "Camera 360",
+        label: "PHOTOBOOTH",
         description: "กรอบไฟ LED เปลี่ยนสีได้ ปรับแต่งตามธีมงานได้อย่างอิสระ",
         features: ["RGB LED 16 ล้านสี", "รีโมทควบคุม", "เอฟเฟกต์เคลื่อนไหว"],
         badge: "ใหม่",
@@ -68,8 +74,9 @@ const products = [
     {
         id: 7,
         src: "/models/images/product-14-768x768.webp",
-        name: "Premium Suite",
-        nameTh: "พรีเมียม สวีท",
+        name: "HIGH ANGLE PHOTOBOOTH",
+        nameTh: "High Angle Photo Booth",
+        label: "PHOTOBOOTH",
         description: "ชุดพรีเมียมครบเซ็ต รวมตู้ถ่ายรูป ไฟสตูดิโอ และอุปกรณ์ครบครัน",
         features: ["ชุดพร้อมใช้งาน", "ไฟสตูดิโอ Pro", "อุปกรณ์ Props ครบ"],
         badge: "Best Value",
@@ -184,7 +191,7 @@ export function ProductSection() {
                                     )}
                                 </div>
                                 <div className="p-6 border-t border-gray-100">
-                                    <span className="text-tiger-orange text-xs font-medium uppercase tracking-[0.15em]">Model {idx + 2}</span>
+                                    <span className="text-tiger-orange text-xs font-medium uppercase tracking-[0.15em]">{product.label}</span>
                                     <h3 className="font-serif text-xl text-deep-space-blue mt-1 mb-1">{product.name}</h3>
                                     <p className="text-deep-space-blue/50 text-sm">{product.nameTh}</p>
                                 </div>
@@ -226,7 +233,7 @@ export function ProductSection() {
                                 </div>
                             </div>
                             <div className="p-5 text-center border-t border-gray-100">
-                                <span className="text-tiger-orange text-[10px] font-medium uppercase tracking-[0.15em]">Model {idx + 4}</span>
+                                <span className="text-tiger-orange text-[10px] font-medium uppercase tracking-[0.15em]">{product.label}</span>
                                 <h3 className="font-serif text-lg text-deep-space-blue mt-1">{product.name}</h3>
                                 <p className="text-deep-space-blue/40 text-xs mt-0.5">{product.nameTh}</p>
                             </div>
