@@ -27,6 +27,11 @@ const SLIDESHOW_IMAGES = [
     '/slideshow/photobooth_17.webp',
     '/slideshow/photobooth_18.webp',
     '/slideshow/photobooth_19.webp',
+    '/slideshow/photobooth_20.webp',
+    '/slideshow/photobooth_21.webp',
+    '/slideshow/photobooth_22.webp',
+    '/slideshow/photobooth_23.webp',
+    '/slideshow/photobooth_24.webp',
 ]
 
 export function SlideshowSection() {
