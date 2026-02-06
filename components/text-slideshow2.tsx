@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-const services = ["ภาพนิ่งคมชัด", "ภาพเคลื่อนไหว 25fps", "เทคโนโลยีทันสมัย", "ราคาสุดคุ้ม"];
+const services = ["ให้เช่าโฟโต้บูธ", "จำหน่ายโฟโต้บูธ", "ซอฟต์แวร์โฟโต้บูธ", "ปรึกษาการใช้งาน"];
 
 export function TextSlideshow2() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -53,7 +53,7 @@ export function TextSlideshow2() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mb-8 sm:mb-10 md:mb-12 lg:mb-16 tracking-wide leading-relaxed text-center"
         >
-          จำหน่ายซอฟต์แวร์ Photobooth
+          IMAGEAUTOMAT.
         </motion.h1>
 
         {/* Service Items */}

@@ -9,6 +9,7 @@ import { SlideshowSection } from "@/components/slideshow-section"
 import { VideoGallery } from "@/components/video-gallery"
 import { TextSlideshow } from "@/components/text-slideshow"
 import { TextSlideshow2 } from "@/components/text-slideshow2"
+import { TextSlideshowProgram } from "@/components/textslideshow-program"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -16,13 +17,14 @@ export default function Home() {
         <main className="min-h-screen bg-white">
             <Navigation />
             <HeroSection />
-            <TextSlideshow />
+            {/* <TextSlideshow /> */}
             <SlideshowSection />        
             <TextSlideshow2 />
+            <ProductSection />
+            <TextSlideshowProgram />
             <VideoGallery />
             <ServicesSection />
             <FeaturesSection />
-            <ProductSection />
             <ContactSection />
             <Footer />
         </main>

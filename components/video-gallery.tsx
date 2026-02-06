@@ -227,7 +227,7 @@ export function VideoGallery() {
             </motion.svg>
             Video Gallery
           </motion.span>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-deep-space-blue tracking-tight leading-[1.1]">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-deep-space-blue tracking-tight leading-[1.1]">
             Captured{' '}
             <motion.span 
               className="italic text-tiger-orange inline-block"
@@ -245,10 +245,11 @@ export function VideoGallery() {
             In motion
           </h2>
           <motion.p 
-            className="mt-6 text-2xl md:text-3xl lg:text-4xl font-bold text-deep-space-blue leading-tight max-w-3xl"
+            className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-deep-space-blue leading-tight sm:leading-tight md:leading-tight max-w-3xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ lineHeight: '1.6' }}
           >
             ซอฟต์แวร์{' '}
             <span className="text-tiger-orange inline-block">
@@ -260,7 +261,7 @@ export function VideoGallery() {
 
         {/* Category Tabs */}
         <motion.div 
-          className="mb-8 flex items-center gap-2 md:mb-10"
+          className="mb-6 sm:mb-8 md:mb-10 flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3 md:gap-3"
           variants={itemVariants}
         >
           {CATEGORIES.map((cat) => {
@@ -271,7 +272,7 @@ export function VideoGallery() {
                 key={cat}
                 type="button"
                 onClick={() => handleCategoryChange(cat)}
-                className={`relative rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 md:px-6 md:py-2.5 md:text-base ${
+                className={`relative rounded-full px-3 py-1.5 sm:px-4 sm:py-2 md:px-6 md:py-2.5 text-xs sm:text-sm md:text-base font-medium transition-all duration-300 whitespace-nowrap ${
                   isActive
                     ? "bg-tiger-orange text-white shadow-lg shadow-tiger-orange/30"
                     : "text-deep-space-blue/60 hover:text-deep-space-blue hover:bg-deep-space-blue/5"
@@ -282,7 +283,7 @@ export function VideoGallery() {
               >
                 {CATEGORY_LABELS[cat]}
                 <span
-                  className={`ml-1.5 inline-block text-xs ${
+                  className={`ml-1 sm:ml-1.5 inline-block text-[10px] sm:text-xs ${
                     isActive ? "text-white/70" : "text-deep-space-blue/40"
                   }`}
                 >
@@ -303,8 +304,8 @@ export function VideoGallery() {
             {/* Gradient border effect */}
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/30 via-transparent to-tiger-orange/20 opacity-50 pointer-events-none" />
 
-            {/* Fixed-height video area */}
-            <div className="relative h-[56vw] max-h-[70vh] min-h-[300px] w-full overflow-hidden bg-deep-space-blue">
+            {/* Fixed-height video area - Mobile optimized */}
+            <div className="relative h-[75vw] sm:h-[60vw] md:h-[56vw] max-h-[70vh] min-h-[280px] sm:min-h-[350px] md:min-h-[400px] w-full overflow-hidden bg-deep-space-blue">
               {/* Active video */}
               <video
                 ref={activeVideoRef}
@@ -325,42 +326,42 @@ export function VideoGallery() {
               {/* Gradient Overlay */}
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep-space-blue/80 via-deep-space-blue/10 to-transparent" />
 
-              {/* Video Info Overlay */}
+              {/* Video Info Overlay - Mobile optimized */}
               <div
-                className={`absolute bottom-0 left-0 right-0 p-5 transition-all duration-500 ease-out md:p-8 ${
+                className={`absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 lg:p-8 transition-all duration-500 ease-out ${
                   textVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
                 }`}
               >
-                <div className="mb-2 flex items-center gap-2">
-                  <span className="inline-block rounded-full bg-tiger-orange px-3 py-1 text-xs font-semibold text-white">
+                <div className="mb-1.5 sm:mb-2 flex flex-wrap items-center gap-1.5 sm:gap-2">
+                  <span className="inline-block rounded-full bg-tiger-orange px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-semibold text-white">
                     {String(currentIndex + 1).padStart(2, "0")} /{" "}
                     {String(filteredVideos.length).padStart(2, "0")}
                   </span>
-                  <span className="inline-block rounded-full bg-white/15 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm capitalize">
+                  <span className="inline-block rounded-full bg-white/15 px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-medium text-white backdrop-blur-sm capitalize">
                     {CATEGORY_LABELS[currentVideo?.category as Category]}
                   </span>
                 </div>
-                <h3 className="font-serif text-xl font-bold text-white md:text-2xl">
+                <h3 className="font-serif text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white">
                   {currentVideo?.title}
                 </h3>
-                <p className="mt-1 text-sm text-white/80 md:text-base leading-relaxed">
+                <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm md:text-base text-white/80 leading-relaxed" style={{ lineHeight: '1.6' }}>
                   {currentVideo?.description}
                 </p>
               </div>
 
-              {/* Center Play/Pause Button */}
+              {/* Center Play/Pause Button - Mobile optimized */}
               <motion.button
                 type="button"
                 onClick={togglePlay}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/20 p-4 backdrop-blur-md transition-all hover:bg-white/30"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/20 p-3 sm:p-4 md:p-5 backdrop-blur-md transition-all hover:bg-white/30"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label={isPlaying ? "Pause video" : "Play video"}
               >
                 {isPlaying ? (
-                  <Pause className="h-6 w-6 text-white md:h-8 md:w-8" />
+                  <Pause className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-white" />
                 ) : (
-                  <Play className="h-6 w-6 text-white md:h-8 md:w-8" />
+                  <Play className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-white" />
                 )}
               </motion.button>
 
@@ -390,33 +391,34 @@ export function VideoGallery() {
             </div>
           </div>
 
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows - Mobile optimized */}
           <motion.button
             type="button"
             onClick={goPrev}
-            className="absolute -left-3 top-1/2 -translate-y-1/2 rounded-full bg-white p-2.5 shadow-xl shadow-deep-space-blue/20 transition-all hover:bg-deep-space-blue/5 md:-left-6 md:p-3 border border-deep-space-blue/10"
+            className="absolute -left-2 sm:-left-3 md:-left-6 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 sm:p-2.5 md:p-3 shadow-xl shadow-deep-space-blue/20 transition-all hover:bg-deep-space-blue/5 border border-deep-space-blue/10"
             whileHover={{ scale: 1.15, rotate: -5 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Previous video"
           >
-            <ChevronLeft className="h-5 w-5 text-deep-space-blue md:h-6 md:w-6" />
+            <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-deep-space-blue" />
           </motion.button>
           <motion.button
             type="button"
             onClick={goNext}
-            className="absolute -right-3 top-1/2 -translate-y-1/2 rounded-full bg-white p-2.5 shadow-xl shadow-deep-space-blue/20 transition-all hover:bg-deep-space-blue/5 md:-right-6 md:p-3 border border-deep-space-blue/10"
+            className="absolute -right-2 sm:-right-3 md:-right-6 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 sm:p-2.5 md:p-3 shadow-xl shadow-deep-space-blue/20 transition-all hover:bg-deep-space-blue/5 border border-deep-space-blue/10"
             whileHover={{ scale: 1.15, rotate: 5 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Next video"
           >
-            <ChevronRight className="h-5 w-5 text-deep-space-blue md:h-6 md:w-6" />
+            <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-deep-space-blue" />
           </motion.button>
         </motion.div>
 
-        {/* Thumbnail Strip */}
+        {/* Thumbnail Strip - Mobile optimized with snap scroll */}
         <motion.div 
-          className="mt-6 flex justify-center gap-3 overflow-x-auto px-4 pb-2 md:mt-8 md:gap-4"
+          className="mt-4 sm:mt-6 md:mt-8 flex justify-start sm:justify-center gap-2 sm:gap-3 md:gap-4 overflow-x-auto px-2 sm:px-4 pb-2 snap-x snap-mandatory scrollbar-hide"
           variants={itemVariants}
+          style={{ scrollbarWidth: 'none' }}
         >
           {filteredVideos.map((video, index) => (
             <motion.button
@@ -432,7 +434,7 @@ export function VideoGallery() {
               whileTap={{ scale: 0.95 }}
               aria-label={`Go to ${video.title}`}
             >
-              <div className="relative w-20 md:w-24 aspect-square overflow-hidden rounded-xl bg-deep-space-blue/10">
+              <div className="relative w-16 sm:w-20 md:w-24 aspect-square overflow-hidden rounded-lg sm:rounded-xl bg-deep-space-blue/10 snap-center">
                 <video
                   src={video.src}
                   className="absolute inset-0 h-full w-full object-contain"
