@@ -52,12 +52,12 @@ export function VideoGallery() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.22, 1, 0.36, 1]
+        ease: "easeOut" as const
       }
     }
   }
@@ -131,11 +131,11 @@ export function VideoGallery() {
     video.muted = isMuted
 
     const handleCanPlay = () => {
-      if (isPlaying) video.play().catch(() => {})
+      if (isPlaying) video.play().catch(() => { })
     }
 
     video.addEventListener("canplay", handleCanPlay)
-    if (isPlaying) video.play().catch(() => {})
+    if (isPlaying) video.play().catch(() => { })
 
     return () => {
       video.removeEventListener("canplay", handleCanPlay)
@@ -167,13 +167,13 @@ export function VideoGallery() {
   }, [currentIndex, goNext])
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      id="videos" 
+      id="videos"
       className="py-8 lg:py-12 bg-gradient-to-b from-deep-space-blue/5 to-background relative overflow-hidden"
     >
       {/* Animated Background Decoration */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(255,127,80,0.03),transparent_50%)]"
         animate={{
           scale: [1, 1.05, 1],
@@ -185,7 +185,7 @@ export function VideoGallery() {
           ease: "easeInOut"
         }}
       />
-      <motion.div 
+      <motion.div
         className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(25,42,86,0.03),transparent_50%)]"
         animate={{
           scale: [1.05, 1, 1.05],
@@ -199,25 +199,25 @@ export function VideoGallery() {
         }}
       />
 
-      <motion.div 
+      <motion.div
         className="mx-auto max-w-7xl px-6 lg:px-8 relative"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       >
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="max-w-3xl mb-6 lg:mb-8"
           variants={itemVariants}
         >
-          <motion.span 
+          <motion.span
             className="inline-flex items-center gap-2 text-sm font-semibold text-tiger-orange uppercase tracking-[0.3em] mb-6"
             whileHover={{ x: 4 }}
             transition={{ duration: 0.3 }}
           >
-            <motion.svg 
-              className="w-4 h-4" 
-              fill="currentColor" 
+            <motion.svg
+              className="w-4 h-4"
+              fill="currentColor"
               viewBox="0 0 20 20"
               animate={{ rotate: [0, 5, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
@@ -229,9 +229,9 @@ export function VideoGallery() {
           </motion.span>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-deep-space-blue tracking-tight leading-[1.1]">
             Captured{' '}
-            <motion.span 
+            <motion.span
               className="italic text-tiger-orange inline-block"
-              animate={{ 
+              animate={{
                 textShadow: [
                   "0 0 0px rgba(255,127,80,0)",
                   "0 0 20px rgba(255,127,80,0.3)",
@@ -244,7 +244,7 @@ export function VideoGallery() {
             </motion.span>{' '}
             In motion
           </h2>
-          <motion.p 
+          <motion.p
             className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-deep-space-blue leading-tight sm:leading-tight md:leading-tight max-w-3xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -260,7 +260,7 @@ export function VideoGallery() {
         </motion.div>
 
         {/* Category Tabs */}
-        <motion.div 
+        <motion.div
           className="mb-6 sm:mb-8 md:mb-10 flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3 md:gap-3"
           variants={itemVariants}
         >
@@ -272,20 +272,18 @@ export function VideoGallery() {
                 key={cat}
                 type="button"
                 onClick={() => handleCategoryChange(cat)}
-                className={`relative rounded-full px-3 py-1.5 sm:px-4 sm:py-2 md:px-6 md:py-2.5 text-xs sm:text-sm md:text-base font-medium transition-all duration-300 whitespace-nowrap ${
-                  isActive
+                className={`relative rounded-full px-3 py-1.5 sm:px-4 sm:py-2 md:px-6 md:py-2.5 text-xs sm:text-sm md:text-base font-medium transition-all duration-300 whitespace-nowrap ${isActive
                     ? "bg-tiger-orange text-white shadow-lg shadow-tiger-orange/30"
                     : "text-deep-space-blue/60 hover:text-deep-space-blue hover:bg-deep-space-blue/5"
-                }`}
+                  }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label={`Filter by ${CATEGORY_LABELS[cat]}`}
               >
                 {CATEGORY_LABELS[cat]}
                 <span
-                  className={`ml-1 sm:ml-1.5 inline-block text-[10px] sm:text-xs ${
-                    isActive ? "text-white/70" : "text-deep-space-blue/40"
-                  }`}
+                  className={`ml-1 sm:ml-1.5 inline-block text-[10px] sm:text-xs ${isActive ? "text-white/70" : "text-deep-space-blue/40"
+                    }`}
                 >
                   {count}
                 </span>
@@ -295,7 +293,7 @@ export function VideoGallery() {
         </motion.div>
 
         {/* Main Slideshow Container */}
-        <motion.div 
+        <motion.div
           className="relative w-full"
           variants={itemVariants}
         >
@@ -311,9 +309,8 @@ export function VideoGallery() {
                 ref={activeVideoRef}
                 key={`${activeCategory}-${currentVideo?.id}`}
                 src={currentVideo?.src}
-                className={`absolute inset-0 h-full w-full object-contain transition-all duration-500 ease-in-out ${
-                  isTransitioning ? "opacity-0 scale-[1.02]" : "opacity-100 scale-100"
-                }`}
+                className={`absolute inset-0 h-full w-full object-contain transition-all duration-500 ease-in-out ${isTransitioning ? "opacity-0 scale-[1.02]" : "opacity-100 scale-100"
+                  }`}
                 autoPlay
                 muted
                 playsInline
@@ -328,9 +325,8 @@ export function VideoGallery() {
 
               {/* Video Info Overlay - Mobile optimized */}
               <div
-                className={`absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 lg:p-8 transition-all duration-500 ease-out ${
-                  textVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-                }`}
+                className={`absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 lg:p-8 transition-all duration-500 ease-out ${textVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+                  }`}
               >
                 <div className="mb-1.5 sm:mb-2 flex flex-wrap items-center gap-1.5 sm:gap-2">
                   <span className="inline-block rounded-full bg-tiger-orange px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-semibold text-white">
@@ -415,7 +411,7 @@ export function VideoGallery() {
         </motion.div>
 
         {/* Thumbnail Strip - Mobile optimized with snap scroll */}
-        <motion.div 
+        <motion.div
           className="mt-4 sm:mt-6 md:mt-8 flex justify-start sm:justify-center gap-2 sm:gap-3 md:gap-4 overflow-x-auto px-2 sm:px-4 pb-2 snap-x snap-mandatory scrollbar-hide"
           variants={itemVariants}
           style={{ scrollbarWidth: 'none' }}
@@ -425,11 +421,10 @@ export function VideoGallery() {
               type="button"
               key={video.id}
               onClick={() => goToSlide(index)}
-              className={`group relative shrink-0 overflow-hidden rounded-xl transition-all duration-300 ${
-                index === currentIndex
+              className={`group relative shrink-0 overflow-hidden rounded-xl transition-all duration-300 ${index === currentIndex
                   ? "ring-2 ring-tiger-orange ring-offset-2 ring-offset-background scale-105"
                   : "opacity-60 hover:opacity-100"
-              }`}
+                }`}
               whileHover={{ scale: index === currentIndex ? 1.05 : 1.1 }}
               whileTap={{ scale: 0.95 }}
               aria-label={`Go to ${video.title}`}
@@ -455,7 +450,7 @@ export function VideoGallery() {
         </motion.div>
 
         {/* Dot Indicators */}
-        <motion.div 
+        <motion.div
           className="mt-4 flex justify-center gap-2"
           variants={itemVariants}
         >
@@ -464,11 +459,10 @@ export function VideoGallery() {
               type="button"
               key={video.id}
               onClick={() => goToSlide(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex
+              className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
                   ? "w-8 bg-tiger-orange"
                   : "w-2 bg-deep-space-blue/30 hover:bg-deep-space-blue/50"
-              }`}
+                }`}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
               aria-label={`Go to slide ${index + 1}`}

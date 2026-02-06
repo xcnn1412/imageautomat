@@ -11,7 +11,7 @@ import { useRef } from 'react'
 const MAX_IMAGES = 24; // เปลี่ยนตัวเลขนี้เมื่อเพิ่มรูปใหม่ (เช่น มีรูปใหม่เป็น photobooth_25.webp ให้เปลี่ยนเป็น 25)
 
 // Auto-generate image paths
-const SLIDESHOW_IMAGES = Array.from({ length: MAX_IMAGES }, (_, i) => 
+const SLIDESHOW_IMAGES = Array.from({ length: MAX_IMAGES }, (_, i) =>
     `/slideshow/images/photobooth_${i + 1}.webp`
 )
 
@@ -21,7 +21,7 @@ export function SlideshowSection() {
     const [hoveredButton, setHoveredButton] = useState<'prev' | 'next' | null>(null)
 
     const [emblaRef, emblaApi] = useEmblaCarousel(
-        { 
+        {
             loop: true,
             align: 'center',
             skipSnaps: false,
@@ -37,70 +37,35 @@ export function SlideshowSection() {
         if (emblaApi) emblaApi.scrollNext()
     }, [emblaApi])
 
-    // Animation variants
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.15,
-                delayChildren: 0.1
-            }
-        }
-    }
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { 
-            opacity: 1, 
-            y: 0,
-            transition: {
-                duration: 0.6,
-                ease: [0.22, 1, 0.36, 1]
-            }
-        }
-    }
-
-    const carouselVariants = {
-        hidden: { opacity: 0, scale: 0.95 },
-        visible: { 
-            opacity: 1, 
-            scale: 1,
-            transition: {
-                duration: 0.8,
-                ease: [0.22, 1, 0.36, 1],
-                delay: 0.3
-            }
-        }
-    }
-
     return (
-        <section 
+        <section
             ref={sectionRef}
-            id="slideshow" 
+            id="slideshow"
             className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white relative overflow-hidden"
         >
             {/* Subtle Background Decoration */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-deep-space-blue/3 to-transparent pointer-events-none" />
 
-            <motion.div 
+            <motion.div
                 className="mx-auto max-w-7xl px-6 lg:px-8 relative"
-                variants={containerVariants}
-                initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 0.6, staggerChildren: 0.15, delayChildren: 0.1 }}
             >
-                <motion.div 
+                <motion.div
                     className="max-w-4xl mb-8 sm:mb-10 md:mb-12 lg:mb-16 text-center mx-auto"
-                    variants={itemVariants}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                    <motion.span 
+                    <motion.span
                         className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-tiger-orange uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-4 sm:mb-6"
                         whileHover={{ x: 4 }}
                         transition={{ duration: 0.3 }}
                     >
-                        <motion.svg 
-                            className="w-3 h-3 sm:w-4 sm:h-4" 
-                            fill="currentColor" 
+                        <motion.svg
+                            className="w-3 h-3 sm:w-4 sm:h-4"
+                            fill="currentColor"
                             viewBox="0 0 20 20"
                             animate={{ rotate: [0, 5, 0] }}
                             transition={{ duration: 2, repeat: Infinity }}
@@ -112,9 +77,9 @@ export function SlideshowSection() {
                     </motion.span>
                     <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-deep-space-blue tracking-tight leading-[1.1] mb-4">
                         รับผลิต{' '}
-                        <motion.span 
+                        <motion.span
                             className="italic text-tiger-orange inline-block"
-                            animate={{ 
+                            animate={{
                                 textShadow: [
                                     "0 0 0px rgba(255,127,80,0)",
                                     "0 0 20px rgba(255,127,80,0.3)",
@@ -135,18 +100,20 @@ export function SlideshowSection() {
                 </motion.div>
 
                 {/* Embla Carousel Container */}
-                <motion.div 
+                <motion.div
                     className="relative"
-                    variants={carouselVariants}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
                 >
                     <div className="overflow-hidden" ref={emblaRef}>
                         <div className="flex gap-4 lg:gap-6">
                             {SLIDESHOW_IMAGES.map((image, index) => (
-                                <motion.div 
-                                    key={index} 
+                                <motion.div
+                                    key={index}
                                     className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_85%] lg:flex-[0_0_70%]"
                                     whileHover={{ scale: 1.02 }}
-                                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                                    transition={{ duration: 0.4 }}
                                 >
                                     <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl sm:rounded-3xl bg-white shadow-xl shadow-deep-space-blue/10 group">
                                         {/* Subtle border effect */}
@@ -174,7 +141,7 @@ export function SlideshowSection() {
                         onHoverEnd={() => setHoveredButton(null)}
                         className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white text-deep-space-blue rounded-full p-2.5 sm:p-3 md:p-4 shadow-lg shadow-deep-space-blue/15 focus:outline-none focus:ring-2 focus:ring-tiger-orange focus:ring-offset-2"
                         aria-label="Previous image"
-                        whileHover={{ 
+                        whileHover={{
                             scale: 1.1,
                             rotate: -3,
                             boxShadow: "0 12px 30px rgba(25, 42, 86, 0.25)"
@@ -182,11 +149,11 @@ export function SlideshowSection() {
                         whileTap={{ scale: 0.95 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     >
-                        <motion.svg 
-                            className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            strokeWidth={2.5} 
+                        <motion.svg
+                            className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth={2.5}
                             viewBox="0 0 24 24"
                             animate={hoveredButton === 'prev' ? { x: [-1, 1, -1] } : {}}
                             transition={{ duration: 0.5, repeat: hoveredButton === 'prev' ? Infinity : 0 }}
@@ -201,7 +168,7 @@ export function SlideshowSection() {
                         onHoverEnd={() => setHoveredButton(null)}
                         className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white text-deep-space-blue rounded-full p-2.5 sm:p-3 md:p-4 shadow-lg shadow-deep-space-blue/15 focus:outline-none focus:ring-2 focus:ring-tiger-orange focus:ring-offset-2"
                         aria-label="Next image"
-                        whileHover={{ 
+                        whileHover={{
                             scale: 1.1,
                             rotate: 3,
                             boxShadow: "0 12px 30px rgba(25, 42, 86, 0.25)"
@@ -209,11 +176,11 @@ export function SlideshowSection() {
                         whileTap={{ scale: 0.95 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     >
-                        <motion.svg 
-                            className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            strokeWidth={2.5} 
+                        <motion.svg
+                            className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth={2.5}
                             viewBox="0 0 24 24"
                             animate={hoveredButton === 'next' ? { x: [-1, 1, -1] } : {}}
                             transition={{ duration: 0.5, repeat: hoveredButton === 'next' ? Infinity : 0 }}
@@ -224,22 +191,24 @@ export function SlideshowSection() {
                 </motion.div>
 
                 {/* Decorative Auto Scroll Indicator */}
-                <motion.div 
+                <motion.div
                     className="mt-8 sm:mt-10 md:mt-12 flex justify-center gap-4 sm:gap-6 md:gap-8"
-                    variants={itemVariants}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
                 >
-                    <motion.div 
+                    <motion.div
                         className="flex items-center gap-2 text-xs sm:text-sm text-deep-space-blue/50"
                         animate={{ opacity: [0.4, 0.7, 0.4] }}
                         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                     >
-                        <motion.div 
+                        <motion.div
                             className="w-8 sm:w-10 md:w-12 h-px bg-gradient-to-r from-transparent via-tiger-orange to-transparent"
                             animate={{ scaleX: [0.8, 1.2, 0.8] }}
                             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                         />
                         <span className="uppercase tracking-wider sm:tracking-widest font-medium">Auto Scroll</span>
-                        <motion.div 
+                        <motion.div
                             className="w-8 sm:w-10 md:w-12 h-px bg-gradient-to-r from-transparent via-tiger-orange to-transparent"
                             animate={{ scaleX: [1.2, 0.8, 1.2] }}
                             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
