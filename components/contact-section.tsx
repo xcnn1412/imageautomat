@@ -16,12 +16,12 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+66 XX XXX XXXX",
+    value: "+66 63 594 4429",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "hello@imageautomat.com",
+    value: "imageautomat@gmail.com",
   },
 ];
 
@@ -59,13 +59,12 @@ export function ContactSection() {
               id="contact-heading"
               className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-8"
             >
-              Let&apos;s Create
+              ส่งข้อมูลหาเรา
               <br />
-              Something Beautiful
+              Please lets me know.
             </h2>
             <p className="text-lg text-white/60 leading-relaxed mb-12 max-w-md">
-              Get in touch to discuss your event and receive a personalized
-              quote within 24 hours.
+              ติดต่อเราเพื่อสอบถามข้อมูลและขอราคา
             </p>
 
             {/* Contact Info */}

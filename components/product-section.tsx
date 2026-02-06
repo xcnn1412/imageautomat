@@ -75,7 +75,7 @@ const products = [
         id: 7,
         src: "/models/images/product-14-768x768.webp",
         name: "HIGH ANGLE PHOTOBOOTH",
-        nameTh: "High Angle Photo Booth",
+        nameTh: "ตู้มุมสูง",
         label: "PHOTOBOOTH",
         description: "ชุดพรีเมียมครบเซ็ต รวมตู้ถ่ายรูป ไฟสตูดิโอ และอุปกรณ์ครบครัน",
         features: ["ชุดพร้อมใช้งาน", "ไฟสตูดิโอ Pro", "อุปกรณ์ Props ครบ"],
