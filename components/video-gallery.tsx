@@ -3,21 +3,25 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react"
 import { Play, Pause, ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react"
 import { motion, useInView } from "framer-motion"
-import { VideoSlide, ALL_VIDEOS } from "@/data/videos"
+import { VideoSlide, ALL_VIDEOS, getUniqueCategories, CATEGORY_LABEL_MAP } from "@/data/videos"
 
+// Dynamically generate categories from data
+const uniqueCategories = getUniqueCategories()
+const CATEGORIES = ["all", ...uniqueCategories] as const
+type Category = "all" | string
 
-const CATEGORIES = ["all", "wedding"] as const
-type Category = (typeof CATEGORIES)[number]
-
-const CATEGORY_LABELS: Record<Category, string> = {
+// Generate category labels dynamically
+const CATEGORY_LABELS: Record<string, string> = {
   all: "ทั้งหมด",
-  wedding: "งานแต่ง",
+  ...Object.fromEntries(
+    uniqueCategories.map(cat => [cat, CATEGORY_LABEL_MAP[cat] || cat])
+  )
 }
 
 export function VideoGallery() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
-  const [activeCategory, setActiveCategory] = useState<Category>("all")
+  const [activeCategory, setActiveCategory] = useState<string>("all")
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
   const [isMuted, setIsMuted] = useState(true)
@@ -240,9 +244,18 @@ export function VideoGallery() {
             </motion.span>{' '}
             In motion
           </h2>
-          <p className="mt-8 text-lg text-deep-space-blue/70 leading-relaxed max-w-2xl">
-            รวมช่วงเวลาพิเศษจากงานต่างๆ ที่บันทึกไว้ผ่านตู้โฟโต้บูธของเรา
-          </p>
+          <motion.p 
+            className="mt-6 text-2xl md:text-3xl lg:text-4xl font-bold text-deep-space-blue leading-tight max-w-3xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            ซอฟต์แวร์{' '}
+            <span className="text-tiger-orange inline-block">
+              Photobooth
+            </span>{' '}
+            ที่เขียนขึ้นมาสำหรับคุณ
+          </motion.p>
         </motion.div>
 
         {/* Category Tabs */}

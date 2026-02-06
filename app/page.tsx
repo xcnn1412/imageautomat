@@ -8,6 +8,7 @@ import { ContactSection } from "@/components/contact-section"
 import { SlideshowSection } from "@/components/slideshow-section"
 import { VideoGallery } from "@/components/video-gallery"
 import { TextSlideshow } from "@/components/text-slideshow"
+import { TextSlideshow2 } from "@/components/text-slideshow2"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -15,7 +16,9 @@ export default function Home() {
         <main className="min-h-screen bg-white">
             <Navigation />
             <HeroSection />
-            <SlideshowSection />
+            <TextSlideshow />
+            <SlideshowSection />        
+            <TextSlideshow2 />
             <VideoGallery />
             <ServicesSection />
             <FeaturesSection />
