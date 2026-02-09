@@ -315,7 +315,6 @@ export function VideoGallery() {
                 muted
                 playsInline
                 loop={false}
-                preload="metadata"
                 controlsList="nodownload nofullscreen noremoteplayback"
                 disablePictureInPicture
                 onContextMenu={(e) => e.preventDefault()}
@@ -436,7 +435,6 @@ export function VideoGallery() {
                   className="absolute inset-0 h-full w-full object-contain"
                   muted
                   playsInline
-                  preload="none"
                   onContextMenu={(e) => e.preventDefault()}
                 />
                 {index === currentIndex && (

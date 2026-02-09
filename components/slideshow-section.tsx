@@ -126,7 +126,6 @@ export function SlideshowSection() {
                                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 85vw, 70vw"
                                             quality={75}
                                             priority={index === 0}
-                                            loading={index === 0 ? undefined : "lazy"}
                                         />
                                         {/* Hover overlay */}
                                         <div className="absolute inset-0 bg-gradient-to-t from-deep-space-blue/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
