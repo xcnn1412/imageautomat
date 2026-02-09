@@ -1,14 +1,29 @@
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
-
-import { ProductSection } from "@/components/product-section"
-import { ContactSection } from "@/components/contact-section"
-import { SlideshowSection } from "@/components/slideshow-section"
-import { VideoGallery } from "@/components/video-gallery"
-import { TextSlideshow } from "@/components/text-slideshow"
 import { TextSlideshow2 } from "@/components/text-slideshow2"
-import { TextSlideshowProgram } from "@/components/textslideshow-program"
-import { Footer } from "@/components/footer"
+import { ProductSection } from "@/components/product-section"
+import dynamic from "next/dynamic"
+
+// Lazy load below-the-fold components to reduce initial JS bundle
+const TextSlideshowProgram = dynamic(() => import("@/components/textslideshow-program").then(mod => ({ default: mod.TextSlideshowProgram })), {
+    loading: () => <div className="py-24" />,
+    ssr: true,
+})
+const VideoGallery = dynamic(() => import("@/components/video-gallery").then(mod => ({ default: mod.VideoGallery })), {
+    loading: () => <div className="py-12" />,
+    ssr: true,
+})
+const SlideshowSection = dynamic(() => import("@/components/slideshow-section").then(mod => ({ default: mod.SlideshowSection })), {
+    loading: () => <div className="py-24" />,
+    ssr: true,
+})
+const ContactSection = dynamic(() => import("@/components/contact-section").then(mod => ({ default: mod.ContactSection })), {
+    loading: () => <div className="py-32" />,
+    ssr: true,
+})
+const Footer = dynamic(() => import("@/components/footer").then(mod => ({ default: mod.Footer })), {
+    ssr: true,
+})
 
 export default function Home() {
     return (
@@ -16,7 +31,6 @@ export default function Home() {
             <Navigation />
             <HeroSection />
             <TextSlideshow2 />
-            {/* <TextSlideshow /> */}
             <ProductSection />
             <TextSlideshowProgram />
             <VideoGallery />

@@ -7,19 +7,22 @@ import './globals.css'
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: '--font-montserrat',
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
 });
 
 const ibmPlexSansThai = IBM_Plex_Sans_Thai({
   subsets: ["thai"],
   variable: '--font-ibm-plex-thai',
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '700'],
+  display: 'swap',
 });
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: '--font-playfair',
-  weight: ['400', '500', '600', '700', '800', '900'],
+  weight: ['400', '600', '700'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {

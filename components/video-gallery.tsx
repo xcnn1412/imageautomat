@@ -273,8 +273,8 @@ export function VideoGallery() {
                 type="button"
                 onClick={() => handleCategoryChange(cat)}
                 className={`relative rounded-full px-3 py-1.5 sm:px-4 sm:py-2 md:px-6 md:py-2.5 text-xs sm:text-sm md:text-base font-medium transition-all duration-300 whitespace-nowrap ${isActive
-                    ? "bg-tiger-orange text-white shadow-lg shadow-tiger-orange/30"
-                    : "text-deep-space-blue/60 hover:text-deep-space-blue hover:bg-deep-space-blue/5"
+                  ? "bg-tiger-orange text-white shadow-lg shadow-tiger-orange/30"
+                  : "text-deep-space-blue/60 hover:text-deep-space-blue hover:bg-deep-space-blue/5"
                   }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -315,6 +315,7 @@ export function VideoGallery() {
                 muted
                 playsInline
                 loop={false}
+                preload="metadata"
                 controlsList="nodownload nofullscreen noremoteplayback"
                 disablePictureInPicture
                 onContextMenu={(e) => e.preventDefault()}
@@ -422,8 +423,8 @@ export function VideoGallery() {
               key={video.id}
               onClick={() => goToSlide(index)}
               className={`group relative shrink-0 overflow-hidden rounded-xl transition-all duration-300 ${index === currentIndex
-                  ? "ring-2 ring-tiger-orange ring-offset-2 ring-offset-background scale-105"
-                  : "opacity-60 hover:opacity-100"
+                ? "ring-2 ring-tiger-orange ring-offset-2 ring-offset-background scale-105"
+                : "opacity-60 hover:opacity-100"
                 }`}
               whileHover={{ scale: index === currentIndex ? 1.05 : 1.1 }}
               whileTap={{ scale: 0.95 }}
@@ -435,7 +436,7 @@ export function VideoGallery() {
                   className="absolute inset-0 h-full w-full object-contain"
                   muted
                   playsInline
-                  preload="metadata"
+                  preload="none"
                   onContextMenu={(e) => e.preventDefault()}
                 />
                 {index === currentIndex && (
@@ -460,8 +461,8 @@ export function VideoGallery() {
               key={video.id}
               onClick={() => goToSlide(index)}
               className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
-                  ? "w-8 bg-tiger-orange"
-                  : "w-2 bg-deep-space-blue/30 hover:bg-deep-space-blue/50"
+                ? "w-8 bg-tiger-orange"
+                : "w-2 bg-deep-space-blue/30 hover:bg-deep-space-blue/50"
                 }`}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}

@@ -132,6 +132,9 @@ export function ProductSection() {
                                     alt={products[0].name}
                                     fill
                                     className="object-contain p-8 transition-transform duration-700 group-hover:scale-105"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    quality={80}
+                                    priority
                                 />
                                 {products[0].badge && (
                                     <span className={`absolute top-6 left-6 px-4 py-2 ${products[0].badgeColor} text-white text-xs font-bold uppercase tracking-wider rounded-full shadow-lg`}>
@@ -183,6 +186,9 @@ export function ProductSection() {
                                         alt={product.name}
                                         fill
                                         className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
+                                        sizes="(max-width: 1024px) 50vw, 25vw"
+                                        quality={75}
+                                        loading="lazy"
                                     />
                                     {product.badge && (
                                         <span className={`absolute top-4 left-4 px-3 py-1 ${product.badgeColor} text-white text-xs font-bold uppercase tracking-wider rounded-full`}>
@@ -215,6 +221,9 @@ export function ProductSection() {
                                     alt={product.name}
                                     fill
                                     className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
+                                    sizes="(max-width: 768px) 50vw, 25vw"
+                                    quality={75}
+                                    loading="lazy"
                                 />
                                 {product.badge && (
                                     <span className={`absolute top-3 left-3 px-2.5 py-1 ${product.badgeColor} text-white text-[10px] font-bold uppercase tracking-wider rounded-full`}>
