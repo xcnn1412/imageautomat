@@ -163,14 +163,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${montserrat.variable} ${ibmPlexSansThai.variable} ${playfairDisplay.variable} font-sans antialiased`}>
+      <body className={`${montserrat.variable} ${ibmPlexSansThai.variable} ${playfairDisplay.variable} font-sans antialiased`} suppressHydrationWarning>
         {children}
         <Analytics />
       </body>
