@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { ArrowRight, ArrowLeft, Star, Sparkles, X, ChevronRight, Camera, Zap, Users } from "lucide-react"
+import { Navigation } from "@/components/navigation"
 
 const products = [
     {
@@ -118,25 +119,8 @@ export function ProductPageContent() {
 
     return (
         <main className="min-h-screen bg-white">
-            {/* Navigation Bar - Minimal */}
-            <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-2xl border-b border-gray-100/50">
-                <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <div className="flex h-20 items-center justify-between">
-                        <Link href="/" className="flex items-center group">
-                            <span className="font-serif text-2xl lg:text-3xl tracking-tight text-deep-space-blue">
-                                IMAGE<span className="text-tiger-orange">AUTOMAT</span>
-                            </span>
-                        </Link>
-                        <Link
-                            href="/"
-                            className="inline-flex items-center gap-2 text-sm font-medium text-deep-space-blue/60 hover:text-deep-space-blue transition-colors duration-300"
-                        >
-                            <ArrowLeft className="w-4 h-4" />
-                            <span>กลับหน้าหลัก</span>
-                        </Link>
-                    </div>
-                </div>
-            </nav>
+            {/* Navigation Bar - Shared from homepage */}
+            <Navigation />
 
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">

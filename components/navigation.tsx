@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 
 // LINE Icon Component
 const LineIcon = ({ className = "" }: { className?: string }) => (
@@ -10,15 +11,24 @@ const LineIcon = ({ className = "" }: { className?: string }) => (
 )
 
 const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#features", label: "Features" },
-  { href: "/product", label: "สินค้าของเรา" },
-  { href: "#contact", label: "Contact" },
+  { href: "#services", label: "Services", featured: false },
+  { href: "#features", label: "Features", featured: false },
+  { href: "/product", label: "สินค้าของเรา", featured: true },
+  { href: "#contact", label: "Contact", featured: false },
 ]
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+
+  // Resolve anchor links: on non-homepage, prefix with /
+  const resolveHref = (href: string) => {
+    if (href.startsWith("#") && pathname !== "/") {
+      return "/" + href
+    }
+    return href
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,9 +40,11 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled
-        ? "bg-white/80 backdrop-blur-2xl"
-        : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${pathname !== "/"
+          ? "bg-white shadow-md shadow-black/5 backdrop-blur-2xl"
+          : isScrolled
+            ? "bg-white/80 backdrop-blur-2xl"
+            : "bg-transparent"
         }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -45,17 +57,52 @@ export function Navigation() {
           </a>
 
           {/* Desktop Navigation - Centered */}
-          <div className="hidden lg:flex items-center gap-12">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="relative text-sm font-medium text-deep-space-blue/60 hover:text-deep-space-blue transition-colors duration-300 group"
-              >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-tiger-orange group-hover:w-full transition-all duration-300" />
-              </a>
-            ))}
+          <div className="hidden lg:flex items-center gap-10">
+            {navLinks.map((link) =>
+              link.featured ? (
+                <a
+                  key={link.href}
+                  href={resolveHref(link.href)}
+                  className="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, #FB8500 0%, #e07600 100%)',
+                    animation: 'orange-glow 2.5s ease-in-out infinite',
+                  }}
+                >
+                  {/* Auto shimmer sweep */}
+                  <span
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%)',
+                      animation: 'auto-shimmer 4s ease-in-out infinite',
+                    }}
+                  />
+
+                  {/* Sparkle icon with pulse */}
+                  <svg
+                    className="relative z-10 w-3.5 h-3.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style={{ animation: 'sparkle-pulse 2s ease-in-out infinite' }}
+                  >
+                    <path d="M12 2L14.09 8.26L20 9.27L15.55 13.97L16.91 20L12 16.9L7.09 20L8.45 13.97L4 9.27L9.91 8.26L12 2Z" fill="currentColor" />
+                  </svg>
+
+                  {/* Text */}
+                  <span className="relative z-10 tracking-wide transition-transform duration-300 group-hover:-translate-y-0.5">{link.label}</span>
+                </a>
+              ) : (
+                <a
+                  key={link.href}
+                  href={resolveHref(link.href)}
+                  className="relative text-sm font-medium text-deep-space-blue/60 hover:text-deep-space-blue transition-colors duration-300 group"
+                >
+                  {link.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-tiger-orange group-hover:w-full transition-all duration-300" />
+                </a>
+              )
+            )}
           </div>
 
           {/* CTA Button - LINE */}
@@ -102,16 +149,33 @@ export function Navigation() {
         <div className={`lg:hidden overflow-hidden transition-all duration-500 ${isMobileMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'}`}>
           <div className="mt-4 mx-2 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-deep-space-blue/10 ring-1 ring-deep-space-blue/5">
             <div className="flex flex-col gap-1 p-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-lg font-medium text-deep-space-blue/70 hover:text-deep-space-blue hover:bg-deep-space-blue/5 rounded-lg transition-all duration-200 py-3 px-4"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) =>
+                link.featured ? (
+                  <a
+                    key={link.href}
+                    href={resolveHref(link.href)}
+                    className="group relative inline-flex items-center gap-2 text-lg font-bold text-white rounded-xl transition-all duration-200 py-3 px-4 overflow-hidden"
+                    style={{
+                      background: 'linear-gradient(135deg, #FB8500 0%, #e07600 100%)',
+                    }}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2L14.09 8.26L20 9.27L15.55 13.97L16.91 20L12 16.9L7.09 20L8.45 13.97L4 9.27L9.91 8.26L12 2Z" fill="currentColor" />
+                    </svg>
+                    {link.label}
+                  </a>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={resolveHref(link.href)}
+                    className="text-lg font-medium text-deep-space-blue/70 hover:text-deep-space-blue hover:bg-deep-space-blue/5 rounded-lg transition-all duration-200 py-3 px-4"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                )
+              )}
               <a
                 href="https://line.me/ti/p/~@imageautomat"
                 target="_blank"
