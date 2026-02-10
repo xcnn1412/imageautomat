@@ -3,131 +3,11 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { ArrowRight, ArrowLeft, Star, Sparkles, X, ChevronRight, Camera, Zap, Users, CalendarDays, Package } from "lucide-react"
+import { ArrowRight, ArrowLeft, Star, Sparkles, X, ChevronRight, CalendarDays, Package } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
-
-type ProductType = "rental" | "buy"
-
-const products = [
-    {
-        id: 1,
-        src: "/models/images/product-08-768x768.webp",
-        name: "MODEL 1",
-        nameTh: "คลาสสิค บูธ",
-        label: "PHOTOBOX",
-        description: "ตู้ถ่ายรูปแบบคลาสสิค ดีไซน์เรียบหรู เหมาะสำหรับงานแต่งงานและงานทางการ",
-        longDescription: "ตู้ถ่ายรูปแบบคลาสสิคที่ออกแบบมาเพื่อความเรียบหรูและทันสมัย เหมาะสำหรับงานแต่งงาน งานเลี้ยงสังสรรค์ และงานทางการทุกรูปแบบ มาพร้อมฟังก์ชันครบครัน ใช้งานง่าย พิมพ์รูปได้ไม่จำกัด",
-        features: ["ใช้พื้นที่น้อย", "พิมพ์ได้ไม่จำกัด", "warp ตกแต่งตู้ได้", "เหมาะสำหรับงานอีเวนต์"],
-        specs: { size: "60 x 60 x 180 cm", weight: "45 kg", printTime: "< 10 วินาที", resolution: "Full HD" },
-        badge: "ขายดี",
-        badgeColor: "bg-tiger-orange",
-        category: "classic",
-        type: ["rental", "buy"] as ProductType[],
-    },
-    {
-        id: 2,
-        src: "/models/images/product-09-768x768.webp",
-        name: "PHOTOBOX MODEL 2",
-        nameTh: "โฟโต้บูธ โมเดลที่2",
-        label: "PHOTOBOOTH",
-        description: "โฟโต้บูธสไตล์วินเทจร่วมสมัย",
-        longDescription: "โฟโต้บูธที่ผสมผสานสไตล์วินเทจเข้ากับเทคโนโลยีสมัยใหม่ หน้าจอสัมผัส Full HD ผ้าม่านเลือกสีได้ตามธีมงาน พร้อมไฟสตูดิโอระดับมืออาชีพ",
-        features: ["หน้าจอสัมผัส Full HD", "ผ้าม่านเลือกสีได้", "ไฟสตูดิโอ", "ดีไซน์วินเทจร่วมสมัย"],
-        specs: { size: "70 x 70 x 200 cm", weight: "55 kg", printTime: "< 10 วินาที", resolution: "Full HD" },
-        badge: "Premium",
-        badgeColor: "bg-purple-600",
-        category: "premium",
-        type: ["rental", "buy"] as ProductType[],
-    },
-    {
-        id: 3,
-        src: "/models/images/product-10-768x768.webp",
-        name: "PHOTOBOX MODEL 3",
-        nameTh: "โฟโต้บูธ โมเดลที่3",
-        label: "PHOTOBOOTH",
-        description: "แพลตฟอร์มหมุน 360 องศา สร้างวิดีโอสุดเท่ที่ไวรัลได้ง่าย",
-        longDescription: "แพลตฟอร์มถ่ายวิดีโอ 360 องศาที่สร้างคอนเทนต์สุดเท่ วิดีโอ Slow-motion คุณภาพสูง แชร์ลงโซเชียลได้ทันที เหมาะสำหรับงานเปิดตัวสินค้าและอีเวนต์สุดพิเศษ",
-        features: ["วิดีโอ Slow-motion", "แชร์โซเชียลทันที", "พื้นที่กว้าง 1.2 ม.", "เอฟเฟกต์พิเศษหลากหลาย"],
-        specs: { size: "120 cm (เส้นผ่านศูนย์กลาง)", weight: "35 kg", printTime: "ประมวลผล 30 วินาที", resolution: "4K Video" },
-        badge: "ยอดนิยม",
-        badgeColor: "bg-green-600",
-        category: "360",
-        type: ["rental", "buy"] as ProductType[],
-    },
-    {
-        id: 4,
-        src: "/models/images/product-11-768x768.webp",
-        name: "PHOTOBOX MODEL 4",
-        nameTh: "โฟโต้บูธ โมเดลที่4",
-        label: "PHOTOBOOTH",
-        description: "ตู้ถ่ายรูปขนาดกะทัดรัด เคลื่อนย้ายง่าย เหมาะกับทุกขนาดงาน",
-        longDescription: "ตู้ถ่ายรูปขนาดกะทัดรัดที่ออกแบบมาเพื่อความสะดวกในการเคลื่อนย้าย น้ำหนักเบา ติดตั้งง่าย ใน 15 นาที เหมาะกับทุกขนาดงาน ทั้งงานเล็กและงานใหญ่",
-        features: ["น้ำหนักเบา", "ติดตั้งใน 15 นาที", "ประหยัดพื้นที่", "เคลื่อนย้ายง่าย"],
-        specs: { size: "50 x 50 x 170 cm", weight: "30 kg", printTime: "< 10 วินาที", resolution: "Full HD" },
-        badge: null,
-        badgeColor: "",
-        category: "compact",
-        type: ["rental"] as ProductType[],
-    },
-    {
-        id: 5,
-        src: "/models/images/product-12-768x768.webp",
-        name: "PHOTOBOX MODEL 5",
-        nameTh: "โฟโต้บูธ โมเดลที่5",
-        label: "PHOTOBOOTH",
-        description: "ดีไซน์ย้อนยุค สไตล์วินเทจ สร้างบรรยากาศพิเศษให้งานของคุณ",
-        longDescription: "ตู้ถ่ายรูปสไตล์วินเทจที่จะสร้างบรรยากาศย้อนยุคสุดพิเศษให้กับงานของคุณ มาพร้อมฟิลเตอร์วินเทจ กรอบรูปคลาสสิค และม่านแดงหรูหรา",
-        features: ["ฟิลเตอร์วินเทจ", "กรอบรูปคลาสสิค", "ม่านแดงหรูหรา", "บรรยากาศย้อนยุค"],
-        specs: { size: "65 x 65 x 190 cm", weight: "50 kg", printTime: "< 10 วินาที", resolution: "Full HD" },
-        badge: null,
-        badgeColor: "",
-        category: "vintage",
-        type: ["buy"] as ProductType[],
-    },
-    {
-        id: 6,
-        src: "/models/images/product-13-768x768.webp",
-        name: "Camera 360",
-        nameTh: "Camera 360",
-        label: "PHOTOBOOTH",
-        description: "กรอบไฟ LED เปลี่ยนสีได้ ปรับแต่งตามธีมงานได้อย่างอิสระ",
-        longDescription: "ตู้ถ่ายรูปพร้อมกรอบไฟ LED เปลี่ยนสีได้ 16 ล้านสี ปรับแต่งตามธีมงานของคุณได้อย่างอิสระ ควบคุมง่ายผ่านรีโมท มาพร้อมเอฟเฟกต์เคลื่อนไหวสุดเท่",
-        features: ["RGB LED 16 ล้านสี", "รีโมทควบคุม", "เอฟเฟกต์เคลื่อนไหว", "ปรับแต่งตามธีม"],
-        specs: { size: "120 cm (เส้นผ่านศูนย์กลาง)", weight: "40 kg", printTime: "ประมวลผล 30 วินาที", resolution: "4K Video" },
-        badge: "ใหม่",
-        badgeColor: "bg-sky-500",
-        category: "led",
-        type: ["rental"] as ProductType[],
-    },
-    {
-        id: 7,
-        src: "/models/images/product-14-768x768.webp",
-        name: "HIGH ANGLE PHOTOBOOTH",
-        nameTh: "ตู้มุมสูง",
-        label: "PHOTOBOOTH",
-        description: "ชุดพรีเมียมครบเซ็ต รวมตู้ถ่ายรูป ไฟสตูดิโอ และอุปกรณ์ครบครัน",
-        longDescription: "ชุดพรีเมียมครบเซ็ตที่รวมทุกอย่างไว้ในที่เดียว ตู้ถ่ายรูปมุมสูงที่ให้มุมมองใหม่ ไฟสตูดิโอระดับ Pro และอุปกรณ์ Props ครบครัน พร้อมให้บริการทันที",
-        features: ["ชุดพร้อมใช้งาน", "ไฟสตูดิโอ Pro", "อุปกรณ์ Props ครบ", "มุมถ่ายสูงพิเศษ"],
-        specs: { size: "80 x 80 x 250 cm", weight: "60 kg", printTime: "< 10 วินาที", resolution: "Full HD" },
-        badge: "Best Value",
-        badgeColor: "bg-rose-500",
-        category: "premium",
-        type: ["buy"] as ProductType[],
-    },
-]
-
-const tabs = [
-    { id: "rental" as ProductType, label: "เช่า", labelEn: "Rental", icon: CalendarDays, description: "บริการเช่าตู้ถ่ายรูปพร้อมทีมงาน" },
-    { id: "buy" as ProductType, label: "ซื้อ", labelEn: "Buy", icon: Package, description: "ซื้อตู้ถ่ายรูปเป็นเจ้าของ" },
-]
-
-const stats = [
-    { icon: Camera, value: "7+", label: "รุ่นให้เลือก" },
-    { icon: Zap, value: "10s", label: "พิมพ์เสร็จ" },
-    { icon: Users, value: "500+", label: "งานที่ให้บริการ" },
-]
+import { products, tabs, stats, type ProductType } from "@/data/products"
 
 export function ProductPageContent() {
     const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null)
@@ -159,7 +39,7 @@ export function ProductPageContent() {
             <Navigation />
 
             {/* Hero Section */}
-            <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+            <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden" aria-label="หัวข้อหน้าสินค้าตู้ถ่ายรูป">
                 {/* Background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-deep-space-blue via-deep-space-blue/95 to-deep-space-blue" />
                 <div className="absolute inset-0 opacity-[0.03]">
@@ -179,11 +59,11 @@ export function ProductPageContent() {
                             <span className="uppercase tracking-[0.2em]">Our Products</span>
                         </div>
                         <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl text-white tracking-tight leading-[1.1] mb-6">
-                            สินค้าของเรา
+                            สินค้าตู้ถ่ายรูป Photobooth
                         </h1>
                         <p className="text-lg lg:text-xl text-white/50 leading-relaxed max-w-2xl mx-auto mb-12">
-                            ตู้ถ่ายรูปคุณภาพสูงที่ออกแบบมาเพื่อสร้างประสบการณ์สุดพิเศษ <br className="hidden md:block" />
-                            หลากหลายรุ่นให้เลือก เหมาะกับทุกรูปแบบงาน
+                            ตู้ถ่ายรูปและ Photobooth คุณภาพสูง ออกแบบเพื่อสร้างประสบการณ์สุดพิเศษ <br className="hidden md:block" />
+                            กว่า 50 รุ่นให้เลือก ทั้งเช่าและซื้อ เหมาะกับทุกรูปแบบงานอีเวนต์
                         </p>
 
                         {/* Stats */}
@@ -210,7 +90,7 @@ export function ProductPageContent() {
             </section>
 
             {/* Products Grid */}
-            <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
+            <section className="py-20 lg:py-32 bg-white relative overflow-hidden" aria-label="รายการสินค้าตู้ถ่ายรูป">
                 {/* Background decorations */}
                 <div className="absolute top-20 left-10 w-72 h-72 bg-tiger-orange/5 rounded-full blur-3xl" />
                 <div className="absolute bottom-20 right-10 w-96 h-96 bg-deep-space-blue/5 rounded-full blur-3xl" />
@@ -457,19 +337,20 @@ export function ProductPageContent() {
                     </div>
 
                     {/* Products Grid */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
                         {filteredProducts.map((product) => (
-                            <div
+                            <article
                                 key={product.id}
                                 className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100/80"
                                 onMouseEnter={() => setHoveredId(product.id)}
                                 onMouseLeave={() => setHoveredId(null)}
+                                role="listitem"
                             >
                                 {/* Image */}
                                 <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100/50 overflow-hidden">
                                     <Image
                                         src={product.src}
-                                        alt={product.name}
+                                        alt={`${product.nameTh} ${product.name} — ตู้ถ่ายรูป Photobooth จาก IMAGEAUTOMAT`}
                                         fill
                                         className="object-contain p-6 transition-transform duration-700 group-hover:scale-110"
                                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -519,14 +400,14 @@ export function ProductPageContent() {
                                         )}
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         ))}
                     </div>
                 </div>
             </section>
 
             {/* CTA Section */}
-            <section className="py-24 lg:py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+            <section className="py-24 lg:py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden" aria-label="ติดต่อสอบถาม">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-tiger-orange/5 rounded-full blur-[120px]" />
 
                 <div className="mx-auto max-w-4xl px-6 lg:px-8 relative text-center">
@@ -612,7 +493,7 @@ export function ProductPageContent() {
                             <div className="relative w-full lg:w-1/2 aspect-square bg-gradient-to-br from-gray-50 to-gray-100">
                                 <Image
                                     src={selectedProduct.src}
-                                    alt={selectedProduct.name}
+                                    alt={`${selectedProduct.nameTh} ${selectedProduct.name} — รายละเอียดตู้ถ่ายรูป Photobooth`}
                                     fill
                                     className="object-contain p-8"
                                     sizes="(max-width: 1024px) 100vw, 50vw"
