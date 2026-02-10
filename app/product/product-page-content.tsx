@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useState, useEffect } from "react"
 import { ArrowRight, ArrowLeft, Star, Sparkles, X, ChevronRight, CalendarDays, Package } from "lucide-react"
 import { Navigation } from "@/components/navigation"
+import { Footer } from "@/components/footer"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { products, tabs, stats, type ProductType } from "@/data/products"
@@ -67,17 +68,66 @@ export function ProductPageContent() {
                         </p>
 
                         {/* Stats */}
-                        <div className="flex items-center justify-center gap-8 md:gap-16">
+                        <motion.div
+                            className="flex items-center justify-center gap-6 md:gap-10 lg:gap-14"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.5 }}
+                            variants={{
+                                hidden: {},
+                                visible: { transition: { staggerChildren: 0.2 } },
+                            }}
+                        >
                             {stats.map((stat, idx) => (
-                                <div key={idx} className="text-center">
-                                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/5 border border-white/10 mb-3">
-                                        <stat.icon className="w-5 h-5 text-tiger-orange" />
+                                <motion.div
+                                    key={idx}
+                                    className="relative text-center group"
+                                    variants={{
+                                        hidden: { opacity: 0, y: 30, scale: 0.9 },
+                                        visible: {
+                                            opacity: 1, y: 0, scale: 1,
+                                            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+                                        },
+                                    }}
+                                >
+                                    {/* Icon container with glow */}
+                                    <div className="relative inline-flex items-center justify-center w-16 h-16 md:w-[4.5rem] md:h-[4.5rem] rounded-2xl mb-4 mx-auto">
+                                        {/* Glow background */}
+                                        <div className="absolute inset-0 rounded-2xl bg-tiger-orange/15 blur-xl group-hover:bg-tiger-orange/25 transition-all duration-500" />
+                                        {/* Icon bg */}
+                                        <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-white/10 to-white/[0.03] border border-white/15 flex items-center justify-center backdrop-blur-sm group-hover:border-tiger-orange/30 transition-all duration-500">
+                                            <stat.icon className="w-7 h-7 md:w-8 md:h-8 text-tiger-orange drop-shadow-[0_0_8px_rgba(251,133,0,0.4)] group-hover:scale-110 transition-transform duration-300" />
+                                        </div>
                                     </div>
-                                    <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.value}</div>
-                                    <div className="text-xs text-white/40 uppercase tracking-widest">{stat.label}</div>
-                                </div>
+
+                                    {/* Value */}
+                                    <motion.div
+                                        className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-2 tracking-tight"
+                                        variants={{
+                                            hidden: { opacity: 0 },
+                                            visible: {
+                                                opacity: 1,
+                                                transition: { duration: 0.8, delay: 0.3 },
+                                            },
+                                        }}
+                                    >
+                                        <span className="bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent">
+                                            {stat.value}
+                                        </span>
+                                    </motion.div>
+
+                                    {/* Label */}
+                                    <div className="text-xs md:text-sm text-white/50 font-medium tracking-wide">
+                                        {stat.label}
+                                    </div>
+
+                                    {/* Divider (not on last item) */}
+                                    {idx < stats.length - 1 && (
+                                        <div className="absolute -right-3 md:-right-5 lg:-right-7 top-1/2 -translate-y-1/2 w-px h-16 md:h-20 bg-gradient-to-b from-transparent via-white/15 to-transparent" />
+                                    )}
+                                </motion.div>
                             ))}
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
 
@@ -453,18 +503,7 @@ export function ProductPageContent() {
             </section>
 
             {/* Footer */}
-            <footer className="py-8 bg-white border-t border-gray-100">
-                <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-                    <Link href="/" className="inline-flex items-center group mb-4">
-                        <span className="font-serif text-xl tracking-tight text-deep-space-blue">
-                            IMAGE<span className="text-tiger-orange">AUTOMAT</span>
-                        </span>
-                    </Link>
-                    <p className="text-deep-space-blue/40 text-sm">
-                        © {new Date().getFullYear()} IMAGEAUTOMAT. All rights reserved.
-                    </p>
-                </div>
-            </footer>
+            <Footer />
 
             {/* Product Detail Modal */}
             {selectedProduct && (

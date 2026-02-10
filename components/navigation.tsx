@@ -11,10 +11,9 @@ const LineIcon = ({ className = "" }: { className?: string }) => (
 )
 
 const navLinks = [
-  { href: "#services", label: "Services", featured: false },
-  { href: "#features", label: "Features", featured: false },
   { href: "/product", label: "สินค้าของเรา", featured: true },
-  { href: "#contact", label: "Contact", featured: false },
+  { href: "#products", label: "ซอฟต์แวร์ของเรา", featured: false },
+  { href: "#contact", label: "ติดต่อเรา", featured: false },
 ]
 
 export function Navigation() {

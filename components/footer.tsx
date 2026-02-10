@@ -2,20 +2,16 @@ import { Instagram, Facebook } from "lucide-react";
 
 const footerLinks = [
   {
-    title: "Services",
+    title: "สินค้า",
     links: [
-      { label: "Weddings", href: "#services" },
-      { label: "Corporate Events", href: "#services" },
-      { label: "Brand Activations", href: "#services" },
-      { label: "Private Parties", href: "#services" },
+      { label: "สินค้าของเรา", href: "/product" },
+      { label: "ซอฟต์แวร์ของเรา", href: "#products" },
     ],
   },
   {
-    title: "Company",
+    title: "บริษัท",
     links: [
-      { label: "About", href: "#" },
-      { label: "Portfolio", href: "#gallery" },
-      { label: "Contact", href: "#contact" },
+      { label: "ติดต่อเรา", href: "#contact" },
     ],
   },
 ];
@@ -33,14 +29,14 @@ export function Footer() {
         <div className="py-20 grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="#" className="inline-block mb-6" aria-label="IMAGEAUTOMAT Home">
+            <a href="/" className="inline-block mb-6" aria-label="IMAGEAUTOMAT Home">
               <span className="font-serif text-2xl text-[#023047]">
                 IMAGE<span className="text-[#FB8500]">AUTOMAT</span>
               </span>
             </a>
             <p className="text-[#023047]/60 leading-relaxed max-w-sm mb-8">
-              Premium photobooth experiences for weddings, corporate events, and
-              brand activations across Thailand.
+              บริการเช่าและจำหน่ายตู้ถ่ายรูป Photobooth คุณภาพสูง
+              สำหรับงานแต่งงาน งานอีเวนต์ และงานเปิดตัวสินค้า ทั่วประเทศไทย
             </p>
 
             {/* Social Links */}
