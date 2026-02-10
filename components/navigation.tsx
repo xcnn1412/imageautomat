@@ -12,7 +12,7 @@ const LineIcon = ({ className = "" }: { className?: string }) => (
 const navLinks = [
   { href: "#services", label: "Services" },
   { href: "#features", label: "Features" },
-  { href: "#gallery", label: "Gallery" },
+  { href: "/product", label: "สินค้าของเรา" },
   { href: "#contact", label: "Contact" },
 ]
 
