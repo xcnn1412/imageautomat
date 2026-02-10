@@ -41,16 +41,16 @@ export function Navigation() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${pathname !== "/"
-          ? "bg-white shadow-md shadow-black/5 backdrop-blur-2xl"
-          : isScrolled
-            ? "bg-white/80 backdrop-blur-2xl"
-            : "bg-transparent"
+        ? "bg-white shadow-md shadow-black/5 backdrop-blur-2xl"
+        : isScrolled
+          ? "bg-white/80 backdrop-blur-2xl"
+          : "bg-transparent"
         }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-20 lg:h-24 items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center group">
+          <a href="/" className="flex items-center group">
             <span className="font-serif text-2xl lg:text-3xl tracking-tight text-deep-space-blue">
               IMAGE<span className="text-tiger-orange">AUTOMAT</span>
             </span>
