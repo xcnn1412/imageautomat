@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion, useInView } from "framer-motion"
-import { Play, Pause, Volume2, VolumeX } from "lucide-react"
+import { Play, Pause, Volume2, VolumeX, Camera, Printer, Smartphone } from "lucide-react"
 
 export function AutoReel() {
   const sectionRef = useRef(null)
@@ -149,40 +149,6 @@ export function AutoReel() {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Features List */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12">
-            {[
-              {
-                icon: "📷",
-                title: "ถ่ายภาพนิ่ง",
-              },
-              {
-                icon: "🎬",
-                title: "ถ่ายวิดีโอ 10 - 45 วินาที",
-              },
-              {
-                icon: "🖨️",
-                title: "ปริ้นภาพคมชัด",
-              },
-              {
-                icon: "📱",
-                title: "QR-CODE ดาวโหลดเฉพาะคน",
-              },
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                className="flex flex-col items-center text-center p-6 bg-white border border-deep-space-blue/10 rounded-2xl hover:shadow-lg hover:border-tiger-orange/30 transition-all duration-300"
-                variants={itemVariants}
-                whileHover={{ y: -4, scale: 1.02 }}
-              >
-                <div className="text-4xl md:text-5xl mb-3">{feature.icon}</div>
-                <h3 className="text-sm md:text-base font-bold text-deep-space-blue leading-tight">
-                  {feature.title}
-                </h3>
-              </motion.div>
-            ))}
           </div>
         </motion.div>
       </motion.div>
