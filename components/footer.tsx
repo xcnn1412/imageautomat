@@ -5,7 +5,7 @@ const footerLinks = [
     title: "สินค้า",
     links: [
       { label: "สินค้าของเรา", href: "/product" },
-      { label: "ซอฟต์แวร์ของเรา", href: "#products" },
+      { label: "ซอฟต์แวร์ของเรา", href: "/software" },
     ],
   },
   {
