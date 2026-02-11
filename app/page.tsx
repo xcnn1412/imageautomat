@@ -13,6 +13,10 @@ const VideoGallery = dynamic(() => import("@/components/video-gallery").then(mod
     loading: () => <div className="py-12" />,
     ssr: true,
 })
+const AutoReel = dynamic(() => import("@/components/AutoReel").then(mod => ({ default: mod.AutoReel })), {
+    loading: () => <div className="py-12" />,
+    ssr: true,
+})
 const SlideshowSection = dynamic(() => import("@/components/slideshow-section").then(mod => ({ default: mod.SlideshowSection })), {
     loading: () => <div className="py-24" />,
     ssr: true,
@@ -34,6 +38,7 @@ export default function Home() {
             <ProductSection />
             <TextSlideshowProgram />
             <VideoGallery />
+            <AutoReel />
             <SlideshowSection />
             <ContactSection />
             <Footer />

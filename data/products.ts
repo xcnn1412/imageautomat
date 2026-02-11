@@ -67,7 +67,7 @@ export const products: Product[] = [
         badge: "ขายดี",
         badgeColor: "bg-tiger-orange",
         category: "classic",
-        type: ["rental", "buy"],
+        type: ["rental"],
     },
     {
         id: 2,
@@ -82,7 +82,7 @@ export const products: Product[] = [
         badge: "Premium",
         badgeColor: "bg-purple-600",
         category: "premium",
-        type: ["rental", "buy"],
+        type: ["rental"],
     },
     {
         id: 3,
@@ -97,7 +97,7 @@ export const products: Product[] = [
         badge: "ยอดนิยม",
         badgeColor: "bg-green-600",
         category: "360",
-        type: ["rental", "buy"],
+        type: ["rental"],
     },
     {
         id: 4,
@@ -127,7 +127,7 @@ export const products: Product[] = [
         badge: null,
         badgeColor: "",
         category: "vintage",
-        type: ["buy"],
+        type: ["rental"],
     },
     {
         id: 6,
@@ -157,7 +157,7 @@ export const products: Product[] = [
         badge: "Best Value",
         badgeColor: "bg-rose-500",
         category: "premium",
-        type: ["buy"],
+        type: ["rental"],
     },
 
     // ============================================================

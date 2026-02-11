@@ -170,7 +170,7 @@ export function VideoGallery() {
     <section
       ref={sectionRef}
       id="videos"
-      className="py-8 lg:py-12 bg-gradient-to-b from-deep-space-blue/5 to-background relative overflow-hidden"
+      className="py-8 lg:py-12 bg-deep-space-blue/5 relative overflow-hidden"
     >
       {/* Animated Background Decoration */}
       <motion.div
@@ -205,63 +205,9 @@ export function VideoGallery() {
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       >
-        {/* Header */}
-        <motion.div
-          className="max-w-3xl mb-6 lg:mb-8"
-          variants={itemVariants}
-        >
-          <motion.span
-            className="inline-flex items-center gap-2 text-sm font-semibold text-tiger-orange uppercase tracking-[0.3em] mb-6"
-            whileHover={{ x: 4 }}
-            transition={{ duration: 0.3 }}
-          >
-            <motion.svg
-              className="w-4 h-4"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              animate={{ rotate: [0, 5, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
-              <path d="M14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
-            </motion.svg>
-            Video Gallery
-          </motion.span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-deep-space-blue tracking-tight leading-[1.1]">
-            Captured{' '}
-            <motion.span
-              className="italic text-tiger-orange inline-block"
-              animate={{
-                textShadow: [
-                  "0 0 0px rgba(255,127,80,0)",
-                  "0 0 20px rgba(255,127,80,0.3)",
-                  "0 0 0px rgba(255,127,80,0)"
-                ]
-              }}
-              transition={{ duration: 3, repeat: Infinity }}
-            >
-              moments
-            </motion.span>{' '}
-            In motion
-          </h2>
-          <motion.p
-            className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-deep-space-blue leading-tight sm:leading-tight md:leading-tight max-w-3xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            style={{ lineHeight: '1.6' }}
-          >
-            ซอฟต์แวร์{' '}
-            <span className="text-tiger-orange inline-block">
-              Photobooth
-            </span>{' '}
-            ที่เขียนขึ้นมาสำหรับคุณ
-          </motion.p>
-        </motion.div>
-
         {/* Category Tabs */}
         <motion.div
-          className="mb-6 sm:mb-8 md:mb-10 flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3 md:gap-3"
+          className="mb-6 sm:mb-8 md:mb-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-3"
           variants={itemVariants}
         >
           {CATEGORIES.map((cat) => {
@@ -291,6 +237,7 @@ export function VideoGallery() {
             )
           })}
         </motion.div>
+
 
         {/* Main Slideshow Container */}
         <motion.div

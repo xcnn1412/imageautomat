@@ -1,0 +1,164 @@
+[
+    {
+        "id": 1,
+        "image": "/catalogs/images/garantee-01.png",
+        "title": "ตู้ถ่ายรูปมือสอง - รุ่นคลาสสิค",
+        "description": "ตู้ถ่ายรูปสภาพดี ใช้งานได้ปกติ พร้อมอุปกรณ์ครบชุด",
+        "price": "฿25,000",
+        "badge": "ขายแล้ว",
+        "badgeColor": "bg-gray-500"
+    },
+    {
+        "id": 2,
+        "image": "/catalogs/images/garantee-02.png",
+        "title": "Photo Booth Premium - เกรด A",
+        "description": "Photobooth สภาพใหม่ พร้อมใช้งานทันที รับประกัน 6 เดือน",
+        "price": "฿45,000",
+        "badge": "ลดราคา",
+        "badgeColor": "bg-red-600"
+    },
+    {
+        "id": 3,
+        "image": "/catalogs/images/garantee-03.png",
+        "title": "กล้อง 360 องศา - มือสอง",
+        "description": "กล้องถ่ายวิดีโอ 360 องศา สภาพดีมาก พร้อมขาตั้ง",
+        "price": "฿35,000",
+        "badge": null,
+        "badgeColor": ""
+    },
+    {
+        "id": 4,
+        "image": "/catalogs/images/garantee-04.png",
+        "title": "Compact Booth - สภาพ 90%",
+        "description": "ตู้ถ่ายรูปขนาดกะทัดรัด เหมาะสำหรับพื้นที่จำกัด",
+        "price": "฿28,000",
+        "badge": "ยอดนิยม",
+        "badgeColor": "bg-green-600"
+    },
+    {
+        "id": 5,
+        "image": "/catalogs/images/garantee-05.png",
+        "title": "LED Ring Light Booth",
+        "description": "ตู้พร้อมไฟ LED แบบวงกลม สร้างแสงสวยงาม",
+        "price": "฿38,000",
+        "badge": "ใหม่",
+        "badgeColor": "bg-sky-500"
+    },
+    {
+        "id": 6,
+        "image": "/catalogs/images/garantee-06.png",
+        "title": "Vintage Style Booth",
+        "description": "ตู้สไตล์วินเทจ สภาพดี พร้อมม่านผ้า",
+        "price": "฿32,000",
+        "badge": null,
+        "badgeColor": ""
+    },
+    {
+        "id": 7,
+        "image": "/catalogs/images/garantee-07.png",
+        "title": "Professional Photo Booth",
+        "description": "ตู้ระดับมืออาชีพ พร้อมเครื่องพิมพ์ความเร็วสูง",
+        "price": "฿55,000",
+        "badge": "Premium",
+        "badgeColor": "bg-purple-600"
+    },
+    {
+        "id": 8,
+        "image": "/catalogs/images/garantee-08.png",
+        "title": "Mirror Booth - เกรด A+",
+        "description": "ตู้กระจกวิเศษ พร้อมระบบสัมผัส สภาพใหม่",
+        "price": "฿65,000",
+        "badge": "พิเศษ",
+        "badgeColor": "bg-tiger-orange"
+    },
+    {
+        "id": 9,
+        "image": "/catalogs/images/garantee-09.png",
+        "title": "Open Air Booth Set",
+        "description": "ชุดอุปกรณ์ตู้ถ่ายรูปแบบเปิด พร้อมฉากหลัง",
+        "price": "฿42,000",
+        "badge": null,
+        "badgeColor": ""
+    },
+    {
+        "id": 10,
+        "image": "/catalogs/images/garantee-10.png",
+        "title": "Portable Booth Kit",
+        "description": "ชุดตู้ถ่ายรูปพกพา ติดตั้งง่าย เคลื่อนย้ายสะดวก",
+        "price": "฿22,000",
+        "badge": "ราคาดี",
+        "badgeColor": "bg-green-500"
+    },
+    {
+        "id": 11,
+        "image": "/catalogs/images/garantee-11.png",
+        "title": "High Angle Camera Rig",
+        "description": "ชุดกล้องมุมสูง พร้อมระบบไฟสตูดิโอ",
+        "price": "฿48,000",
+        "badge": null,
+        "badgeColor": ""
+    },
+    {
+        "id": 12,
+        "image": "/catalogs/images/garantee-12.png",
+        "title": "Inflatable Photo Booth",
+        "description": "ตู้ถ่ายรูปแบบเป่าลม พร้อมระบบไฟ LED",
+        "price": "฿18,000",
+        "badge": "ขายดี",
+        "badgeColor": "bg-tiger-orange"
+    },
+    {
+        "id": 13,
+        "image": "/catalogs/images/garantee-13.png",
+        "title": "Premium Package Set",
+        "description": "ชุดอุปกรณ์ครบครัน พร้อมซอฟต์แวร์ลิขสิทธิ์",
+        "price": "฿75,000",
+        "badge": "Best Value",
+        "badgeColor": "bg-rose-500"
+    },
+    {
+        "id": 14,
+        "image": "/catalogs/images/garantee-14.png",
+        "title": "Green Screen Booth",
+        "description": "ตู้พร้อมฉากหลังสีเขียว เปลี่ยนพื้นหลังได้",
+        "price": "฿52,000",
+        "badge": null,
+        "badgeColor": ""
+    },
+    {
+        "id": 15,
+        "image": "/catalogs/images/garantee-15.png",
+        "title": "Slow Motion Video Booth",
+        "description": "ตู้ถ่ายวิดีโอ Slow Motion คุณภาพสูง",
+        "price": "฿68,000",
+        "badge": "ใหม่",
+        "badgeColor": "bg-sky-500"
+    },
+    {
+        "id": 16,
+        "image": "/catalogs/images/garantee-16.png",
+        "title": "Minimalist Booth - White",
+        "description": "ตู้สไตล์มินิมอล โทนสีขาว สะอาดเรียบหรู",
+        "price": "฿35,000",
+        "badge": null,
+        "badgeColor": ""
+    },
+    {
+        "id": 17,
+        "image": "/catalogs/images/garantee-17.png",
+        "title": "RGB LED Booth Pro",
+        "description": "ตู้พร้อมไฟ RGB LED เปลี่ยนสีได้ 16 ล้านสี",
+        "price": "฿58,000",
+        "badge": "Premium",
+        "badgeColor": "bg-purple-600"
+    },
+    {
+        "id": 18,
+        "image": "/catalogs/images/garantee-18.png",
+        "title": "Complete Studio Package",
+        "description": "ชุดสตูดิโอครบครัน พร้อมเครื่องพิมพ์และอุปกรณ์",
+        "price": "฿85,000",
+        "badge": "พิเศษสุด",
+        "badgeColor": "bg-red-600"
+    }
+]
