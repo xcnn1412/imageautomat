@@ -11,7 +11,7 @@ const footerLinks = [
   {
     title: "บริษัท",
     links: [
-      { label: "ติดต่อเรา", href: "#contact" },
+      { label: "ติดต่อเรา", href: "/contact" },
     ],
   },
 ];

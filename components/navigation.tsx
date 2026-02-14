@@ -13,7 +13,7 @@ const LineIcon = ({ className = "" }: { className?: string }) => (
 const navLinks = [
   { href: "/product", label: "สินค้าของเรา", featured: true },
   { href: "/software", label: "ซอฟต์แวร์ของเรา", featured: false },
-  { href: "#contact", label: "ติดต่อเรา", featured: false },
+  { href: "/contact", label: "ติดต่อเรา", featured: false },
 ]
 
 export function Navigation() {
@@ -91,16 +91,32 @@ export function Navigation() {
                   {/* Text */}
                   <span className="relative z-10 tracking-wide transition-transform duration-300 group-hover:-translate-y-0.5">{link.label}</span>
                 </a>
-              ) : (
-                <a
-                  key={link.href}
-                  href={resolveHref(link.href)}
-                  className="relative text-sm font-medium text-deep-space-blue/60 hover:text-deep-space-blue transition-colors duration-300 group"
-                >
-                  {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-tiger-orange group-hover:w-full transition-all duration-300" />
-                </a>
-              )
+              ) : (() => {
+                const isActive =
+                  link.href.startsWith("#")
+                    ? pathname === "/"
+                    : pathname === link.href
+                return (
+                  <a
+                    key={link.href}
+                    href={resolveHref(link.href)}
+                    className={`relative text-sm font-medium transition-colors duration-300 group pb-1 ${isActive
+                      ? "text-deep-space-blue"
+                      : "text-deep-space-blue/60 hover:text-deep-space-blue"
+                      }`}
+                  >
+                    {link.label}
+                    {/* Active / hover underline */}
+                    <span
+                      className={`absolute bottom-0 left-0 right-0 h-[3px] rounded-full transition-all duration-500 ease-out ${isActive
+                        ? "bg-tiger-orange scale-x-100"
+                        : "bg-tiger-orange scale-x-0 group-hover:scale-x-100"
+                        }`}
+                      style={isActive ? { boxShadow: '0 2px 8px rgba(251,133,0,0.35)' } : undefined}
+                    />
+                  </a>
+                )
+              })()
             )}
           </div>
 
@@ -164,16 +180,25 @@ export function Navigation() {
                     </svg>
                     {link.label}
                   </a>
-                ) : (
-                  <a
-                    key={link.href}
-                    href={resolveHref(link.href)}
-                    className="text-lg font-medium text-deep-space-blue/70 hover:text-deep-space-blue hover:bg-deep-space-blue/5 rounded-lg transition-all duration-200 py-3 px-4"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                )
+                ) : (() => {
+                  const isActive =
+                    link.href.startsWith("#")
+                      ? pathname === "/"
+                      : pathname === link.href
+                  return (
+                    <a
+                      key={link.href}
+                      href={resolveHref(link.href)}
+                      className={`text-lg font-medium rounded-lg transition-all duration-200 py-3 px-4 ${isActive
+                        ? "text-deep-space-blue bg-tiger-orange/5 border-l-2 border-tiger-orange"
+                        : "text-deep-space-blue/70 hover:text-deep-space-blue hover:bg-deep-space-blue/5"
+                        }`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </a>
+                  )
+                })()
               )}
               <a
                 href="https://line.me/ti/p/~@imageautomat"
