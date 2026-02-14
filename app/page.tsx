@@ -13,7 +13,7 @@ const VideoGallery = dynamic(() => import("@/components/video-gallery").then(mod
     loading: () => <div className="py-12" />,
     ssr: true,
 })
-const AutoReel = dynamic(() => import("@/components/AutoReel").then(mod => ({ default: mod.AutoReel })), {
+const SignatureReel = dynamic(() => import("@/components/SignatureReel").then(mod => ({ default: mod.SignatureReel })), {
     loading: () => <div className="py-12" />,
     ssr: true,
 })
@@ -38,7 +38,7 @@ export default function Home() {
             <ProductSection />
             <TextSlideshowProgram />
             <VideoGallery />
-            <AutoReel />
+            <SignatureReel />
             <SlideshowSection />
             <ContactSection />
             <Footer />
