@@ -27,7 +27,7 @@ export function SoftwareCta() {
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <a
-                                href="https://line.me/ti/p/~@imageautomat"
+                                href="https://lin.ee/Q5DSE1r"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group inline-flex items-center gap-3 px-8 py-4 bg-[#06C755] text-white font-bold rounded-full hover:shadow-xl hover:shadow-[#06C755]/30 hover:scale-105 transition-all duration-300"

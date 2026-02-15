@@ -6,6 +6,7 @@ const footerLinks = [
     links: [
       { label: "สินค้าของเรา", href: "/product" },
       { label: "ซอฟต์แวร์ของเรา", href: "/software" },
+      { label: "ระบบชำระเงิน", href: "/payment" },
     ],
   },
   {

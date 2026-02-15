@@ -333,13 +333,13 @@ export function HomeSoftwareFeatures() {
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="flex justify-center"
                 >
-                    <Link href="/software">
+                    <Link href="/payment">
                         <motion.span
                             whileHover={{ scale: 1.04 }}
                             whileTap={{ scale: 0.97 }}
                             className="group inline-flex items-center gap-2.5 px-8 sm:px-10 md:px-12 py-3.5 sm:py-4 bg-tiger-orange text-white text-sm sm:text-base font-bold rounded-full shadow-lg shadow-tiger-orange/20 hover:shadow-xl hover:shadow-tiger-orange/30 transition-all duration-300 cursor-pointer"
                         >
-                            ดูรายละเอียดซอฟต์แวร์ทั้งหมด
+                            ระบบชำระเงิน
                             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
                         </motion.span>
                     </Link>

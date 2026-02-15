@@ -46,7 +46,7 @@ const contactCards = [
         icon: MessageCircle,
         label: "LINE Official",
         value: "@imageautomat",
-        href: "https://line.me/ti/p/~@imageautomat",
+        href: "https://lin.ee/Q5DSE1r",
         description: "แชทสอบถามราคาพิเศษ",
         color: "from-[#06C755] to-emerald-500",
         bgColor: "bg-[#06C755]/5",
@@ -130,7 +130,7 @@ export function ContactPageContent() {
         e.preventDefault()
         // Build LINE message
         const msg = `สวัสดีครับ ผมชื่อ ${formData.name}\nเบอร์โทร: ${formData.phone}\nประเภทงาน: ${formData.eventType}\nวันจัดงาน: ${formData.eventDate}\nข้อความ: ${formData.message}`
-        const lineUrl = `https://line.me/ti/p/~@imageautomat?text=${encodeURIComponent(msg)}`
+        const lineUrl = `https://lin.ee/Q5DSE1r`
         window.open(lineUrl, "_blank")
         setIsSubmitted(true)
         setTimeout(() => setIsSubmitted(false), 5000)
@@ -188,7 +188,7 @@ export function ContactPageContent() {
                             className="flex flex-col sm:flex-row items-center justify-center gap-4"
                         >
                             <a
-                                href="https://line.me/ti/p/~@imageautomat"
+                                href="https://lin.ee/Q5DSE1r"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group relative inline-flex items-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-[#06C755]/20 hover:shadow-xl hover:shadow-[#06C755]/40 hover:scale-105 active:scale-95 overflow-hidden"

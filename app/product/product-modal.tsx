@@ -95,7 +95,7 @@ export function ProductDetailModal({ product, onClose }: ProductDetailModalProps
 
                             {/* CTA */}
                             <a
-                                href="https://line.me/ti/p/~@imageautomat"
+                                href="https://lin.ee/Q5DSE1r"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-3 px-8 py-4 bg-tiger-orange text-white font-bold rounded-full hover:bg-deep-space-blue transition-all duration-300 w-full justify-center shadow-lg shadow-tiger-orange/20 hover:shadow-deep-space-blue/20"

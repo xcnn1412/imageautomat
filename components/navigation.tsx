@@ -13,6 +13,7 @@ const LineIcon = ({ className = "" }: { className?: string }) => (
 const navLinks = [
   { href: "/product", label: "สินค้าของเรา", featured: true },
   { href: "/software", label: "ซอฟต์แวร์ของเรา", featured: false },
+  { href: "/payment", label: "ระบบชำระเงิน", featured: false },
   { href: "/contact", label: "ติดต่อเรา", featured: false },
 ]
 
@@ -92,10 +93,11 @@ export function Navigation() {
                   <span className="relative z-10 tracking-wide transition-transform duration-300 group-hover:-translate-y-0.5">{link.label}</span>
                 </a>
               ) : (() => {
+                const basePath = link.href.split("#")[0]
                 const isActive =
                   link.href.startsWith("#")
                     ? pathname === "/"
-                    : pathname === link.href
+                    : pathname === basePath
                 return (
                   <a
                     key={link.href}
@@ -123,7 +125,7 @@ export function Navigation() {
           {/* CTA Button - LINE */}
           <div className="hidden lg:block">
             <a
-              href="https://line.me/ti/p/~@imageautomat"
+              href="https://lin.ee/Q5DSE1r"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex items-center gap-2 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-6 py-3 text-sm rounded-full transition-all duration-300 shadow-md shadow-[#06C755]/20 hover:shadow-lg hover:shadow-[#06C755]/40 hover:scale-105 active:scale-95 animate-subtle-bounce overflow-hidden"
@@ -181,10 +183,11 @@ export function Navigation() {
                     {link.label}
                   </a>
                 ) : (() => {
+                  const basePath = link.href.split("#")[0]
                   const isActive =
                     link.href.startsWith("#")
                       ? pathname === "/"
-                      : pathname === link.href
+                      : pathname === basePath
                   return (
                     <a
                       key={link.href}
@@ -201,7 +204,7 @@ export function Navigation() {
                 })()
               )}
               <a
-                href="https://line.me/ti/p/~@imageautomat"
+                href="https://lin.ee/Q5DSE1r"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative mt-2 inline-flex items-center justify-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-6 py-5 text-base rounded-full w-full transition-all duration-300 shadow-lg shadow-[#06C755]/30 hover:shadow-xl hover:shadow-[#06C755]/50 active:scale-95 overflow-hidden"

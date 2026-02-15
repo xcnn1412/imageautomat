@@ -8,7 +8,7 @@ import {
 
 const highlights = [
     "รองรับ Windows 10/11",
-    "รองรับกล้อง DSLR ทุกยี่ห้อ",
+    "รองรับกล้อง DSLR",
     "รองรับ Webcam USB",
     "ย่อรูป / ครอปรูป อัตโนมัติ",
     "Countdown Timer ปรับได้",
@@ -40,7 +40,7 @@ export function SoftwareCompatibility() {
                                 ซอฟต์แวร์ Photobooth ของเราออกแบบมาให้ใช้งานร่วมกับฮาร์ดแวร์ได้อย่างกว้างขวาง ไม่ว่าจะเป็นกล้อง DSLR เครื่องพิมพ์ภาพถ่าย หรือจอสัมผัส Touchscreen
                             </p>
                             <a
-                                href="https://line.me/ti/p/~@imageautomat"
+                                href="https://lin.ee/Q5DSE1r"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-3 px-8 py-4 bg-tiger-orange text-white font-bold rounded-full hover:bg-white hover:text-deep-space-blue transition-all duration-300 shadow-lg shadow-tiger-orange/20 hover:shadow-xl"

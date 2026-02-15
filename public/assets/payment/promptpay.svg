@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 48" fill="none">
+  <rect x="2" y="8" width="32" height="32" rx="8" fill="#1A3C6E"/>
+  <path d="M12 20h12M12 24h8M12 28h10" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <path d="M26 16l4 4-4 4" stroke="#00B2FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="40" y="22" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1A3C6E">Prompt</text>
+  <text x="40" y="36" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#00B2FF">Pay</text>
+</svg>

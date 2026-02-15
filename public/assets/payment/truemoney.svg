@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 48" fill="none">
+  <rect x="4" y="8" width="32" height="32" rx="16" fill="#F37021"/>
+  <text x="20" y="30" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">T</text>
+  <text x="42" y="22" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#F37021">TrueMoney</text>
+  <text x="42" y="35" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#666">Wallet</text>
+</svg>

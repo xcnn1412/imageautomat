@@ -245,3 +245,42 @@
 .animate-auto-shimmer {
   animation: auto-shimmer 4s ease-in-out infinite;
 }
+
+/* ── Payment Gateway Marquee ── */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-25%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.logo-card {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, z-index 0s;
+}
+
+.logo-card:hover {
+  transform: scale(1.1);
+  border-color: #FB8500;
+  box-shadow: 0 8px 24px rgba(251, 133, 0, 0.15);
+  z-index: 20;
+}
+
+.logo-card:hover img {
+  transform: scale(1.08);
+  transition: transform 0.3s ease;
+}
