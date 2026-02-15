@@ -9,6 +9,10 @@ const TextSlideshowProgram = dynamic(() => import("@/components/textslideshow-pr
     loading: () => <div className="py-24" />,
     ssr: true,
 })
+const HomeSoftwareFeatures = dynamic(() => import("@/components/home-software-features").then(mod => ({ default: mod.HomeSoftwareFeatures })), {
+    loading: () => <div className="py-24" />,
+    ssr: true,
+})
 const VideoGallery = dynamic(() => import("@/components/video-gallery").then(mod => ({ default: mod.VideoGallery })), {
     loading: () => <div className="py-12" />,
     ssr: true,
@@ -37,6 +41,7 @@ export default function Home() {
             <TextSlideshow2 />
             <ProductSection />
             <TextSlideshowProgram />
+            <HomeSoftwareFeatures />
             <VideoGallery />
             <SignatureReel />
             <SlideshowSection />
