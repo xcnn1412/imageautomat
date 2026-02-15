@@ -16,6 +16,7 @@ import {
 } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import { faqItems } from "@/data/faq"
 
 /* ──────────────── LINE Icon ──────────────── */
 const LineIcon = ({ className = "" }: { className?: string }) => (
@@ -72,24 +73,7 @@ const contactCards = [
     },
 ]
 
-const faqItems = [
-    {
-        q: "เช่าตู้ถ่ายรูป Photobooth ราคาเท่าไหร่?",
-        a: "ราคาเริ่มต้นขึ้นอยู่กับรุ่นที่เลือกและระยะเวลาการเช่า สอบถามราคาพิเศษผ่าน LINE @imageautomat ได้เลย",
-    },
-    {
-        q: "สามารถเช่าตู้ถ่ายรูปต่างจังหวัดได้ไหม?",
-        a: "ได้ครับ เราให้บริการทั่วประเทศไทย มีทีมงานจัดส่งและติดตั้งให้ถึงสถานที่จัดงาน",
-    },
-    {
-        q: "ต้องจองล่วงหน้ากี่วัน?",
-        a: "แนะนำให้จองล่วงหน้าอย่างน้อย 7 วัน สำหรับช่วงเทศกาลหรือวันหยุดยาว ควรจองล่วงหน้า 1 เดือน",
-    },
-    {
-        q: "ตู้ถ่ายรูปมีกี่แบบ?",
-        a: "เรามี 3 รุ่นหลัก ได้แก่ Reel Photobooth, Signature Photobooth และ Liveview Photobooth ดูรายละเอียดได้ที่หน้าซอฟต์แวร์ของเรา",
-    },
-]
+
 
 /* ──────────────── Animation Variants ──────────────── */
 const containerVariants = {
@@ -602,7 +586,7 @@ export function ContactPageContent() {
 
                     <motion.div
                         ref={faqRef}
-                        className="mx-auto max-w-3xl px-6 lg:px-8"
+                        className="mx-auto max-w-6xl px-6 lg:px-8"
                         variants={containerVariants}
                         initial="hidden"
                         animate={faqInView ? "visible" : "hidden"}
@@ -619,20 +603,20 @@ export function ContactPageContent() {
                             </h2>
                         </motion.div>
 
-                        <div className="space-y-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
                             {faqItems.map((faq, i) => (
                                 <motion.details
                                     key={i}
                                     variants={itemVariants}
-                                    className="group bg-deep-space-blue/[0.02] hover:bg-deep-space-blue/[0.04] rounded-2xl border border-deep-space-blue/5 transition-colors duration-300"
+                                    className="group bg-deep-space-blue/[0.02] hover:bg-deep-space-blue/[0.04] rounded-2xl border border-deep-space-blue/5 transition-colors duration-300 h-fit"
                                 >
-                                    <summary className="flex items-center justify-between cursor-pointer p-6 text-deep-space-blue font-medium list-none">
+                                    <summary className="flex items-center justify-between cursor-pointer p-5 sm:p-6 text-deep-space-blue font-medium list-none text-sm sm:text-base">
                                         <span>{faq.q}</span>
-                                        <span className="ml-4 flex-shrink-0 w-8 h-8 rounded-full bg-tiger-orange/10 flex items-center justify-center text-tiger-orange group-open:rotate-45 transition-transform duration-300">
+                                        <span className="ml-3 flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-tiger-orange/10 flex items-center justify-center text-tiger-orange group-open:rotate-45 transition-transform duration-300 text-sm">
                                             +
                                         </span>
                                     </summary>
-                                    <div className="px-6 pb-6 text-deep-space-blue/60 leading-relaxed">
+                                    <div className="px-5 sm:px-6 pb-5 sm:pb-6 text-deep-space-blue/60 leading-relaxed text-sm">
                                         {faq.a}
                                     </div>
                                 </motion.details>
