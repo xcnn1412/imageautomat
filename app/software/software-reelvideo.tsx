@@ -8,5 +8,9 @@ const ReelVideo = dynamic(() => import("@/components/ReelVideo").then(mod => ({ 
 })
 
 export function SoftwareReelVideo() {
-    return <ReelVideo />
+    return (
+        <div id="reel-photobooth">
+            <ReelVideo />
+        </div>
+    )
 }

@@ -40,7 +40,7 @@ export default function Home() {
             <HeroSection />
             <TextSlideshow2 />
             <ProductSection />
-            <TextSlideshowProgram />
+            {/* <TextSlideshowProgram /> */}
             <HomeSoftwareFeatures />
             <VideoGallery />
             <SignatureReel />

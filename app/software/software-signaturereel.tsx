@@ -8,5 +8,9 @@ const SignatureReel = dynamic(() => import("@/components/SignatureReel").then(mo
 })
 
 export function SoftwareSignatureReel() {
-    return <SignatureReel />
+    return (
+        <div id="signature-photobooth">
+            <SignatureReel />
+        </div>
+    )
 }
