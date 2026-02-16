@@ -27,7 +27,7 @@ export function SlideshowSection() {
             align: 'center',
             skipSnaps: false,
         },
-        [Autoplay({ delay: 4000, stopOnInteraction: false })]
+        [Autoplay({ delay: 4000, stopOnInteraction: false }) as any]
     )
 
     const scrollPrev = useCallback(() => {
