@@ -34,6 +34,25 @@ export function HeroSection() {
             ลงทุนครั้งเดียว สร้างรายได้ระยะยาว — คืนทุนภายใน 6 เดือน
           </p>
 
+          {/* Feature Pills */}
+          <div
+            className={`mt-6 flex flex-wrap items-center justify-center gap-3 transition-all duration-700 delay-250 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          >
+            {[
+              { text: 'ผลิตในไทย', bg: 'bg-green-50', text_color: 'text-green-700' },
+              { text: 'รับประกัน 1 ปี', bg: 'bg-blue-50', text_color: 'text-blue-700' },
+              { text: 'ฟรีอัปเดต', bg: 'bg-purple-50', text_color: 'text-purple-700' },
+              { text: 'บริการหลังขาย', bg: 'bg-orange-50', text_color: 'text-orange-700' }
+            ].map((badge) => (
+              <span 
+                key={badge.text}
+                className={`px-4 py-2 rounded-full ${badge.bg} ${badge.text_color} text-sm font-medium`}
+              >
+                {badge.text}
+              </span>
+            ))}
+          </div>
+
           {/* CTAs */}
           <div
             className={`mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
@@ -71,6 +90,23 @@ export function HeroSection() {
               <span className="text-tiger-orange font-bold">100%</span>
               <span>ผลิตในไทย</span>
             </div>
+          </div>
+
+          {/* Service Links */}
+          <div
+            className={`mt-8 flex items-center justify-center gap-6 text-sm transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          >
+            <Link href="/rental" className="text-deep-space-blue/60 hover:text-deep-space-blue transition-colors">
+              บริการเช่า
+            </Link>
+            <span className="text-deep-space-blue/20">•</span>
+            <Link href="/oem" className="text-deep-space-blue/60 hover:text-deep-space-blue transition-colors">
+              รับผลิต OEM
+            </Link>
+            <span className="text-deep-space-blue/20">•</span>
+            <Link href="/software" className="text-deep-space-blue/60 hover:text-deep-space-blue transition-colors">
+              ซอฟต์แวร์ Imageland
+            </Link>
           </div>
         </div>
       </div>
