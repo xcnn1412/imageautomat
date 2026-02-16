@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
+import { ShoppingCart, Calendar, Laptop, Factory, Phone, Star } from "lucide-react"
 
 // LINE Icon Component
 const LineIcon = ({ className = "" }: { className?: string }) => (
@@ -11,10 +12,11 @@ const LineIcon = ({ className = "" }: { className?: string }) => (
 )
 
 const navLinks = [
-  { href: "/product", label: "สินค้าของเรา", featured: true },
-  { href: "/software", label: "ซอฟต์แวร์ของเรา", featured: false },
-  { href: "/payment", label: "ระบบชำระเงิน", featured: false },
-  { href: "/contact", label: "ติดต่อเรา", featured: false },
+  { href: "/product", label: "ซื้อตู้", icon: ShoppingCart, featured: false },
+  { href: "/rental", label: "เช่าตู้", icon: Calendar, featured: false },
+  { href: "/software", label: "ซอฟต์แวร์", icon: Laptop, featured: false },
+  { href: "/oem", label: "OEM", icon: Factory, featured: false },
+  { href: "/contact", label: "ติดต่อเรา", icon: Phone, featured: false },
 ]
 
 export function Navigation() {
@@ -41,108 +43,79 @@ export function Navigation() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${pathname !== "/"
-        ? "bg-white shadow-md shadow-black/5 backdrop-blur-2xl"
+        ? "bg-white shadow-md shadow-black/5"
         : isScrolled
-          ? "bg-white/80 backdrop-blur-2xl"
-          : "bg-transparent"
+          ? "bg-white/95 backdrop-blur-xl shadow-md shadow-black/5"
+          : "bg-white/80 backdrop-blur-xl"
         }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex h-20 lg:h-24 items-center justify-between">
+        <div className="flex h-20 lg:h-24 items-center justify-between gap-8">
           {/* Logo */}
-          <a href="/" className="flex items-center group">
-            <span className="font-serif text-2xl lg:text-3xl tracking-tight text-deep-space-blue">
+          <a href="/" className="flex items-center group flex-shrink-0">
+            <span className="font-serif text-xl lg:text-2xl tracking-tight text-deep-space-blue font-bold">
               IMAGE<span className="text-tiger-orange">AUTOMAT</span>
             </span>
           </a>
 
-          {/* Desktop Navigation - Centered */}
-          <div className="hidden lg:flex items-center gap-10">
-            {navLinks.map((link) =>
-              link.featured ? (
-                <a
-                  key={link.href}
-                  href={resolveHref(link.href)}
-                  className="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden"
-                  style={{
-                    background: 'linear-gradient(135deg, #FB8500 0%, #e07600 100%)',
-                    animation: 'orange-glow 2.5s ease-in-out infinite',
-                  }}
-                >
-                  {/* Auto shimmer sweep */}
-                  <span
-                    className="absolute inset-0 rounded-full"
-                    style={{
-                      background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%)',
-                      animation: 'auto-shimmer 4s ease-in-out infinite',
-                    }}
-                  />
-
-                  {/* Sparkle icon with pulse */}
-                  <svg
-                    className="relative z-10 w-3.5 h-3.5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{ animation: 'sparkle-pulse 2s ease-in-out infinite' }}
-                  >
-                    <path d="M12 2L14.09 8.26L20 9.27L15.55 13.97L16.91 20L12 16.9L7.09 20L8.45 13.97L4 9.27L9.91 8.26L12 2Z" fill="currentColor" />
-                  </svg>
-
-                  {/* Text */}
-                  <span className="relative z-10 tracking-wide transition-transform duration-300 group-hover:-translate-y-0.5">{link.label}</span>
-                </a>
-              ) : (() => {
-                const basePath = link.href.split("#")[0]
-                const isActive =
-                  link.href.startsWith("#")
-                    ? pathname === "/"
-                    : pathname === basePath
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-2 flex-1 justify-center">
+            {navLinks.map((link) => {
+              const basePath = link.href.split("#")[0]
+              const isActive = link.href.startsWith("#") ? pathname === "/" : pathname === basePath
+              
+              // Active button style (Orange pill with sparkle)
+              if (isActive) {
                 return (
                   <a
                     key={link.href}
                     href={resolveHref(link.href)}
-                    className={`relative text-sm font-medium transition-colors duration-300 group pb-1 ${isActive
-                      ? "text-deep-space-blue"
-                      : "text-deep-space-blue/60 hover:text-deep-space-blue"
-                      }`}
+                    className="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden bg-gradient-to-r from-tiger-orange to-tiger-orange/90 shadow-md shadow-tiger-orange/25"
                   >
-                    {link.label}
-                    {/* Active / hover underline */}
-                    <span
-                      className={`absolute bottom-0 left-0 right-0 h-[3px] rounded-full transition-all duration-500 ease-out ${isActive
-                        ? "bg-tiger-orange scale-x-100"
-                        : "bg-tiger-orange scale-x-0 group-hover:scale-x-100"
-                        }`}
-                      style={isActive ? { boxShadow: '0 2px 8px rgba(251,133,0,0.35)' } : undefined}
-                    />
+                    {/* Shimmer effect */}
+                    <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+                    
+                    {/* Star icon */}
+                    <Star className="relative z-10 w-4 h-4 fill-current" />
+                    
+                    {/* Text */}
+                    <span className="relative z-10 tracking-tight">{link.label}</span>
                   </a>
                 )
-              })()
-            )}
+              }
+              
+              // Inactive button style
+              return (
+                <a
+                  key={link.href}
+                  href={resolveHref(link.href)}
+                  className="group relative inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold text-deep-space-blue/70 hover:text-deep-space-blue hover:bg-deep-space-blue/5 transition-all duration-300"
+                >
+                  <link.icon className="w-4 h-4 text-deep-space-blue/50 group-hover:text-deep-space-blue transition-colors duration-300" />
+                  <span className="tracking-tight">{link.label}</span>
+                </a>
+              )
+            })}
           </div>
 
-          {/* CTA Button - LINE */}
-          <div className="hidden lg:block">
+          {/* CTA Button - LINE (Desktop) */}
+          <div className="hidden lg:block flex-shrink-0">
             <a
               href="https://lin.ee/Q5DSE1r"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex items-center gap-2 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-6 py-3 text-sm rounded-full transition-all duration-300 shadow-md shadow-[#06C755]/20 hover:shadow-lg hover:shadow-[#06C755]/40 hover:scale-105 active:scale-95 animate-subtle-bounce overflow-hidden"
+              className="group relative inline-flex items-center gap-2 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-6 py-2.5 text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#06C755]/25 hover:shadow-xl hover:shadow-[#06C755]/40 hover:scale-105 active:scale-95 overflow-hidden"
             >
-              {/* Animated glow ring */}
-              <span className="absolute inset-0 rounded-full animate-pulse-glow" />
-
               {/* Shimmer effect */}
               <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12" />
 
-              {/* LINE Icon with wiggle */}
-              <span className="relative z-10 transition-transform duration-300 group-hover:animate-wiggle">
-                <LineIcon />
+              {/* LINE Icon */}
+              <span className="relative z-10">
+                <LineIcon className="w-4 h-4" />
               </span>
 
               {/* Text */}
-              <span className="relative z-10 tracking-wide transition-transform duration-300 group-hover:-translate-y-0.5">
+              <span className="relative z-10 tracking-tight">
                 ขอราคาพิเศษ
               </span>
             </a>
@@ -151,78 +124,57 @@ export function Navigation() {
           {/* Mobile Menu Button */}
           <button
             type="button"
-            className="lg:hidden relative w-10 h-10 flex items-center justify-center text-deep-space-blue"
+            className="lg:hidden relative w-10 h-10 flex items-center justify-center text-deep-space-blue hover:bg-deep-space-blue/5 rounded-lg transition-colors duration-200"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
             suppressHydrationWarning
           >
-            <span className={`absolute w-6 h-px bg-current transform transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45' : '-translate-y-2'}`} />
-            <span className={`absolute w-6 h-px bg-current transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
-            <span className={`absolute w-6 h-px bg-current transform transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45' : 'translate-y-2'}`} />
+            <span className={`absolute w-5 h-0.5 bg-current rounded-full transform transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45' : '-translate-y-1.5'}`} />
+            <span className={`absolute w-5 h-0.5 bg-current rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
+            <span className={`absolute w-5 h-0.5 bg-current rounded-full transform transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45' : 'translate-y-1.5'}`} />
           </button>
         </div>
 
         {/* Mobile Menu */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-500 ${isMobileMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'}`}>
-          <div className="mt-4 mx-2 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-deep-space-blue/10 ring-1 ring-deep-space-blue/5">
-            <div className="flex flex-col gap-1 p-4">
-              {navLinks.map((link) =>
-                link.featured ? (
+        <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${isMobileMenuOpen ? 'max-h-[500px] opacity-100 pb-4' : 'max-h-0 opacity-0'}`}>
+          <div className="mt-2 bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl shadow-deep-space-blue/10 border border-deep-space-blue/5">
+            <div className="flex flex-col p-2">
+              {navLinks.map((link) => {
+                const basePath = link.href.split("#")[0]
+                const isActive = link.href.startsWith("#") ? pathname === "/" : pathname === basePath
+                
+                return (
                   <a
                     key={link.href}
                     href={resolveHref(link.href)}
-                    className="group relative inline-flex items-center gap-2 text-lg font-bold text-white rounded-xl transition-all duration-200 py-3 px-4 overflow-hidden"
-                    style={{
-                      background: 'linear-gradient(135deg, #FB8500 0%, #e07600 100%)',
-                    }}
+                    className={`group inline-flex items-center gap-3 text-base font-semibold rounded-xl transition-all duration-200 py-3 px-4 ${
+                      isActive
+                        ? "text-tiger-orange bg-tiger-orange/10"
+                        : "text-deep-space-blue/70 hover:text-deep-space-blue hover:bg-deep-space-blue/5"
+                    }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2L14.09 8.26L20 9.27L15.55 13.97L16.91 20L12 16.9L7.09 20L8.45 13.97L4 9.27L9.91 8.26L12 2Z" fill="currentColor" />
-                    </svg>
-                    {link.label}
+                    <link.icon className={`w-5 h-5 ${isActive ? "text-tiger-orange" : "text-deep-space-blue/50"}`} />
+                    <span className="tracking-tight">{link.label}</span>
+                    {isActive && <span className="ml-auto w-2 h-2 rounded-full bg-tiger-orange" />}
                   </a>
-                ) : (() => {
-                  const basePath = link.href.split("#")[0]
-                  const isActive =
-                    link.href.startsWith("#")
-                      ? pathname === "/"
-                      : pathname === basePath
-                  return (
-                    <a
-                      key={link.href}
-                      href={resolveHref(link.href)}
-                      className={`text-lg font-medium rounded-lg transition-all duration-200 py-3 px-4 ${isActive
-                        ? "text-deep-space-blue bg-tiger-orange/5 border-l-2 border-tiger-orange"
-                        : "text-deep-space-blue/70 hover:text-deep-space-blue hover:bg-deep-space-blue/5"
-                        }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {link.label}
-                    </a>
-                  )
-                })()
-              )}
-              <a
-                href="https://lin.ee/Q5DSE1r"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative mt-2 inline-flex items-center justify-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-6 py-5 text-base rounded-full w-full transition-all duration-300 shadow-lg shadow-[#06C755]/30 hover:shadow-xl hover:shadow-[#06C755]/50 active:scale-95 overflow-hidden"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {/* Shimmer effect */}
-                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12" />
-
-                {/* LINE Icon */}
-                <span className="relative z-10">
-                  <LineIcon className="w-6 h-6" />
-                </span>
-
-                {/* Text */}
-                <span className="relative z-10 tracking-wide">
-                  ขอราคาพิเศษ
-                </span>
-              </a>
+                )
+              })}
+              
+              {/* LINE CTA in Mobile */}
+              <div className="mt-2 pt-2 border-t border-deep-space-blue/5">
+                <a
+                  href="https://lin.ee/Q5DSE1r"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative inline-flex items-center justify-center gap-2 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-5 py-3.5 text-base rounded-xl w-full transition-all duration-300 shadow-lg shadow-[#06C755]/30 active:scale-95 overflow-hidden"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12" />
+                  <LineIcon className="relative z-10 w-5 h-5" />
+                  <span className="relative z-10 tracking-tight">ขอราคาพิเศษ</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

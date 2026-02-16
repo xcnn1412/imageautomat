@@ -3,31 +3,29 @@ import { ProductPageContent } from "./product-page-content"
 import { products } from "@/data/products"
 
 export const metadata: Metadata = {
-    title: "สินค้าตู้ถ่ายรูป Photobooth — เช่า & ซื้อ",
+    title: "ซื้อตู้โฟโต้บูธ Photobooth — IMAGEAUTOMAT",
     description:
-        "ตู้ถ่ายรูป Photobooth คุณภาพสูงจาก IMAGEAUTOMAT กว่า 50 รุ่น ทั้งเช่าและซื้อ เหมาะสำหรับงานแต่งงาน งานอีเวนต์ งานเปิดตัวสินค้า พร้อมทีมงานมืออาชีพ บริการทั่วประเทศไทย",
+        "ซื้อตู้ถ่ายรูป Photobooth คุณภาพพรีเมียม พร้อมรับประกันและบริการหลังการขาย เหมาะสำหรับธุรกิจรับจ้างถ่ายภาพ งานอีเวนต์ และร้านสตูดิโอ จาก IMAGEAUTOMAT",
     keywords: [
-        "ตู้ถ่ายรูป",
-        "photobooth",
-        "เช่าตู้ถ่ายรูป",
         "ซื้อตู้ถ่ายรูป",
-        "photobox",
-        "ซอฟต์แวร์ตู้ถ่ายรูป",
-        "Photobooth Software",
-        "camera 360",
-        "photobooth งานแต่งงาน",
-        "photobooth งานอีเวนต์",
-        "เช่า photobooth กรุงเทพ",
-        "Imageland",
+        "ตู้ถ่ายรูปขาย",
+        "photobooth ราคา",
+        "ซื้อ photobooth",
+        "ตู้โฟโต้บูธมือสอง",
+        "photobooth มือสอง",
+        "ตู้ถ่ายรูปคุณภาพสูง",
+        "ซื้อตู้โฟโต้บูธ",
+        "ขายตู้ photobooth",
+        "photobooth ธุรกิจ",
         "IMAGEAUTOMAT",
     ],
     alternates: {
         canonical: "/product",
     },
     openGraph: {
-        title: "สินค้าตู้ถ่ายรูป Photobooth — เช่า & ซื้อ | IMAGEAUTOMAT",
+        title: "ซื้อตู้โฟโต้บูธคุณภาพพรีเมียม | IMAGEAUTOMAT",
         description:
-            "ตู้ถ่ายรูปและ Photobooth คุณภาพสูงกว่า 50 รุ่น ทั้งเช่าและซื้อ เหมาะสำหรับทุกรูปแบบงาน พร้อมทีมงานมืออาชีพ",
+            "ซื้อตู้ถ่ายรูป Photobooth คุณภาพสูง พร้อมรับประกันและบริการหลังการขาย เหมาะสำหรับธุรกิจและสตูดิโอ",
         url: "https://www.imageautomat.com/product",
         type: "website",
         images: [
@@ -35,15 +33,15 @@ export const metadata: Metadata = {
                 url: "/images/og-image.jpg",
                 width: 1200,
                 height: 630,
-                alt: "สินค้าตู้ถ่ายรูป Photobooth จาก IMAGEAUTOMAT",
+                alt: "ซื้อตู้ถ่ายรูป Photobooth จาก IMAGEAUTOMAT",
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "สินค้าตู้ถ่ายรูป Photobooth — เช่า & ซื้อ | IMAGEAUTOMAT",
+        title: "ซื้อตู้โฟโต้บูธคุณภาพพรีเมียม | IMAGEAUTOMAT",
         description:
-            "ตู้ถ่ายรูปและ Photobooth คุณภาพสูงกว่า 50 รุ่น ทั้งเช่าและซื้อ เหมาะสำหรับทุกรูปแบบงาน",
+            "ซื้อตู้ถ่ายรูป Photobooth คุณภาพสูง พร้อมรับประกันและบริการหลังการขาย",
         images: ["/images/og-image.jpg"],
     },
 }
