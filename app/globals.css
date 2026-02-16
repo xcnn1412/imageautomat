@@ -6,7 +6,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-montserrat), var(--font-ibm-plex-thai), system-ui, sans-serif;
+  --font-sans:
+    var(--font-montserrat), var(--font-ibm-plex-thai), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -45,8 +46,8 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
   --color-deep-space-blue: #023047;
-  --color-tiger-orange: #FB8500;
-  --color-sky-blue-light: #8ECAE6;
+  --color-tiger-orange: #fb8500;
+  --color-sky-blue-light: #8ecae6;
 }
 
 :root {
@@ -130,7 +131,6 @@
 
 /* Custom animations for LINE CTA button */
 @keyframes subtle-bounce {
-
   0%,
   100% {
     transform: translateY(0);
@@ -142,7 +142,6 @@
 }
 
 @keyframes pulse-glow {
-
   0%,
   100% {
     box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.4);
@@ -154,7 +153,6 @@
 }
 
 @keyframes wiggle {
-
   0%,
   100% {
     transform: rotate(0deg);
@@ -193,7 +191,6 @@
 }
 
 @keyframes sparkle-pulse {
-
   0%,
   100% {
     transform: scale(1) rotate(0deg);
@@ -208,21 +205,23 @@
 }
 
 @keyframes orange-glow {
-
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(251, 133, 0, 0.3), 0 2px 8px rgba(251, 133, 0, 0.08);
+    box-shadow:
+      0 0 0 0 rgba(251, 133, 0, 0.3),
+      0 2px 8px rgba(251, 133, 0, 0.08);
     transform: scale(1);
   }
 
   50% {
-    box-shadow: 0 0 16px 3px rgba(251, 133, 0, 0.25), 0 4px 14px rgba(251, 133, 0, 0.15);
+    box-shadow:
+      0 0 16px 3px rgba(251, 133, 0, 0.25),
+      0 4px 14px rgba(251, 133, 0, 0.15);
     transform: scale(1.04);
   }
 }
 
 @keyframes auto-shimmer {
-
   0%,
   85%,
   100% {
@@ -270,12 +269,16 @@
 .logo-card {
   position: relative;
   z-index: 1;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, z-index 0s;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    z-index 0s;
 }
 
 .logo-card:hover {
   transform: scale(1.1);
-  border-color: #FB8500;
+  border-color: #fb8500;
   box-shadow: 0 8px 24px rgba(251, 133, 0, 0.15);
   z-index: 20;
 }
@@ -283,4 +286,20 @@
 .logo-card:hover img {
   transform: scale(1.08);
   transition: transform 0.3s ease;
+}
+
+/* Gradient animation for hero text */
+@keyframes gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% auto;
+  animation: gradient 3s ease infinite;
 }

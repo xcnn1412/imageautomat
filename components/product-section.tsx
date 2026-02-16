@@ -88,7 +88,7 @@ export function ProductSection() {
     const [hoveredId, setHoveredId] = useState<number | null>(null)
 
     return (
-        <section id="products" className="py-32 lg:py-40 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden">
+        <section id="products" className="py-32 lg:py-40 bg-gradient-to-b from-sky-blue-light/20 via-white to-orange-50/30 relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-[0.015]">
                 <div className="absolute inset-0" style={{
@@ -97,8 +97,9 @@ export function ProductSection() {
             </div>
 
             {/* Decorative Elements */}
-            <div className="absolute top-20 left-10 w-72 h-72 bg-tiger-orange/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-deep-space-blue/5 rounded-full blur-3xl" />
+            <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-tiger-orange/10 to-orange-400/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-tl from-sky-blue-light/15 to-blue-400/5 rounded-full blur-3xl" />
+            <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-purple-400/5 to-pink-400/5 rounded-full blur-3xl" />
 
             <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
                 {/* Header */}

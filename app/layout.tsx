@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Montserrat, IBM_Plex_Sans_Thai, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { GoogleAnalytics } from '@/components/google-analytics'
 import './globals.css'
 
 const montserrat = Montserrat({
@@ -172,6 +173,7 @@ export default function RootLayout({
       </head>
       <body className={`${montserrat.variable} ${ibmPlexSansThai.variable} ${playfairDisplay.variable} font-sans antialiased`} suppressHydrationWarning>
         {children}
+        <GoogleAnalytics />
         <Analytics />
       </body>
     </html>

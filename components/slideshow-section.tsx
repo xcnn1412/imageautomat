@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
@@ -97,6 +98,19 @@ export function SlideshowSection() {
                     <p className="text-sm sm:text-base md:text-lg text-deep-space-blue/70 leading-relaxed max-w-2xl mx-auto" style={{ lineHeight: '1.6' }}>
                         ออกแบบและผลิตตู้โฟโต้บูธครบวงจร แข็งแรง ทนทาน พร้อมติดตั้ง
                     </p>
+                    
+                    {/* CTA Button */}
+                    <div className="mt-8">
+                        <Link
+                            href="/oem"
+                            className="inline-flex items-center gap-2 bg-tiger-orange hover:bg-tiger-orange/90 text-white font-bold px-8 py-4 text-base rounded-full transition-all duration-300 shadow-lg shadow-tiger-orange/30 hover:shadow-xl hover:shadow-tiger-orange/50 hover:scale-105 active:scale-95"
+                        >
+                            <span className="tracking-wide">รับผลิตโครงสร้าง</span>
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </Link>
+                    </div>
                 </motion.div>
 
                 {/* Embla Carousel Container */}
