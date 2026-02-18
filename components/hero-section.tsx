@@ -31,7 +31,7 @@ export function HeroSection() {
           <p
             className={`mt-8 text-lg md:text-xl text-deep-space-blue/70 max-w-3xl mx-auto transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           >
-            ลงทุนครั้งเดียว สร้างรายได้ระยะยาว — คืนทุนภายใน 6 เดือน
+            ลงทุนครั้งเดียว สร้างรายได้ระยะยาว — คืนทุนภายใน 6-12 เดือน
           </p>
 
           {/* Feature Pills */}
