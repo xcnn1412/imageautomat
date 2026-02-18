@@ -15,7 +15,7 @@ export function RentalPageContent() {
             <RentalHero />
             <RentalFeatures />
             <RentalGrid />
-            <RentalPackages />
+            {/* <RentalPackages /> */}
             <RentalCta />
             <Footer />
         </main>
