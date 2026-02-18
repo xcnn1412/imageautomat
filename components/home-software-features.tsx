@@ -217,7 +217,7 @@ export function HomeSoftwareFeatures() {
                                 </p>
 
                                 {/* Feature list */}
-                                <ul className="relative z-10 space-y-2.5 sm:space-y-3 mb-1">
+                                <ul className="relative z-10 space-y-2.5 sm:space-y-3 mb-5">
                                     {program.features.map((feature, fIdx) => (
                                         <li key={fIdx} className="flex items-start gap-2.5">
                                             <span
@@ -232,6 +232,16 @@ export function HomeSoftwareFeatures() {
                                         </li>
                                     ))}
                                 </ul>
+
+                                {/* ดูตัวอย่าง Button */}
+                                <div className="relative z-10">
+                                    <span
+                                        className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-gradient-to-r ${program.gradientFrom} ${program.gradientTo} text-white shadow-md group-hover:shadow-lg group-hover:scale-[1.03] transition-all duration-300`}
+                                    >
+                                        ดูตัวอย่าง
+                                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
+                                    </span>
+                                </div>
 
                                 {/* Hover accent — bottom line */}
                                 <div
