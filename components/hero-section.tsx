@@ -73,7 +73,7 @@ export function HeroSection() {
           </div>
 
           {/* Mini Stats Row */}
-          <div
+          <div  
             className={`mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-deep-space-blue/60 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           >
             <div className="flex items-center gap-2">

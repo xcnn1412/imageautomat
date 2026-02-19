@@ -10,9 +10,11 @@ import {
     CreditCard,
     Ticket,
     CalendarCheck,
+    Globe,
 } from "lucide-react"
 import Link from "next/link"
 import type { LucideIcon } from "lucide-react"
+import { PaymentSlideShow1Row } from "@/components/payment-slideshow-1row"
 
 /* ────────────────────────────────────────────────────────────
    Data — Program Cards
@@ -114,6 +116,14 @@ const systemFeatures: SystemFeature[] = [
         gradientFrom: "from-indigo-500",
         gradientTo: "to-blue-400",
     },
+    {
+        icon: Globe,
+        title: "ระบบจัดการหลังบ้าน",
+        label: "dashboard",
+        description: "ระบบจัดการหลังบ้านผ่าน Website Online 100%",
+        gradientFrom: "from-tiger-orange",
+        gradientTo: "to-amber-400",
+    }
 ]
 
 /* ────────────────────────────────────────────────────────────
@@ -128,7 +138,7 @@ export function HomeSoftwareFeatures() {
             {/* Subtle top divider — visual bridge from prev section */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-deep-space-blue/10 to-transparent" />
 
-            <div className="max-w-6xl mx-auto relative">
+            <div className="max-w-7xl mx-auto relative">
                 {/* ═══════════════════════════════════════════════
                    1. Main Header Section
                    ═══════════════════════════════════════════════ */}
@@ -260,7 +270,7 @@ export function HomeSoftwareFeatures() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="relative bg-slate-50 rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-12 lg:p-14 mb-12 sm:mb-14 md:mb-16 border border-deep-space-blue/[0.04]"
+                    className="relative bg-slate-50 rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-14 lg:p-16 mb-12 sm:mb-14 md:mb-16 border border-deep-space-blue/[0.04]"
                 >
                     {/* Subtle background decoration */}
                     <div className="absolute top-0 right-0 w-48 h-48 bg-tiger-orange/[0.03] rounded-full blur-3xl pointer-events-none" />
@@ -282,13 +292,13 @@ export function HomeSoftwareFeatures() {
                                 style={{ lineHeight: "1.4" }}
                             >
                                 เสริมประสิทธิภาพด้วย
-                                <span className="text-tiger-orange"> ระบบจัดการหลังบ้าน</span>
+                                <span className="text-tiger-orange"> ระบบชำระเงินหลากหลาย</span>
                             </h4>
                         </motion.div>
                     </div>
 
-                    {/* 3-column compact feature cards */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 relative z-10">
+                    {/* 4-column compact feature cards */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 sm:gap-6 lg:gap-7 relative z-10">
                         {systemFeatures.map((feature, index) => (
                             <motion.div
                                 key={feature.title}
@@ -296,29 +306,34 @@ export function HomeSoftwareFeatures() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                                whileHover={{ y: -4 }}
-                                className="group relative bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 shadow-sm shadow-deep-space-blue/[0.04] hover:shadow-md hover:shadow-deep-space-blue/[0.08] transition-all duration-300 border border-deep-space-blue/[0.03]"
+                                whileHover={{ y: -6 }}
+                                className="group relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-9 shadow-md shadow-deep-space-blue/[0.06] hover:shadow-xl hover:shadow-deep-space-blue/[0.1] transition-all duration-400 border border-deep-space-blue/[0.04]"
                             >
-                                {/* Icon + label row */}
-                                <div className="flex items-center gap-3 mb-3 sm:mb-4">
+                                {/* Icon */}
+                                <div className="flex items-start justify-start mb-5 sm:mb-6 relative z-10">
                                     <div
-                                        className={`w-10 h-10 rounded-lg bg-gradient-to-br ${feature.gradientFrom} ${feature.gradientTo} flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300`}
+                                        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${feature.gradientFrom} ${feature.gradientTo} flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300`}
                                     >
-                                        <feature.icon className="w-5 h-5 text-white" strokeWidth={1.8} />
-                                    </div>
-                                    <div>
-                                        <h5 className="text-sm sm:text-base font-bold text-deep-space-blue leading-tight">
-                                            {feature.title}
-                                        </h5>
-                                        <span className="text-[10px] sm:text-xs font-medium text-deep-space-blue/30 uppercase tracking-wider">
-                                            {feature.label}
-                                        </span>
+                                        <feature.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" strokeWidth={1.8} />
                                     </div>
                                 </div>
 
+                                {/* Title */}
+                                <h5
+                                    className="relative z-10 text-lg sm:text-xl font-bold text-deep-space-blue mb-1.5 group-hover:text-tiger-orange transition-colors duration-300"
+                                    style={{ lineHeight: "1.5" }}
+                                >
+                                    {feature.title}
+                                </h5>
+
+                                {/* Label */}
+                                <span className="relative z-10 text-xs sm:text-sm font-medium text-deep-space-blue/30 uppercase tracking-wider block mb-4 sm:mb-5">
+                                    {feature.label}
+                                </span>
+
                                 {/* Description */}
                                 <p
-                                    className="text-xs sm:text-sm text-deep-space-blue/50"
+                                    className="relative z-10 text-sm sm:text-base text-deep-space-blue/50"
                                     style={{ lineHeight: "1.7" }}
                                 >
                                     {feature.description}
@@ -326,12 +341,17 @@ export function HomeSoftwareFeatures() {
 
                                 {/* Hover accent — bottom line */}
                                 <div
-                                    className={`absolute bottom-0 left-0 right-0 h-[2px] rounded-b-2xl bg-gradient-to-r ${feature.gradientFrom} ${feature.gradientTo} scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
+                                    className={`absolute bottom-0 left-0 right-0 h-[3px] rounded-b-3xl bg-gradient-to-r ${feature.gradientFrom} ${feature.gradientTo} scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
                                 />
                             </motion.div>
                         ))}
                     </div>
                 </motion.div>
+
+                {/* ═══════════════════════════════════════════════
+                   3.5 Payment Partners Slideshow (1 Row)
+                   ═══════════════════════════════════════════════ */}
+                <PaymentSlideShow1Row />
 
                 {/* ═══════════════════════════════════════════════
                    4. Call to Action (CTA)
