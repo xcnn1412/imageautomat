@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { paymentPartners } from "@/data/payment-partners"
 import type { PaymentPartner } from "@/data/payment-partners"
@@ -21,8 +22,8 @@ function MarqueeRow({
     return (
         <div className="relative overflow-hidden w-full">
             {/* Fade edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-16 bg-gradient-to-r from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 bg-gradient-to-l from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-16 bg-linear-to-r from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 bg-linear-to-l from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
 
             <div
                 className="marquee-track flex items-center gap-4 sm:gap-5 py-2"
@@ -34,11 +35,13 @@ function MarqueeRow({
                 {duplicated.map((partner, idx) => (
                     <div
                         key={`${partner.name}-${idx}`}
-                        className="flex-shrink-0 w-[90px] h-[90px] sm:w-[100px] sm:h-[100px] md:w-[110px] md:h-[110px] flex items-center justify-center bg-white rounded-2xl border border-deep-space-blue/[0.04] shadow-sm hover:shadow-md transition-shadow duration-300"
+                        className="shrink-0 w-[90px] h-[90px] sm:w-[100px] sm:h-[100px] md:w-[110px] md:h-[110px] flex items-center justify-center bg-white rounded-2xl border border-deep-space-blue/4 shadow-sm hover:shadow-md transition-shadow duration-300"
                     >
-                        <img
+                        <Image
                             src={partner.src}
                             alt={`${partner.name} — ช่องทางชำระเงิน`}
+                            width={62}
+                            height={62}
                             className="w-[50px] h-[50px] sm:w-[56px] sm:h-[56px] md:w-[62px] md:h-[62px] object-contain"
                             loading="lazy"
                         />

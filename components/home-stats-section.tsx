@@ -1,19 +1,81 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useState, useEffect, useCallback } from "react"
 import { motion, useInView } from "framer-motion"
 import { Calendar, Users, Clock, Award } from "lucide-react"
 
+/* ────────────────────────────────────────────────────────────
+   Stats Data
+   ──────────────────────────────────────────────────────────── */
 const stats = [
-    { icon: Award, value: "10+", label: "ปีแห่งประสบการณ์", color: "text-tiger-orange" },
-    { icon: Calendar, value: "5,000+", label: "งานที่ให้บริการ", color: "text-sky-blue-light" },
-    { icon: Users, value: "1,000+", label: "ลูกค้าที่ไว้วางใจ", color: "text-deep-space-blue" },
-    { icon: Clock, value: "24/7", label: "บริการตลอดเวลา", color: "text-purple-500" },
+    { icon: Award, numericValue: 10, suffix: "+", label: "ปีแห่งประสบการณ์", color: "text-tiger-orange", format: false },
+    { icon: Calendar, numericValue: 5000, suffix: "+", label: "งานที่ให้บริการ", color: "text-sky-blue-light", format: true },
+    { icon: Users, numericValue: 1000, suffix: "+", label: "ลูกค้าที่ไว้วางใจ", color: "text-deep-space-blue", format: true },
+    { icon: Clock, numericValue: 24, suffix: "/7", label: "บริการตลอดเวลา", color: "text-purple-500", format: false },
 ]
 
+/* ────────────────────────────────────────────────────────────
+   CountUp Component — number rolling animation
+   ──────────────────────────────────────────────────────────── */
+function CountUp({
+    target,
+    suffix = "",
+    format = false,
+    duration = 2000,
+    trigger = false,
+}: {
+    target: number
+    suffix?: string
+    format?: boolean
+    duration?: number
+    trigger?: boolean
+}) {
+    const [current, setCurrent] = useState(0)
+    const hasAnimated = useRef(false)
+
+    const formatNumber = useCallback(
+        (n: number) => (format ? n.toLocaleString() : String(n)),
+        [format]
+    )
+
+    useEffect(() => {
+        if (!trigger || hasAnimated.current) return
+        hasAnimated.current = true
+
+        const startTime = performance.now()
+        let rafId: number
+
+        const animate = (now: number) => {
+            const elapsed = now - startTime
+            const progress = Math.min(elapsed / duration, 1)
+            // ease-out cubic for a natural deceleration feel
+            const eased = 1 - Math.pow(1 - progress, 3)
+            const value = Math.round(eased * target)
+            setCurrent(value)
+
+            if (progress < 1) {
+                rafId = requestAnimationFrame(animate)
+            }
+        }
+
+        rafId = requestAnimationFrame(animate)
+        return () => cancelAnimationFrame(rafId)
+    }, [trigger, target, duration])
+
+    return (
+        <span>
+            {formatNumber(current)}
+            {suffix}
+        </span>
+    )
+}
+
+/* ────────────────────────────────────────────────────────────
+   Main Component
+   ──────────────────────────────────────────────────────────── */
 export function HomeStatsSection() {
     const sectionRef = useRef(null)
-    const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
+    const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
 
     return (
         <section
@@ -82,21 +144,18 @@ export function HomeStatsSection() {
                                 </div>
                             </div>
 
-                            {/* Value */}
-                            <motion.div
-                                className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-deep-space-blue mb-2 tracking-tight"
-                                variants={{
-                                    hidden: { opacity: 0 },
-                                    visible: {
-                                        opacity: 1,
-                                        transition: { duration: 0.8, delay: 0.2 },
-                                    },
-                                }}
-                            >
+                            {/* Value with CountUp */}
+                            <div className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-deep-space-blue mb-2 tracking-tight">
                                 <span className="bg-gradient-to-b from-deep-space-blue to-deep-space-blue/70 bg-clip-text text-transparent">
-                                    {stat.value}
+                                    <CountUp
+                                        target={stat.numericValue}
+                                        suffix={stat.suffix}
+                                        format={stat.format}
+                                        duration={2000}
+                                        trigger={isInView}
+                                    />
                                 </span>
-                            </motion.div>
+                            </div>
 
                             {/* Label */}
                             <div className="text-sm md:text-base text-deep-space-blue/60 font-medium px-2">
@@ -109,3 +168,4 @@ export function HomeStatsSection() {
         </section>
     )
 }
+

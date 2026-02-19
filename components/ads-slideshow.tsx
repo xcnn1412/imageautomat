@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect, useCallback, useMemo } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 import { Play, Pause, ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react"
 import { motion, useInView } from "framer-motion"
 import { SHOWCASE_ITEMS, ShowcaseItem } from "@/data/ads-showcase"
@@ -19,8 +19,12 @@ export function AdsSlideshow() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
   
-  // Shuffle videos on mount
-  const shuffledItems = useMemo(() => shuffleArray(SHOWCASE_ITEMS), [])
+  // Initialize with original order (SSR-stable), then shuffle on client mount
+  const [shuffledItems, setShuffledItems] = useState(SHOWCASE_ITEMS)
+  
+  useEffect(() => {
+    setShuffledItems(shuffleArray(SHOWCASE_ITEMS))
+  }, [])
   
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)

@@ -29,11 +29,18 @@ const playfairDisplay = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: 'IMAGEAUTOMAT | Premium Photobooth Rental Thailand',
+    default: 'ตู้โฟโต้บูธพรีเมียม ผลิตในไทย จำหน่าย เช่า OEM | IMAGEAUTOMAT',
     template: '%s | IMAGEAUTOMAT',
   },
-  description: 'Premium photobooth rental service in Thailand. AI-powered photo experiences for weddings, corporate events, brand activations, and private parties. Instant prints, social sharing, custom branding.',
-  keywords: ['photobooth', 'photo booth rental', 'Thailand', 'Bangkok', 'wedding photobooth', 'corporate event', 'brand activation', 'AI photobooth', 'instant print', 'event photography'],
+  description: 'ตู้โฟโต้บูธคุณภาพพรีเมียม ผลิตในไทย 100% จำหน่าย เช่า รับผลิต OEM/ODM พร้อมซอฟต์แวร์ Imageland อัปเดตฟรีตลอดชีพ รับประกัน 1 ปี บริการหลังขายครบวงจร',
+  keywords: [
+    'ตู้โฟโต้บูธ', 'ซื้อตู้โฟโต้บูธ', 'ตู้ถ่ายรูป', 'photobooth',
+    'ผลิตตู้โฟโต้บูธ', 'ตู้โฟโต้บูธผลิตในไทย', 'ราคาตู้โฟโต้บูธ',
+    'เช่าโฟโต้บูธ', 'เช่าตู้ถ่ายรูป', 'photobooth rental',
+    'OEM photobooth', 'รับผลิตตู้ถ่ายรูป',
+    'ซอฟต์แวร์โฟโต้บูธ', 'Imageland', 'photobooth software',
+    'IMAGEAUTOMAT', 'imageautomat',
+  ],
   authors: [{ name: 'IMAGEAUTOMAT' }],
   creator: 'IMAGEAUTOMAT',
   publisher: 'IMAGEAUTOMAT',
@@ -50,21 +57,21 @@ export const metadata: Metadata = {
     locale: 'th_TH',
     url: 'https://www.imageautomat.com',
     siteName: 'IMAGEAUTOMAT',
-    title: 'IMAGEAUTOMAT | Premium Photobooth Rental Thailand',
-    description: 'Premium photobooth rental service in Thailand. AI-powered photo experiences for weddings, corporate events, brand activations, and private parties.',
+    title: 'ตู้โฟโต้บูธพรีเมียม ผลิตในไทย จำหน่าย เช่า OEM | IMAGEAUTOMAT',
+    description: 'ตู้โฟโต้บูธคุณภาพพรีเมียม ผลิตในไทย 100% จำหน่าย เช่า รับผลิต OEM/ODM พร้อมซอฟต์แวร์ครบวงจร',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'IMAGEAUTOMAT Premium Photobooth',
+        alt: 'ตู้โฟโต้บูธคุณภาพพรีเมียม ผลิตในไทย — IMAGEAUTOMAT',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'IMAGEAUTOMAT | Premium Photobooth Rental Thailand',
-    description: 'Premium photobooth rental service in Thailand. AI-powered photo experiences for weddings, corporate events, and brand activations.',
+    title: 'ตู้โฟโต้บูธพรีเมียม ผลิตในไทย | IMAGEAUTOMAT',
+    description: 'ตู้โฟโต้บูธคุณภาพพรีเมียม ผลิตในไทย 100% จำหน่าย เช่า รับผลิต OEM/ODM',
     images: ['/images/og-image.jpg'],
   },
   robots: {

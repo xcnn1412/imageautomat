@@ -211,7 +211,7 @@ export function HomeSoftwareFeatures() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: 0.12 * index }}
                                 whileHover={{ y: -6 }}
-                                className="group relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-9 shadow-md shadow-deep-space-blue/[0.06] hover:shadow-xl hover:shadow-deep-space-blue/[0.1] transition-all duration-400 border border-deep-space-blue/[0.04] cursor-pointer h-full"
+                                className="group relative flex flex-col bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-9 shadow-md shadow-deep-space-blue/[0.06] hover:shadow-xl hover:shadow-deep-space-blue/[0.1] transition-all duration-400 border border-deep-space-blue/[0.04] cursor-pointer h-full"
                             >
                                 {/* Large faded number — top-left */}
                                 <span
@@ -260,7 +260,7 @@ export function HomeSoftwareFeatures() {
                                 </ul>
 
                                 {/* ดูตัวอย่าง Button */}
-                                <div className="relative z-10">
+                                <div className="relative z-10 mt-auto">
                                     <span
                                         className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-gradient-to-r ${program.gradientFrom} ${program.gradientTo} text-white shadow-md group-hover:shadow-lg group-hover:scale-[1.03] transition-all duration-300`}
                                     >
