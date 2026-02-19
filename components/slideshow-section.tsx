@@ -78,19 +78,12 @@ export function SlideshowSection() {
                     </motion.span>
                     <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-deep-space-blue tracking-tight leading-[1.1] mb-4">
                         รับผลิต{' '}
-                        <motion.span
+                        <span
                             className="italic text-tiger-orange inline-block"
-                            animate={{
-                                textShadow: [
-                                    "0 0 0px rgba(255,127,80,0)",
-                                    "0 0 20px rgba(255,127,80,0.3)",
-                                    "0 0 0px rgba(255,127,80,0)"
-                                ]
-                            }}
-                            transition={{ duration: 3, repeat: Infinity }}
+                            style={{ textShadow: '0 0 12px rgba(255,127,80,0.15)' }}
                         >
                             โครงสร้างโฟโต้บูธ
-                        </motion.span>
+                        </span>
                     </h2>
                     <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-deep-space-blue font-medium mb-6 sm:mb-8" style={{ lineHeight: '1.4' }}>
                         Designed for stability
@@ -138,7 +131,7 @@ export function SlideshowSection() {
                                             fill
                                             className="object-contain transition-all duration-700 group-hover:scale-105 group-hover:brightness-105"
                                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 85vw, 70vw"
-                                            quality={index === 0 ? 75 : 60}
+                                            quality={index === 0 ? 65 : 50}
                                             priority={index === 0}
                                             loading={index === 0 ? "eager" : "lazy"}
                                         />

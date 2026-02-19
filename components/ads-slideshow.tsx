@@ -209,6 +209,7 @@ export function AdsSlideshow() {
                 muted={isMuted}
                 playsInline
                 loop={false}
+                preload="metadata"
                 controlsList="nodownload nofullscreen noremoteplayback"
                 disablePictureInPicture
                 onContextMenu={(e) => e.preventDefault()}
@@ -325,21 +326,14 @@ export function AdsSlideshow() {
               whileTap={{ scale: 0.95 }}
               aria-label={`Go to ${item.title}`}
             >
-              <div className="relative w-16 sm:w-20 md:w-24 aspect-square overflow-hidden rounded-lg sm:rounded-xl bg-deep-space-blue/10 snap-center">
-                <video
-                  src={item.src}
-                  className="absolute inset-0 h-full w-full object-contain"
-                  muted
-                  playsInline
-                  onContextMenu={(e) => e.preventDefault()}
-                />
+              <div className="relative w-16 sm:w-20 md:w-24 aspect-square overflow-hidden rounded-lg sm:rounded-xl snap-center bg-linear-to-br from-deep-space-blue/80 to-deep-space-blue/60 flex items-center justify-center">
+                <span className="text-lg sm:text-xl md:text-2xl font-bold text-white/90">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
                 {index === currentIndex && (
-                  <div className="absolute inset-0 rounded-xl bg-tiger-orange/10" />
+                  <div className="absolute inset-0 rounded-xl bg-tiger-orange/20 border-2 border-tiger-orange/40" />
                 )}
               </div>
-              <span className="absolute bottom-1 left-1 rounded-md bg-deep-space-blue/60 px-1.5 py-0.5 text-[10px] font-medium text-white backdrop-blur-sm">
-                {String(index + 1).padStart(2, "0")}
-              </span>
             </motion.button>
           ))}
         </motion.div>
