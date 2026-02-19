@@ -91,7 +91,7 @@ export function SlideshowSection() {
                     <p className="text-sm sm:text-base md:text-lg text-deep-space-blue/70 leading-relaxed max-w-2xl mx-auto" style={{ lineHeight: '1.6' }}>
                         ออกแบบและผลิตตู้โฟโต้บูธครบวงจร แข็งแรง ทนทาน พร้อมติดตั้ง
                     </p>
-                    
+
                     {/* CTA Button */}
                     <div className="mt-8">
                         <Link
@@ -130,8 +130,8 @@ export function SlideshowSection() {
                                             alt={`ผลงานตู้โฟโต้บูธ Photobooth Structure ผลิตภายในประเทศไทย แข็งแรงทนทาน - งานที่ ${index + 1}`}
                                             fill
                                             className="object-contain transition-all duration-700 group-hover:scale-105 group-hover:brightness-105"
-                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 85vw, 70vw"
-                                            quality={index === 0 ? 65 : 50}
+                                            sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 1024px) calc(85vw - 40px), 850px"
+                                            quality={index === 0 ? 50 : 40}
                                             priority={index === 0}
                                             loading={index === 0 ? "eager" : "lazy"}
                                         />

@@ -1,11 +1,14 @@
 import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
-import { HomeServicesSection } from "@/components/home-services-section"
 import { ProductSection } from "@/components/product-section"
 import dynamic from "next/dynamic"
 
 // Lazy load below-the-fold components to reduce initial JS bundle
+const HomeServicesSection = dynamic(() => import("@/components/home-services-section").then(mod => ({ default: mod.HomeServicesSection })), {
+    loading: () => <div className="min-h-[600px]" />,
+    ssr: true,
+})
 const AdsSlideshow = dynamic(() => import("@/components/ads-slideshow").then(mod => ({ default: mod.AdsSlideshow })), {
     loading: () => <div className="min-h-[600px]" />,
     ssr: true,
@@ -200,7 +203,7 @@ export default function Home() {
             <VideoGallery />
             <SignatureReel />
             <HomeStatsSection />
-            <CustomerSlideShow />            
+            <CustomerSlideShow />
             <ContactSection />
             <Footer />
         </main>
