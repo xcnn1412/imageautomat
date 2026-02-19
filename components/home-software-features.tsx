@@ -11,6 +11,7 @@ import {
     Ticket,
     CalendarCheck,
     Globe,
+    Camera,
 } from "lucide-react"
 import Link from "next/link"
 import type { LucideIcon } from "lucide-react"
@@ -76,6 +77,21 @@ const programs: ProgramItem[] = [
         gradientTo: "to-blue-400",
         number: "03",
         href: "/software#liveview-photobooth",
+    },
+    {
+        icon: Camera,
+        title: "3 Shot Photobooth",
+        tagline: "ถ่าย 3 ช็อต ได้ภาพจัดเต็ม",
+        features: [
+            "ถ่ายต่อเนื่อง 3 ภาพ จัดเลย์เอาต์อัตโนมัติ",
+            "เลือกเทมเพลตได้หลากหลายสไตล์",
+            "ปริ้นภาพคุณภาพสูงทันที พร้อมแชร์",
+        ],
+        accentColor: "text-rose-500",
+        gradientFrom: "from-rose-500",
+        gradientTo: "to-pink-400",
+        number: "04",
+        href: "/software#3shot-photobooth",
     },
 ]
 
@@ -170,7 +186,7 @@ export function HomeSoftwareFeatures() {
                         className="text-sm sm:text-base md:text-lg text-deep-space-blue/50 max-w-xl mx-auto"
                         style={{ lineHeight: "1.8" }}
                     >
-                        ซอฟต์แวร์ Photobooth 3 รูปแบบ ครอบคลุมทุกรูปแบบงานอีเวนต์
+                        ซอฟต์แวร์ Photobooth 4 รูปแบบ ครอบคลุมทุกรูปแบบงานอีเวนต์
                     </p>
 
                     {/* Decorative line */}
@@ -186,7 +202,7 @@ export function HomeSoftwareFeatures() {
                 {/* ═══════════════════════════════════════════════
                    2. Program Selection Grid (3 Cards)
                    ═══════════════════════════════════════════════ */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-7 mb-14 sm:mb-16 md:mb-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-7 mb-14 sm:mb-16 md:mb-20">
                     {programs.map((program, index) => (
                         <Link key={program.title} href={program.href}>
                             <motion.div

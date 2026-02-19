@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Film, PenLine, MonitorPlay, ChevronDown } from "lucide-react"
+import { Film, PenLine, MonitorPlay, Camera, ChevronDown } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 
 interface CtaItem {
@@ -38,6 +38,14 @@ const ctaButtons: CtaItem[] = [
         color: "from-sky-500 to-blue-500",
         glowColor: "bg-sky-500/20",
     },
+    {
+        icon: Camera,
+        title: "3 Shot Photobooth",
+        subtitle: "ถ่าย 3 ช็อต ได้ภาพจัดเต็ม",
+        href: "#3shot-photobooth",
+        color: "from-rose-500 to-pink-500",
+        glowColor: "bg-rose-500/20",
+    },
 ]
 
 const containerVariants = {
@@ -68,7 +76,7 @@ export function SoftwareFeatures() {
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
                     <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-deep-space-blue tracking-tight leading-[1.1]">
-                        ซอฟต์แวร์ Photobooth <span className="italic text-tiger-orange">3 แบบยอดนิยม</span>
+                        ซอฟต์แวร์ Photobooth <span className="italic text-tiger-orange">4 แบบยอดนิยม</span>
                         <br className="hidden md:block" /> ตอบโจทย์ทุกงานอีเวนต์
                     </h2>
                     <p className="mt-6 text-lg text-deep-space-blue/50 leading-relaxed max-w-2xl mx-auto">
@@ -78,7 +86,7 @@ export function SoftwareFeatures() {
 
                 {/* CTA Buttons Grid */}
                 <motion.div
-                    className="grid md:grid-cols-3 gap-5 lg:gap-6"
+                    className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"

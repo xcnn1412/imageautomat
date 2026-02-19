@@ -116,6 +116,10 @@ export const metadata: Metadata = {
 export default function Home() {
     return (
         <main className="min-h-screen bg-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+            />
             <Navigation />
             <HeroSection />
             <HomeServicesSection />

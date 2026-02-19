@@ -44,15 +44,10 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.imageautomat.com'),
   alternates: {
     canonical: '/',
-    languages: {
-      'en': '/en',
-      'th': '/th',
-    },
   },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    alternateLocale: 'th_TH',
+    locale: 'th_TH',
     url: 'https://www.imageautomat.com',
     siteName: 'IMAGEAUTOMAT',
     title: 'IMAGEAUTOMAT | Premium Photobooth Rental Thailand',
@@ -107,7 +102,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'IMAGEAUTOMAT',
-  description: 'Premium photobooth rental service in Thailand for weddings, corporate events, brand activations, and private parties.',
+  description: 'ตู้โฟโต้บูธพรีเมียม ผลิตในไทย 100% จำหน่าย เช่า OEM พร้อมซอฟต์แวร์ครบวงจร — IMAGEAUTOMAT Premium Photobooth Thailand',
   url: 'https://www.imageautomat.com',
   logo: 'https://www.imageautomat.com/logo.png',
   image: 'https://www.imageautomat.com/images/og-image.jpg',
@@ -126,33 +121,33 @@ const jsonLd = {
     name: 'Thailand',
   },
   priceRange: '$$',
-  serviceType: ['Photobooth Rental', 'Event Photography', 'AI Photo Booth', 'Brand Activation'],
+  serviceType: ['จำหน่ายตู้โฟโต้บูธ', 'เช่าตู้โฟโต้บูธ', 'รับผลิต OEM/ODM', 'ซอฟต์แวร์ Photobooth'],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Photobooth Services',
+    name: 'บริการตู้โฟโต้บูธ',
     itemListElement: [
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Wedding Photobooth',
-          description: 'Premium photobooth experience for weddings',
+          name: 'จำหน่ายตู้โฟโต้บูธ',
+          description: 'ตู้โฟโต้บูธคุณภาพพรีเมียม ผลิตในไทย 100% พร้อมซอฟต์แวร์ Imageland อัปเดตฟรีตลอดชีพ',
         },
       },
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Corporate Event Photobooth',
-          description: 'Professional photobooth for corporate events',
+          name: 'เช่าตู้โฟโต้บูธ',
+          description: 'บริการเช่าตู้โฟโต้บูธพร้อมทีมงานมืออาชีพ สำหรับงานแต่งงาน งานอีเวนต์ และงานองค์กร',
         },
       },
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Brand Activation Photobooth',
-          description: 'Custom branded photobooth for marketing activations',
+          name: 'รับผลิต OEM/ODM',
+          description: 'ออกแบบและผลิตตู้โฟโต้บูธตามสเปคที่ต้องการ MOQ 1 ตู้',
         },
       },
     ],
@@ -165,7 +160,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="th" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"

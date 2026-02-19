@@ -6,6 +6,7 @@ import { ProductHero } from "./product-hero"
 import { ProductGrid } from "./product-grid"
 import { ProductCta } from "./product-cta"
 
+
 export function ProductPageContent() {
     return (
         <main className="min-h-screen bg-white">

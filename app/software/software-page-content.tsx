@@ -7,6 +7,7 @@ import { SoftwareHero } from "./software-hero"
 import { SoftwareFeatures } from "./software-features"
 import { SoftwareReelVideo } from "./software-reelvideo"
 import { SoftwareSignatureReel } from "./software-signaturereel"
+import { Software3Shot } from "./software-3shot"
 import { SoftwareVideoHeader } from "./software-video-header"
 import { SoftwareWorkflow } from "./software-workflow"
 import { SoftwareCompatibility } from "./software-compatibility"
@@ -37,6 +38,7 @@ export function SoftwarePageContent() {
             {/* <HomeSoftwareFeatures /> */}
             <SoftwareReelVideo />
             <SoftwareSignatureReel />
+            <Software3Shot />
             <SoftwareWorkflow />
             <SoftwareVideoHeader />
             <VideoGallery />
