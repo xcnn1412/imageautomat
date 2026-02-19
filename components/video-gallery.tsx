@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback, useMemo } from "react"
 import { Play, Pause, ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react"
 import { motion, useInView } from "framer-motion"
 import { VideoSlide, ALL_VIDEOS, getUniqueCategories, CATEGORY_LABEL_MAP } from "@/data/videos"
+import { LazyVideo } from "@/components/lazy-video"
 
 // Dynamically generate categories from data
 const uniqueCategories = getUniqueCategories()
@@ -252,7 +253,7 @@ export function VideoGallery() {
             {/* Fixed-height video area - Mobile optimized */}
             <div className="relative h-[75vw] sm:h-[60vw] md:h-[56vw] max-h-[70vh] min-h-[280px] sm:min-h-[350px] md:min-h-[400px] w-full overflow-hidden bg-deep-space-blue">
               {/* Active video */}
-              <video
+              <LazyVideo
                 ref={activeVideoRef}
                 key={`${activeCategory}-${currentVideo?.id}`}
                 src={currentVideo?.src}
@@ -262,6 +263,7 @@ export function VideoGallery() {
                 muted
                 playsInline
                 loop={false}
+                preload="metadata"
                 controlsList="nodownload nofullscreen noremoteplayback"
                 disablePictureInPicture
                 onContextMenu={(e) => e.preventDefault()}
@@ -377,11 +379,12 @@ export function VideoGallery() {
               aria-label={`Go to ${video.title}`}
             >
               <div className="relative w-16 sm:w-20 md:w-24 aspect-square overflow-hidden rounded-lg sm:rounded-xl bg-deep-space-blue/10 snap-center">
-                <video
+                <LazyVideo
                   src={video.src}
                   className="absolute inset-0 h-full w-full object-contain"
                   muted
                   playsInline
+                  preload="metadata"
                   onContextMenu={(e) => e.preventDefault()}
                 />
                 {index === currentIndex && (

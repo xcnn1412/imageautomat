@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react"
 import { Play, Pause, ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react"
 import { motion, useInView } from "framer-motion"
 import { REEL_VIDEOS, ReelVideoItem } from "@/data/reel-videos"
+import { LazyVideo } from "@/components/lazy-video"
 
 export function ReelVideo() {
     const sectionRef = useRef(null)
@@ -182,7 +183,7 @@ export function ReelVideo() {
                         {/* Fixed-height video area - Mobile optimized */}
                         <div className="relative h-[75vw] sm:h-[60vw] md:h-[56vw] max-h-[70vh] min-h-[280px] sm:min-h-[350px] md:min-h-[400px] w-full overflow-hidden bg-deep-space-blue">
                             {/* Active video */}
-                            <video
+                            <LazyVideo
                                 ref={activeVideoRef}
                                 key={currentVideo?.id}
                                 src={currentVideo?.src}
@@ -192,6 +193,7 @@ export function ReelVideo() {
                                 muted={isMuted}
                                 playsInline
                                 loop={false}
+                                preload="metadata"
                                 controlsList="nodownload nofullscreen noremoteplayback"
                                 disablePictureInPicture
                                 onContextMenu={(e) => e.preventDefault()}
@@ -304,11 +306,12 @@ export function ReelVideo() {
                             aria-label={`Go to ${video.title}`}
                         >
                             <div className="relative w-16 sm:w-20 md:w-24 aspect-square overflow-hidden rounded-lg sm:rounded-xl bg-deep-space-blue/10 snap-center">
-                                <video
+                                <LazyVideo
                                     src={video.src}
                                     className="absolute inset-0 h-full w-full object-contain"
                                     muted
                                     playsInline
+                                    preload="metadata"
                                     onContextMenu={(e) => e.preventDefault()}
                                 />
                                 {index === currentIndex && (

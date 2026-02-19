@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react"
 import { Play, Pause, ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react"
 import { motion, useInView } from "framer-motion"
 import { SHOWCASE_ITEMS, ShowcaseItem } from "@/data/ads-showcase"
+import { LazyVideo } from "@/components/lazy-video"
 
 // Shuffle array helper function
 function shuffleArray<T>(array: T[]): T[] {
@@ -18,14 +19,14 @@ function shuffleArray<T>(array: T[]): T[] {
 export function AdsSlideshow() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
-  
+
   // Initialize with original order (SSR-stable), then shuffle on client mount
   const [shuffledItems, setShuffledItems] = useState(SHOWCASE_ITEMS)
-  
+
   useEffect(() => {
     setShuffledItems(shuffleArray(SHOWCASE_ITEMS))
   }, [])
-  
+
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
   const [isMuted, setIsMuted] = useState(true)
@@ -199,7 +200,7 @@ export function AdsSlideshow() {
             {/* Fixed-height video area - Mobile optimized */}
             <div className="relative h-[75vw] sm:h-[60vw] md:h-[56vw] max-h-[70vh] min-h-[280px] sm:min-h-[350px] md:min-h-[400px] w-full overflow-hidden bg-deep-space-blue">
               {/* Active video */}
-              <video
+              <LazyVideo
                 ref={activeVideoRef}
                 key={currentItem?.id}
                 src={currentItem?.src}
