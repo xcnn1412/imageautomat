@@ -25,13 +25,8 @@ export interface Product {
     longDescription: string
     /** ฟีเจอร์เด่น (แนะนำ 4 ข้อ) */
     features: string[]
-    /** สเปค */
-    specs: {
-        size: string
-        weight: string
-        printTime: string
-        resolution: string
-    }
+    /** สเปค — กำหนด label และ value ได้อิสระ (แนะนำ 4 รายการ) */
+    specs: { label: string; value: string }[]
     /** Badge ที่โชว์มุมบนซ้ายการ์ด (ใส่ null ถ้าไม่ต้องการ) */
     badge: string | null
     /** สี Tailwind ของ Badge เช่น "bg-tiger-orange", "bg-purple-600" */
@@ -63,7 +58,7 @@ export const products: Product[] = [
         description: "ตู้ถ่ายรูปแบบคลาสสิค ดีไซน์เรียบหรู เหมาะสำหรับงานแต่งงานและงานทางการ",
         longDescription: "ตู้ถ่ายรูปแบบคลาสสิคที่ออกแบบมาเพื่อความเรียบหรูและทันสมัย เหมาะสำหรับงานแต่งงาน งานเลี้ยงสังสรรค์ และงานทางการทุกรูปแบบ มาพร้อมฟังก์ชันครบครัน ใช้งานง่าย พิมพ์รูปได้ไม่จำกัด",
         features: ["ใช้พื้นที่น้อย", "พิมพ์ได้ไม่จำกัด", "warp ตกแต่งตู้ได้", "เหมาะสำหรับงานอีเวนต์"],
-        specs: { size: "60 x 60 x 180 cm", weight: "45 kg", printTime: "< 10 วินาที", resolution: "Full HD" },
+        specs: [{ label: "ขนาด", value: "60 x 60 x 180 cm" }, { label: "น้ำหนัก", value: "45 kg" }, { label: "เวลาพิมพ์", value: "< 10 วินาที" }, { label: "ความละเอียด", value: "Full HD" }],
         badge: "ขายดี",
         badgeColor: "bg-tiger-orange",
         category: "classic",
@@ -78,7 +73,7 @@ export const products: Product[] = [
         description: "โฟโต้บูธสไตล์วินเทจร่วมสมัย",
         longDescription: "โฟโต้บูธที่ผสมผสานสไตล์วินเทจเข้ากับเทคโนโลยีสมัยใหม่ หน้าจอสัมผัส Full HD ผ้าม่านเลือกสีได้ตามธีมงาน พร้อมไฟสตูดิโอระดับมืออาชีพ",
         features: ["หน้าจอสัมผัส Full HD", "ผ้าม่านเลือกสีได้", "ไฟสตูดิโอ", "ดีไซน์วินเทจร่วมสมัย"],
-        specs: { size: "70 x 70 x 200 cm", weight: "55 kg", printTime: "< 10 วินาที", resolution: "Full HD" },
+        specs: [{ label: "ขนาด", value: "70 x 70 x 200 cm" }, { label: "น้ำหนัก", value: "55 kg" }, { label: "เวลาพิมพ์", value: "< 10 วินาที" }, { label: "ความละเอียด", value: "Full HD" }],
         badge: "Premium",
         badgeColor: "bg-purple-600",
         category: "premium",
@@ -93,7 +88,7 @@ export const products: Product[] = [
         description: "แพลตฟอร์มหมุน 360 องศา สร้างวิดีโอสุดเท่ที่ไวรัลได้ง่าย",
         longDescription: "แพลตฟอร์มถ่ายวิดีโอ 360 องศาที่สร้างคอนเทนต์สุดเท่ วิดีโอ Slow-motion คุณภาพสูง แชร์ลงโซเชียลได้ทันที เหมาะสำหรับงานเปิดตัวสินค้าและอีเวนต์สุดพิเศษ",
         features: ["วิดีโอ Slow-motion", "แชร์โซเชียลทันที", "พื้นที่กว้าง 1.2 ม.", "เอฟเฟกต์พิเศษหลากหลาย"],
-        specs: { size: "120 cm (เส้นผ่านศูนย์กลาง)", weight: "35 kg", printTime: "ประมวลผล 30 วินาที", resolution: "4K Video" },
+        specs: [{ label: "ขนาด", value: "120 cm (เส้นผ่านศูนย์กลาง)" }, { label: "น้ำหนัก", value: "35 kg" }, { label: "เวลาพิมพ์", value: "ประมวลผล 30 วินาที" }, { label: "ความละเอียด", value: "4K Video" }],
         badge: "ยอดนิยม",
         badgeColor: "bg-green-600",
         category: "360",
@@ -108,7 +103,7 @@ export const products: Product[] = [
         description: "ตู้ถ่ายรูปขนาดกะทัดรัด เคลื่อนย้ายง่าย เหมาะกับทุกขนาดงาน",
         longDescription: "ตู้ถ่ายรูปขนาดกะทัดรัดที่ออกแบบมาเพื่อความสะดวกในการเคลื่อนย้าย น้ำหนักเบา ติดตั้งง่าย ใน 15 นาที เหมาะกับทุกขนาดงาน ทั้งงานเล็กและงานใหญ่",
         features: ["น้ำหนักเบา", "ติดตั้งใน 15 นาที", "ประหยัดพื้นที่", "เคลื่อนย้ายง่าย"],
-        specs: { size: "50 x 50 x 170 cm", weight: "30 kg", printTime: "< 10 วินาที", resolution: "Full HD" },
+        specs: [{ label: "ขนาด", value: "50 x 50 x 170 cm" }, { label: "น้ำหนัก", value: "30 kg" }, { label: "เวลาพิมพ์", value: "< 10 วินาที" }, { label: "ความละเอียด", value: "Full HD" }],
         badge: null,
         badgeColor: "",
         category: "compact",
@@ -123,7 +118,7 @@ export const products: Product[] = [
         description: "ดีไซน์ย้อนยุค สไตล์วินเทจ สร้างบรรยากาศพิเศษให้งานของคุณ",
         longDescription: "ตู้ถ่ายรูปสไตล์วินเทจที่จะสร้างบรรยากาศย้อนยุคสุดพิเศษให้กับงานของคุณ มาพร้อมฟิลเตอร์วินเทจ กรอบรูปคลาสสิค และม่านแดงหรูหรา",
         features: ["ฟิลเตอร์วินเทจ", "กรอบรูปคลาสสิค", "ม่านแดงหรูหรา", "บรรยากาศย้อนยุค"],
-        specs: { size: "65 x 65 x 190 cm", weight: "50 kg", printTime: "< 10 วินาที", resolution: "Full HD" },
+        specs: [{ label: "ขนาด", value: "65 x 65 x 190 cm" }, { label: "น้ำหนัก", value: "50 kg" }, { label: "เวลาพิมพ์", value: "< 10 วินาที" }, { label: "ความละเอียด", value: "Full HD" }],
         badge: null,
         badgeColor: "",
         category: "vintage",
@@ -138,7 +133,7 @@ export const products: Product[] = [
         description: "กรอบไฟ LED เปลี่ยนสีได้ ปรับแต่งตามธีมงานได้อย่างอิสระ",
         longDescription: "ตู้ถ่ายรูปพร้อมกรอบไฟ LED เปลี่ยนสีได้ 16 ล้านสี ปรับแต่งตามธีมงานของคุณได้อย่างอิสระ ควบคุมง่ายผ่านรีโมท มาพร้อมเอฟเฟกต์เคลื่อนไหวสุดเท่",
         features: ["RGB LED 16 ล้านสี", "รีโมทควบคุม", "เอฟเฟกต์เคลื่อนไหว", "ปรับแต่งตามธีม"],
-        specs: { size: "120 cm (เส้นผ่านศูนย์กลาง)", weight: "40 kg", printTime: "ประมวลผล 30 วินาที", resolution: "4K Video" },
+        specs: [{ label: "ขนาด", value: "120 cm (เส้นผ่านศูนย์กลาง)" }, { label: "น้ำหนัก", value: "40 kg" }, { label: "เวลาพิมพ์", value: "ประมวลผล 30 วินาที" }, { label: "ความละเอียด", value: "4K Video" }],
         badge: "ใหม่",
         badgeColor: "bg-sky-500",
         category: "led",
@@ -153,7 +148,7 @@ export const products: Product[] = [
         description: "ชุดพรีเมียมครบเซ็ต รวมตู้ถ่ายรูป ไฟสตูดิโอ และอุปกรณ์ครบครัน",
         longDescription: "ชุดพรีเมียมครบเซ็ตที่รวมทุกอย่างไว้ในที่เดียว ตู้ถ่ายรูปมุมสูงที่ให้มุมมองใหม่ ไฟสตูดิโอระดับ Pro และอุปกรณ์ Props ครบครัน พร้อมให้บริการทันที",
         features: ["ชุดพร้อมใช้งาน", "ไฟสตูดิโอ Pro", "อุปกรณ์ Props ครบ", "มุมถ่ายสูงพิเศษ"],
-        specs: { size: "80 x 80 x 250 cm", weight: "60 kg", printTime: "< 10 วินาที", resolution: "Full HD" },
+        specs: [{ label: "ขนาด", value: "80 x 80 x 250 cm" }, { label: "น้ำหนัก", value: "60 kg" }, { label: "เวลาพิมพ์", value: "< 10 วินาที" }, { label: "ความละเอียด", value: "Full HD" }],
         badge: "Best Value",
         badgeColor: "bg-rose-500",
         category: "premium",
@@ -172,7 +167,7 @@ export const products: Product[] = [
     //     description: "คำอธิบายสั้น",
     //     longDescription: "คำอธิบายยาวสำหรับ Modal",
     //     features: ["ฟีเจอร์ 1", "ฟีเจอร์ 2", "ฟีเจอร์ 3", "ฟีเจอร์ 4"],
-    //     specs: { size: "00 x 00 x 00 cm", weight: "00 kg", printTime: "< 10 วินาที", resolution: "Full HD" },
+    //     specs: [{ label: "ขนาด", value: "00 x 00 x 00 cm" }, { label: "น้ำหนัก", value: "00 kg" }, { label: "เวลาพิมพ์", value: "< 10 วินาที" }, { label: "ความละเอียด", value: "Full HD" }],
     //     badge: null,           // ใส่ null ถ้าไม่ต้องการ หรือใส่ "ใหม่", "ขายดี" ฯลฯ
     //     badgeColor: "",        // เช่น "bg-tiger-orange", "bg-purple-600", "bg-sky-500"
     //     category: "classic",

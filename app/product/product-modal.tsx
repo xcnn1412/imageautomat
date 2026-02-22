@@ -82,12 +82,12 @@ export function ProductDetailModal({ product, onClose }: ProductDetailModalProps
                             <div className="mb-8">
                                 <h4 className="text-sm font-bold text-deep-space-blue uppercase tracking-wider mb-4">สเปค</h4>
                                 <div className="grid grid-cols-2 gap-3">
-                                    {Object.entries(product.specs).map(([key, value]) => (
-                                        <div key={key} className="bg-gray-50 rounded-xl p-3">
+                                    {product.specs.map((spec, idx) => (
+                                        <div key={idx} className="bg-gray-50 rounded-xl p-3">
                                             <span className="text-[10px] text-deep-space-blue/40 uppercase tracking-widest block mb-1">
-                                                {key === "size" ? "ขนาด" : key === "weight" ? "น้ำหนัก" : key === "printTime" ? "เวลาพิมพ์" : "ความละเอียด"}
+                                                {spec.label}
                                             </span>
-                                            <span className="text-sm font-medium text-deep-space-blue">{value}</span>
+                                            <span className="text-sm font-medium text-deep-space-blue">{spec.value}</span>
                                         </div>
                                     ))}
                                 </div>

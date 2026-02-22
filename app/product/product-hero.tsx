@@ -30,7 +30,7 @@ export function ProductHero() {
                     </h1>
                     <p className="text-lg lg:text-xl text-white/50 leading-relaxed max-w-2xl mx-auto mb-12">
                         ตู้ถ่ายรูปและ Photobooth คุณภาพสูง ออกแบบเพื่อสร้างประสบการณ์สุดพิเศษ <br className="hidden md:block" />
-                        กว่า 50 รุ่นให้เลือก ทั้งเช่าและซื้อ เหมาะกับทุกรูปแบบงานอีเวนต์
+                        กว่า 10+ รุ่นให้เลือก ทั้งเช่าและซื้อ เหมาะกับทุกรูปแบบงานอีเวนต์
                     </p>
 
                     {/* Stats */}
