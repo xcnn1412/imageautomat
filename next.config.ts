@@ -3,6 +3,15 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   compress: true,
 
+  // Redirect old/broken URLs to homepage (301 permanent)
+  redirects: async () => [
+    {
+      source: '/product-category/:path*',
+      destination: '/',
+      permanent: true,
+    },
+  ],
+
   turbopack: {
     root: process.cwd(),
   },
