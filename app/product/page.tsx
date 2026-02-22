@@ -1,6 +1,10 @@
 import type { Metadata } from "next"
-import { ProductPageContent } from "./product-page-content"
-import { products } from "@/data/products"
+import { Navigation } from "@/components/navigation"
+import { Footer } from "@/components/footer"
+import { ProductHero } from "./product-hero"
+import { ProductGrid } from "./product-grid"
+import { ProductCta } from "./product-cta"
+import { catalogProducts } from "@/data/catalogs"
 
 export const metadata: Metadata = {
     title: "ซื้อตู้โฟโต้บูธ Photobooth — IMAGEAUTOMAT",
@@ -46,9 +50,11 @@ export const metadata: Metadata = {
     },
 }
 
-// JSON-LD Structured Data — Product Catalog + ItemList
+// ============================================================
+// JSON-LD Structured Data — ใช้ catalogProducts (ข้อมูลจริงที่แสดงบนหน้า)
+// ============================================================
 function generateJsonLd() {
-    const itemListElements = products.map((product, index) => ({
+    const itemListElements = catalogProducts.map((product, index) => ({
         "@type": "ListItem" as const,
         position: index + 1,
         item: {
@@ -76,24 +82,32 @@ function generateJsonLd() {
     return {
         "@context": "https://schema.org",
         "@type": "ItemList",
-        name: "สินค้าตู้ถ่ายรูป Photobooth จาก IMAGEAUTOMAT",
+        name: "ซื้อตู้ถ่ายรูป Photobooth คุณภาพพรีเมียม จาก IMAGEAUTOMAT",
         description:
-            "รวมตู้ถ่ายรูปและ Photobooth คุณภาพสูงทุกรุ่น ทั้งบริการเช่าและจำหน่าย",
-        numberOfItems: products.length,
+            "รวมตู้ถ่ายรูปและโฟโต้บูธคุณภาพสูงทุกรุ่นพร้อมจำหน่าย ราคาคุ้มค่า รับประกัน 1 ปี บริการหลังการขายครบวงจร",
+        numberOfItems: catalogProducts.length,
         itemListElement: itemListElements,
     }
 }
 
+// ============================================================
+// Server Component — Googlebot indexes เนื้อหานี้ได้โดยตรง (ไม่ต้องรอ JS)
+// ============================================================
 export default function ProductPage() {
     const jsonLd = generateJsonLd()
 
     return (
-        <>
+        <main className="min-h-screen bg-white">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
-            <ProductPageContent />
-        </>
+
+            <Navigation />
+            <ProductHero />
+            <ProductGrid />
+            <ProductCta />
+            <Footer />
+        </main>
     )
 }

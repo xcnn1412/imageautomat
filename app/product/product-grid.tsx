@@ -33,7 +33,7 @@ export function ProductGrid() {
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
                         {catalogProducts.map((product) => (
                             <article
-                               key={product.id}
+                                key={product.id}
                                 className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100/80"
                                 onMouseEnter={() => setHoveredId(product.id)}
                                 onMouseLeave={() => setHoveredId(null)}
@@ -75,8 +75,9 @@ export function ProductGrid() {
                                         <ChevronRight className="w-4 h-4 text-deep-space-blue/30 group-hover:text-tiger-orange group-hover:translate-x-1 transition-all duration-300" />
                                     </div>
                                     <h3 className="font-serif text-xl text-deep-space-blue mb-1">{product.name}</h3>
-                                    <p className="text-deep-space-blue/40 text-sm mb-3">{product.nameTh}</p>
-                                    <p className="text-deep-space-blue/60 text-sm leading-relaxed line-clamp-2">{product.description}</p>
+                                    <p className="text-deep-space-blue/40 text-sm mb-2">{product.nameTh}</p>
+                                    <p className="text-deep-space-blue/60 text-sm leading-relaxed mb-1">{product.description}</p>
+                                    <p className="text-deep-space-blue/40 text-xs leading-relaxed line-clamp-2">{product.longDescription}</p>
 
                                     {/* Features preview */}
                                     <div className="mt-4 flex flex-wrap gap-2">

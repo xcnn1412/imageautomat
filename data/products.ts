@@ -203,7 +203,7 @@ export interface Stat {
 }
 
 export const stats: Stat[] = [
-    { icon: Boxes, value: "50+", label: "รุ่นให้เลือก" },
+    { icon: Boxes, value: "15+", label: "รุ่นให้เลือก" },
     { icon: HeartHandshake, value: "1,000", label: "ลูกค้าที่ใช้บริการ" },
     { icon: PartyPopper, value: "5,000", label: "งานที่ให้บริการ" },
 ]
