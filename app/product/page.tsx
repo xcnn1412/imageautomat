@@ -32,6 +32,8 @@ export const metadata: Metadata = {
             "ซื้อตู้ถ่ายรูป Photobooth คุณภาพสูง พร้อมรับประกันและบริการหลังการขาย เหมาะสำหรับธุรกิจและสตูดิโอ",
         url: "https://www.imageautomat.com/product",
         type: "website",
+        siteName: "IMAGEAUTOMAT",
+        locale: "th_TH",
         images: [
             {
                 url: "/images/og-image.jpg",
