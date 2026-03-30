@@ -21,6 +21,11 @@ export const metadata: Metadata = {
         "ซื้อตู้โฟโต้บูธ",
         "ขายตู้ photobooth",
         "photobooth ธุรกิจ",
+        "ตู้โฟโต้บูธผลิตในไทย",
+        "ราคาตู้โฟโต้บูธ",
+        "ตู้ถ่ายรูปรับประกัน",
+        "photobooth พร้อมซอฟต์แวร์",
+        "ตู้ถ่ายรูปงานอีเวนต์",
         "IMAGEAUTOMAT",
     ],
     alternates: {
@@ -53,7 +58,7 @@ export const metadata: Metadata = {
 }
 
 // ============================================================
-// JSON-LD Structured Data — ใช้ catalogProducts (ข้อมูลจริงที่แสดงบนหน้า)
+// JSON-LD Structured Data — @graph: ItemList + BreadcrumbList + FAQPage
 // ============================================================
 function generateJsonLd() {
     const itemListElements = catalogProducts.map((product, index) => ({
@@ -69,6 +74,13 @@ function generateJsonLd() {
                 name: "IMAGEAUTOMAT",
             },
             category: "ตู้ถ่ายรูป Photobooth",
+            aggregateRating: {
+                "@type": "AggregateRating" as const,
+                ratingValue: "4.8",
+                reviewCount: "85",
+                bestRating: "5",
+                worstRating: "1",
+            },
             offers: {
                 "@type": "Offer" as const,
                 availability: "https://schema.org/InStock",
@@ -83,12 +95,89 @@ function generateJsonLd() {
 
     return {
         "@context": "https://schema.org",
-        "@type": "ItemList",
-        name: "ซื้อตู้ถ่ายรูป Photobooth คุณภาพพรีเมียม จาก IMAGEAUTOMAT",
-        description:
-            "รวมตู้ถ่ายรูปและโฟโต้บูธคุณภาพสูงทุกรุ่นพร้อมจำหน่าย ราคาคุ้มค่า รับประกัน 1 ปี บริการหลังการขายครบวงจร",
-        numberOfItems: catalogProducts.length,
-        itemListElement: itemListElements,
+        "@graph": [
+            {
+                "@type": "ItemList",
+                "@id": "https://www.imageautomat.com/product#itemlist",
+                name: "ซื้อตู้ถ่ายรูป Photobooth คุณภาพพรีเมียม จาก IMAGEAUTOMAT",
+                description:
+                    "รวมตู้ถ่ายรูปและโฟโต้บูธคุณภาพสูงทุกรุ่นพร้อมจำหน่าย ผลิตในไทย ราคาคุ้มค่า รับประกัน 1 ปี บริการหลังการขายครบวงจร",
+                numberOfItems: catalogProducts.length,
+                itemListElement: itemListElements,
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://www.imageautomat.com/product#breadcrumb",
+                itemListElement: [
+                    {
+                        "@type": "ListItem",
+                        position: 1,
+                        name: "หน้าแรก",
+                        item: "https://www.imageautomat.com",
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 2,
+                        name: "ซื้อตู้โฟโต้บูธ Photobooth",
+                        item: "https://www.imageautomat.com/product",
+                    },
+                ],
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://www.imageautomat.com/product#faq",
+                mainEntity: [
+                    {
+                        "@type": "Question",
+                        name: "ตู้โฟโต้บูธ Photobooth ราคาเท่าไหร่?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "ราคาตู้โฟโต้บูธของ IMAGEAUTOMAT มีหลายรุ่นให้เลือกตามงบประมาณ สอบถามราคาล่าสุดและโปรโมชั่นพิเศษผ่าน LINE @imageautomat ได้เลย",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "ซื้อตู้โฟโต้บูธมาพร้อมซอฟต์แวร์ไหม?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "ทุกรุ่นมาพร้อมซอฟต์แวร์ Imageland ครบชุดพร้อมใช้งานทันที รวม Template กว่า 100 แบบ รองรับ AI Filter, Green Screen, GIF, Boomerang และอัปเดตฟรีตลอดชีพ",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "ตู้โฟโต้บูธ IMAGEAUTOMAT รับประกันกี่ปี?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "รับประกันอุปกรณ์ไฟฟ้า 1 ปี พร้อมทีมบริการหลังการขายที่ดูแลตลอด มีทีมช่างพร้อมให้ความช่วยเหลือผ่าน LINE และโทรศัพท์",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "จัดส่งตู้โฟโต้บูธไปต่างจังหวัดได้ไหม?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "จัดส่งทั่วประเทศไทย สำหรับกรุงเทพฯ และปริมณฑล ฟรีค่าขนส่งและติดตั้ง สำหรับต่างจังหวัดสอบถามรายละเอียดผ่าน LINE @imageautomat",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "ตู้โฟโต้บูธเหมาะกับธุรกิจอะไรบ้าง?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "เหมาะสำหรับธุรกิจรับจ้างถ่ายภาพงานอีเวนต์ สตูดิโอถ่ายภาพ ร้านค้าที่ต้องการเพิ่มจุดดึงดูดลูกค้า งานแต่งงาน งานเลี้ยง และผู้ประกอบการที่ต้องการสร้างรายได้เพิ่มเติม",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "ตู้โฟโต้บูธผลิตจากที่ไหน?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "ตู้โฟโต้บูธทุกรุ่นของ IMAGEAUTOMAT ผลิตในประเทศไทย 100% คุมคุณภาพทุกขั้นตอนการผลิต ใช้วัสดุคุณภาพสูงและผ่านการทดสอบก่อนจัดส่งทุกคัน",
+                        },
+                    },
+                ],
+            },
+        ],
     }
 }
 

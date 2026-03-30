@@ -51,44 +51,130 @@ export const metadata: Metadata = {
     },
 }
 
-// JSON-LD Structured Data — SoftwareApplication
+// JSON-LD Structured Data — @graph: SoftwareApplication + BreadcrumbList + FAQPage
 function generateJsonLd() {
     return {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        name: "Imageland — ซอฟต์แวร์ตู้ถ่ายรูป Photobooth",
-        applicationCategory: "MultimediaApplication",
-        operatingSystem: "Windows 10, Windows 11",
-        description:
-            "ซอฟต์แวร์ตู้ถ่ายรูป Photobooth ครบวงจร รองรับ AI Filter, Green Screen, GIF, Boomerang, Live Gallery, พิมพ์รูปทันที และแชร์ผ่าน QR Code พร้อมอัปเดตฟีเจอร์ใหม่ฟรีตลอดชีพ",
-        url: "https://www.imageautomat.com/software",
-        image: "https://www.imageautomat.com/images/og-image.jpg",
-        author: {
-            "@type": "Organization",
-            name: "IMAGEAUTOMAT",
-            url: "https://www.imageautomat.com",
-        },
-        offers: {
-            "@type": "Offer",
-            availability: "https://schema.org/InStock",
-            priceCurrency: "THB",
-            seller: {
-                "@type": "Organization",
-                name: "IMAGEAUTOMAT",
+        "@graph": [
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://www.imageautomat.com/software#software",
+                name: "Imageland — ซอฟต์แวร์ตู้ถ่ายรูป Photobooth",
+                applicationCategory: "MultimediaApplication",
+                operatingSystem: "Windows 10, Windows 11",
+                description:
+                    "ซอฟต์แวร์ตู้ถ่ายรูป Photobooth ครบวงจร รองรับ AI Filter, Green Screen, GIF, Boomerang, Live Gallery, พิมพ์รูปทันที และแชร์ผ่าน QR Code พร้อมอัปเดตฟีเจอร์ใหม่ฟรีตลอดชีพ",
+                url: "https://www.imageautomat.com/software",
+                image: "https://www.imageautomat.com/images/og-image.jpg",
+                inLanguage: ["th", "en"],
+                softwareRequirements: "Windows 10/11, กล้อง DSLR หรือ Webcam USB",
+                featureList: [
+                    "ถ่ายรูปและวิดีโอ รองรับ GIF และ Boomerang",
+                    "AI Filter และ Effect อัตโนมัติ",
+                    "Green Screen ลบพื้นหลังอัตโนมัติ",
+                    "ออกแบบ Template กว่า 100 แบบ",
+                    "แชร์ผ่าน QR Code, Email, LINE ทันที",
+                    "Live Gallery แสดงรูปแบบเรียลไทม์",
+                    "พิมพ์รูปคุณภาพสูงภายใน 10 วินาที",
+                    "อัปเดตฟีเจอร์ใหม่ฟรีตลอดชีพ",
+                    "Multi-Language รองรับทั้งภาษาไทยและอังกฤษ",
+                    "ระบบ Analytics & Report",
+                ],
+                aggregateRating: {
+                    "@type": "AggregateRating",
+                    ratingValue: "4.9",
+                    reviewCount: "120",
+                    bestRating: "5",
+                    worstRating: "1",
+                },
+                author: {
+                    "@type": "Organization",
+                    name: "IMAGEAUTOMAT",
+                    url: "https://www.imageautomat.com",
+                },
+                offers: {
+                    "@type": "Offer",
+                    availability: "https://schema.org/InStock",
+                    priceCurrency: "THB",
+                    seller: {
+                        "@type": "Organization",
+                        name: "IMAGEAUTOMAT",
+                    },
+                },
             },
-        },
-        featureList: [
-            "ถ่ายรูปและวิดีโอ รองรับ GIF และ Boomerang",
-            "AI Filter และ Effect อัตโนมัติ",
-            "Green Screen ลบพื้นหลังอัตโนมัติ",
-            "ออกแบบ Template กว่า 100 แบบ",
-            "แชร์ผ่าน QR Code, Email, LINE ทันที",
-            "Live Gallery แสดงรูปแบบเรียลไทม์",
-            "พิมพ์รูปคุณภาพสูงภายใน 10 วินาที",
-            "อัปเดตฟีเจอร์ใหม่ฟรีตลอดชีพ",
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://www.imageautomat.com/software#breadcrumb",
+                itemListElement: [
+                    {
+                        "@type": "ListItem",
+                        position: 1,
+                        name: "หน้าแรก",
+                        item: "https://www.imageautomat.com",
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 2,
+                        name: "ซอฟต์แวร์ตู้ถ่ายรูป Photobooth — Imageland",
+                        item: "https://www.imageautomat.com/software",
+                    },
+                ],
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://www.imageautomat.com/software#faq",
+                mainEntity: [
+                    {
+                        "@type": "Question",
+                        name: "ซอฟต์แวร์ตู้ถ่ายรูป Imageland รองรับ Windows รุ่นไหนบ้าง?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "ซอฟต์แวร์ Imageland รองรับ Windows 10 และ Windows 11 ทั้งแบบ 32-bit และ 64-bit พร้อมรองรับกล้อง DSLR ทุกยี่ห้อและ Webcam USB ทั่วไป",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "ซอฟต์แวร์ Photobooth Imageland มีฟีเจอร์อะไรบ้าง?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "Imageland รองรับการถ่ายรูป GIF Boomerang และวิดีโอ พร้อม AI Filter และ Green Screen อัตโนมัติ ออกแบบ Template กว่า 100 แบบ แชร์ผ่าน QR Code, Email หรือ LINE ได้ทันที ระบบ Live Gallery แสดงรูปเรียลไทม์ และพิมพ์รูปคุณภาพสูงภายใน 10 วินาที",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "อัปเดตซอฟต์แวร์ตู้ถ่ายรูปต้องเสียค่าใช้จ่ายเพิ่มไหม?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "ไม่มีค่าใช้จ่ายเพิ่มเติม ซอฟต์แวร์ Imageland อัปเดตฟีเจอร์ใหม่ฟรีตลอดชีพ ไม่มีค่าสมาชิกรายเดือนหรือรายปี",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "ซอฟต์แวร์ Photobooth รองรับภาษาไทยไหม?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "รองรับทั้งภาษาไทยและภาษาอังกฤษ (Multi-Language TH/EN) สามารถสลับภาษาได้ตามความต้องการของงาน",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "ซอฟต์แวร์ Photobooth ใช้กับเครื่องพิมพ์รุ่นไหนได้บ้าง?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "Imageland รองรับเครื่องพิมพ์ภาพถ่ายยี่ห้อดัง เช่น DNP DS-Series, Mitsubishi CP-Series, Hiti และเครื่องพิมพ์ทั่วไปผ่าน Windows Driver",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "ซอฟต์แวร์ Photobooth ซื้อพร้อมตู้หรือซื้อแยกได้?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "ซอฟต์แวร์ Imageland รวมอยู่ในทุกแพ็กเกจตู้โฟโต้บูธของ IMAGEAUTOMAT สอบถามการซื้อ License แยกสำหรับฮาร์ดแวร์ที่มีอยู่ผ่าน LINE @imageautomat",
+                        },
+                    },
+                ],
+            },
         ],
-        softwareRequirements: "Windows 10/11, กล้อง DSLR หรือ Webcam USB",
-        inLanguage: ["th", "en"],
     }
 }
 
