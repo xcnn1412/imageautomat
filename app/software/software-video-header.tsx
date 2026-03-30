@@ -1,5 +1,8 @@
 "use client"
 
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
+
 export function SoftwareVideoHeader() {
     return (
         <section id="liveview-photobooth" className="pt-12 lg:pt-16 pb-0 bg-deep-space-blue/5 relative overflow-hidden" aria-label="ตัวอย่างผลงานวิดีโอจากซอฟต์แวร์ LIVEVIEW PHOTOBOOTH">
@@ -20,6 +23,15 @@ export function SoftwareVideoHeader() {
                     <p className="mt-6 text-lg md:text-xl text-deep-space-blue/60 leading-relaxed max-w-2xl mx-auto">
                         ตัวอย่างผลลัพธ์ภาพที่ได้จากโปรแกรม
                     </p>
+
+                    {/* Internal link to sub-page — boosts SEO authority */}
+                    <Link
+                        href="/software/liveviewphotobooth"
+                        className="inline-flex items-center gap-2 mt-6 text-sky-600 hover:text-sky-700 font-medium text-sm transition-colors duration-200 group"
+                    >
+                        <span>ดูข้อมูล Liveview Photobooth ทั้งหมด</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                    </Link>
                 </div>
             </div>
         </section>

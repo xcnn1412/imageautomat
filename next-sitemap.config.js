@@ -6,9 +6,10 @@ module.exports = {
         const priorities = {
             '/': 1.0,
             '/product': 0.9,
-            '/software': 0.8,
+            '/software': 0.85,
+            '/software/liveviewphotobooth': 0.85,
             '/rental': 0.8,
-            '/oem': 0.7,
+            '/oem': 0.75,
             '/payment': 0.7,
             '/contact': 0.5,
         }

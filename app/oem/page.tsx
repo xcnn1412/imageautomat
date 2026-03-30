@@ -192,9 +192,6 @@ const jsonLd = {
         },
     ],
 }
-        ],
-    },
-}
 
 export default function OemPage() {
     return (
