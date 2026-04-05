@@ -20,7 +20,7 @@ export function SaleAndRental() {
         className="max-w-7xl mx-auto"
       >
         <motion.a
-          href="https://sale.imageautomat.com"
+          href="https://www.imageautomat.com/rental"
           target="_blank"
           rel="noopener noreferrer"
           className="group relative flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden rounded-2xl px-7 py-6 sm:px-10 sm:py-7 cursor-pointer"
@@ -98,7 +98,7 @@ export function SaleAndRental() {
               </motion.span>
             </motion.span>
             <span className="text-[11px] text-white/40 font-medium tracking-wide">
-              sale.imageautomat.com
+              www.imageautomat.com/rental
             </span>
           </div>
         </motion.a>
