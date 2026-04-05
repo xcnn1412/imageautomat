@@ -1,103 +1,121 @@
 "use client"
 
-import { Camera, Sparkles, Zap, Users, Heart, Building2, ArrowUpRight } from "lucide-react"
+import Image from "next/image"
+import { Wrench, Package, Building2, PartyPopper, ArrowRight } from "lucide-react"
 
 const services = [
   {
-    icon: Heart,
-    title: "Weddings",
-    titleThai: "งานแต่งงาน",
-    description: "Elegant photobooth setups and custom templates for your special day.",
+    icon: Wrench,
+    title: "วางแผนระบบให้เช่าตู้ถ่ายภาพ",
+    description: 'ให้คำปรึกษาการเริ่มธุรกิจให้เช่าตู้ถ่ายภาพและให้เช่า Photobooth ตั้งแต่เลือกโมเดลรายได้ อุปกรณ์ ไปจนถึงแผนการติดตั้งใช้งานจริง',
+    image: "/images/custom-booth.jpg",
+    gradient: "from-orange-500/20 to-amber-400/10",
+    iconBg: "bg-orange-100 text-orange-600",
+    stat: "Rental Setup",
+    href: "https://www.imageautomat.com/rental",
+  },
+  {
+    icon: Package,
+    title: "ให้เช่าตู้ถ่ายภาพ / ให้เช่า Photobooth",
+    description: 'ให้เช่าตู้ถ่ายภาพ และให้เช่า Photobooth หลากหลายรุ่น เหมาะสำหรับงานแต่ง ปาร์ตี้ และอีเวนต์ พร้อมส่งถึงที่และติดตั้งครบชุด',
+    image: "/images/catalog-booth.jpg",
+    gradient: "from-blue-500/20 to-sky-400/10",
+    iconBg: "bg-blue-100 text-blue-600",
+    stat: "Daily / Monthly",
+    href: "https://www.imageautomat.com/rental",
   },
   {
     icon: Building2,
-    title: "Corporate Events",
-    titleThai: "งานองค์กร",
-    description: "Professional branded photobooths for corporate gatherings.",
+    title: "ให้เช่า Software เชิงพาณิชย์",
+    description: "ซอฟต์แวร์หารายได้จาก Photobooth พร้อมระบบชำระเงิน QR Code แดชบอร์ดวิเคราะห์รายได้ Real-time",
+    image: "/images/mall-installation.jpg",
+    gradient: "from-purple-500/20 to-violet-400/10",
+    iconBg: "bg-purple-100 text-purple-600",
+    stat: "Pay-per-use",
+    href: "https://www.imageautomat.com/software",
   },
   {
-    icon: Sparkles,
-    title: "Brand Activations",
-    titleThai: "กิจกรรมส่งเสริมแบรนด์",
-    description: "Interactive experiences that boost engagement and awareness.",
-  },
-  {
-    icon: Users,
-    title: "Private Parties",
-    titleThai: "งานเลี้ยงส่วนตัว",
-    description: "Fun and memorable moments for any celebration.",
-  },
-  {
-    icon: Zap,
-    title: "AI Photo Booth",
-    titleThai: "บูธถ่ายภาพ AI",
-    description: "AI-powered photo transformations and creative filters.",
-  },
-  {
-    icon: Camera,
-    title: "Robot Booth",
-    titleThai: "บูธหุ่นยนต์",
-    description: "Robotic arm technology for dynamic photo captures.",
+    icon: PartyPopper,
+    title: "โซลูชันเช่าสำหรับงาน Event",
+    description: "แพ็กเกจให้เช่าตู้ถ่ายภาพสำหรับงาน Event พร้อม Branding หน้างาน และแชร์โซเชียลมีเดียได้ทันที",
+    image: "/images/event-usage.jpg",
+    gradient: "from-green-500/20 to-emerald-400/10",
+    iconBg: "bg-green-100 text-green-600",
+    stat: "Unlimited shots",
+    href: "https://www.imageautomat.com/software",
   },
 ]
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-32 lg:py-40 bg-background relative">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Header */}
-        <div className="max-w-3xl mb-20 lg:mb-28">
-          <span className="text-sm font-medium text-tiger-orange uppercase tracking-[0.3em] mb-6 block">
-            Our Services
+    <section
+      id="services"
+      className="relative py-20 lg:py-32 overflow-hidden"
+      style={{ background: "linear-gradient(180deg, rgba(142,202,230,0.10) 0%, #ffffff 100%)" }}
+    >
+      {/* Decorative blurred circles */}
+      <div className="pointer-events-none absolute top-20 left-10 w-72 h-72 bg-[#8ECAE6]/25 rounded-full blur-3xl" />
+      <div className="pointer-events-none absolute bottom-20 right-10 w-96 h-96 bg-[#FB8500]/10 rounded-full blur-3xl" />
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Section header */}
+        <div className="text-center mb-14">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#FB8500]/10 text-[#FB8500] text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+            RENTAL SOLUTIONS
           </span>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-deep-space-blue tracking-tight leading-[1.1]">
-            Perfect for <span className="italic">every</span> occasion
+          <h2 className="text-3xl lg:text-5xl font-extrabold text-[#023047] tracking-tight">
+            แพ็กเกจ<span className="text-[#FB8500]">ให้เช่าตู้ถ่ายภาพ ครบวงจร</span>
           </h2>
-          <p className="mt-8 text-lg text-deep-space-blue/60 leading-relaxed max-w-xl">
-            From intimate gatherings to grand celebrations, we bring the perfect photobooth experience to your event.
+          <p className="mt-4 text-[#023047]/60 max-w-xl mx-auto text-base lg:text-lg">
+            เลือกแพ็กเกจให้เช่าตู้ถ่ายภาพและให้เช่า Photobooth ที่เหมาะกับงานของคุณ พร้อมติดตั้งและซัพพอร์ตครบตั้งแต่ต้นจนจบ
           </p>
         </div>
 
-        {/* Services Grid - Elegant List Style */}
-        <div className="border-t border-deep-space-blue/10">
-          {services.map((service, index) => (
-            <a
-              key={service.title}
-              href="#contact"
-              className="group flex items-center justify-between py-8 lg:py-10 border-b border-deep-space-blue/10 hover:border-tiger-orange/30 transition-colors duration-500 cursor-pointer"
+        {/* 4-column grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.map((item) => (
+            <div
+              key={item.title}
+              className={`group relative rounded-2xl overflow-hidden border border-white/60 bg-gradient-to-br ${item.gradient} backdrop-blur-sm hover:shadow-xl hover:shadow-[#023047]/10 hover:scale-[1.02] transition-all duration-300`}
             >
-              <div className="flex items-center gap-6 lg:gap-10">
-                {/* Number */}
-                <span className="hidden md:block text-sm font-medium text-deep-space-blue/30 w-8">
-                  {String(index + 1).padStart(2, '0')}
+              {/* Image */}
+              <div className="relative overflow-hidden aspect-[4/3]">
+                <Image
+                  src={item.image}
+                  alt={`${item.title} - IMAGEAUTOMAT`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                {/* Stat badge */}
+                <span className="absolute top-3 right-3 px-3 py-1 rounded-full bg-white/90 text-[#023047] text-xs font-semibold backdrop-blur-sm shadow">
+                  {item.stat}
                 </span>
-                
-                {/* Icon */}
-                <div className="w-14 h-14 rounded-full bg-deep-space-blue/5 group-hover:bg-tiger-orange/10 flex items-center justify-center transition-colors duration-500">
-                  <service.icon className="w-6 h-6 text-deep-space-blue/60 group-hover:text-tiger-orange transition-colors duration-500" />
-                </div>
-                
-                {/* Content */}
-                <div>
-                  <h3 className="text-xl lg:text-2xl font-serif text-deep-space-blue group-hover:text-tiger-orange transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-deep-space-blue/40 mt-1 font-thai">
-                    {service.titleThai}
-                  </p>
-                </div>
               </div>
-              
-              <div className="flex items-center gap-8">
-                {/* Description - Hidden on mobile */}
-                <p className="hidden lg:block text-deep-space-blue/50 text-sm max-w-xs text-right leading-relaxed">
-                  {service.description}
+
+              {/* Content */}
+              <div className="p-5">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${item.iconBg}`}>
+                    <item.icon className="size-4" />
+                  </div>
+                  <h3 className="font-semibold text-[#023047] text-sm leading-tight">{item.title}</h3>
+                </div>
+                <p className="text-[#023047]/60 text-sm leading-relaxed mb-4">
+                  {item.description}
                 </p>
-                
-                {/* Arrow */}
-                <ArrowUpRight className="w-5 h-5 text-deep-space-blue/20 group-hover:text-tiger-orange group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#FB8500] hover:gap-2.5 transition-all duration-200"
+                >
+                  ขอรายละเอียดแพ็กเกจ
+                  <ArrowRight className="size-3.5" />
+                </a>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>
