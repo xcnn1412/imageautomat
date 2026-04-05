@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Montserrat, IBM_Plex_Sans_Thai, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { GoogleAnalytics } from '@/components/google-analytics'
+import { StickySocialMenu } from '@/components/sticky-social-menu'
 import { AppLoadingWrapper } from '@/components/loading/app-loading-wrapper'
 import './globals.css'
 
@@ -178,6 +179,7 @@ export default function RootLayout({
         <AppLoadingWrapper>
           {children}
         </AppLoadingWrapper>
+        <StickySocialMenu />
         <GoogleAnalytics />
         <Analytics />
       </body>
