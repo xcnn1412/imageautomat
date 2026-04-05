@@ -11,9 +11,9 @@ const featurePills = [
 ]
 
 const stats = [
-  { icon: Camera, number: "500+", label: "ตู้ที่ติดตั้งแล้ว" },
-  { icon: Users, number: "50+", label: "พาร์ทเนอร์" },
-  { icon: Monitor, number: "10M+", label: "รูปที่ถ่ายแล้ว" },
+  { icon: Camera, number: "50+", label: "ตู้ที่ติดตั้งแล้ว" },
+  { icon: Users, number: "10+", label: "พาร์ทเนอร์" },
+  { icon: Monitor, number: "5M+", label: "รูปที่ถ่ายแล้ว" },
 ]
 
 export function HeroSection() {
@@ -44,7 +44,8 @@ export function HeroSection() {
               style={{ animationDelay: "100ms" }}
             >
               ให้เช่าตู้ถ่ายภาพ &{" "}
-              <span className="inline-block bg-[#FB8500] text-white px-4 py-2 rounded-xl">
+              <span className="relative inline-block bg-[#FB8500] text-white px-4 py-2 rounded-xl animate-orange-glow overflow-hidden">
+                <span className="absolute inset-0 -translate-x-full animate-auto-shimmer bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-12deg]" />
                 Photobooth
               </span>
               <br />
@@ -101,13 +102,13 @@ export function HeroSection() {
             className="relative animate-fade-in-up"
             style={{ animationDelay: "200ms" }}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#023047]/15">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#023047]/15 max-w-[75%] mx-auto">
               <Image
-                src="/images/photobooth-main.jpg"
+                src="/photoboothkisok/headersection.webp"
                 alt="ให้เช่าตู้ถ่ายภาพและ Photobooth โดย IMAGEAUTOMAT"
                 width={600}
                 height={450}
-                className="w-full aspect-[4/3] object-cover"
+                className="w-full h-auto object-contain"
                 priority
                 fetchPriority="high"
               />

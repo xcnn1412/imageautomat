@@ -3,7 +3,6 @@
 import { Check, Box, Wrench, Truck, ShieldCheck, PhoneCall, Ruler, Palette } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { KisokGallery } from "@/components/kisok-gallery"
 
 const whatsIncluded = [
   {
@@ -195,8 +194,6 @@ export function StructureRentalSection() {
             </div>
           ))}
         </div>
-
-        <KisokGallery />
 
         {/* Trust note */}
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-muted-foreground">

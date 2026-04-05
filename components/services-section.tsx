@@ -8,7 +8,7 @@ const services = [
     icon: Wrench,
     title: "วางแผนระบบให้เช่าตู้ถ่ายภาพ",
     description: 'ให้คำปรึกษาการเริ่มธุรกิจให้เช่าตู้ถ่ายภาพและให้เช่า Photobooth ตั้งแต่เลือกโมเดลรายได้ อุปกรณ์ ไปจนถึงแผนการติดตั้งใช้งานจริง',
-    image: "/images/custom-booth.jpg",
+    image: "/photoboothkiosk/packagedetail.webp",
     gradient: "from-orange-500/20 to-amber-400/10",
     iconBg: "bg-orange-100 text-orange-600",
     stat: "Rental Setup",
@@ -18,7 +18,7 @@ const services = [
     icon: Package,
     title: "ให้เช่าตู้ถ่ายภาพ / ให้เช่า Photobooth",
     description: 'ให้เช่าตู้ถ่ายภาพ และให้เช่า Photobooth หลากหลายรุ่น เหมาะสำหรับงานแต่ง ปาร์ตี้ และอีเวนต์ พร้อมส่งถึงที่และติดตั้งครบชุด',
-    image: "/images/catalog-booth.jpg",
+    image: "/photoboothkiosk/packagedetail2.webp",
     gradient: "from-blue-500/20 to-sky-400/10",
     iconBg: "bg-blue-100 text-blue-600",
     stat: "Daily / Monthly",
@@ -28,7 +28,7 @@ const services = [
     icon: Building2,
     title: "ให้เช่า Software เชิงพาณิชย์",
     description: "ซอฟต์แวร์หารายได้จาก Photobooth พร้อมระบบชำระเงิน QR Code แดชบอร์ดวิเคราะห์รายได้ Real-time",
-    image: "/images/mall-installation.jpg",
+    image: "/photoboothkiosk/packagedetail3.webp",
     gradient: "from-purple-500/20 to-violet-400/10",
     iconBg: "bg-purple-100 text-purple-600",
     stat: "Pay-per-use",
@@ -38,7 +38,7 @@ const services = [
     icon: PartyPopper,
     title: "โซลูชันเช่าสำหรับงาน Event",
     description: "แพ็กเกจให้เช่าตู้ถ่ายภาพสำหรับงาน Event พร้อม Branding หน้างาน และแชร์โซเชียลมีเดียได้ทันที",
-    image: "/images/event-usage.jpg",
+    image: "/photoboothkiosk/packagedetail4.webp",
     gradient: "from-green-500/20 to-emerald-400/10",
     iconBg: "bg-green-100 text-green-600",
     stat: "Unlimited shots",
@@ -72,30 +72,32 @@ export function ServicesSection() {
         </div>
 
         {/* 4-column grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
           {services.map((item) => (
             <div
               key={item.title}
               className={`group relative rounded-2xl overflow-hidden border border-white/60 bg-gradient-to-br ${item.gradient} backdrop-blur-sm hover:shadow-xl hover:shadow-[#023047]/10 hover:scale-[1.02] transition-all duration-300`}
             >
               {/* Image */}
-              <div className="relative overflow-hidden aspect-[4/3]">
+              <div className="relative overflow-hidden aspect-[16/9] bg-gradient-to-br from-white via-gray-50 to-gray-100">
                 <Image
                   src={item.image}
                   alt={`${item.title} - IMAGEAUTOMAT`}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                  className="object-contain p-3 group-hover:scale-105 transition-transform duration-500 drop-shadow-md"
                   loading="lazy"
                 />
+                {/* Bottom fade */}
+                <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white/60 to-transparent" />
                 {/* Stat badge */}
-                <span className="absolute top-3 right-3 px-3 py-1 rounded-full bg-white/90 text-[#023047] text-xs font-semibold backdrop-blur-sm shadow">
+                <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#023047] text-white text-[10px] font-bold tracking-wide shadow-md">
                   {item.stat}
                 </span>
               </div>
 
               {/* Content */}
-              <div className="p-5">
+              <div className="p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${item.iconBg}`}>
                     <item.icon className="size-4" />
