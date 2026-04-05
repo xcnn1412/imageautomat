@@ -104,7 +104,7 @@ export function HeroSection() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#023047]/15 max-w-[75%] mx-auto">
               <Image
-                src="/photoboothkisok/headersection.webp"
+                src="/photoboothkiosk/headersection.webp"
                 alt="ให้เช่าตู้ถ่ายภาพและ Photobooth โดย IMAGEAUTOMAT"
                 width={600}
                 height={450}
