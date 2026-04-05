@@ -34,6 +34,11 @@ const kioskImages = [
     alt: "ตู้ถ่ายภาพให้เช่าสไตล์วินเทจ",
     modelName: "Vintage",
   },
+  {
+    src: "/photoboothkisok/highangel.webp",
+    alt: "ตู้ถ่ายภาพให้เช่าสไตล์ High Angel",
+    modelName: "High Angel",
+  },
 ]
 
 export function KisokGallery() {
