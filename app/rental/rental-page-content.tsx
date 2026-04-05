@@ -13,7 +13,6 @@ import { GallerySection } from "@/components/gallery-section"
 import { TrustSection } from "@/components/trust-section"
 import { DemoSection } from "@/components/demo-section"
 import { FAQSection } from "@/components/faq-section"
-import { KisokGallery } from "@/components/kisok-gallery"
 
 export function RentalPageContent() {
     return (
@@ -29,7 +28,6 @@ export function RentalPageContent() {
             <GallerySection />
             <TrustSection />
             <DemoSection />
-            <KisokGallery />
             <FAQSection />
             <Footer />
         </main>

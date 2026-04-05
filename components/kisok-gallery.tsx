@@ -32,12 +32,17 @@ const kioskImages = [
   {
     src: "/photoboothkisok/vintage copy.webp",
     alt: "ตู้ถ่ายภาพให้เช่าสไตล์วินเทจ",
-    modelName: "Vintage",
+    modelName: "Vintage&Newspaper",
   },
   {
     src: "/photoboothkisok/highangel.webp",
     alt: "ตู้ถ่ายภาพให้เช่าสไตล์ High Angel",
     modelName: "High Angel",
+  },
+  {
+    src: "/photoboothkisok/reel.webp",
+    alt: "ตู้ถ่ายภาพให้เช่าสไตล์ Reel",
+    modelName: "Reel&Signage",
   },
 ]
 
