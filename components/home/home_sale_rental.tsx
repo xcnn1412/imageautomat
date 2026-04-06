@@ -25,7 +25,7 @@ export function SaleAndRental() {
           rel="noopener noreferrer"
           className="group relative block overflow-hidden rounded-3xl cursor-pointer"
           style={{
-            background: "linear-gradient(135deg, #FB8500 0%, #E87A00 100%)",
+            background: "linear-gradient(135deg, #023047 0%, #034a6e 25%, #FB8500 65%, #E87A00 100%)",
             boxShadow: "0 4px 16px rgba(251,133,0,0.18), 0 16px 48px rgba(251,133,0,0.12)",
           }}
           whileHover={{ scale: 1.008, y: -2 }}
