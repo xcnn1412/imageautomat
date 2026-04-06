@@ -14,6 +14,7 @@ import { TrustSection } from "@/components/trust-section"
 import { DemoSection } from "@/components/demo-section"
 import { FAQSection } from "@/components/faq-section"
 import { KisokGallery } from "@/components/kisok-gallery"
+import { RentalSlideshow } from "@/components/rental-slideshow"
 
 export function RentalPageContent() {
     return (
@@ -23,6 +24,7 @@ export function RentalPageContent() {
             <ServicesSection />
             <KisokGallery />
             <StructureRentalSection />
+            <RentalSlideshow />
             <RentalSection />
             <PricingSection />
             <FeaturesSection />

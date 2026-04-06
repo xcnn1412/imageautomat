@@ -1,47 +1,40 @@
-import { CreditCard, QrCode, Smartphone, Wallet } from "lucide-react"
+import Image from "next/image"
 
 const paymentChannels = [
   {
     name: "QR Payment ไทย",
     description: "PromptPay & ธนาคารไทยทุกธนาคาร",
-    icon: QrCode,
-    color: "bg-blue-500",
+    image: "/assets/payment/bnk-10.png",
   },
   {
     name: "TrueMoney",
     description: "TrueMoney Wallet",
-    icon: Wallet,
-    color: "bg-orange-500",
+    image: "/assets/payment/bnk-13.png",
   },
   {
     name: "Alipay+",
     description: "เครือข่าย Alipay ทั่วโลก",
-    icon: Smartphone,
-    color: "bg-sky-500",
+    image: "/assets/payment/bnk-14.png",
   },
   {
     name: "Alipay",
     description: "ชำระเงินจีน",
-    icon: Smartphone,
-    color: "bg-blue-600",
+    image: "/assets/payment/bnk-14.png",
   },
   {
     name: "WeChat Pay",
     description: "WeChat Payments",
-    icon: Smartphone,
-    color: "bg-green-500",
+    image: "/assets/payment/bnk-15.png",
   },
   {
     name: "ShopeePay",
     description: "Shopee Wallet",
-    icon: Wallet,
-    color: "bg-orange-600",
+    image: "/assets/payment/bnk-11.png",
   },
   {
-    name: "บัตรเครดิต",
-    description: "Visa, Mastercard, JCB",
-    icon: CreditCard,
-    color: "bg-slate-700",
+    name: "LINE Pay",
+    description: "LINE Pay Wallet",
+    image: "/assets/payment/bnk-12.png",
   },
 ]
 
@@ -69,10 +62,14 @@ export function PaymentSection() {
               key={channel.name}
               className="group relative bg-white border border-[#023047]/10 rounded-2xl p-6 text-center hover:border-[#FB8500]/50 hover:shadow-lg hover:shadow-[#FB8500]/5 transition-all duration-300"
             >
-              <div
-                className={`w-14 h-14 ${channel.color} rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
-              >
-                <channel.icon className="size-7 text-white" />
+              <div className="w-[70px] h-[70px] rounded-xl overflow-hidden flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <Image
+                  src={channel.image}
+                  alt={channel.name}
+                  width={70}
+                  height={70}
+                  className="object-contain w-full h-full"
+                />
               </div>
               <h3 className="font-semibold text-[#023047] mb-1">
                 {channel.name}
