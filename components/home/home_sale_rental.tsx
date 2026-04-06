@@ -11,7 +11,7 @@ const pills = [
 
 export function SaleAndRental() {
   return (
-    <section className="py-8 px-4 bg-white">
+    <section className="pt-6 sm:pt-8 lg:pt-10 pb-16 sm:pb-20 lg:pb-24 px-6 lg:px-8 bg-white">
       <motion.div
         initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -125,7 +125,7 @@ export function HomeServicesSection() {
     return (
         <section
             ref={sectionRef}
-            className="relative py-24 sm:py-28 lg:py-36 overflow-hidden"
+            className="relative pt-24 sm:pt-28 lg:pt-36 pb-12 sm:pb-14 lg:pb-16 overflow-hidden"
             aria-labelledby="why-imageautomat"
             itemScope
             itemType="https://schema.org/Organization"
