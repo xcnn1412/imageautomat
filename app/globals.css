@@ -251,6 +251,42 @@
   animation: auto-shimmer 4s ease-in-out infinite;
 }
 
+/* ── Hero CTA button luxury animations ── */
+@keyframes btn-orange-glow {
+  0%, 100% {
+    box-shadow:
+      0 4px 20px rgba(251, 133, 0, 0.35),
+      0 2px 8px rgba(251, 133, 0, 0.15);
+  }
+  50% {
+    box-shadow:
+      0 4px 32px rgba(251, 133, 0, 0.6),
+      0 2px 14px rgba(251, 133, 0, 0.3);
+  }
+}
+
+@keyframes cta-shimmer {
+  0%, 78%, 100% {
+    transform: translateX(-160%) skewX(-12deg);
+    opacity: 0;
+  }
+  83% {
+    opacity: 1;
+  }
+  96% {
+    transform: translateX(200%) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
+.animate-btn-orange-glow {
+  animation: btn-orange-glow 2.5s ease-in-out infinite;
+}
+
+.animate-cta-shimmer {
+  animation: cta-shimmer 3.5s ease-in-out infinite;
+}
+
 /* ── Payment Gateway Marquee ── */
 @keyframes marquee-left {
   0% {

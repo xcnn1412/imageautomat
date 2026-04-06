@@ -1,18 +1,18 @@
 import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
-import { HeroSection } from "@/components/hero-section"
-import { ProductSection } from "@/components/product-section"
+import { HeroSection } from "@/components/home/home_hero"
+import { ProductSection } from "@/components/home/home_product"
 import dynamic from "next/dynamic"
 
 // Lazy load below-the-fold components to reduce initial JS bundle
-const HomeServicesSection = dynamic(() => import("@/components/home-services-section").then(mod => ({ default: mod.HomeServicesSection })), {
+const HomeServicesSection = dynamic(() => import("@/components/home/home_services").then(mod => ({ default: mod.HomeServicesSection })), {
     loading: () => <div className="min-h-[600px]" />,
     ssr: true,
 })
-const SaleAndRental = dynamic(() => import("@/components/sale-and-rental").then(mod => ({ default: mod.SaleAndRental })), {
+const SaleAndRental = dynamic(() => import("@/components/home/home_sale_rental").then(mod => ({ default: mod.SaleAndRental })), {
     ssr: true,
 })
-const AdsSlideshow = dynamic(() => import("@/components/ads-slideshow").then(mod => ({ default: mod.AdsSlideshow })), {
+const AdsSlideshow = dynamic(() => import("@/components/home/home_ads_slideshow").then(mod => ({ default: mod.AdsSlideshow })), {
     loading: () => <div className="min-h-[600px]" />,
     ssr: true,
 })
@@ -20,7 +20,7 @@ const HomeSoftwareFeatures = dynamic(() => import("@/components/home-software-fe
     loading: () => <div className="min-h-[800px]" />,
     ssr: true,
 })
-const HomeStatsSection = dynamic(() => import("@/components/home-stats-section").then(mod => ({ default: mod.HomeStatsSection })), {
+const HomeStatsSection = dynamic(() => import("@/components/home/home_stats").then(mod => ({ default: mod.HomeStatsSection })), {
     loading: () => <div className="min-h-[400px]" />,
     ssr: true,
 })
@@ -32,15 +32,15 @@ const SignatureReel = dynamic(() => import("@/components/SignatureReel").then(mo
     loading: () => <div className="min-h-[500px]" />,
     ssr: true,
 })
-const SlideshowSection = dynamic(() => import("@/components/slideshow-section").then(mod => ({ default: mod.SlideshowSection })), {
+const SlideshowSection = dynamic(() => import("@/components/home/home_slideshow").then(mod => ({ default: mod.SlideshowSection })), {
     loading: () => <div className="min-h-[700px]" />,
     ssr: true,
 })
-const ContactSection = dynamic(() => import("@/components/contact-section").then(mod => ({ default: mod.ContactSection })), {
+const ContactSection = dynamic(() => import("@/components/home/home_contact").then(mod => ({ default: mod.ContactSection })), {
     loading: () => <div className="min-h-[500px]" />,
     ssr: true,
 })
-const CustomerSlideShow = dynamic(() => import("@/components/customer-slideshow").then(mod => ({ default: mod.CustomerSlideShow })), {
+const CustomerSlideShow = dynamic(() => import("@/components/home/home_customer_slideshow").then(mod => ({ default: mod.CustomerSlideShow })), {
     loading: () => <div className="min-h-[200px]" />,
     ssr: true,
 })
