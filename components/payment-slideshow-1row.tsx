@@ -42,6 +42,7 @@ function MarqueeRow({
                             alt={`${partner.name} — ช่องทางชำระเงิน`}
                             width={62}
                             height={62}
+                            sizes="(max-width: 640px) 50px, (max-width: 768px) 56px, 62px"
                             className="w-[50px] h-[50px] sm:w-[56px] sm:h-[56px] md:w-[62px] md:h-[62px] object-contain"
                             loading="lazy"
                         />

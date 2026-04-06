@@ -33,6 +33,7 @@ function LogoMarquee({ direction = "left", speed = 45 }: { direction?: "left" | 
                             alt={`${logo.name} — ลูกค้าของ IMAGEAUTOMAT`}
                             width={100}
                             height={100}
+                            sizes="(max-width: 640px) 72px, (max-width: 768px) 80px, 88px"
                             className="w-[72px] h-[72px] sm:w-20 sm:h-20 md:w-[88px] md:h-[88px] object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]"
                             loading="lazy"
                         />

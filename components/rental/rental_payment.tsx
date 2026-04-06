@@ -68,7 +68,9 @@ export function PaymentSection() {
                   alt={channel.name}
                   width={70}
                   height={70}
+                  sizes="70px"
                   className="object-contain w-full h-full"
+                  loading="lazy"
                 />
               </div>
               <h3 className="font-semibold text-[#023047] mb-1">

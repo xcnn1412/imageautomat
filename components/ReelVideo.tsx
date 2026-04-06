@@ -86,7 +86,7 @@ export function ReelVideo() {
         if (!video) return
 
         if (isPlaying) {
-            video.play().catch(() => console.log("Video play failed"))
+            video.play().catch(() => {})
         } else {
             video.pause()
         }

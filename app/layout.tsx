@@ -1,7 +1,6 @@
 import React from "react"
 import type { Metadata } from 'next'
 import { Montserrat, IBM_Plex_Sans_Thai, Playfair_Display } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import { GoogleAnalytics } from '@/components/google-analytics'
 import { StickySocialMenu } from '@/components/sticky-social-menu'
 import { AppLoadingWrapper } from '@/components/loading/app-loading-wrapper'
@@ -181,7 +180,6 @@ export default function RootLayout({
         </AppLoadingWrapper>
         <StickySocialMenu />
         <GoogleAnalytics />
-        <Analytics />
       </body>
     </html>
   )

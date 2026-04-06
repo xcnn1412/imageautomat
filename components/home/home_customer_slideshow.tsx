@@ -42,6 +42,8 @@ function MarqueeRow({
                             alt={`${customer.name} — ลูกค้าของ ImageAutomat`}
                             width={125}
                             height={125}
+                            quality={80}
+                            sizes="(max-width: 640px) 100px, (max-width: 768px) 112px, 125px"
                             className="w-[100px] h-[100px] sm:w-[112px] sm:h-[112px] md:w-[125px] md:h-[125px] object-contain drop-shadow-md"
                             loading="lazy"
                         />
