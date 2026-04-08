@@ -9,7 +9,11 @@ const HomeServicesSection = dynamic(() => import("@/components/home/home_service
     loading: () => <div className="min-h-[600px]" />,
     ssr: true,
 })
-const ChooseYourPathSection = dynamic(() => import("@/components/home/home_choose_path").then(mod => ({ default: mod.ChooseYourPathSection })), {
+const UserJourneySection = dynamic(() => import("@/components/home/home_user_journey").then(mod => ({ default: mod.UserJourneySection })), {
+    loading: () => <div className="min-h-[600px]" />,
+    ssr: true,
+})
+const CompetitiveAdvantagesSection = dynamic(() => import("@/components/home/home_competitive_advantages").then(mod => ({ default: mod.CompetitiveAdvantagesSection })), {
     loading: () => <div className="min-h-[600px]" />,
     ssr: true,
 })
@@ -203,9 +207,10 @@ export default function Home() {
             <Navigation />
             <HeroSection />
             <HomeServicesSection />
-            <ChooseYourPathSection />
-            <SaleAndRental />
             <AdsSlideshow />
+            <UserJourneySection />
+            <CompetitiveAdvantagesSection />
+            <SaleAndRental />
             <HomeSoftwareFeatures />
             <SlideshowSection />
             <ProductSection />
