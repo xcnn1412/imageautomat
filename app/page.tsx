@@ -24,8 +24,12 @@ const AdsSlideshow = dynamic(() => import("@/components/home/home_ads_slideshow"
     loading: () => <div className="min-h-[600px]" />,
     ssr: true,
 })
-const HomeSoftwareFeatures = dynamic(() => import("@/components/home-software-features").then(mod => ({ default: mod.HomeSoftwareFeatures })), {
-    loading: () => <div className="min-h-[800px]" />,
+const HomeProgramSelection = dynamic(() => import("@/components/home/home_program_selection").then(mod => ({ default: mod.HomeProgramSelection })), {
+    loading: () => <div className="min-h-[400px]" />,
+    ssr: true,
+})
+const HomePaymentSystems = dynamic(() => import("@/components/home/home_payment_systems").then(mod => ({ default: mod.HomePaymentSystems })), {
+    loading: () => <div className="min-h-[400px]" />,
     ssr: true,
 })
 const HomeStatsSection = dynamic(() => import("@/components/home/home_stats").then(mod => ({ default: mod.HomeStatsSection })), {
@@ -211,13 +215,16 @@ export default function Home() {
             <UserJourneySection />
             <CompetitiveAdvantagesSection />
             <SaleAndRental />
-            <HomeSoftwareFeatures />
+            <HomeProgramSelection />
+            <SignatureReel />
+            <VideoGallery />
+            <HomePaymentSystems />
+            
             <SlideshowSection />
             <ProductSection />
-            <VideoGallery />
-            <SignatureReel />
-            <HomeStatsSection />
-            <CustomerSlideShow />
+            
+            {/* <HomeStatsSection /> */}
+            {/* <CustomerSlideShow /> */}
             <ContactSection />
             <Footer />
         </main>
