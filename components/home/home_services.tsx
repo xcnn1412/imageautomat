@@ -153,7 +153,7 @@ export function HomeServicesSection() {
                     </span>
                     <h2
                         id="why-imageautomat"
-                        className="font-serif text-[1.75rem] sm:text-3xl md:text-4xl lg:text-[2.75rem] text-deep-space-blue tracking-tight leading-tight mb-5"
+                        className="font-sans font-extrabold text-[1.75rem] sm:text-3xl md:text-4xl lg:text-[2.75rem] text-deep-space-blue tracking-tight leading-tight mb-5"
                     >
                         ทำไมต้องเลือก{" "}
                         <span className="text-tiger-orange" itemProp="name">IMAGEAUTOMAT</span>

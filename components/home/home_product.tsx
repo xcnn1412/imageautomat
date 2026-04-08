@@ -108,7 +108,7 @@ export function ProductSection() {
                         <Sparkles className="w-4 h-4" />
                         <span className="uppercase tracking-[0.2em]">Our Products</span>
                     </div>
-                    <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-deep-space-blue tracking-tight leading-[1.1]">
+                    <h2 className="font-sans font-extrabold text-4xl md:text-5xl lg:text-6xl text-deep-space-blue tracking-tight leading-[1.1]">
                         เลือกตู้ถ่ายรูปที่ <span className="italic text-tiger-orange">ใช่</span>
                         <br className="hidden md:block" /> สำหรับงานของคุณ
                     </h2>
@@ -146,7 +146,7 @@ export function ProductSection() {
                             {/* Content Side */}
                             <div className="flex-1 p-8 lg:p-12 flex flex-col justify-center bg-gradient-to-br from-deep-space-blue to-deep-space-blue/90">
                                 <span className="text-tiger-orange text-sm font-medium uppercase tracking-[0.2em] mb-2">PHOTOBOOTH  </span>
-                                <h3 className="font-serif text-3xl lg:text-4xl text-white mb-2">
+                                <h3 className="font-sans font-extrabold text-3xl lg:text-4xl text-white mb-2">
                                     {products[0].name}
                                 </h3>
                                 <p className="text-white/60 text-lg mb-6">{products[0].nameTh}</p>
@@ -199,7 +199,7 @@ export function ProductSection() {
                                 </div>
                                 <div className="p-6 border-t border-gray-100">
                                     <span className="text-tiger-orange text-xs font-medium uppercase tracking-[0.15em]">{product.label}</span>
-                                    <h3 className="font-serif text-xl text-deep-space-blue mt-1 mb-1">{product.name}</h3>
+                                    <h3 className="font-sans font-bold text-xl text-deep-space-blue mt-1 mb-1">{product.name}</h3>
                                     <p className="text-deep-space-blue/50 text-sm">{product.nameTh}</p>
                                 </div>
                             </div>
@@ -244,7 +244,7 @@ export function ProductSection() {
                             </div>
                             <div className="p-5 text-center border-t border-gray-100">
                                 <span className="text-tiger-orange text-[10px] font-medium uppercase tracking-[0.15em]">{product.label}</span>
-                                <h3 className="font-serif text-lg text-deep-space-blue mt-1">{product.name}</h3>
+                                <h3 className="font-sans font-bold text-lg text-deep-space-blue mt-1">{product.name}</h3>
                                 <p className="text-deep-space-blue/40 text-xs mt-0.5">{product.nameTh}</p>
                             </div>
                         </div>
@@ -258,7 +258,7 @@ export function ProductSection() {
                             <p className="text-white/60 text-sm uppercase tracking-[0.2em] mb-1">
                                 ต้องการคำแนะนำเพิ่มเติม?
                             </p>
-                            <p className="text-white text-xl font-serif">
+                            <p className="text-white text-xl font-sans font-semibold">
                                 ทีมงานพร้อมช่วยเลือก<span className="text-tiger-orange">ตู้ถ่ายรูป</span>ที่เหมาะกับงานของคุณ
                             </p>
                         </div>

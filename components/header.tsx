@@ -37,7 +37,7 @@ export function Header() {
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
           <a href="https://www.imageautomat.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
-            <span className="text-xl lg:text-2xl font-serif font-bold tracking-tight text-[#023047]">
+            <span className="text-xl lg:text-2xl font-sans font-bold tracking-tight text-[#023047]">
               IMAGE<span className="text-[#FB8500]">AUTOMAT</span>
             </span>
           </a>

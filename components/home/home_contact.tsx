@@ -57,7 +57,7 @@ export function ContactSection() {
             </p>
             <h2
               id="contact-heading"
-              className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-8"
+              className="font-sans font-extrabold text-4xl md:text-5xl lg:text-6xl text-white mb-8"
             >
               ส่งข้อมูลหาเรา
               <br />
@@ -93,7 +93,7 @@ export function ContactSection() {
                   <div className="w-16 h-16 flex items-center justify-center bg-[#023047] mb-6">
                     <Check className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="font-serif text-2xl text-[#023047] mb-3">
+                  <h3 className="font-sans font-bold text-2xl text-[#023047] mb-3">
                     Thank You
                   </h3>
                   <p className="text-[#023047]/60">
@@ -102,7 +102,7 @@ export function ContactSection() {
                 </div>
               ) : (
                 <>
-                  <h3 className="font-serif text-2xl text-[#023047] mb-8">
+                  <h3 className="font-sans font-bold text-2xl text-[#023047] mb-8">
                     Get in Touch
                   </h3>
 

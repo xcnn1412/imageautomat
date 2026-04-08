@@ -31,7 +31,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="/" className="inline-block mb-6" aria-label="IMAGEAUTOMAT Home">
-              <span className="font-serif text-2xl text-[#023047]">
+              <span className="font-sans font-bold text-2xl text-[#023047]">
                 IMAGE<span className="text-[#FB8500]">AUTOMAT</span>
               </span>
             </a>

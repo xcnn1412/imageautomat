@@ -101,7 +101,7 @@ export function HomeStatsSection() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-deep-space-blue tracking-tight mb-4">
+                    <h2 className="font-sans font-extrabold text-3xl md:text-4xl lg:text-5xl text-deep-space-blue tracking-tight mb-4">
                         ความเชื่อมั่นจากลูกค้า
                     </h2>
                     <p className="text-base lg:text-lg text-deep-space-blue/60">

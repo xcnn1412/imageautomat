@@ -168,10 +168,10 @@ export function AdsSlideshow() {
         {/* Header - Simplified */}
         <motion.header className="text-center mb-8 lg:mb-12" variants={itemVariants}>
           <h2 
-            className="font-serif text-3xl md:text-5xl lg:text-6xl text-deep-space-blue tracking-tight leading-[1.1]"
+            className="font-sans font-extrabold text-3xl md:text-5xl lg:text-6xl text-deep-space-blue tracking-tight leading-[1.1]"
             itemProp="name"
           >
-            Our <span className="text-tiger-orange italic">Work</span>
+            Our <span className="text-tiger-orange">Work</span>
           </h2>
           <p className="mt-3 text-base md:text-lg text-deep-space-blue/50 max-w-xl mx-auto" itemProp="description">
             Showcase of Photo Booth Experiences
@@ -222,7 +222,7 @@ export function AdsSlideshow() {
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex-1 min-w-0">
                     <h3 
-                      className="font-serif text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white truncate"
+                      className="font-sans font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl text-white truncate"
                       itemProp="name"
                     >
                       {currentItem?.title}

@@ -286,7 +286,7 @@ export function VideoGallery() {
                     {CATEGORY_LABELS[currentVideo?.category as Category]}
                   </span>
                 </div>
-                <h3 className="font-serif text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white">
+                <h3 className="font-sans font-bold text-base sm:text-lg md:text-xl lg:text-2xl text-white">
                   {currentVideo?.title}
                 </h3>
                 <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm md:text-base text-white/80 leading-relaxed" style={{ lineHeight: '1.6' }}>

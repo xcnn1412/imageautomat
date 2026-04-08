@@ -76,7 +76,7 @@ export function SlideshowSection() {
                         </motion.svg>
                         Photobooth Structure
                     </motion.span>
-                    <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-deep-space-blue tracking-tight leading-[1.1] mb-4">
+                    <h2 className="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-deep-space-blue tracking-tight leading-[1.1] mb-4">
                         รับผลิต{' '}
                         <span
                             className="italic text-tiger-orange inline-block"

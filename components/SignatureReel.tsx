@@ -159,7 +159,7 @@ export function SignatureReel() {
             </motion.svg>
             ตู้ถ่าย REEL อัตโนมัติ
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-deep-space-blue tracking-tight leading-[1.1] mb-4">
+          <h2 className="font-sans font-extrabold text-3xl md:text-4xl lg:text-5xl text-deep-space-blue tracking-tight leading-[1.1] mb-4">
             Signature{" "}
             <span className="text-tiger-orange italic">PHOTOBOOTH</span>
             <br />
@@ -213,7 +213,7 @@ export function SignatureReel() {
                     {String(AUTOREEL_VIDEOS.length).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="font-serif text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white">
+                <h3 className="font-sans font-bold text-base sm:text-lg md:text-xl lg:text-2xl text-white">
                   {currentVideo?.title}
                 </h3>
                 <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm md:text-base text-white/80 leading-relaxed" style={{ lineHeight: '1.6' }}>

@@ -67,7 +67,7 @@ export function FooterSection() {
             <span className="inline-block text-[#FB8500] text-xs font-semibold tracking-[0.3em] uppercase mb-4">
               CONTACT US
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
+            <h2 className="font-sans font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-4">
               ขอราคาเช่าและนัดติดตั้ง
             </h2>
             <p className="text-white/50 text-base lg:text-lg max-w-xl mx-auto">
@@ -212,7 +212,7 @@ export function FooterSection() {
             {/* Brand — spans 2 cols */}
             <div className="sm:col-span-2">
               <a href="/" className="inline-block mb-5">
-                <span className="font-serif text-2xl font-bold text-[#023047]">
+                <span className="font-sans font-bold text-2xl text-[#023047]">
                   IMAGE<span className="text-[#FB8500]">AUTOMAT</span>
                 </span>
               </a>

@@ -53,7 +53,7 @@ export function Navigation() {
         <div className="flex h-20 lg:h-24 items-center justify-between gap-8">
           {/* Logo */}
           <a href="/" className="flex items-center group flex-shrink-0">
-            <span className="font-serif text-xl lg:text-2xl tracking-tight text-deep-space-blue font-bold">
+            <span className="font-sans font-bold text-xl lg:text-2xl tracking-tight text-deep-space-blue">
               IMAGE<span className="text-tiger-orange">AUTOMAT</span>
             </span>
           </a>
