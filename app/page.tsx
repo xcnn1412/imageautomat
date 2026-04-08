@@ -9,6 +9,10 @@ const HomeServicesSection = dynamic(() => import("@/components/home/home_service
     loading: () => <div className="min-h-[600px]" />,
     ssr: true,
 })
+const ChooseYourPathSection = dynamic(() => import("@/components/home/home_choose_path").then(mod => ({ default: mod.ChooseYourPathSection })), {
+    loading: () => <div className="min-h-[600px]" />,
+    ssr: true,
+})
 const SaleAndRental = dynamic(() => import("@/components/home/home_sale_rental").then(mod => ({ default: mod.SaleAndRental })), {
     ssr: true,
 })
@@ -199,6 +203,7 @@ export default function Home() {
             <Navigation />
             <HeroSection />
             <HomeServicesSection />
+            <ChooseYourPathSection />
             <SaleAndRental />
             <AdsSlideshow />
             <HomeSoftwareFeatures />
