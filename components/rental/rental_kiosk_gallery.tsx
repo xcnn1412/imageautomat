@@ -81,7 +81,7 @@ export function KisokGallery() {
                   src={item.src}
                   alt={item.alt}
                   fill
-                  priority={idx < 4}
+                  priority={idx === 0}
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   className="object-contain p-3 group-hover:scale-105 transition-transform duration-500"
                 />
