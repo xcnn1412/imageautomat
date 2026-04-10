@@ -86,7 +86,7 @@ export function SlideshowSection() {
                         </span>
                     </h2>
                     <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-deep-space-blue font-medium mb-6 sm:mb-8" style={{ lineHeight: '1.4' }}>
-                        Designed for stability
+                        แข็งแรง ทนทาน ออกแบบเพื่อใช้งานหนัก
                     </p>
                     <p className="text-sm sm:text-base md:text-lg text-deep-space-blue/70 leading-relaxed max-w-2xl mx-auto" style={{ lineHeight: '1.6' }}>
                         ออกแบบและผลิตตู้โฟโต้บูธครบวงจร แข็งแรง ทนทาน พร้อมติดตั้ง

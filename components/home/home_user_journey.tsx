@@ -73,10 +73,10 @@ export function UserJourneySection() {
           className="text-center mb-16"
         >
           <h2 className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-deep-space-blue mb-6">
-            Choose Your Path
+            เลือกแพ็กเกจที่ใช่สำหรับคุณ
           </h2>
           <p className="text-lg sm:text-xl text-deep-space-blue/70 max-w-3xl mx-auto leading-relaxed">
-            ไม่ว่าความต้องการของคุณคืออะไร เรามีโซลูชันที่พร้อมเสิร์ฟ
+            ไม่ว่าจะซื้อตู้โฟโต้บูธ เช่าตู้ถ่ายรูป หรือรับผลิต OEM — เรามีโซลูชันครบวงจรพร้อมเสิร์ฟ
           </p>
         </motion.div>
 

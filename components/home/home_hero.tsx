@@ -159,17 +159,22 @@ export function HeroSection() {
               {/* Central Video Container */}
               <div className="relative z-10 rounded-3xl overflow-hidden bg-deep-space-blue/5 border border-deep-space-blue/10 shadow-2xl">
                 {heroVideos.map((videoSrc, index) => (
-                  <video
-                    key={videoSrc}
-                    src={videoSrc}
-                    className={`w-full h-full object-contain bg-gradient-to-br from-slate-50 to-slate-100 transition-opacity duration-1000 ${
-                      index === currentVideoIndex ? "opacity-100" : "opacity-0 absolute inset-0"
-                    }`}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  />
+                  index === currentVideoIndex ? (
+                    <video
+                      key={videoSrc}
+                      src={videoSrc}
+                      className="w-full h-full object-contain bg-gradient-to-br from-slate-50 to-slate-100"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                  ) : (
+                    <div
+                      key={videoSrc}
+                      className="absolute inset-0 bg-gradient-to-br from-slate-50 to-slate-100"
+                    />
+                  )
                 ))}
               </div>
 

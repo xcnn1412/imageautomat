@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { ArrowRight, CalendarCheck, Clock3, BadgePercent } from "lucide-react"
+import Link from "next/link"
 
 const pills = [
   { icon: <Clock3 size={14} />, text: "รายวัน / รายสัปดาห์" },
@@ -19,10 +20,8 @@ export function SaleAndRental() {
         transition={{ duration: 0.55, ease: "easeOut" }}
         className="max-w-7xl mx-auto"
       >
-        <motion.a
-          href="https://www.imageautomat.com/rental"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href="/rental"
           className="group relative block overflow-hidden rounded-3xl cursor-pointer"
           style={{
             background: "linear-gradient(135deg, #023047 0%, #034a6e 25%, #FB8500 65%, #E87A00 100%)",
@@ -130,7 +129,7 @@ export function SaleAndRental() {
               </span>
             </div>
           </div>
-        </motion.a>
+        </Link>
       </motion.div>
     </section>
   )

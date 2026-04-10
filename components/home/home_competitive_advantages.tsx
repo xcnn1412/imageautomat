@@ -84,10 +84,10 @@ export function CompetitiveAdvantagesSection() {
           className="text-center mb-16"
         >
           <h2 className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-deep-space-blue mb-6">
-            Core Strengths
+            ทำไม IMAGEAUTOMAT ถึงเหนือกว่าคู่แข่ง
           </h2>
           <p className="text-lg sm:text-xl text-deep-space-blue/70 max-w-3xl mx-auto leading-relaxed mb-8">
-            สิ่งที่เราทำได้ดีกว่าตลาด (Hardware + Software + Support)
+            ฮาร์ดแวร์คุณภาพอุตสาหกรรม ซอฟต์แวร์ระดับ Enterprise และซัพพอร์ต 24 ชม. — ครบในที่เดียว
           </p>
           
           {/* Competitive Advantages Pills */}

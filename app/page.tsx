@@ -80,20 +80,6 @@ const productSchema = {
             "name": "IMAGEAUTOMAT"
         }
     },
-    "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "120",
-        "bestRating": "5"
-    },
-    "review": [
-        {
-            "@type": "Review",
-            "author": { "@type": "Person", "name": "ลูกค้า IMAGEAUTOMAT" },
-            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-            "reviewBody": "ตู้คุณภาพดี ซอฟต์แวร์ใช้ง่าย อัปเดตฟรีตลอด บริการหลังขายดีมาก"
-        }
-    ],
     "image": "https://www.imageautomat.com/images/og-image.jpg",
     "manufacturer": {
         "@type": "Organization",
@@ -220,8 +206,8 @@ export default function Home() {
             <VideoGallery />
             <HomePaymentSystems />
             
-            <SlideshowSection />
             <ProductSection />
+            <SlideshowSection />
             
             {/* <HomeStatsSection /> */}
             {/* <CustomerSlideShow /> */}
