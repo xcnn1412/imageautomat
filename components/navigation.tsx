@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
+import Link from "next/link"
 import { ShoppingCart, Calendar, Laptop, Factory, Phone, Star } from "lucide-react"
 
 // LINE Icon Component
@@ -52,11 +53,11 @@ export function Navigation() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-20 lg:h-24 items-center justify-between gap-8">
           {/* Logo */}
-          <a href="/" className="flex items-center group flex-shrink-0">
+          <Link href="/" className="flex items-center group flex-shrink-0">
             <span className="font-sans font-bold text-xl lg:text-2xl tracking-tight text-deep-space-blue">
               IMAGE<span className="text-tiger-orange">AUTOMAT</span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-2 flex-1 justify-center">
@@ -67,33 +68,33 @@ export function Navigation() {
               // Active button style (Orange pill with sparkle)
               if (isActive) {
                 return (
-                  <a
+                  <Link
                     key={link.href}
                     href={resolveHref(link.href)}
                     className="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden bg-gradient-to-r from-tiger-orange to-tiger-orange/90 shadow-md shadow-tiger-orange/25"
                   >
                     {/* Shimmer effect */}
                     <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
-                    
+
                     {/* Star icon */}
                     <Star className="relative z-10 w-4 h-4 fill-current" />
-                    
+
                     {/* Text */}
                     <span className="relative z-10 tracking-tight">{link.label}</span>
-                  </a>
+                  </Link>
                 )
               }
-              
+
               // Inactive button style
               return (
-                <a
+                <Link
                   key={link.href}
                   href={resolveHref(link.href)}
                   className="group relative inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold text-deep-space-blue/70 hover:text-deep-space-blue hover:bg-deep-space-blue/5 transition-all duration-300"
                 >
                   <link.icon className="w-4 h-4 text-deep-space-blue/50 group-hover:text-deep-space-blue transition-colors duration-300" />
                   <span className="tracking-tight">{link.label}</span>
-                </a>
+                </Link>
               )
             })}
           </div>
@@ -144,7 +145,7 @@ export function Navigation() {
                 const isActive = link.href.startsWith("#") ? pathname === "/" : pathname === basePath
                 
                 return (
-                  <a
+                  <Link
                     key={link.href}
                     href={resolveHref(link.href)}
                     className={`group inline-flex items-center gap-3 text-base font-semibold rounded-xl transition-all duration-200 py-3 px-4 ${
@@ -157,7 +158,7 @@ export function Navigation() {
                     <link.icon className={`w-5 h-5 ${isActive ? "text-tiger-orange" : "text-deep-space-blue/50"}`} />
                     <span className="tracking-tight">{link.label}</span>
                     {isActive && <span className="ml-auto w-2 h-2 rounded-full bg-tiger-orange" />}
-                  </a>
+                  </Link>
                 )
               })}
               
