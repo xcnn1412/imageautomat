@@ -1,11 +1,14 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Cpu, Code2, Headphones, Shield, Wrench, Zap } from "lucide-react"
+import { Cpu, Code2, Headphones, Shield, Wrench, Zap, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 const coreStrengths = [
   {
     id: "hardware",
+    href: "/product",
+    cta: "ดูสินค้า",
     title: "Hardware คุณภาพ",
     subtitle: "Built to Last",
     description: "ผลิตโครงสร้างเองในไทย ทนทาน ดีไซน์ปรับได้",
@@ -22,7 +25,9 @@ const coreStrengths = [
     borderAccent: "border-blue-200"
   },
   {
-    id: "software", 
+    id: "software",
+    href: "/software",
+    cta: "ดูซอฟต์แวร์",
     title: "Software ระดับ Enterprise",
     subtitle: "Made for Scale",
     description: "พัฒนาเอง 100% แก้บั๊กไว เสถียรสูง รองรับ API",
@@ -41,7 +46,9 @@ const coreStrengths = [
   },
   {
     id: "support",
-    title: "Full Service Support", 
+    href: "/rental",
+    cta: "สอบถามเช่าตู้",
+    title: "Full Service Support",
     subtitle: "Always Here",
     description: "ทีมดูแล On-site และซ่อมบำรุง 24/5",
     features: [
@@ -51,7 +58,7 @@ const coreStrengths = [
       "ปรึกษาฟรีตลอดชีพ"
     ],
     icon: <Headphones className="w-8 h-8" />,
-    gradient: "from-green-600 via-green-500 to-emerald-400", 
+    gradient: "from-green-600 via-green-500 to-emerald-400",
     bgAccent: "bg-green-50",
     textAccent: "text-green-600",
     borderAccent: "border-green-200"
@@ -120,13 +127,14 @@ export function CompetitiveAdvantagesSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ 
-                duration: 0.6, 
+              transition={{
+                duration: 0.6,
                 ease: "easeOut",
                 delay: index * 0.15
               }}
               className="relative group h-full"
             >
+              <Link href={strength.href}>
               <motion.div
                 whileHover={{ scale: 1.02, y: -4 }}
                 transition={{ type: "spring", stiffness: 300, damping: 24 }}
@@ -171,16 +179,22 @@ export function CompetitiveAdvantagesSection() {
                       </li>
                     ))}
                   </ul>
+
+                  {/* Card CTA */}
+                  <div className={`inline-flex items-center gap-1.5 text-sm font-semibold ${strength.textAccent} pt-2`}>
+                    {strength.cta} <ArrowRight className="w-4 h-4" />
+                  </div>
                 </div>
 
                 {/* Hover gradient overlay */}
                 <motion.div
                   className={`absolute inset-0 bg-gradient-to-br ${strength.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none rounded-3xl`}
                 />
-                
+
                 {/* Decorative corner accent */}
                 <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl ${strength.gradient} opacity-5 rounded-bl-full`} />
               </motion.div>
+              </Link>
             </motion.div>
           ))}
         </div>
@@ -194,13 +208,32 @@ export function CompetitiveAdvantagesSection() {
           className="text-center mt-16"
         >
           <div className="max-w-4xl mx-auto">
-            <p className="text-lg sm:text-xl font-medium text-deep-space-blue mb-4">
-              ทำไมถึงต้องเลือกเราเหนือคู่แข่ง?
+            <p className="text-lg sm:text-xl font-medium text-deep-space-blue mb-2">
+              พร้อมเริ่มต้นแล้วหรือยัง?
             </p>
-            <p className="text-deep-space-blue/60 leading-relaxed">
-              เพราะเรามุ่งมั่นสร้างผลิตภัณฑ์และบริการที่ครอบคลุมทุกความต้องการ 
-              จากฮาร์ดแวร์คุณภาพสูง ซอฟต์แวร์ที่เสถียร ไปจนถึงการดูแลหลังการขายที่ไม่มีใครเทียบได้
+            <p className="text-deep-space-blue/60 leading-relaxed mb-8">
+              เลือกซื้อ เช่า หรือสอบถามเพิ่มเติมได้เลย — ทีมงานพร้อมให้คำปรึกษาฟรี
             </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link
+                href="/product"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-deep-space-blue text-white font-semibold text-sm hover:bg-deep-space-blue/90 hover:shadow-lg hover:shadow-deep-space-blue/25 transition-all duration-300"
+              >
+                ดูสินค้าและราคา <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/rental"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-tiger-orange text-white font-semibold text-sm hover:bg-tiger-orange/90 hover:shadow-lg hover:shadow-tiger-orange/25 transition-all duration-300"
+              >
+                สอบถามเช่าตู้ <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/software"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-deep-space-blue/20 text-deep-space-blue font-semibold text-sm hover:border-deep-space-blue hover:bg-deep-space-blue/5 transition-all duration-300"
+              >
+                ซอฟต์แวร์ Imageland <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </motion.div>
 

@@ -179,6 +179,8 @@ export default function RootLayout({
           {children}
         </AppLoadingWrapper>
         <StickySocialMenu />
+        {/* Spacer so mobile bottom bar never covers content */}
+        <div className="h-16 md:hidden" aria-hidden="true" />
         <GoogleAnalytics />
       </body>
     </html>

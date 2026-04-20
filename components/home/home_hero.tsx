@@ -44,7 +44,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-left space-y-8"
+            className="text-left space-y-5"
           >
             {/* Premium Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep-space-blue/5 border border-deep-space-blue/10">
@@ -53,7 +53,7 @@ export function HeroSection() {
             </div>
 
             {/* Main Headline */}
-            <h1 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-deep-space-blue tracking-tight leading-[1.15]">
+            <h1 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-6xl xl:text-6xl text-deep-space-blue tracking-tight leading-[1.15]">
               <span className="whitespace-nowrap">ผู้นำตู้โฟโต้บูธ</span> <span className="whitespace-nowrap">ครบวงจร</span>
               <br />
               <span className="inline-block bg-tiger-orange text-white px-6 py-3 rounded-2xl mt-3 text-3xl sm:text-4xl lg:text-5xl whitespace-nowrap">
@@ -62,84 +62,55 @@ export function HeroSection() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg lg:text-xl text-deep-space-blue/60 leading-relaxed max-w-xl">
-              ยกระดับงานอีเวนต์ให้ปัง หรือสร้างธุรกิจใหม่รายได้สูง ด้วยตู้ถ่ายภาพคุณภาพผลิตในไทย พร้อมระบบซอฟต์แวร์สุดล้ำ จบครบในที่เดียว
+            <p className="text-base sm:text-lg text-deep-space-blue/60 leading-relaxed max-w-xl">
+              ตู้ถ่ายภาพคุณภาพผลิตในไทย พร้อมซอฟต์แวร์สุดล้ำ — เช่างาน ซื้อลงทุน หรือ OEM จบครบในที่เดียว
             </p>
 
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-4">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200">
-                <span className="text-green-600 font-medium text-sm">✓ ผลิตในไทย 100%</span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200">
-                <span className="text-green-600 font-medium text-sm">✓ รับประกันโครงสร้าง 1 ปี</span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200">
-                <span className="text-green-600 font-medium text-sm">✓ ฟรีอัปเดตซอฟต์แวร์</span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200">
-                <span className="text-green-600 font-medium text-sm">✓ ซัพพอร์ต 24 ชม.</span>
-              </div>
-            </div>
-
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Link
-                href="/rental"
+                href="/product"
                 className="group relative inline-flex items-center justify-center gap-3 bg-tiger-orange hover:bg-tiger-orange/90 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-tiger-orange/25 overflow-hidden"
               >
-                <span className="relative z-10">เช่าตู้โฟโต้บูธ</span>
+                <span className="relative z-10">ซื้อตู้โฟโต้บูธ</span>
                 <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               </Link>
 
               <Link
-                href="/product"
+                href="/rental"
                 className="group inline-flex items-center justify-center gap-3 bg-deep-space-blue hover:bg-deep-space-blue/90 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-deep-space-blue/25"
               >
-                <span>ซื้อตู้โฟโต้บูธ</span>
+                <span>เช่าตู้โฟโต้บูธ</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
+            </div>
 
+            {/* LINE CTA */}
+            <div className="pt-1">
               <Link
-                href="#contact"
-                className="group inline-flex items-center justify-center gap-3 bg-transparent hover:bg-deep-space-blue/5 text-deep-space-blue font-semibold px-8 py-4 rounded-full border-2 border-deep-space-blue/20 hover:border-deep-space-blue transition-all duration-300"
+                href="/contact"
+                className="inline-flex items-center gap-1.5 text-sm text-deep-space-blue/60 hover:text-tiger-orange transition-colors font-medium"
               >
-                <span>ปรึกษาเรา</span>
+                <span>หรือสอบถามผ่าน LINE</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
 
-            {/* Stats Row */}
-            <div className="flex flex-wrap items-center gap-6 sm:gap-8 pt-4">
-              <div className="flex flex-col">
-                <span className="text-2xl sm:text-3xl font-bold text-tiger-orange">50,000฿+</span>
-                <span className="text-xs sm:text-sm text-deep-space-blue/60 mt-1">เริ่มต้น</span>
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 border border-green-200">
+                <span className="text-green-600 font-medium text-xs sm:text-sm">✓ ผลิตในไทย 100%</span>
               </div>
-              <div className="w-px h-12 bg-deep-space-blue/10" />
-              <div className="flex flex-col">
-                <span className="text-2xl sm:text-3xl font-bold text-tiger-orange">ROI 200-300%</span>
-                <span className="text-xs sm:text-sm text-deep-space-blue/60 mt-1">ต่อปี</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 border border-green-200">
+                <span className="text-green-600 font-medium text-xs sm:text-sm">✓ รับประกัน 1 ปี</span>
               </div>
-              <div className="w-px h-12 bg-deep-space-blue/10" />
-              <div className="flex flex-col">
-                <span className="text-2xl sm:text-3xl font-bold text-tiger-orange">100%</span>
-                <span className="text-xs sm:text-sm text-deep-space-blue/60 mt-1">ผลิตในไทย</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 border border-green-200">
+                <span className="text-green-600 font-medium text-xs sm:text-sm">✓ ฟรีอัปเดตซอฟต์แวร์</span>
               </div>
-            </div>
-
-            {/* Secondary Links */}
-            <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm pt-2">
-              <Link href="/rental" className="text-deep-space-blue/60 hover:text-tiger-orange transition-colors font-medium">
-                บริการเช่า
-              </Link>
-              <span className="text-deep-space-blue/20">•</span>
-              <Link href="/oem" className="text-deep-space-blue/60 hover:text-tiger-orange transition-colors font-medium">
-                รับผลิต OEM
-              </Link>
-              <span className="text-deep-space-blue/20">•</span>
-              <Link href="/software" className="text-deep-space-blue/60 hover:text-tiger-orange transition-colors font-medium">
-                ซอฟต์แวร์ Imageland
-              </Link>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 border border-green-200">
+                <span className="text-green-600 font-medium text-xs sm:text-sm">✓ ซัพพอร์ต 24 ชม.</span>
+              </div>
             </div>
           </motion.div>
 
