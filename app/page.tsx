@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/home/home_hero"
+import { TrustBar } from "@/components/home/home_trust_bar"
 import { ProductSection } from "@/components/home/home_product"
 import dynamic from "next/dynamic"
 
@@ -196,6 +197,7 @@ export default function Home() {
             />
             <Navigation />
             <HeroSection />
+            <TrustBar />
             <HomeServicesSection />
             <AdsSlideshow />
             <UserJourneySection />
@@ -209,8 +211,8 @@ export default function Home() {
             <ProductSection />
             <SlideshowSection />
             
-            {/* <HomeStatsSection /> */}
-            {/* <CustomerSlideShow /> */}
+            <HomeStatsSection />
+            <CustomerSlideShow />
             <ContactSection />
             <Footer />
         </main>

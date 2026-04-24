@@ -1,9 +1,10 @@
 "use client"
 
 import { useRef } from "react"
-import { Factory, ShieldCheck, HeadphonesIcon, TrendingUp, Wrench, Sparkles } from "lucide-react"
+import { Factory, ShieldCheck, HeadphonesIcon, TrendingUp, Wrench, Sparkles, ArrowRight } from "lucide-react"
 import { motion, useInView } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link"
 import { customerLogos } from "@/data/customer-logos"
 
 /* ── Infinite Marquee ── */
@@ -89,14 +90,14 @@ const trustPillars = [
     },
 ]
 
-const serviceTypes = [
-    "ซื้อตู้โฟโต้บูธ",
-    "เช่าตู้โฟโต้บูธ",
-    "OEM/ODM",
-    "Camera 360°",
-    "Classic Booth",
-    "High Angle Booth",
-    "ซอฟต์แวร์ Photo Booth",
+const serviceTypes: { label: string; href?: string }[] = [
+    { label: "ซื้อตู้โฟโต้บูธ", href: "/product" },
+    { label: "เช่าตู้โฟโต้บูธ", href: "/rental" },
+    { label: "OEM/ODM", href: "/oem" },
+    { label: "Camera 360°" },
+    { label: "Classic Booth" },
+    { label: "High Angle Booth" },
+    { label: "ซอฟต์แวร์ Photo Booth", href: "/software" },
 ]
 
 /* 60-30-10 color theory:
@@ -190,15 +191,25 @@ export function HomeServicesSection() {
                     aria-label="บริการของ IMAGEAUTOMAT"
                 >
                     <div className="flex flex-wrap justify-center gap-2.5 sm:gap-3">
-                        {serviceTypes.map((name, i) => (
+                        {serviceTypes.map(({ label, href }, i) => (
                             <motion.span
-                                key={name}
+                                key={label}
                                 initial={{ opacity: 0, scale: 0.92 }}
                                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                                 transition={{ duration: 0.4, delay: 0.25 + i * 0.05 }}
-                                className="text-xs sm:text-[13px] font-medium text-deep-space-blue/40 px-4 py-2 rounded-full bg-white border border-deep-space-blue/[0.06] shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:border-tiger-orange/30 hover:text-tiger-orange transition-all duration-300 cursor-default select-none"
                             >
-                                {name}
+                                {href ? (
+                                    <Link
+                                        href={href}
+                                        className="inline-block text-xs sm:text-[13px] font-medium text-deep-space-blue/60 px-4 py-2 rounded-full bg-white border border-deep-space-blue/6 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:border-tiger-orange hover:text-tiger-orange hover:shadow-[0_2px_8px_rgba(251,133,0,0.12)] transition-all duration-300"
+                                    >
+                                        {label}
+                                    </Link>
+                                ) : (
+                                    <span className="inline-block text-xs sm:text-[13px] font-medium text-deep-space-blue/40 px-4 py-2 rounded-full bg-white border border-deep-space-blue/6 shadow-[0_1px_3px_rgba(0,0,0,0.03)] cursor-default select-none">
+                                        {label}
+                                    </span>
+                                )}
                             </motion.span>
                         ))}
                     </div>
@@ -255,9 +266,36 @@ export function HomeServicesSection() {
                     ))}
                 </div>
 
+                {/* ── Bottom CTAs ── */}
+                <motion.div
+                    className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-14 sm:mt-16"
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.85 }}
+                >
+                    <Link
+                        href="/rental"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-tiger-orange text-white font-semibold text-sm hover:bg-tiger-orange/90 hover:shadow-lg hover:shadow-tiger-orange/25 transition-all duration-300"
+                    >
+                        เช่าตู้โฟโต้บูธ <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    <Link
+                        href="/software"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-deep-space-blue text-white font-semibold text-sm hover:bg-deep-space-blue/90 hover:shadow-lg hover:shadow-deep-space-blue/25 transition-all duration-300"
+                    >
+                        ซอฟต์แวร์ Imageland <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    <Link
+                        href="/product"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-deep-space-blue/20 text-deep-space-blue font-semibold text-sm hover:border-deep-space-blue hover:bg-deep-space-blue/5 transition-all duration-300"
+                    >
+                        ดูสินค้าทั้งหมด <ArrowRight className="w-4 h-4" />
+                    </Link>
+                </motion.div>
+
                 {/* ── Bottom social proof ── */}
                 <motion.p
-                    className="text-center mt-14 sm:mt-16 text-sm text-deep-space-blue/35"
+                    className="text-center mt-8 text-sm text-deep-space-blue/35"
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : {}}
                     transition={{ duration: 0.6, delay: 0.9 }}
