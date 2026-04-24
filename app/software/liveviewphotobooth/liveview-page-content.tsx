@@ -527,7 +527,7 @@ function FaqSection() {
         },
         {
             q: "สามารถทดลองใช้ก่อนซื้อได้ไหม?",
-            a: "ได้ครับ ทีมงาน IMAGEAUTOMAT ยินดีสาธิตซอฟต์แวร์รวมถึงโหมด Liveview Photobooth ก่อนตัดสินใจ ติดต่อผ่าน LINE @imageautomat หรือโทร 063-594-4429",
+            a: "ได้ครับ ทีมงาน IMAGEAUTOMAT ยินดีสาธิตซอฟต์แวร์รวมถึงโหมด Liveview Photobooth ก่อนตัดสินใจ ติดต่อผ่าน LINE @imageautomat หรือโทร 063-654-6249",
         },
     ]
 

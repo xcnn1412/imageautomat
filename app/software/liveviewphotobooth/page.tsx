@@ -228,7 +228,7 @@ function generateJsonLd() {
                         name: "สามารถทดลองใช้ซอฟต์แวร์ Liveview Photobooth ก่อนซื้อได้ไหม?",
                         acceptedAnswer: {
                             "@type": "Answer",
-                            text: "ได้ครับ ทีมงาน IMAGEAUTOMAT ยินดีให้ทดลองสาธิตซอฟต์แวร์ตู้ถ่ายรูป IMAGEAUTOMAT รวมถึงโหมด Liveview Photobooth ก่อนตัดสินใจ ติดต่อผ่าน LINE @imageautomat หรือโทร 063-594-4429",
+                            text: "ได้ครับ ทีมงาน IMAGEAUTOMAT ยินดีให้ทดลองสาธิตซอฟต์แวร์ตู้ถ่ายรูป IMAGEAUTOMAT รวมถึงโหมด Liveview Photobooth ก่อนตัดสินใจ ติดต่อผ่าน LINE @imageautomat หรือโทร 063-654-6249",
                         },
                     },
                 ],

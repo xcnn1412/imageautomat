@@ -37,8 +37,8 @@ const contactCards = [
     {
         icon: Phone,
         label: "โทรศัพท์",
-        value: "063-594-4429",
-        href: "tel:+66635944429",
+        value: "063-654-6249",
+        href: "tel:+66636546249",
         description: "โทรหาเราได้ทุกวัน",
         color: "from-tiger-orange to-amber-500",
         bgColor: "bg-tiger-orange/5",
@@ -184,11 +184,11 @@ export function ContactPageContent() {
                                 </span>
                             </a>
                             <a
-                                href="tel:+66635944429"
+                                href="tel:+66636546249"
                                 className="inline-flex items-center gap-2 text-white/60 hover:text-white font-medium transition-colors duration-300"
                             >
                                 <Phone className="w-4 h-4" />
-                                <span>063-594-4429</span>
+                                <span>063-654-6249</span>
                             </a>
                         </motion.div>
 
@@ -378,7 +378,7 @@ export function ContactPageContent() {
                                                             })
                                                         }
                                                         className="w-full h-12 px-4 bg-deep-space-blue/[0.03] border border-deep-space-blue/10 rounded-xl focus:border-tiger-orange focus:ring-1 focus:ring-tiger-orange/20 text-deep-space-blue placeholder:text-deep-space-blue/25 transition-all duration-300 outline-none"
-                                                        placeholder="063-594-4429"
+                                                        placeholder="063-654-6249"
                                                         required
                                                     />
                                                 </div>

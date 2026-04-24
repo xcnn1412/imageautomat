@@ -60,7 +60,7 @@ export function CTA({ isVisible = true, className = "" }: CTAProps) {
         <div className="flex flex-wrap justify-center gap-3">
           {[
             { number: "065 646 6414", tel: "0656466414" },
-            { number: "063 594 4429", tel: "0635944429" },
+            { number: "063 654 6249", tel: "0636546249" },
             { number: "062 424 9936", tel: "0624249936" },
           ].map((phone, index) => (
             <a

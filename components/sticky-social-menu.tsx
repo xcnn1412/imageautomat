@@ -34,7 +34,7 @@ const socialItems = [
   {
     id: "phone",
     label: "โทรหาเรา",
-    href: "tel:0635944429",
+    href: "tel:0636546249",
     icon: <Phone size={20} />,
     bg: "#FB8500",
     glowColor: "rgba(251,133,0,0.5)",

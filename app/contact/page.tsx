@@ -4,7 +4,7 @@ import { ContactPageContent } from "./contact-page-content"
 export const metadata: Metadata = {
     title: "ติดต่อเรา — IMAGE AUTOMAT | เช่าตู้ถ่ายรูป Photobooth",
     description:
-        "ติดต่อ IMAGE AUTOMAT สอบถามราคาเช่าตู้ถ่ายรูป Photobooth สำหรับงานแต่งงาน งานอีเวนต์ งานเปิดตัวสินค้า โทร 063-594-4429 หรือแชท LINE @imageautomat",
+        "ติดต่อ IMAGE AUTOMAT สอบถามราคาเช่าตู้ถ่ายรูป Photobooth สำหรับงานแต่งงาน งานอีเวนต์ งานเปิดตัวสินค้า โทร 063-654-6249 หรือแชท LINE @imageautomat",
     keywords: [
         "ติดต่อเรา",
         "เช่าตู้ถ่ายรูป",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "ติดต่อเรา — IMAGE AUTOMAT | เช่าตู้ถ่ายรูป Photobooth",
         description:
-            "สอบถามราคาเช่าตู้ถ่ายรูป Photobooth สำหรับทุกงานอีเวนต์ โทร 063-594-4429 | LINE @imageautomat",
+            "สอบถามราคาเช่าตู้ถ่ายรูป Photobooth สำหรับทุกงานอีเวนต์ โทร 063-654-6249 | LINE @imageautomat",
         url: "https://www.imageautomat.com/contact",
         type: "website",
         siteName: "IMAGEAUTOMAT",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     twitter: {
         card: "summary_large_image",
         title: "ติดต่อเรา — IMAGE AUTOMAT | เช่าตู้ถ่ายรูป Photobooth",
-        description: "สอบถามราคาเช่าตู้ถ่ายรูป Photobooth สำหรับทุกงานอีเวนต์ โทร 063-594-4429 | LINE @imageautomat",
+        description: "สอบถามราคาเช่าตู้ถ่ายรูป Photobooth สำหรับทุกงานอีเวนต์ โทร 063-654-6249 | LINE @imageautomat",
         images: ["/images/og-image.jpg"],
     },
     alternates: {
@@ -49,7 +49,7 @@ const jsonLd = {
     description:
         "บริการเช่าและจำหน่ายตู้ถ่ายรูป Photobooth คุณภาพสูง สำหรับงานแต่งงาน งานอีเวนต์ และงานเปิดตัวสินค้า",
     url: "https://www.imageautomat.com",
-    telephone: "+66635944429",
+    telephone: "+66636546249",
     email: "imageautomat@gmail.com",
     address: {
         "@type": "PostalAddress",

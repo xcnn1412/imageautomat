@@ -27,7 +27,7 @@ const footerLinks = [
 const socialLinks = [
   { icon: LineIcon, href: "https://lin.ee/Q5DSE1r", label: "LINE", external: true },
   { icon: Facebook, href: "https://www.facebook.com/imageautomat", label: "Facebook", external: true },
-  { icon: Phone, href: "tel:0635944429", label: "โทรหาเรา", external: false },
+  { icon: Phone, href: "tel:0636546249", label: "โทรหาเรา", external: false },
 ];
 
 export function Footer() {

@@ -27,7 +27,7 @@ const socials = [
   },
   {
     label: "โทรหาเรา",
-    href: "tel:+66635944429",
+    href: "tel:+66636546249",
     icon: Phone,
     color: "hover:bg-primary hover:text-white hover:border-primary",
     ring: "hover:ring-primary/40",
