@@ -11,6 +11,11 @@ module.exports = {
             '/rental': 0.8,
             '/oem': 0.75,
             '/payment': 0.7,
+            '/careers': 0.6,
+            '/careers/admin-sale': 0.55,
+            '/careers/accounting-admin': 0.55,
+            '/careers/carpenter': 0.55,
+            '/careers/fullstack-developer-intern': 0.55,
             '/contact': 0.5,
         }
         return {
