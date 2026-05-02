@@ -3,6 +3,7 @@
 import { motion, useAnimation, AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react"
 import { Phone, Mail, Facebook } from "lucide-react"
+import { LINE_OA_URL } from "@/lib/constants"
 
 const LineIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -21,7 +22,7 @@ const socialItems = [
   {
     id: "line",
     label: "LINE@",
-    href: "https://lin.ee/Q5DSE1r",
+    href: LINE_OA_URL,
     icon: <LineIcon />,
     bg: "#06C755",
     glowColor: "rgba(6,199,85,0.6)",
@@ -31,7 +32,7 @@ const socialItems = [
   {
     id: "whatsapp",
     label: "WhatsApp",
-    href: "https://wa.me/66635944429",
+    href: "https://wa.me/66636546249",
     icon: <WhatsAppIcon />,
     bg: "#25D366",
     glowColor: "rgba(37,211,102,0.5)",
@@ -75,7 +76,7 @@ const mobileItems = [
   {
     id: "line",
     label: "LINE",
-    href: "https://lin.ee/Q5DSE1r",
+    href: LINE_OA_URL,
     icon: <LineIcon />,
     bg: "#06C755",
     external: true,
@@ -83,7 +84,7 @@ const mobileItems = [
   {
     id: "whatsapp",
     label: "WhatsApp",
-    href: "https://wa.me/66635944429",
+    href: "https://wa.me/66636546249",
     icon: <WhatsAppIcon />,
     bg: "#25D366",
     external: true,
@@ -91,7 +92,7 @@ const mobileItems = [
   {
     id: "phone",
     label: "โทรหาเรา",
-    href: "tel:0635944429",
+    href: "tel:0636546249",
     icon: <Phone size={20} />,
     bg: "#FB8500",
     external: false,

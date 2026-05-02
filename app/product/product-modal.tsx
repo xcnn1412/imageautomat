@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { ArrowRight, Star, X } from "lucide-react"
 import { products } from "@/data/products"
+import { LINE_OA_URL } from "@/lib/constants"
 
 interface ProductDetailModalProps {
     product: typeof products[0] | null
@@ -95,7 +96,7 @@ export function ProductDetailModal({ product, onClose }: ProductDetailModalProps
 
                             {/* CTA */}
                             <a
-                                href="https://lin.ee/Q5DSE1r"
+                                href={LINE_OA_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-3 px-8 py-4 bg-tiger-orange text-white font-bold rounded-full hover:bg-deep-space-blue transition-all duration-300 w-full justify-center shadow-lg shadow-tiger-orange/20 hover:shadow-deep-space-blue/20"

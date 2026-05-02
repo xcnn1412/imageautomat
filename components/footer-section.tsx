@@ -7,7 +7,7 @@ import { MapPin, Phone, Mail, Facebook, Instagram, MessageCircle, Send, ArrowRig
 
 const contactItems = [
   { icon: MapPin, label: "ที่อยู่", value: "IMAGEAUTOMAT Co., Ltd.\nPrawet, Bangkok 10250" },
-  { icon: Phone, label: "โทรศัพท์", value: "+66 2 XXX XXXX" },
+  { icon: Phone, label: "โทรศัพท์", value: "063-654-6249" },
   { icon: Mail, label: "อีเมล์", value: "contact@imageautomat.com" },
 ]
 

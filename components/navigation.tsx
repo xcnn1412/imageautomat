@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { ShoppingCart, Calendar, Laptop, Factory, Phone, Star } from "lucide-react"
+import { LINE_OA_URL } from "@/lib/constants"
 
 // LINE Icon Component
 const LineIcon = ({ className = "" }: { className?: string }) => (
@@ -102,7 +103,7 @@ export function Navigation() {
           {/* CTA Button - LINE (Desktop) */}
           <div className="hidden lg:block flex-shrink-0">
             <a
-              href="https://lin.ee/Q5DSE1r"
+              href={LINE_OA_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex items-center gap-2 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-6 py-2.5 text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#06C755]/25 hover:shadow-xl hover:shadow-[#06C755]/40 hover:scale-105 active:scale-95 overflow-hidden"
@@ -165,7 +166,7 @@ export function Navigation() {
               {/* LINE CTA in Mobile */}
               <div className="mt-2 pt-2 border-t border-deep-space-blue/5">
                 <a
-                  href="https://lin.ee/Q5DSE1r"
+                  href={LINE_OA_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative inline-flex items-center justify-center gap-2 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-5 py-3.5 text-base rounded-xl w-full transition-all duration-300 shadow-lg shadow-[#06C755]/30 active:scale-95 overflow-hidden"

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Menu, X, CalendarDays, Monitor, Wallet, Phone, Star } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { LINE_OA_URL } from "@/lib/constants"
 
 const navLinks = [
   { href: "#rental", label: "แพ็กเกจเช่า", icon: CalendarDays },
@@ -74,7 +75,7 @@ export function Header() {
 
           <div className="flex items-center gap-3">
             <a
-              href="https://lin.ee/Q5DSE1r"
+              href={LINE_OA_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#06C755] text-white text-sm font-semibold hover:bg-[#05b34c] transition-all hover:scale-105 active:scale-95 animate-pulse-glow"
@@ -109,7 +110,7 @@ export function Header() {
                 </a>
               ))}
               <a
-                href="https://lin.ee/Q5DSE1r"
+                href={LINE_OA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-2 flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#06C755] text-white text-sm font-semibold hover:bg-[#05b34c] transition-colors"

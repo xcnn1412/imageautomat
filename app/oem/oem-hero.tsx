@@ -2,6 +2,7 @@
 
 import { Factory, Award, TrendingUp } from "lucide-react"
 import { motion } from "framer-motion"
+import { LINE_OA_URL } from "@/lib/constants"
 
 const stats = [
     { icon: Factory, value: "500+", label: "ตู้ที่ผลิตต่อปี" },
@@ -47,7 +48,7 @@ export function OemHero() {
                     {/* CTA Buttons */}
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
                         <a
-                            href="https://lin.ee/Q5DSE1r"
+                            href={LINE_OA_URL}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group relative inline-flex items-center gap-2 bg-tiger-orange hover:bg-tiger-orange/90 text-white font-bold px-8 py-4 text-base rounded-full transition-all duration-300 shadow-lg shadow-tiger-orange/30 hover:shadow-xl hover:shadow-tiger-orange/50 hover:scale-105 active:scale-95 overflow-hidden w-full sm:w-auto justify-center"

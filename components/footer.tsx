@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Facebook, Phone } from "lucide-react";
+import { LINE_OA_URL } from "@/lib/constants";
 
 const LineIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +27,7 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { icon: LineIcon, href: "https://lin.ee/Q5DSE1r", label: "LINE", external: true },
+  { icon: LineIcon, href: LINE_OA_URL, label: "LINE", external: true },
   { icon: Facebook, href: "https://www.facebook.com/imageautomat", label: "Facebook", external: true },
   { icon: Phone, href: "tel:0636546249", label: "โทรหาเรา", external: false },
 ];

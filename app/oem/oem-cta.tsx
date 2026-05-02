@@ -1,6 +1,7 @@
 "use client"
 
 import { MessageCircle, Package } from "lucide-react"
+import { LINE_OA_URL } from "@/lib/constants"
 
 export function OemCta() {
     return (
@@ -30,7 +31,7 @@ export function OemCta() {
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <a
-                        href="https://lin.ee/Q5DSE1r"
+                        href={LINE_OA_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group relative inline-flex items-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-8 py-5 text-base rounded-full transition-all duration-300 shadow-xl shadow-[#06C755]/30 hover:shadow-2xl hover:shadow-[#06C755]/50 hover:scale-105 active:scale-95 overflow-hidden w-full sm:w-auto justify-center"

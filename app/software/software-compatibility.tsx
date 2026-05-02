@@ -5,6 +5,7 @@ import {
     ArrowRight,
     CheckCircle2,
 } from "lucide-react"
+import { LINE_OA_URL } from "@/lib/constants"
 
 const highlights = [
     "รองรับ Windows 10/11",
@@ -40,7 +41,7 @@ export function SoftwareCompatibility() {
                                 ซอฟต์แวร์ Photobooth ของเราออกแบบมาให้ใช้งานร่วมกับฮาร์ดแวร์ได้อย่างกว้างขวาง ไม่ว่าจะเป็นกล้อง DSLR เครื่องพิมพ์ภาพถ่าย หรือจอสัมผัส Touchscreen
                             </p>
                             <a
-                                href="https://lin.ee/Q5DSE1r"
+                                href={LINE_OA_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-3 px-8 py-4 bg-tiger-orange text-white font-bold rounded-full hover:bg-white hover:text-deep-space-blue transition-all duration-300 shadow-lg shadow-tiger-orange/20 hover:shadow-xl"

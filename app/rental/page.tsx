@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { RentalPageContent } from "./rental-page-content"
+import { LINE_OA_URL } from "@/lib/constants"
 
 export const metadata: Metadata = {
     title: "เช่าตู้โฟโต้บูธ พร้อมทีมงาน ราคาเริ่ม 3,000 บาท | IMAGEAUTOMAT",
@@ -65,7 +66,7 @@ const jsonLd = {
                 name: "IMAGEAUTOMAT",
                 url: "https://www.imageautomat.com",
                 telephone: "+66-63-654-6249",
-                sameAs: ["https://lin.ee/Q5DSE1r"],
+                sameAs: [LINE_OA_URL],
             },
             areaServed: {
                 "@type": "Country",

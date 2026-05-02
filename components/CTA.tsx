@@ -1,5 +1,7 @@
 "use client"
 
+import { LINE_OA_URL } from "@/lib/constants"
+
 // LINE Icon Component
 const LineIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +22,7 @@ export function CTA({ isVisible = true, className = "" }: CTAProps) {
         className={`mt-12 flex justify-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
       >
         <a
-          href="https://lin.ee/Q5DSE1r"
+          href={LINE_OA_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="group relative inline-flex items-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-10 py-6 text-base rounded-full transition-all duration-300 shadow-lg shadow-[#06C755]/30 hover:shadow-2xl hover:shadow-[#06C755]/60 hover:scale-105 active:scale-95 animate-subtle-bounce overflow-hidden"

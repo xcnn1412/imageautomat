@@ -1,6 +1,7 @@
 "use client"
 
 import { Check, Clock, Package, Star } from "lucide-react"
+import { LINE_OA_URL } from "@/lib/constants"
 
 const packages = [
     {
@@ -126,7 +127,7 @@ export function RentalPackages() {
 
                             {/* CTA Button */}
                             <a
-                                href="https://lin.ee/Q5DSE1r"
+                                href={LINE_OA_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={`group/btn inline-flex items-center justify-center gap-2 font-bold px-6 py-3.5 text-sm rounded-full transition-all duration-300 w-full ${pkg.highlighted
@@ -146,7 +147,7 @@ export function RentalPackages() {
                         💡 ต้องการปรับแต่งแพ็คเกจเฉพาะ?
                     </p>
                     <a
-                        href="https://lin.ee/Q5DSE1r"
+                        href={LINE_OA_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-tiger-orange font-bold hover:underline"
