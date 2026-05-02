@@ -174,11 +174,11 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                         </span>
                                     </a>
                                     <a
-                                        href="tel:+66636546249"
+                                        href="tel:+66624249936"
                                         className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 backdrop-blur-sm text-white font-semibold px-6 py-3.5 rounded-full text-sm transition-all duration-300 border border-white/10"
                                     >
                                         <Phone className="w-4 h-4" />
-                                        <span>063-654-6249</span>
+                                        <span>062-424-9936</span>
                                     </a>
                                 </motion.div>
                             </div>
@@ -429,7 +429,7 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                 </div>
                                 <div className="flex items-center justify-center gap-3 text-sm text-white/40">
                                     <Phone className="w-4 h-4" />
-                                    <span>หรือโทร 063-654-6249</span>
+                                    <span>หรือโทร 062-424-9936</span>
                                 </div>
                             </div>
                         </motion.div>

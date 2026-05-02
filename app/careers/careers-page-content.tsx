@@ -458,11 +458,11 @@ export function CareersPageContent() {
                                         <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                     </a>
                                     <a
-                                        href="tel:+66636546249"
+                                        href="tel:+66624249936"
                                         className="inline-flex items-center gap-2 text-white/70 hover:text-white font-semibold px-4 py-3 transition-colors duration-300"
                                     >
                                         <Phone className="w-4 h-4" />
-                                        <span>063-654-6249</span>
+                                        <span>062-424-9936</span>
                                     </a>
                                     <a
                                         href="mailto:imageautomat@gmail.com?subject=สมัครงาน IMAGE AUTOMAT"

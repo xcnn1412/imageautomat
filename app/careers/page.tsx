@@ -5,7 +5,7 @@ import { CareersPageContent } from "./careers-page-content"
 export const metadata: Metadata = {
     title: "ร่วมงานกับเรา — IMAGE AUTOMAT | รับสมัครพนักงานขาย แอดมินบัญชี ช่างไม้",
     description:
-        "IMAGE AUTOMAT เปิดรับสมัครพนักงานขาย (Admin-sale), แอดมินบัญชี และช่างไม้ ร่วมเป็นส่วนหนึ่งของทีมตู้ถ่ายรูป Photobooth ชั้นนำของไทย สนใจสมัคร โทร 063-654-6249 หรือ LINE @imageautomat",
+        "IMAGE AUTOMAT เปิดรับสมัครพนักงานขาย (Admin-sale), แอดมินบัญชี และช่างไม้ ร่วมเป็นส่วนหนึ่งของทีมตู้ถ่ายรูป Photobooth ชั้นนำของไทย สนใจสมัคร โทร 062-424-9936 หรือ LINE @imageautomat",
     keywords: [
         "รับสมัครงาน",
         "สมัครงาน Photobooth",
