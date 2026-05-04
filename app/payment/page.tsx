@@ -30,21 +30,12 @@ export const metadata: Metadata = {
         type: "website",
         siteName: "IMAGEAUTOMAT",
         locale: "th_TH",
-        images: [
-            {
-                url: "/images/og-image.jpg",
-                width: 1200,
-                height: 630,
-                alt: "ระบบชำระเงินตู้ถ่ายรูป Photobooth — IMAGEAUTOMAT",
-            },
-        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "ระบบชำระเงินตู้ถ่ายรูป — PromptPay, QR Code, คูปอง | IMAGEAUTOMAT",
         description:
             "ระบบชำระเงินตู้ถ่ายรูปครบวงจร รองรับ PromptPay, QR Code, คูปอง และโหมดอีเวนต์ ชำระเงินอัตโนมัติพร้อมตรวจสอบเรียลไทม์",
-        images: ["/images/og-image.jpg"],
     },
 }
 

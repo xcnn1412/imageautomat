@@ -22,20 +22,11 @@ export const metadata: Metadata = {
         type: "website",
         siteName: "IMAGEAUTOMAT",
         locale: "th_TH",
-        images: [
-            {
-                url: "/images/og-image.jpg",
-                width: 1200,
-                height: 630,
-                alt: "ติดต่อ IMAGE AUTOMAT — เช่าตู้ถ่ายรูป Photobooth",
-            },
-        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "ติดต่อเรา — IMAGE AUTOMAT | เช่าตู้ถ่ายรูป Photobooth",
         description: "สอบถามราคาเช่าตู้ถ่ายรูป Photobooth สำหรับทุกงานอีเวนต์ โทร 063-654-6249 | LINE @imageautomat",
-        images: ["/images/og-image.jpg"],
     },
     alternates: {
         canonical: "https://www.imageautomat.com/contact",

@@ -33,21 +33,12 @@ export const metadata: Metadata = {
         type: "website",
         siteName: "IMAGEAUTOMAT",
         locale: "th_TH",
-        images: [
-            {
-                url: "/images/og-image.jpg",
-                width: 1200,
-                height: 630,
-                alt: "ซอฟต์แวร์ตู้ถ่ายรูป Photobooth ระบบ Imageland จาก IMAGEAUTOMAT",
-            },
-        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "ซอฟต์แวร์ตู้ถ่ายรูป Photobooth — Imageland | IMAGEAUTOMAT",
         description:
             "ซอฟต์แวร์ตู้ถ่ายรูปครบวงจร รองรับ AI Filter, Green Screen, Live Gallery และอื่นๆ พร้อมอัปเดตฟรีตลอดชีพ เหมาะสำหรับงานอีเวนต์และธุรกิจตู้ถ่ายรูป",
-        images: ["/images/og-image.jpg"],
     },
 }
 

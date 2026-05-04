@@ -22,7 +22,7 @@ import {
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { getJobBySlug } from "@/data/jobs"
-import { LINE_OA_URL } from "@/lib/constants"
+import { LINE_OA_CAREERS_URL } from "@/lib/constants"
 import { buildApplyMailto } from "@/lib/careers-mail"
 
 /* ──────────────── LINE Icon ──────────────── */
@@ -67,9 +67,6 @@ export function JobDetailContent({ slug }: { slug: string }) {
     const detailInView = useInView(detailRef, { once: true, amount: 0.1 })
     const ctaInView = useInView(ctaRef, { once: true, amount: 0.3 })
 
-    const lineMessage = encodeURIComponent(
-        `สวัสดีครับ/ค่ะ สนใจสมัครงานตำแหน่ง "${job.title}" รบกวนขอข้อมูลเพิ่มเติมครับ/ค่ะ`
-    )
     const applyMailto = buildApplyMailto(job.title)
 
     return (
@@ -161,7 +158,7 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                     className="mt-8 flex flex-col sm:flex-row gap-3"
                                 >
                                     <a
-                                        href={LINE_OA_URL}
+                                        href={LINE_OA_CAREERS_URL}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="group relative inline-flex items-center justify-center gap-2 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-6 py-3.5 rounded-full text-sm transition-all duration-300 shadow-lg shadow-[#06C755]/30 hover:shadow-xl hover:shadow-[#06C755]/40 hover:scale-105 active:scale-95 overflow-hidden"
@@ -406,7 +403,7 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                 </p>
                                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
                                     <a
-                                        href={`https://line.me/R/oaMessage/@imageautomat/?${lineMessage}`}
+                                        href={LINE_OA_CAREERS_URL}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="group relative inline-flex items-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-[#06C755]/30 hover:shadow-xl hover:shadow-[#06C755]/40 hover:scale-105 active:scale-95 overflow-hidden"

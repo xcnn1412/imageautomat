@@ -33,13 +33,42 @@ export function ContactSection() {
     eventType: "",
     eventDate: "",
     message: "",
+    website: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 4000);
+    if (isSubmitting) return;
+    setErrorMsg(null);
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error || "ส่งข้อมูลไม่สำเร็จ กรุณาลองใหม่อีกครั้ง");
+      }
+      setIsSubmitted(true);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        eventType: "",
+        eventDate: "",
+        message: "",
+        website: "",
+      });
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : "เกิดข้อผิดพลาด กรุณาลองใหม่");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -233,12 +262,40 @@ export function ContactSection() {
                       />
                     </div>
 
+                    {/* Honeypot — hidden from real users; bots fill anything */}
+                    <div aria-hidden="true" className="absolute left-[-9999px] w-px h-px overflow-hidden">
+                      <label htmlFor="website">Website (do not fill)</label>
+                      <input
+                        id="website"
+                        name="website"
+                        type="text"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={formData.website}
+                        onChange={(e) =>
+                          setFormData({ ...formData, website: e.target.value })
+                        }
+                      />
+                    </div>
+
+                    {errorMsg && (
+                      <p
+                        role="alert"
+                        className="text-sm text-red-600 bg-red-50 border border-red-200 rounded px-3 py-2"
+                      >
+                        {errorMsg}
+                      </p>
+                    )}
+
                     <Button
                       type="submit"
-                      className="w-full bg-[#023047] hover:bg-[#023047]/90 text-white h-14 text-sm tracking-[0.15em] uppercase mt-4 transition-all duration-300 group"
+                      disabled={isSubmitting}
+                      className="w-full bg-[#023047] hover:bg-[#023047]/90 disabled:opacity-60 disabled:cursor-not-allowed text-white h-14 text-sm tracking-[0.15em] uppercase mt-4 transition-all duration-300 group"
                     >
-                      Send Request
-                      <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      {isSubmitting ? "Sending..." : "Send Request"}
+                      {!isSubmitting && (
+                        <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      )}
                     </Button>
                   </form>
                 </>

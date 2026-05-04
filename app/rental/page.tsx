@@ -29,20 +29,11 @@ export const metadata: Metadata = {
         type: "website",
         siteName: "IMAGEAUTOMAT",
         locale: "th_TH",
-        images: [
-            {
-                url: "/images/og-image.jpg",
-                width: 1200,
-                height: 630,
-                alt: "เช่าตู้โฟโต้บูธ พร้อมทีมงาน — IMAGEAUTOMAT",
-            },
-        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "เช่าตู้โฟโต้บูธ พร้อมทีมงาน ราคาเริ่ม 3,000 บาท | IMAGEAUTOMAT",
         description: "บริการเช่าตู้ถ่ายรูป Photobooth ครบวงจร พร้อมทีมงานมืออาชีพ ราคาเริ่มต้น 3,000 บาท บริการทั่วประเทศ",
-        images: ["/images/og-image.jpg"],
     },
     alternates: {
         canonical: "https://www.imageautomat.com/rental",

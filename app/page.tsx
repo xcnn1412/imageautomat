@@ -164,20 +164,11 @@ export const metadata: Metadata = {
         type: "website",
         locale: "th_TH",
         siteName: "IMAGEAUTOMAT",
-        images: [
-            {
-                url: "/images/og-image.jpg",
-                width: 1200,
-                height: 630,
-                alt: "ตู้โฟโต้บูธคุณภาพพรีเมียม ผลิตในไทย IMAGEAUTOMAT",
-            },
-        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "ซื้อตู้โฟโต้บูธคุณภาพพรีเมียม — ผลิตในไทย | IMAGEAUTOMAT",
         description: "ลงทุนครั้งเดียว สร้างรายได้ระยะยาว ตู้โฟโต้บูธคุณภาพพรีเมียม ผลิตในไทย",
-        images: ["/images/og-image.jpg"],
     },
     alternates: {
         canonical: "https://www.imageautomat.com",

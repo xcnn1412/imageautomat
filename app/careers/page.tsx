@@ -24,21 +24,12 @@ export const metadata: Metadata = {
         type: "website",
         siteName: "IMAGEAUTOMAT",
         locale: "th_TH",
-        images: [
-            {
-                url: "/images/og-image.jpg",
-                width: 1200,
-                height: 630,
-                alt: "ร่วมงานกับ IMAGE AUTOMAT — รับสมัครงาน",
-            },
-        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "ร่วมงานกับเรา — IMAGE AUTOMAT | รับสมัครงาน",
         description:
             "เปิดรับพนักงานขาย (Admin-sale), แอดมินบัญชี และช่างไม้ ร่วมงานกับ IMAGE AUTOMAT",
-        images: ["/images/og-image.jpg"],
     },
     alternates: {
         canonical: "https://www.imageautomat.com/careers",
