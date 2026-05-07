@@ -1,16 +1,13 @@
 import { ImageResponse } from "next/og"
 import { jobs } from "@/data/jobs"
-import { loadGoogleFont } from "@/lib/og-fonts"
+import { loadOgFonts, OG_FONT_FAMILY } from "@/lib/og-fonts"
 
 export const alt = "ร่วมงานกับเรา — IMAGE AUTOMAT"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
 export default async function Image() {
-    const [boldFont, regularFont] = await Promise.all([
-        loadGoogleFont("IBM Plex Sans Thai", 700),
-        loadGoogleFont("IBM Plex Sans Thai", 400),
-    ])
+    const fonts = await loadOgFonts()
 
     return new ImageResponse(
         (
@@ -24,7 +21,7 @@ export default async function Image() {
                         "linear-gradient(135deg, #023047 0%, #03466b 60%, #034a72 100%)",
                     padding: "72px 80px",
                     position: "relative",
-                    fontFamily: "IBM Plex Sans Thai",
+                    fontFamily: OG_FONT_FAMILY,
                 }}
             >
                 <div
@@ -120,7 +117,7 @@ export default async function Image() {
                             letterSpacing: 1,
                         }}
                     >
-                        ✦  เปิดรับสมัคร {jobs.length} ตำแหน่ง
+                        เปิดรับสมัคร {jobs.length} ตำแหน่ง
                     </span>
                 </div>
 
@@ -198,20 +195,7 @@ export default async function Image() {
         ),
         {
             ...size,
-            fonts: [
-                {
-                    name: "IBM Plex Sans Thai",
-                    data: boldFont,
-                    weight: 700,
-                    style: "normal",
-                },
-                {
-                    name: "IBM Plex Sans Thai",
-                    data: regularFont,
-                    weight: 400,
-                    style: "normal",
-                },
-            ],
+            fonts,
         }
     )
 }

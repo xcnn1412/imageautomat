@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og"
 import { getJobBySlug, jobs } from "@/data/jobs"
-import { loadGoogleFont } from "@/lib/og-fonts"
+import { loadOgFonts, OG_FONT_FAMILY } from "@/lib/og-fonts"
 
 export const alt = "สมัครงาน — IMAGE AUTOMAT"
 export const size = { width: 1200, height: 630 }
@@ -23,10 +23,7 @@ export default async function Image({
     const { slug } = await params
     const job = getJobBySlug(slug)
 
-    const [boldFont, regularFont] = await Promise.all([
-        loadGoogleFont("IBM Plex Sans Thai", 700),
-        loadGoogleFont("IBM Plex Sans Thai", 400),
-    ])
+    const fonts = await loadOgFonts()
 
     const title = job?.title ?? "สมัครงาน"
     const subtitle = job?.subtitle ?? "ร่วมงานกับ IMAGE AUTOMAT"
@@ -45,7 +42,7 @@ export default async function Image({
                         "linear-gradient(135deg, #023047 0%, #03466b 60%, #034a72 100%)",
                     padding: "72px 80px",
                     position: "relative",
-                    fontFamily: "IBM Plex Sans Thai",
+                    fontFamily: OG_FONT_FAMILY,
                 }}
             >
                 {/* Decorative orange glow top-right */}
@@ -143,7 +140,7 @@ export default async function Image({
                             letterSpacing: 1,
                         }}
                     >
-                        ✦  เปิดรับสมัคร
+                        เปิดรับสมัคร
                     </span>
                 </div>
 
@@ -208,20 +205,7 @@ export default async function Image({
         ),
         {
             ...size,
-            fonts: [
-                {
-                    name: "IBM Plex Sans Thai",
-                    data: boldFont,
-                    weight: 700,
-                    style: "normal",
-                },
-                {
-                    name: "IBM Plex Sans Thai",
-                    data: regularFont,
-                    weight: 400,
-                    style: "normal",
-                },
-            ],
+            fonts,
         }
     )
 }

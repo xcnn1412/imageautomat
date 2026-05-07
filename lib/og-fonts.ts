@@ -1,36 +1,39 @@
 /**
- * Loads a TTF font from Google Fonts at request/build time.
- * Used by Next.js opengraph-image generators.
+ * Loads bundled IBM Plex Sans Thai font subsets for <ImageResponse>.
  *
- * Why: Next.js's <ImageResponse> needs raw font data for non-Latin glyphs.
- * Default fonts won't render Thai characters at all — Satori falls back to "?" or empty boxes.
+ * Why bundled instead of fetched: in CI/PaaS build environments (Railway, etc.)
+ * Google Fonts may serve woff2 instead of ttf depending on negotiated headers,
+ * which Satori cannot decode. Bundling guarantees a deterministic build.
+ *
+ * Two subsets are loaded with separate family names so Satori falls back per
+ * character: Latin glyphs from one file, Thai glyphs from the other.
  */
-export async function loadGoogleFont(
-    family: string,
-    weight: 400 | 500 | 600 | 700 | 800
-): Promise<ArrayBuffer> {
-    const cssUrl = `https://fonts.googleapis.com/css2?family=${family.replace(
-        / /g,
-        "+"
-    )}:wght@${weight}&display=swap`
+import { readFile } from "node:fs/promises"
+import type { ImageResponse } from "next/og"
 
-    const css = await fetch(cssUrl, {
-        headers: {
-            "User-Agent":
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        },
-    }).then((r) => r.text())
+type FontEntry = NonNullable<
+    ConstructorParameters<typeof ImageResponse>[1]
+>["fonts"] extends (infer T)[] | undefined
+    ? T
+    : never
 
-    const match = css.match(/src:\s*url\((.+?)\)\s*format\(['"]truetype['"]\)/)
-    if (!match) {
-        throw new Error(
-            `Could not find TTF URL in Google Fonts CSS for ${family} ${weight}`
-        )
-    }
-
-    const fontRes = await fetch(match[1])
-    if (!fontRes.ok) {
-        throw new Error(`Failed to fetch font: ${fontRes.status}`)
-    }
-    return fontRes.arrayBuffer()
+async function loadFile(name: string): Promise<Buffer> {
+    return readFile(new URL(`./fonts/${name}`, import.meta.url))
 }
+
+export async function loadOgFonts(): Promise<FontEntry[]> {
+    const [latin400, latin700, thai400, thai700] = await Promise.all([
+        loadFile("IBMPlexSansThai-Latin-400.woff"),
+        loadFile("IBMPlexSansThai-Latin-700.woff"),
+        loadFile("IBMPlexSansThai-Thai-400.woff"),
+        loadFile("IBMPlexSansThai-Thai-700.woff"),
+    ])
+    return [
+        { name: "Plex Latin", data: latin400, weight: 400, style: "normal" },
+        { name: "Plex Latin", data: latin700, weight: 700, style: "normal" },
+        { name: "Plex Thai", data: thai400, weight: 400, style: "normal" },
+        { name: "Plex Thai", data: thai700, weight: 700, style: "normal" },
+    ]
+}
+
+export const OG_FONT_FAMILY = "Plex Latin, Plex Thai"
