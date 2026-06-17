@@ -55,7 +55,7 @@ export function Navigation() {
         }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex h-20 lg:h-24 items-center justify-between gap-8">
+        <div className="flex h-20 lg:h-24 items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center group flex-shrink-0">
             <span className="font-sans font-bold text-xl lg:text-2xl tracking-tight text-deep-space-blue">
@@ -75,7 +75,7 @@ export function Navigation() {
                   <Link
                     key={link.href}
                     href={resolveHref(link.href)}
-                    className="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden bg-gradient-to-r from-tiger-orange to-tiger-orange/90 shadow-md shadow-tiger-orange/25"
+                    className="group relative inline-flex shrink-0 whitespace-nowrap items-center gap-2 px-5 py-2.5 rounded-full text-[15px] font-bold text-white transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden bg-gradient-to-r from-tiger-orange to-tiger-orange/90 shadow-md shadow-tiger-orange/25"
                   >
                     {/* Shimmer effect */}
                     <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
@@ -84,7 +84,7 @@ export function Navigation() {
                     <Star className="relative z-10 w-4 h-4 fill-current" />
 
                     {/* Text */}
-                    <span className="relative z-10 tracking-tight">{link.label}</span>
+                    <span className="relative z-10 tracking-normal">{link.label}</span>
                   </Link>
                 )
               }
@@ -94,10 +94,13 @@ export function Navigation() {
                 <Link
                   key={link.href}
                   href={resolveHref(link.href)}
-                  className="group relative inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold text-deep-space-blue/70 hover:text-deep-space-blue hover:bg-deep-space-blue/5 transition-all duration-300"
+                  className="group relative inline-flex shrink-0 whitespace-nowrap items-center gap-2 px-4 py-2.5 rounded-lg text-[15px] font-semibold text-deep-space-blue/70 hover:text-deep-space-blue hover:bg-deep-space-blue/5 transition-all duration-300"
                 >
                   <link.icon className="w-4 h-4 text-deep-space-blue/50 group-hover:text-deep-space-blue transition-colors duration-300" />
-                  <span className="tracking-tight">{link.label}</span>
+                  <span className="relative tracking-normal">
+                    {link.label}
+                    <span className="absolute -bottom-0.5 left-0 h-0.5 w-0 rounded-full bg-tiger-orange transition-all duration-300 group-hover:w-full" />
+                  </span>
                 </Link>
               )
             })}

@@ -1,17 +1,18 @@
 import { redirect } from "next/navigation"
+import Link from "next/link"
+import { ChevronLeft } from "lucide-react"
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import { MockPayButton } from "./mock-pay-button"
+import { StatusBadge } from "@/components/order-status"
+
+const isDev = process.env.NODE_ENV !== "production"
 
 export const dynamic = "force-dynamic"
 
 const baht = (satang: number) => `฿${(satang / 100).toLocaleString("th-TH")}`
-const STATUS: Record<string, { label: string; cls: string }> = {
-    paid: { label: "จ่ายแล้ว", cls: "bg-green-100 text-green-700" },
-    pending: { label: "รอชำระ", cls: "bg-amber-100 text-amber-700" },
-    failed: { label: "ไม่สำเร็จ", cls: "bg-red-100 text-red-700" },
-}
 
 export default async function OrdersPage() {
     const session = await auth()
@@ -33,13 +34,12 @@ export default async function OrdersPage() {
                     <p className="text-deep-space-blue/50">ยังไม่มีออเดอร์</p>
                 ) : (
                     <div className="space-y-4">
-                        {orders.map((o) => {
-                            const s = STATUS[o.status] ?? STATUS.pending
-                            return (
-                                <article key={o.id} className="rounded-2xl border border-gray-100 p-5 shadow-sm">
+                        {orders.map((o) => (
+                            <article key={o.id} className="overflow-hidden rounded-2xl border border-gray-100 shadow-sm transition-shadow hover:shadow-md">
+                                <Link href={`/account/orders/${o.id}`} className="block p-5">
                                     <div className="mb-3 flex items-center justify-between">
                                         <span className="text-xs text-deep-space-blue/40">{o.merchantOrderId}</span>
-                                        <span className={`rounded-full px-3 py-1 text-xs font-bold ${s.cls}`}>{s.label}</span>
+                                        <StatusBadge status={o.status} />
                                     </div>
                                     <ul className="space-y-1 text-sm text-deep-space-blue/80">
                                         {o.items.map((it) => (
@@ -51,13 +51,21 @@ export default async function OrdersPage() {
                                             </li>
                                         ))}
                                     </ul>
-                                    <div className="mt-3 flex justify-between border-t border-gray-100 pt-3 font-bold text-deep-space-blue">
+                                    <div className="mt-3 flex items-center justify-between border-t border-gray-100 pt-3 font-bold text-deep-space-blue">
                                         <span>ยอดรวม{o.discountAmount > 0 ? ` (ลด ${baht(o.discountAmount)})` : ""}</span>
-                                        <span>{baht(o.total)}</span>
+                                        <span className="flex items-center gap-1">
+                                            {baht(o.total)}
+                                            <ChevronLeft className="h-4 w-4 rotate-180 text-deep-space-blue/30" />
+                                        </span>
                                     </div>
-                                </article>
-                            )
-                        })}
+                                </Link>
+                                {isDev && o.status === "pending" && (
+                                    <div className="px-5 pb-5">
+                                        <MockPayButton merchantOrderId={o.merchantOrderId} />
+                                    </div>
+                                )}
+                            </article>
+                        ))}
                     </div>
                 )}
             </section>

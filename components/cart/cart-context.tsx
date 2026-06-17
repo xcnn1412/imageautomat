@@ -10,6 +10,7 @@ export type CartLine = {
     image: string
     category: string
     unitTHB: number
+    whtRate: number
 }
 
 type CartCtx = {

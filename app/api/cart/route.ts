@@ -18,6 +18,7 @@ async function lines(userId: string) {
     image: i.product.image,
     category: i.product.category,
     unitTHB: unitTHB(i.product.priceTHB),
+    whtRate: i.product.whtRate,
   }))
 }
 

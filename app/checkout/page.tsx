@@ -7,23 +7,46 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { useCart } from "@/components/cart/cart-context"
 import { PAYMENT_METHODS, type PaymentMethod } from "@/lib/payment-methods"
+import { computeTax, VAT_RATE } from "@/lib/tax"
 
 const baht = (n: number) => `฿${n.toLocaleString("th-TH")}`
+const money = (satang: number) =>
+    `฿${(satang / 100).toLocaleString("th-TH", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
 
 export default function CheckoutPage() {
-    const { items, subtotalTHB } = useCart()
+    const { items } = useCart()
     const [code, setCode] = useState("")
     const [method, setMethod] = useState<PaymentMethod>("ksher_qr")
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
 
+    // ใบกำกับภาษี / ใบเสร็จ
+    const [wantInvoice, setWantInvoice] = useState(false)
+    const [invType, setInvType] = useState<"personal" | "company">("personal")
+    const [invName, setInvName] = useState("")
+    const [invTaxId, setInvTaxId] = useState("")
+    const [invAddress, setInvAddress] = useState("")
+    const [invBranch, setInvBranch] = useState("สำนักงานใหญ่")
+
+    // พรีวิวภาษี (ส่วนลดคิดจริงตอนกดชำระฝั่ง server) — ราคาเป็นก่อน VAT
+    const isCompany = wantInvoice && invType === "company"
+    const tax = computeTax(items.map((i) => ({ base: i.unitTHB * 100 * i.qty, whtRate: i.whtRate })), 0, isCompany)
+
     async function pay() {
-        setLoading(true)
         setError("")
+        let invoice: object | undefined
+        if (wantInvoice) {
+            if (!invName.trim() || invTaxId.replace(/\D/g, "").length !== 13 || !invAddress.trim()) {
+                setError("กรอกข้อมูลใบกำกับภาษีให้ครบ (เลขผู้เสียภาษีต้อง 13 หลัก)")
+                return
+            }
+            invoice = { type: invType, name: invName, taxId: invTaxId, address: invAddress, branch: invBranch }
+        }
+        setLoading(true)
         const res = await fetch("/api/checkout", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ code, method }),
+            body: JSON.stringify({ code, method, invoice }),
         })
         const data = await res.json()
         if (!res.ok) {
@@ -79,6 +102,66 @@ export default function CheckoutPage() {
                             <p className="mt-1 text-xs text-deep-space-blue/40">ส่วนลดจะคำนวณตอนกดชำระเงิน</p>
                         </div>
 
+                        {/* ใบเสร็จ / ใบกำกับภาษี */}
+                        <div className="mt-8">
+                            <label className="flex cursor-pointer items-center gap-3">
+                                <input
+                                    type="checkbox"
+                                    checked={wantInvoice}
+                                    onChange={(e) => setWantInvoice(e.target.checked)}
+                                    className="h-4 w-4 accent-tiger-orange"
+                                />
+                                <span className="text-sm font-bold text-deep-space-blue">ต้องการใบเสร็จ / ใบกำกับภาษี</span>
+                            </label>
+
+                            {wantInvoice && (
+                                <div className="mt-4 space-y-3 rounded-2xl border border-gray-200 p-4">
+                                    {/* บุคคล / นิติบุคคล */}
+                                    <div className="grid grid-cols-2 gap-2">
+                                        {([["personal", "บุคคลธรรมดา"], ["company", "นิติบุคคล"]] as const).map(([val, label]) => (
+                                            <button
+                                                key={val}
+                                                type="button"
+                                                onClick={() => setInvType(val)}
+                                                className={`rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors ${invType === val ? "border-tiger-orange bg-tiger-orange/5 text-tiger-orange" : "border-gray-200 text-deep-space-blue/70"}`}
+                                            >
+                                                {label}
+                                            </button>
+                                        ))}
+                                    </div>
+
+                                    <input
+                                        value={invName}
+                                        onChange={(e) => setInvName(e.target.value)}
+                                        placeholder={invType === "company" ? "ชื่อบริษัท / นิติบุคคล" : "ชื่อ-นามสกุล"}
+                                        className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-tiger-orange"
+                                    />
+                                    <input
+                                        value={invTaxId}
+                                        onChange={(e) => setInvTaxId(e.target.value.replace(/\D/g, "").slice(0, 13))}
+                                        inputMode="numeric"
+                                        placeholder={invType === "company" ? "เลขประจำตัวผู้เสียภาษี 13 หลัก" : "เลขบัตรประชาชน 13 หลัก"}
+                                        className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-tiger-orange"
+                                    />
+                                    <textarea
+                                        value={invAddress}
+                                        onChange={(e) => setInvAddress(e.target.value)}
+                                        placeholder="ที่อยู่สำหรับออกใบกำกับภาษี"
+                                        rows={2}
+                                        className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-tiger-orange"
+                                    />
+                                    {invType === "company" && (
+                                        <input
+                                            value={invBranch}
+                                            onChange={(e) => setInvBranch(e.target.value)}
+                                            placeholder="สาขา (เช่น สำนักงานใหญ่)"
+                                            className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-tiger-orange"
+                                        />
+                                    )}
+                                </div>
+                            )}
+                        </div>
+
                         {/* ช่องทางจ่าย */}
                         <div className="mt-8">
                             <p className="mb-3 text-sm font-bold text-deep-space-blue">ช่องทางชำระเงิน</p>
@@ -103,10 +186,31 @@ export default function CheckoutPage() {
 
                         {/* สรุป + จ่าย */}
                         <div className="mt-8 border-t border-gray-100 pt-6">
-                            <div className="mb-4 flex justify-between text-lg font-bold text-deep-space-blue">
-                                <span>ยอดรวม</span>
-                                <span>{baht(subtotalTHB)}</span>
-                            </div>
+                            <dl className="mb-4 space-y-2 text-sm">
+                                <div className="flex justify-between text-deep-space-blue/70">
+                                    <dt>ยอดก่อน VAT</dt>
+                                    <dd>{money(tax.baseAmount)}</dd>
+                                </div>
+                                <div className="flex justify-between text-deep-space-blue/70">
+                                    <dt>VAT {VAT_RATE}%</dt>
+                                    <dd>+{money(tax.vatAmount)}</dd>
+                                </div>
+                                {tax.whtByRate.map((w) => (
+                                    <div key={w.rate} className="flex justify-between text-deep-space-blue/70">
+                                        <dt>หัก ณ ที่จ่าย {w.rate}%</dt>
+                                        <dd className="text-tiger-orange">−{money(w.amount)}</dd>
+                                    </div>
+                                ))}
+                                <div className="flex justify-between border-t border-gray-100 pt-2 text-lg font-bold text-deep-space-blue">
+                                    <dt>ยอดชำระ</dt>
+                                    <dd>{money(tax.total)}</dd>
+                                </div>
+                            </dl>
+                            {isCompany && (
+                                <p className="mb-3 text-xs text-deep-space-blue/40">
+                                    หัก ณ ที่จ่ายเฉพาะรายการบริการ · ส่วนลดคำนวณตอนกดชำระเงิน
+                                </p>
+                            )}
                             {error && <p className="mb-3 text-sm text-red-600">{error}</p>}
                             <button
                                 onClick={pay}

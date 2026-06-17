@@ -13,7 +13,8 @@ async function main() {
     for (const { p, category } of [...buy, ...rent]) {
         await prisma.product.upsert({
             where: { id: p.id },
-            update: { category, name: p.nameTh || p.name, description: p.description, image: p.src, priceTHB: p.priceTHB ?? null },
+            // priceTHB/whtRate เป็นของ admin (DB) — re-seed ไม่ทับ. seed คุมแค่เนื้อหา
+            update: { category, name: p.nameTh || p.name, description: p.description, image: p.src },
             create: { id: p.id, category, name: p.nameTh || p.name, description: p.description, image: p.src, priceTHB: p.priceTHB ?? null },
         })
     }

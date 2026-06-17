@@ -64,7 +64,8 @@ model Product {
   name        String
   description String
   image       String
-  priceTHB    Int?
+  priceTHB    Int? // ราคาก่อน VAT (ex-VAT)
+  whtRate     Int        @default(0) // ภาษีหัก ณ ที่จ่าย %: 0 = ไม่หัก (ขายสินค้า), 3 = บริการ
   createdAt   DateTime   @default(now())
   cartItems   CartItem[]
 }
@@ -98,13 +99,22 @@ model Order {
   id              String      @id @default(cuid())
   merchantOrderId String      @unique // ส่งให้ Ksher
   userId          String
-  subtotal        Int // สตางค์ ก่อนหักส่วนลด
+  subtotal        Int // สตางค์ ฐานก่อน VAT ก่อนหักส่วนลด
   discountCode    String?
   discountAmount  Int         @default(0) // สตางค์
-  total           Int // สตางค์ ยอดจ่ายจริง
+  baseAmount      Int         @default(0) // ฐานก่อน VAT หลังหักส่วนลด
+  vatAmount       Int         @default(0) // VAT 7%
+  whtAmount       Int         @default(0) // ภาษีหัก ณ ที่จ่าย (เฉพาะนิติบุคคล)
+  total           Int // สตางค์ ยอดจ่ายจริง = base + VAT − WHT
   paymentMethod   String // "ksher_qr" | "ksher_linkpay"
-  status          String      @default("pending") // pending | paid | failed
+  status          String      @default("pending") // ดู lib/orders.ts (pending|paid|processing|shipped|completed|cancelled|failed)
   ksherReference  String?
+  // ใบเสร็จ/ใบกำกับภาษี (optional) — invoiceType null = ไม่ออก
+  invoiceType     String? // "personal" | "company"
+  invoiceName     String?
+  invoiceTaxId    String? // เลขบัตร ปชช. / เลขผู้เสียภาษี 13 หลัก
+  invoiceAddress  String?
+  invoiceBranch   String? // นิติบุคคล: "สำนักงานใหญ่" / "สาขา ..."
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
   user            User        @relation(fields: [userId], references: [id])
@@ -116,7 +126,8 @@ model OrderItem {
   orderId     String
   productRef  String // "buy-101" / "rent-5"
   productName String // snapshot
-  unitAmount  Int // สตางค์/ชิ้น snapshot
+  unitAmount  Int // สตางค์/ชิ้น snapshot (ก่อน VAT)
   qty         Int    @default(1)
+  whtRate     Int    @default(0) // snapshot %หัก ณ ที่จ่าย ของชิ้นนี้
   order       Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }
