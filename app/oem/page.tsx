@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { OemPageContent } from "./oem-page-content"
+import { LINE_OA_URL } from "@/lib/constants"
 
 export const metadata: Metadata = {
     title: "รับผลิตตู้โฟโต้บูธ OEM/ODM ผลิตในไทย MOQ 10 ตู้ | IMAGEAUTOMAT",
@@ -28,20 +29,11 @@ export const metadata: Metadata = {
         type: "website",
         siteName: "IMAGEAUTOMAT",
         locale: "th_TH",
-        images: [
-            {
-                url: "/images/og-image.jpg",
-                width: 1200,
-                height: 630,
-                alt: "รับผลิตตู้โฟโต้บูธ OEM/ODM — IMAGEAUTOMAT",
-            },
-        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "รับผลิตตู้โฟโต้บูธ OEM/ODM ผลิตในไทย | IMAGEAUTOMAT",
         description: "รับผลิตตู้ถ่ายรูป Photobooth แบบ OEM/ODM ตามสั่ง ผลิตในไทย 100% MOQ เริ่มต้น 10 ตู้",
-        images: ["/images/og-image.jpg"],
     },
     alternates: {
         canonical: "/oem",
@@ -66,7 +58,7 @@ const jsonLd = {
                 name: "IMAGEAUTOMAT",
                 url: "https://www.imageautomat.com",
                 telephone: "+66-63-654-6249",
-                sameAs: ["https://lin.ee/Q5DSE1r"],
+                sameAs: [LINE_OA_URL],
             },
             areaServed: [
                 { "@type": "Country", name: "Thailand" },

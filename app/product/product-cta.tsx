@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
+import { LINE_OA_URL } from "@/lib/constants"
 
 export function ProductCta() {
     return (
@@ -27,7 +28,7 @@ export function ProductCta() {
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <a
-                                href="https://lin.ee/Q5DSE1r"
+                                href={LINE_OA_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group inline-flex items-center gap-3 px-8 py-4 bg-[#06C755] text-white font-bold rounded-full hover:shadow-xl hover:shadow-[#06C755]/30 hover:scale-105 transition-all duration-300"

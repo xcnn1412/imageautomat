@@ -21,6 +21,7 @@ import {
 } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import { LINE_OA_URL } from "@/lib/constants"
 
 const VideoGallery = dynamic(
     () => import("@/components/video-gallery").then((mod) => ({ default: mod.VideoGallery })),
@@ -171,7 +172,7 @@ function HeroSection() {
                     </p>
                     <div className="flex flex-wrap gap-3 justify-center mb-14">
                         <a
-                            href="https://lin.ee/Q5DSE1r"
+                            href={LINE_OA_URL}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 px-7 py-3.5 bg-tiger-orange text-white text-sm font-semibold rounded-full shadow-lg shadow-orange-500/30 hover:bg-orange-600 transition-colors duration-200"
@@ -583,7 +584,7 @@ function CtaSection() {
                         </p>
                         <div className="flex flex-wrap items-center justify-center gap-3">
                             <a
-                                href="https://lin.ee/Q5DSE1r"
+                                href={LINE_OA_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-tiger-orange text-white text-sm font-semibold rounded-full shadow-lg shadow-orange-500/30 hover:bg-orange-600 transition-colors duration-200"

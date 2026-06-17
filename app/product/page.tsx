@@ -39,21 +39,12 @@ export const metadata: Metadata = {
         type: "website",
         siteName: "IMAGEAUTOMAT",
         locale: "th_TH",
-        images: [
-            {
-                url: "/images/og-image.jpg",
-                width: 1200,
-                height: 630,
-                alt: "ซื้อตู้ถ่ายรูป Photobooth จาก IMAGEAUTOMAT",
-            },
-        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "ซื้อตู้โฟโต้บูธคุณภาพพรีเมียม | IMAGEAUTOMAT",
         description:
             "ซื้อตู้ถ่ายรูป Photobooth คุณภาพสูง พร้อมรับประกันและบริการหลังการขาย",
-        images: ["/images/og-image.jpg"],
     },
 }
 

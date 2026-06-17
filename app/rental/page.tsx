@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { RentalPageContent } from "./rental-page-content"
+import { LINE_OA_URL } from "@/lib/constants"
 
 export const metadata: Metadata = {
     title: "เช่าตู้โฟโต้บูธ พร้อมทีมงาน ราคาเริ่ม 3,000 บาท | IMAGEAUTOMAT",
@@ -28,20 +29,11 @@ export const metadata: Metadata = {
         type: "website",
         siteName: "IMAGEAUTOMAT",
         locale: "th_TH",
-        images: [
-            {
-                url: "/images/og-image.jpg",
-                width: 1200,
-                height: 630,
-                alt: "เช่าตู้โฟโต้บูธ พร้อมทีมงาน — IMAGEAUTOMAT",
-            },
-        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "เช่าตู้โฟโต้บูธ พร้อมทีมงาน ราคาเริ่ม 3,000 บาท | IMAGEAUTOMAT",
         description: "บริการเช่าตู้ถ่ายรูป Photobooth ครบวงจร พร้อมทีมงานมืออาชีพ ราคาเริ่มต้น 3,000 บาท บริการทั่วประเทศ",
-        images: ["/images/og-image.jpg"],
     },
     alternates: {
         canonical: "https://www.imageautomat.com/rental",
@@ -65,7 +57,7 @@ const jsonLd = {
                 name: "IMAGEAUTOMAT",
                 url: "https://www.imageautomat.com",
                 telephone: "+66-63-654-6249",
-                sameAs: ["https://lin.ee/Q5DSE1r"],
+                sameAs: [LINE_OA_URL],
             },
             areaServed: {
                 "@type": "Country",

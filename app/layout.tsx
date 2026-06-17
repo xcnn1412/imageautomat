@@ -60,20 +60,11 @@ export const metadata: Metadata = {
     siteName: 'IMAGEAUTOMAT',
     title: 'ตู้โฟโต้บูธพรีเมียม ผลิตในไทย จำหน่าย เช่า OEM | IMAGEAUTOMAT',
     description: 'ตู้โฟโต้บูธคุณภาพพรีเมียม ผลิตในไทย 100% จำหน่าย เช่า รับผลิต OEM/ODM พร้อมซอฟต์แวร์ครบวงจร',
-    images: [
-      {
-        url: '/images/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'ตู้โฟโต้บูธคุณภาพพรีเมียม ผลิตในไทย — IMAGEAUTOMAT',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ตู้โฟโต้บูธพรีเมียม ผลิตในไทย | IMAGEAUTOMAT',
     description: 'ตู้โฟโต้บูธคุณภาพพรีเมียม ผลิตในไทย 100% จำหน่าย เช่า รับผลิต OEM/ODM',
-    images: ['/images/og-image.jpg'],
   },
   robots: {
     index: true,

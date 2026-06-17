@@ -17,6 +17,7 @@ import {
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { faqItems } from "@/data/faq"
+import { LINE_OA_URL } from "@/lib/constants"
 
 /* ──────────────── LINE Icon ──────────────── */
 const LineIcon = ({ className = "" }: { className?: string }) => (
@@ -47,7 +48,7 @@ const contactCards = [
         icon: MessageCircle,
         label: "LINE Official",
         value: "@imageautomat",
-        href: "https://lin.ee/Q5DSE1r",
+        href: LINE_OA_URL,
         description: "แชทสอบถามราคาพิเศษ",
         color: "from-[#06C755] to-emerald-500",
         bgColor: "bg-[#06C755]/5",
@@ -114,7 +115,7 @@ export function ContactPageContent() {
         e.preventDefault()
         // Build LINE message
         const msg = `สวัสดีครับ ผมชื่อ ${formData.name}\nเบอร์โทร: ${formData.phone}\nประเภทงาน: ${formData.eventType}\nวันจัดงาน: ${formData.eventDate}\nข้อความ: ${formData.message}`
-        const lineUrl = `https://lin.ee/Q5DSE1r`
+        const lineUrl = LINE_OA_URL
         window.open(lineUrl, "_blank")
         setIsSubmitted(true)
         setTimeout(() => setIsSubmitted(false), 5000)
@@ -172,7 +173,7 @@ export function ContactPageContent() {
                             className="flex flex-col sm:flex-row items-center justify-center gap-4"
                         >
                             <a
-                                href="https://lin.ee/Q5DSE1r"
+                                href={LINE_OA_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group relative inline-flex items-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-[#06C755]/20 hover:shadow-xl hover:shadow-[#06C755]/40 hover:scale-105 active:scale-95 overflow-hidden"

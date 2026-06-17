@@ -22,6 +22,8 @@ import {
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { getJobBySlug } from "@/data/jobs"
+import { LINE_OA_CAREERS_URL } from "@/lib/constants"
+import { buildApplyMailto } from "@/lib/careers-mail"
 
 /* ──────────────── LINE Icon ──────────────── */
 const LineIcon = ({ className = "" }: { className?: string }) => (
@@ -65,13 +67,7 @@ export function JobDetailContent({ slug }: { slug: string }) {
     const detailInView = useInView(detailRef, { once: true, amount: 0.1 })
     const ctaInView = useInView(ctaRef, { once: true, amount: 0.3 })
 
-    const lineMessage = encodeURIComponent(
-        `สวัสดีครับ/ค่ะ สนใจสมัครงานตำแหน่ง "${job.title}" รบกวนขอข้อมูลเพิ่มเติมครับ/ค่ะ`
-    )
-    const emailSubject = encodeURIComponent(`สมัครงานตำแหน่ง ${job.title}`)
-    const emailBody = encodeURIComponent(
-        `เรียน ทีม HR IMAGE AUTOMAT\n\nผม/ดิฉัน สนใจสมัครงานตำแหน่ง "${job.title}"\n\nชื่อ-นามสกุล: \nเบอร์ติดต่อ: \nประสบการณ์โดยย่อ: \n\n*แนบเรซูเม่ / CV ในอีเมลนี้\n\nขอบคุณครับ/ค่ะ`
-    )
+    const applyMailto = buildApplyMailto(job.title)
 
     return (
         <>
@@ -162,7 +158,7 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                     className="mt-8 flex flex-col sm:flex-row gap-3"
                                 >
                                     <a
-                                        href="https://lin.ee/Q5DSE1r"
+                                        href={LINE_OA_CAREERS_URL}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="group relative inline-flex items-center justify-center gap-2 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-6 py-3.5 rounded-full text-sm transition-all duration-300 shadow-lg shadow-[#06C755]/30 hover:shadow-xl hover:shadow-[#06C755]/40 hover:scale-105 active:scale-95 overflow-hidden"
@@ -174,11 +170,11 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                         </span>
                                     </a>
                                     <a
-                                        href="tel:+66636546249"
+                                        href="tel:+66624249936"
                                         className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 backdrop-blur-sm text-white font-semibold px-6 py-3.5 rounded-full text-sm transition-all duration-300 border border-white/10"
                                     >
                                         <Phone className="w-4 h-4" />
-                                        <span>063-654-6249</span>
+                                        <span>062-424-9936</span>
                                     </a>
                                 </motion.div>
                             </div>
@@ -407,7 +403,7 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                 </p>
                                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
                                     <a
-                                        href={`https://line.me/R/oaMessage/@imageautomat/?${lineMessage}`}
+                                        href={LINE_OA_CAREERS_URL}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="group relative inline-flex items-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-[#06C755]/30 hover:shadow-xl hover:shadow-[#06C755]/40 hover:scale-105 active:scale-95 overflow-hidden"
@@ -420,7 +416,7 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                         <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                     </a>
                                     <a
-                                        href={`mailto:imageautomat@gmail.com?subject=${emailSubject}&body=${emailBody}`}
+                                        href={applyMailto}
                                         className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 backdrop-blur-sm text-white font-semibold px-6 py-4 rounded-full transition-all duration-300 border border-white/10"
                                     >
                                         <Mail className="w-4 h-4" />
@@ -429,7 +425,7 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                 </div>
                                 <div className="flex items-center justify-center gap-3 text-sm text-white/40">
                                     <Phone className="w-4 h-4" />
-                                    <span>หรือโทร 063-654-6249</span>
+                                    <span>หรือโทร 062-424-9936</span>
                                 </div>
                             </div>
                         </motion.div>

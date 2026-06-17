@@ -41,21 +41,12 @@ export const metadata: Metadata = {
         type: "website",
         siteName: "IMAGEAUTOMAT — Photobooth Software",
         locale: "th_TH",
-        images: [
-            {
-                url: "/images/og-image.jpg",
-                width: 1200,
-                height: 630,
-                alt: "Liveview Photobooth Software — ภาพเคลื่อนไหว Pre-capture ตู้ถ่ายรูป IMAGEAUTOMAT",
-            },
-        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "Liveview Photobooth Software | IMAGEAUTOMAT",
         description:
             "ซอฟต์แวร์ photobooth ดีที่สุด Pre-capture บันทึกช่วงเวลาธรรมชาติ ได้ภาพเคลื่อนไหว AI Effect พิมพ์ทันที",
-        images: ["/images/og-image.jpg"],
     },
 }
 

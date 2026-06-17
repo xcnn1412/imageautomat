@@ -12,10 +12,10 @@ module.exports = {
             '/oem': 0.75,
             '/payment': 0.7,
             '/careers': 0.6,
-            '/careers/admin-sale': 0.55,
-            '/careers/accounting-admin': 0.55,
-            '/careers/carpenter': 0.55,
-            '/careers/fullstack-developer-intern': 0.55,
+            '/careers/admin-sale': 0.65,
+            '/careers/accounting-admin': 0.65,
+            '/careers/carpenter': 0.65,
+            '/careers/fullstack-developer-intern': 0.65,
             '/contact': 0.5,
         }
         return {

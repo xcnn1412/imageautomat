@@ -22,6 +22,7 @@ import {
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { jobs } from "@/data/jobs"
+import { LINE_OA_CAREERS_URL } from "@/lib/constants"
 
 /* ──────────────── LINE Icon ──────────────── */
 const LineIcon = ({ className = "" }: { className?: string }) => (
@@ -176,7 +177,7 @@ export function CareersPageContent() {
                                 </span>
                             </a>
                             <a
-                                href="https://lin.ee/Q5DSE1r"
+                                href={LINE_OA_CAREERS_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 text-white/70 hover:text-white font-medium transition-colors duration-300"
@@ -445,7 +446,7 @@ export function CareersPageContent() {
                                 </p>
                                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                                     <a
-                                        href="https://lin.ee/Q5DSE1r"
+                                        href={LINE_OA_CAREERS_URL}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="group relative inline-flex items-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-[#06C755]/30 hover:shadow-xl hover:shadow-[#06C755]/40 hover:scale-105 active:scale-95 overflow-hidden"
@@ -458,11 +459,11 @@ export function CareersPageContent() {
                                         <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                     </a>
                                     <a
-                                        href="tel:+66636546249"
+                                        href="tel:+66624249936"
                                         className="inline-flex items-center gap-2 text-white/70 hover:text-white font-semibold px-4 py-3 transition-colors duration-300"
                                     >
                                         <Phone className="w-4 h-4" />
-                                        <span>063-654-6249</span>
+                                        <span>062-424-9936</span>
                                     </a>
                                     <a
                                         href="mailto:imageautomat@gmail.com?subject=สมัครงาน IMAGE AUTOMAT"
