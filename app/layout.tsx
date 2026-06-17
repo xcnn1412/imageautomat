@@ -4,6 +4,7 @@ import { Montserrat, IBM_Plex_Sans_Thai, Playfair_Display } from 'next/font/goog
 import { GoogleAnalytics } from '@/components/google-analytics'
 import { StickySocialMenu } from '@/components/sticky-social-menu'
 import { AppLoadingWrapper } from '@/components/loading/app-loading-wrapper'
+import { Providers } from './providers'
 import './globals.css'
 
 const montserrat = Montserrat({
@@ -175,10 +176,12 @@ export default function RootLayout({
         />
       </head>
       <body className={`${montserrat.variable} ${ibmPlexSansThai.variable} ${playfairDisplay.variable} font-sans antialiased`} suppressHydrationWarning>
-        <AppLoadingWrapper>
-          {children}
-        </AppLoadingWrapper>
-        <StickySocialMenu />
+        <Providers>
+          <AppLoadingWrapper>
+            {children}
+          </AppLoadingWrapper>
+          <StickySocialMenu />
+        </Providers>
         {/* Spacer so mobile bottom bar never covers content */}
         <div className="h-16 md:hidden" aria-hidden="true" />
         <GoogleAnalytics />

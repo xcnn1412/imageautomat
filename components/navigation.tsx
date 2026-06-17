@@ -3,7 +3,9 @@
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
-import { ShoppingCart, Calendar, Laptop, Factory, Phone, Star } from "lucide-react"
+import { Store, ShoppingCart, Calendar, Laptop, Factory, Phone, Star } from "lucide-react"
+import { AuthButton } from "@/components/auth-button"
+import { CartButton } from "@/components/cart/cart-button"
 
 // LINE Icon Component
 const LineIcon = ({ className = "" }: { className?: string }) => (
@@ -13,6 +15,7 @@ const LineIcon = ({ className = "" }: { className?: string }) => (
 )
 
 const navLinks = [
+  { href: "/shop", label: "ร้านค้า", icon: Store, featured: false },
   { href: "/product", label: "ซื้อตู้", icon: ShoppingCart, featured: false },
   { href: "/rental", label: "เช่าตู้", icon: Calendar, featured: false },
   { href: "/software", label: "ซอฟต์แวร์", icon: Laptop, featured: false },
@@ -100,7 +103,9 @@ export function Navigation() {
           </div>
 
           {/* CTA Button - LINE (Desktop) */}
-          <div className="hidden lg:block flex-shrink-0">
+          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+            <CartButton />
+            <AuthButton />
             <a
               href="https://lin.ee/Q5DSE1r"
               target="_blank"
@@ -162,6 +167,12 @@ export function Navigation() {
                 )
               })}
               
+              {/* Auth + Cart in Mobile */}
+              <div className="mt-2 flex items-center justify-between gap-3 border-t border-deep-space-blue/5 px-4 pt-3">
+                <AuthButton />
+                <CartButton />
+              </div>
+
               {/* LINE CTA in Mobile */}
               <div className="mt-2 pt-2 border-t border-deep-space-blue/5">
                 <a

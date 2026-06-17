@@ -1,8 +1,9 @@
 "use client"
 
 import Image from "next/image"
-import { ArrowRight, Star, X } from "lucide-react"
+import { Star, X } from "lucide-react"
 import { products } from "@/data/products"
+import { AddToCartButton } from "@/components/cart/add-to-cart-button"
 
 interface ProductDetailModalProps {
     product: typeof products[0] | null
@@ -94,15 +95,21 @@ export function ProductDetailModal({ product, onClose }: ProductDetailModalProps
                             </div>
 
                             {/* CTA */}
-                            <a
-                                href="https://lin.ee/Q5DSE1r"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-3 px-8 py-4 bg-tiger-orange text-white font-bold rounded-full hover:bg-deep-space-blue transition-all duration-300 w-full justify-center shadow-lg shadow-tiger-orange/20 hover:shadow-deep-space-blue/20"
-                            >
-                                <span>สอบถามราคา</span>
-                                <ArrowRight className="w-5 h-5" />
-                            </a>
+                            <div className="flex flex-col gap-3">
+                                <AddToCartButton
+                                    productId={product.id}
+                                    onAdded={onClose}
+                                    className="inline-flex items-center gap-3 px-8 py-4 bg-tiger-orange text-white font-bold rounded-full hover:bg-deep-space-blue transition-all duration-300 w-full justify-center shadow-lg shadow-tiger-orange/20 hover:shadow-deep-space-blue/20 disabled:opacity-70"
+                                />
+                                <a
+                                    href="https://lin.ee/Q5DSE1r"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-8 py-3 text-deep-space-blue/70 font-medium rounded-full hover:text-tiger-orange transition-colors w-full justify-center"
+                                >
+                                    <span>สอบถามราคา</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

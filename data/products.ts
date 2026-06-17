@@ -35,6 +35,8 @@ export interface Product {
     category: string
     /** ประเภทที่แสดง — ใส่ได้หลายค่า เช่น ["rental", "buy"] = แสดงทั้ง 2 แท็บ */
     type: ProductType[]
+    /** ราคาขายเป็นบาท (ไม่ใส่ = ใช้ค่ามัดจำ default ใน /api/pay) */
+    priceTHB?: number
 }
 
 // ============================================================
