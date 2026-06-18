@@ -34,3 +34,14 @@ export function computeTax(lines: TaxLine[], discount: number, isCompany: boolea
 
   return { subtotal, baseAmount, vatAmount, whtAmount, whtByRate, total: baseAmount + vatAmount - whtAmount }
 }
+
+// ยอดที่ลูกค้าจ่ายจริงของสินค้าชิ้นเดียว (ราคา ex-VAT เป็น "บาท") — ใช้แสดงผลหน้า admin
+// ใช้ computeTax ตัวเดียวกับ checkout → ตรงกับยอดจริงเป๊ะ. คืนค่าเป็น "สตางค์"
+// personalSatang = ฐาน + VAT 7%; companySatang = personal − WHT (หักเฉพาะนิติบุคคล)
+export function payablePreview(baseTHB: number, whtRate: number) {
+  const line = [{ base: Math.round(baseTHB * 100), whtRate }]
+  return {
+    personalSatang: computeTax(line, 0, false).total,
+    companySatang: computeTax(line, 0, true).total,
+  }
+}

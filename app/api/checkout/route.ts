@@ -1,26 +1,62 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
-import { unitSatang } from "@/lib/pricing"
+import { unitSatangFor, hasFullPrice, type PriceMode } from "@/lib/pricing"
 import { computeTax } from "@/lib/tax"
 import { createPayment } from "@/lib/payments"
 import { isPaymentMethod, type PaymentMethod } from "@/lib/payment-methods"
+import { validateInvoice, buildAddressLine, type InvoiceInput } from "@/lib/invoice"
 
 export const runtime = "nodejs"
 
-type Invoice = { type: "personal" | "company"; name: string; taxId: string; address: string; branch: string | null }
+type ParsedInvoice = {
+  type: "personal" | "company"
+  name: string
+  taxId: string
+  address: string // ประกอบเป็นบรรทัดเดียว
+  branch: string | null
+  email: string
+  phone: string
+  lineId: string | null
+}
 
-// คืน null = ไม่ออกใบกำกับ, "invalid" = กรอกไม่ครบ, Invoice = ใช้ได้
-function parseInvoice(raw: unknown): Invoice | null | "invalid" {
+// คืน null = ไม่ออกใบกำกับ, {error} = กรอกไม่ถูก, ParsedInvoice = ใช้ได้
+// validate ด้วย lib เดียวกับ client (ห้าม trust client) — ราคา/ภาษีคิดใหม่ฝั่ง server อยู่แล้ว
+function parseInvoice(raw: unknown): ParsedInvoice | null | { error: string } {
   if (!raw || typeof raw !== "object") return null
   const r = raw as Record<string, unknown>
   if (r.type !== "personal" && r.type !== "company") return null
-  const name = String(r.name ?? "").trim()
-  const taxId = String(r.taxId ?? "").replace(/\D/g, "")
-  const address = String(r.address ?? "").trim()
-  if (!name || taxId.length !== 13 || !address) return "invalid"
-  const branch = r.type === "company" ? String(r.branch ?? "").trim() || "สำนักงานใหญ่" : null
-  return { type: r.type, name, taxId, address, branch }
+  const addr = (r.address && typeof r.address === "object" ? r.address : {}) as Record<string, unknown>
+  const inv: InvoiceInput = {
+    type: r.type,
+    name: String(r.name ?? ""),
+    taxId: String(r.taxId ?? ""),
+    branch: String(r.branch ?? ""),
+    email: String(r.email ?? ""),
+    phone: String(r.phone ?? ""),
+    lineId: String(r.lineId ?? ""),
+    address: {
+      houseNo: String(addr.houseNo ?? ""),
+      soi: String(addr.soi ?? ""),
+      road: String(addr.road ?? ""),
+      subdistrict: String(addr.subdistrict ?? ""),
+      district: String(addr.district ?? ""),
+      province: String(addr.province ?? ""),
+      zipcode: String(addr.zipcode ?? ""),
+    },
+  }
+  const err = validateInvoice(inv)
+  if (err) return { error: err }
+  return {
+    type: inv.type,
+    name: inv.name.trim(),
+    taxId: inv.taxId.replace(/\D/g, ""),
+    address: buildAddressLine(inv.address),
+    branch: inv.type === "company" ? inv.branch.trim() || "สำนักงานใหญ่" : null,
+    email: inv.email.trim(),
+    phone: inv.phone.replace(/\D/g, ""),
+    lineId: inv.lineId.trim() || null,
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -31,21 +67,34 @@ export async function POST(req: NextRequest) {
   const { code, method } = body
   const paymentMethod: PaymentMethod = isPaymentMethod(method) ? method : "ksher_qr"
 
-  const invoice = parseInvoice(body.invoice)
-  if (invoice === "invalid")
-    return NextResponse.json({ error: "กรอกข้อมูลใบกำกับภาษีให้ครบ (เลขผู้เสียภาษีต้อง 13 หลัก)" }, { status: 400 })
+  const parsedInv = parseInvoice(body.invoice)
+  if (parsedInv && "error" in parsedInv) return NextResponse.json({ error: parsedInv.error }, { status: 400 })
+  if (!parsedInv) return NextResponse.json({ error: "กรุณากรอกข้อมูลใบกำกับภาษี / ใบเสร็จให้ครบ" }, { status: 400 })
+  const invoice = parsedInv // บังคับมีเสมอ — ทุกออเดอร์ต้องมีข้อมูลใบกำกับ
 
   // อ่านตะกร้าจาก DB แล้ว "คำนวณราคาใหม่ฝั่ง server" — ไม่เชื่อราคาจาก client
   const cart = await prisma.cartItem.findMany({ where: { userId: s.user.id }, include: { product: true } })
   if (cart.length === 0) return NextResponse.json({ error: "ตะกร้าว่าง" }, { status: 400 })
 
-  const items = cart.map((c) => ({
-    productRef: `${c.product.category}-${c.product.id}`,
-    productName: c.product.name,
-    unitAmount: unitSatang(c.product.priceTHB),
-    qty: c.qty,
-    whtRate: c.product.whtRate,
-  }))
+  // กันสินค้าที่ยังไม่ตั้งราคาเต็มจำนวน (null/0) แต่อยู่ในตะกร้าแบบ full (จะ fallback ฿1,000) — ต้องสอบถามราคา
+  const noPrice = cart.find((c) => c.priceMode !== "deposit" && !hasFullPrice(c.product))
+  if (noPrice)
+    return NextResponse.json(
+      { error: `"${noPrice.product.name}" ยังไม่มีราคาเต็มจำนวน กรุณาเอาออกจากตะกร้าหรือติดต่อสอบถาม` },
+      { status: 400 },
+    )
+
+  const items = cart.map((c) => {
+    const mode = (c.priceMode === "deposit" ? "deposit" : "full") as PriceMode
+    return {
+      productRef: `${c.product.category}-${c.product.id}`,
+      productName: c.product.name,
+      unitAmount: unitSatangFor(c.product, mode),
+      priceMode: mode,
+      qty: c.qty,
+      whtRate: c.product.whtRate,
+    }
+  })
   const subtotal = items.reduce((sum, i) => sum + i.unitAmount * i.qty, 0)
 
   // ส่วนลด — ตรวจฝั่ง server เท่านั้น
@@ -80,13 +129,16 @@ export async function POST(req: NextRequest) {
       whtAmount: tax.whtAmount,
       total: tax.total,
       paymentMethod,
-      items: { create: items },
+      items: { create: items.map(({ priceMode, ...rest }) => ({ ...rest, priceMode })) },
       ...(invoice && {
         invoiceType: invoice.type,
         invoiceName: invoice.name,
         invoiceTaxId: invoice.taxId,
         invoiceAddress: invoice.address,
         invoiceBranch: invoice.branch,
+        invoiceEmail: invoice.email,
+        invoicePhone: invoice.phone,
+        invoiceLineId: invoice.lineId,
       }),
     },
   })

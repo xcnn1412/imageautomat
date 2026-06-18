@@ -59,15 +59,20 @@ model VerificationToken {
 
 // ---- Shop ----
 model Product {
-  id          Int        @id // ใช้ id เดิมจาก catalogs.ts / products.ts
-  category    String // "buy" | "rent"
-  name        String
-  description String
-  image       String
-  priceTHB    Int? // ราคาก่อน VAT (ex-VAT)
-  whtRate     Int        @default(0) // ภาษีหัก ณ ที่จ่าย %: 0 = ไม่หัก (ขายสินค้า), 3 = บริการ
-  createdAt   DateTime   @default(now())
-  cartItems   CartItem[]
+  id              Int        @id // ใช้ id เดิมจาก catalogs.ts / products.ts
+  category        String // "buy" | "rent" | "software"
+  name            String
+  description     String
+  longDescription String?
+  features        String[]
+  specs           Json? // [{label:string, value:string}][]
+  image           String
+  priceTHB        Int? // ราคาเต็ม ex-VAT
+  depositTHB      Int? // ราคามัดจำ ex-VAT (null = ใช้ DEPOSIT_THB fallback)
+  whtRate         Int        @default(0) // ภาษีหัก ณ ที่จ่าย %: 0 = ไม่หัก, 3 = บริการ, 5 = ซอฟต์แวร์
+  hidden          Boolean    @default(false) // ออเดอร์พิเศษ (custom) — ซ่อนจาก /shop, ยัดลงตะกร้า user โดยตรง
+  createdAt       DateTime   @default(now())
+  cartItems       CartItem[]
 }
 
 model CartItem {
@@ -75,6 +80,7 @@ model CartItem {
   userId    String
   productId Int
   qty       Int      @default(1)
+  priceMode String   @default("full") // "full" | "deposit"
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   product   Product  @relation(fields: [productId], references: [id])
@@ -113,8 +119,11 @@ model Order {
   invoiceType     String? // "personal" | "company"
   invoiceName     String?
   invoiceTaxId    String? // เลขบัตร ปชช. / เลขผู้เสียภาษี 13 หลัก
-  invoiceAddress  String?
+  invoiceAddress  String? // ที่อยู่ประกอบเป็นบรรทัดเดียว (buildAddressLine)
   invoiceBranch   String? // นิติบุคคล: "สำนักงานใหญ่" / "สาขา ..."
+  invoiceEmail    String? // อีเมลสำหรับจัดส่งใบกำกับภาษี
+  invoicePhone    String? // เบอร์โทรติดต่อ
+  invoiceLineId   String? // LINE ID (optional)
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
   user            User        @relation(fields: [userId], references: [id])
@@ -128,6 +137,7 @@ model OrderItem {
   productName String // snapshot
   unitAmount  Int // สตางค์/ชิ้น snapshot (ก่อน VAT)
   qty         Int    @default(1)
+  priceMode   String @default("full") // snapshot "full" | "deposit"
   whtRate     Int    @default(0) // snapshot %หัก ณ ที่จ่าย ของชิ้นนี้
   order       Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }

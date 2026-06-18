@@ -63,7 +63,12 @@ export function CartDrawer() {
                                     </div>
                                     <div className="flex min-w-0 flex-1 flex-col">
                                         <p className="line-clamp-2 text-sm font-semibold text-deep-space-blue">{i.name}</p>
-                                        <p className="mt-0.5 text-sm font-bold text-tiger-orange">{baht(i.unitTHB)}</p>
+                                        <div className="mt-0.5 flex items-center gap-2">
+                                            <p className="text-sm font-bold text-tiger-orange">{baht(i.unitTHB)}</p>
+                                            <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-semibold ${i.priceMode === "deposit" ? "bg-amber-100 text-amber-700" : "bg-gray-100 text-gray-500"}`}>
+                                                {i.priceMode === "deposit" ? "มัดจำ" : "เต็มจำนวน"}
+                                            </span>
+                                        </div>
                                         <div className="mt-auto flex items-center justify-between">
                                             <div className="flex items-center gap-1 rounded-full border border-gray-200 p-0.5">
                                                 <button onClick={() => setQty(i.productId, i.qty - 1)} className="flex h-7 w-7 items-center justify-center rounded-full text-deep-space-blue/70 transition-colors hover:bg-gray-100" aria-label="ลด">

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Check, Loader2, ShoppingBag } from "lucide-react"
 import { useCart } from "./cart-context"
+import type { PriceMode } from "@/lib/pricing"
 
 type State = "idle" | "loading" | "done"
 
@@ -10,11 +11,13 @@ export function AddToCartButton({
     productId,
     label = "เพิ่มลงตะกร้า",
     className = "",
+    mode = "full",
     onAdded,
 }: {
     productId: number
     label?: string
     className?: string
+    mode?: PriceMode
     onAdded?: () => void
 }) {
     const { add } = useCart()
@@ -24,7 +27,7 @@ export function AddToCartButton({
         if (state === "loading") return
         setState("loading")
         try {
-            await add(productId) // ถ้ายังไม่ login จะ redirect ไป signIn เอง
+            await add(productId, mode)
             setState("done")
             onAdded?.()
             setTimeout(() => setState("idle"), 1500)

@@ -8,6 +8,8 @@ import { Footer } from "@/components/footer"
 import { useCart } from "@/components/cart/cart-context"
 import { PAYMENT_METHODS, type PaymentMethod } from "@/lib/payment-methods"
 import { computeTax, VAT_RATE } from "@/lib/tax"
+import { InvoiceForm } from "@/components/checkout/invoice-form"
+import { emptyInvoice, validateInvoice, type InvoiceInput } from "@/lib/invoice"
 
 const baht = (n: number) => `฿${n.toLocaleString("th-TH")}`
 const money = (satang: number) =>
@@ -20,27 +22,19 @@ export default function CheckoutPage() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
 
-    // ใบกำกับภาษี / ใบเสร็จ
-    const [wantInvoice, setWantInvoice] = useState(false)
-    const [invType, setInvType] = useState<"personal" | "company">("personal")
-    const [invName, setInvName] = useState("")
-    const [invTaxId, setInvTaxId] = useState("")
-    const [invAddress, setInvAddress] = useState("")
-    const [invBranch, setInvBranch] = useState("สำนักงานใหญ่")
+    // ใบกำกับภาษี / ใบเสร็จ — บังคับกรอกทุกคน (เลือกบุคคลธรรมดา / นิติบุคคล)
+    const [invoice, setInvoice] = useState<InvoiceInput>(emptyInvoice)
 
     // พรีวิวภาษี (ส่วนลดคิดจริงตอนกดชำระฝั่ง server) — ราคาเป็นก่อน VAT
-    const isCompany = wantInvoice && invType === "company"
+    const isCompany = invoice.type === "company"
     const tax = computeTax(items.map((i) => ({ base: i.unitTHB * 100 * i.qty, whtRate: i.whtRate })), 0, isCompany)
 
     async function pay() {
         setError("")
-        let invoice: object | undefined
-        if (wantInvoice) {
-            if (!invName.trim() || invTaxId.replace(/\D/g, "").length !== 13 || !invAddress.trim()) {
-                setError("กรอกข้อมูลใบกำกับภาษีให้ครบ (เลขผู้เสียภาษีต้อง 13 หลัก)")
-                return
-            }
-            invoice = { type: invType, name: invName, taxId: invTaxId, address: invAddress, branch: invBranch }
+        const err = validateInvoice(invoice)
+        if (err) {
+            setError(err)
+            return
         }
         setLoading(true)
         const res = await fetch("/api/checkout", {
@@ -76,7 +70,7 @@ export default function CheckoutPage() {
                         <ul className="space-y-4">
                             {items.map((i) => (
                                 <li key={i.productId} className="flex items-center gap-4">
-                                    <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl bg-gray-50">
+                                    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-gray-50">
                                         <Image src={i.image} alt={i.name} fill className="object-contain p-2" sizes="64px" />
                                     </div>
                                     <div className="flex-1">
@@ -102,64 +96,11 @@ export default function CheckoutPage() {
                             <p className="mt-1 text-xs text-deep-space-blue/40">ส่วนลดจะคำนวณตอนกดชำระเงิน</p>
                         </div>
 
-                        {/* ใบเสร็จ / ใบกำกับภาษี */}
+                        {/* ใบเสร็จ / ใบกำกับภาษี — บังคับกรอกทุกคน */}
                         <div className="mt-8">
-                            <label className="flex cursor-pointer items-center gap-3">
-                                <input
-                                    type="checkbox"
-                                    checked={wantInvoice}
-                                    onChange={(e) => setWantInvoice(e.target.checked)}
-                                    className="h-4 w-4 accent-tiger-orange"
-                                />
-                                <span className="text-sm font-bold text-deep-space-blue">ต้องการใบเสร็จ / ใบกำกับภาษี</span>
-                            </label>
-
-                            {wantInvoice && (
-                                <div className="mt-4 space-y-3 rounded-2xl border border-gray-200 p-4">
-                                    {/* บุคคล / นิติบุคคล */}
-                                    <div className="grid grid-cols-2 gap-2">
-                                        {([["personal", "บุคคลธรรมดา"], ["company", "นิติบุคคล"]] as const).map(([val, label]) => (
-                                            <button
-                                                key={val}
-                                                type="button"
-                                                onClick={() => setInvType(val)}
-                                                className={`rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors ${invType === val ? "border-tiger-orange bg-tiger-orange/5 text-tiger-orange" : "border-gray-200 text-deep-space-blue/70"}`}
-                                            >
-                                                {label}
-                                            </button>
-                                        ))}
-                                    </div>
-
-                                    <input
-                                        value={invName}
-                                        onChange={(e) => setInvName(e.target.value)}
-                                        placeholder={invType === "company" ? "ชื่อบริษัท / นิติบุคคล" : "ชื่อ-นามสกุล"}
-                                        className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-tiger-orange"
-                                    />
-                                    <input
-                                        value={invTaxId}
-                                        onChange={(e) => setInvTaxId(e.target.value.replace(/\D/g, "").slice(0, 13))}
-                                        inputMode="numeric"
-                                        placeholder={invType === "company" ? "เลขประจำตัวผู้เสียภาษี 13 หลัก" : "เลขบัตรประชาชน 13 หลัก"}
-                                        className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-tiger-orange"
-                                    />
-                                    <textarea
-                                        value={invAddress}
-                                        onChange={(e) => setInvAddress(e.target.value)}
-                                        placeholder="ที่อยู่สำหรับออกใบกำกับภาษี"
-                                        rows={2}
-                                        className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-tiger-orange"
-                                    />
-                                    {invType === "company" && (
-                                        <input
-                                            value={invBranch}
-                                            onChange={(e) => setInvBranch(e.target.value)}
-                                            placeholder="สาขา (เช่น สำนักงานใหญ่)"
-                                            className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-tiger-orange"
-                                        />
-                                    )}
-                                </div>
-                            )}
+                            <p className="text-sm font-bold text-deep-space-blue">ข้อมูลใบเสร็จ / ใบกำกับภาษี</p>
+                            <p className="mt-0.5 text-xs text-deep-space-blue/40">กรอกข้อมูลให้ครบเพื่อออกใบกำกับภาษี — เลือกประเภทผู้ซื้อด้านล่าง</p>
+                            <InvoiceForm value={invoice} onChange={setInvoice} />
                         </div>
 
                         {/* ช่องทางจ่าย */}

@@ -21,6 +21,14 @@ export const ORDER_FLOW: OrderStatus[] = ["pending", "paid", "processing", "ship
 
 export const asOrderStatus = (s: string): OrderStatus => (isOrderStatus(s) ? s : "pending")
 
+// ออเดอร์พิเศษ (custom): Product.id >= ค่านี้ (ตั้งใน api/admin/custom-order)
+export const CUSTOM_PRODUCT_ID_BASE = 900000
+// OrderItem.productRef = "buy-900001" → เป็นสินค้าออเดอร์พิเศษไหม
+export const isCustomProductRef = (ref: string): boolean => {
+  const id = Number(ref.split("-").pop())
+  return Number.isInteger(id) && id >= CUSTOM_PRODUCT_ID_BASE
+}
+
 // ponytail: gate admin ด้วย env ADMIN_EMAILS (คั่นด้วย comma) — ไม่ต้องเพิ่ม role column
 // เพิ่ม role ใน DB เมื่อ admin เยอะ/ต้องจัดการผ่าน UI
 export function isAdmin(session: Session | null): boolean {

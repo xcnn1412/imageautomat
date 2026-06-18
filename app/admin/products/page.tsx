@@ -12,8 +12,9 @@ export default async function AdminProductsPage() {
   if (!isAdmin(session)) redirect("/")
 
   const rows = await prisma.product.findMany({
+    where: { hidden: false },
     orderBy: [{ category: "asc" }, { id: "asc" }],
-    select: { id: true, name: true, category: true, priceTHB: true, image: true, whtRate: true },
+    select: { id: true, name: true, description: true, longDescription: true, features: true, specs: true, category: true, priceTHB: true, depositTHB: true, image: true, whtRate: true },
   })
 
   return (
@@ -22,6 +23,7 @@ export default async function AdminProductsPage() {
         <nav className="mb-6 flex gap-4 text-sm font-semibold">
           <Link href="/admin/orders" className="text-deep-space-blue/50 hover:text-tiger-orange">ออเดอร์</Link>
           <Link href="/admin/products" className="text-tiger-orange">สินค้า</Link>
+          <Link href="/admin/custom-order" className="text-deep-space-blue/50 hover:text-tiger-orange">ออเดอร์พิเศษ</Link>
         </nav>
 
         <h1 className="font-serif text-3xl text-deep-space-blue">สินค้า · หัก ณ ที่จ่าย</h1>

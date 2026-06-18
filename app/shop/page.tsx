@@ -1,5 +1,8 @@
 import type { Metadata } from "next"
+import { prisma } from "@/lib/prisma"
 import { ShopPageContent } from "./shop-page-content"
+
+export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
     title: "ช้อปตู้โฟโต้บูธ ซื้อ-เช่า-โครงสร้าง-ซอฟต์แวร์ — IMAGEAUTOMAT",
@@ -15,13 +18,10 @@ export const metadata: Metadata = {
         "ShopeePay photobooth",
         "IMAGEAUTOMAT",
     ],
-    alternates: {
-        canonical: "/shop",
-    },
+    alternates: { canonical: "/shop" },
     openGraph: {
         title: "ช้อปตู้โฟโต้บูธ ซื้อ-เช่า-โครงสร้าง-ซอฟต์แวร์ | IMAGEAUTOMAT",
-        description:
-            "รวมตู้ถ่ายรูปขาย เช่าตู้ โครงสร้าง และ License ซอฟต์แวร์ จ่ายออนไลน์ด้วย ShopeePay",
+        description: "รวมตู้ถ่ายรูปขาย เช่าตู้ โครงสร้าง และ License ซอฟต์แวร์ จ่ายออนไลน์ด้วย ShopeePay",
         url: "https://www.imageautomat.com/shop",
         type: "website",
         siteName: "IMAGEAUTOMAT",
@@ -29,6 +29,11 @@ export const metadata: Metadata = {
     },
 }
 
-export default function ShopPage() {
-    return <ShopPageContent />
+export default async function ShopPage() {
+    const products = await prisma.product.findMany({
+        where: { hidden: false },
+        orderBy: [{ category: "asc" }, { id: "asc" }],
+        select: { id: true, name: true, description: true, image: true, category: true, priceTHB: true, depositTHB: true },
+    })
+    return <ShopPageContent products={products} />
 }
