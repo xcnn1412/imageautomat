@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Pencil, Plus, Search, Trash2, X } from "lucide-react"
 import { DEPOSIT_THB } from "@/lib/pricing"
 import { payablePreview, computeTax } from "@/lib/tax"
+import { ImageUpload } from "@/components/admin/image-upload"
 
 type Spec = { label: string; value: string }
 
@@ -147,14 +148,9 @@ function EditDrawer({ product, onClose, onSaved }: { product: AdminProduct; onCl
         {/* Body */}
         <div className="flex-1 space-y-5 overflow-y-auto px-6 py-5">
           {/* Image preview */}
-          <div className="flex items-center gap-4">
-            <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-gray-50">
-              <Image src={form.image || "/placeholder.png"} alt="" fill className="object-contain p-1" sizes="64px" />
-            </span>
-            <div className="flex-1">
-              <label className="mb-1 block text-xs font-semibold text-deep-space-blue/50">URL รูปภาพ</label>
-              <input value={form.image} onChange={set("image")} className={field} placeholder="/catalogs/images/..." />
-            </div>
+          <div>
+            <label className="mb-1 block text-xs font-semibold text-deep-space-blue/50">รูปภาพสินค้า</label>
+            <ImageUpload value={form.image} onChange={(url) => setForm((f) => ({ ...f, image: url }))} />
           </div>
 
           <div>

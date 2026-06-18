@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { prisma } from "@/lib/prisma"
 import { ShopPageContent } from "./shop-page-content"
+import { PolicyNotice } from "@/components/policy-notice"
 
 export const dynamic = "force-dynamic"
 
@@ -35,5 +36,10 @@ export default async function ShopPage() {
         orderBy: [{ category: "asc" }, { id: "asc" }],
         select: { id: true, name: true, description: true, image: true, category: true, priceTHB: true, depositTHB: true },
     })
-    return <ShopPageContent products={products} />
+    return (
+        <>
+            <ShopPageContent products={products} />
+            <PolicyNotice />
+        </>
+    )
 }

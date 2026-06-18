@@ -63,7 +63,9 @@ export async function POST(req: NextRequest) {
   const s = await auth()
   if (!s?.user?.id) return NextResponse.json({ error: "unauthorized" }, { status: 401 })
 
-  const body = (await req.json()) as { code?: string; method?: string; invoice?: unknown }
+  const body = (await req.json()) as { code?: string; method?: string; invoice?: unknown; policyAccepted?: boolean }
+  if (body.policyAccepted !== true)
+    return NextResponse.json({ error: "กรุณายอมรับนโยบายการสั่งซื้อและคืนสินค้า" }, { status: 400 })
   const { code, method } = body
   const paymentMethod: PaymentMethod = isPaymentMethod(method) ? method : "ksher_qr"
 
@@ -129,6 +131,7 @@ export async function POST(req: NextRequest) {
       whtAmount: tax.whtAmount,
       total: tax.total,
       paymentMethod,
+      policyAcceptedAt: new Date(), // หลักฐานยอมรับนโยบาย (server timestamp)
       items: { create: items.map(({ priceMode, ...rest }) => ({ ...rest, priceMode })) },
       ...(invoice && {
         invoiceType: invoice.type,

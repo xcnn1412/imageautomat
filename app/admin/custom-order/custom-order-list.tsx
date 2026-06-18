@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { Pencil, Trash2, X, Clock } from "lucide-react"
 import { DEPOSIT_THB } from "@/lib/pricing"
 import { payablePreview } from "@/lib/tax"
+import { ImageUpload } from "@/components/admin/image-upload"
 
 export type PendingCustomOrder = {
   productId: number
@@ -214,8 +215,8 @@ function EditDrawer({ order, onClose }: { order: PendingCustomOrder; onClose: ()
             </div>
           </div>
           <div>
-            <label className={label}>รูป (path)</label>
-            <input value={form.image} onChange={set("image")} className={field} placeholder="/images/custom-booth.jpg" />
+            <label className={label}>รูปสินค้า</label>
+            <ImageUpload value={form.image} onChange={(url) => setForm((f) => ({ ...f, image: url }))} />
           </div>
 
           {pay && (

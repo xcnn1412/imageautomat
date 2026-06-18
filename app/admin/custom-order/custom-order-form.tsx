@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { DEPOSIT_THB } from "@/lib/pricing"
 import { payablePreview } from "@/lib/tax"
+import { ImageUpload } from "@/components/admin/image-upload"
 
 const baht = (n: number) => `฿${n.toLocaleString("th-TH")}`
 const bahtSat = (sat: number) => `฿${(sat / 100).toLocaleString("th-TH", { maximumFractionDigits: 2 })}`
@@ -122,8 +123,8 @@ export function CustomOrderForm() {
       </div>
 
       <div>
-        <label className={label}>รูป (path, ไม่บังคับ)</label>
-        <input value={image} onChange={(e) => setImage(e.target.value)} placeholder="/images/custom-booth.jpg" className={input} />
+        <label className={label}>รูปสินค้า</label>
+        <ImageUpload value={image} onChange={setImage} />
       </div>
 
       {pay && (

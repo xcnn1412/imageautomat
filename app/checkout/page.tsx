@@ -24,6 +24,7 @@ export default function CheckoutPage() {
 
     // ใบกำกับภาษี / ใบเสร็จ — บังคับกรอกทุกคน (เลือกบุคคลธรรมดา / นิติบุคคล)
     const [invoice, setInvoice] = useState<InvoiceInput>(emptyInvoice)
+    const [agreed, setAgreed] = useState(false) // ยอมรับนโยบายสั่งซื้อ/คืนสินค้า
 
     // พรีวิวภาษี (ส่วนลดคิดจริงตอนกดชำระฝั่ง server) — ราคาเป็นก่อน VAT
     const isCompany = invoice.type === "company"
@@ -31,6 +32,10 @@ export default function CheckoutPage() {
 
     async function pay() {
         setError("")
+        if (!agreed) {
+            setError("กรุณายอมรับนโยบายการสั่งซื้อและคืนสินค้าก่อนชำระเงิน")
+            return
+        }
         const err = validateInvoice(invoice)
         if (err) {
             setError(err)
@@ -40,7 +45,7 @@ export default function CheckoutPage() {
         const res = await fetch("/api/checkout", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ code, method, invoice }),
+            body: JSON.stringify({ code, method, invoice, policyAccepted: true }),
         })
         const data = await res.json()
         if (!res.ok) {
@@ -152,6 +157,21 @@ export default function CheckoutPage() {
                                     หัก ณ ที่จ่ายเฉพาะรายการบริการ · ส่วนลดคำนวณตอนกดชำระเงิน
                                 </p>
                             )}
+                            <label className="mb-4 flex cursor-pointer items-start gap-2.5 text-sm">
+                                <input
+                                    type="checkbox"
+                                    checked={agreed}
+                                    onChange={(e) => setAgreed(e.target.checked)}
+                                    className="mt-0.5 h-4 w-4 shrink-0 accent-tiger-orange"
+                                />
+                                <span className="text-deep-space-blue/70">
+                                    ฉันได้อ่านและยอมรับ{" "}
+                                    <Link href="/policy" target="_blank" className="font-semibold text-tiger-orange underline">
+                                        นโยบายการสั่งซื้อและคืนสินค้า
+                                    </Link>
+                                </span>
+                            </label>
+
                             {error && <p className="mb-3 text-sm text-red-600">{error}</p>}
                             <button
                                 onClick={pay}

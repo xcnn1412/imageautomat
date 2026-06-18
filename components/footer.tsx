@@ -96,12 +96,12 @@ export function Footer() {
               {new Date().getFullYear()} IMAGEAUTOMAT. All rights reserved.
             </p>
             <div className="flex gap-8">
-              <a
-                href="#"
+              <Link
+                href="/policy"
                 className="text-sm text-[#023047]/40 hover:text-[#FB8500] transition-colors duration-300"
               >
-                Privacy Policy
-              </a>
+                นโยบายการสั่งซื้อ/คืนสินค้า
+              </Link>
               <a
                 href="#"
                 className="text-sm text-[#023047]/40 hover:text-[#FB8500] transition-colors duration-300"

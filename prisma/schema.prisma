@@ -124,6 +124,7 @@ model Order {
   invoiceEmail    String? // อีเมลสำหรับจัดส่งใบกำกับภาษี
   invoicePhone    String? // เบอร์โทรติดต่อ
   invoiceLineId   String? // LINE ID (optional)
+  policyAcceptedAt DateTime? // หลักฐานยอมรับนโยบายสั่งซื้อ/คืนสินค้า (server timestamp ตอนชำระ)
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
   user            User        @relation(fields: [userId], references: [id])
