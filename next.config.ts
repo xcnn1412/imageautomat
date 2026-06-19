@@ -18,25 +18,17 @@ const nextConfig: NextConfig = {
 
   images: {
     formats: ['image/avif', 'image/webp'],
-    qualities: [75, 80],
+    qualities: [40, 50, 75, 80],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
     remotePatterns: [{ protocol: 'https', hostname: '**.t3.storageapi.dev' }], // รูปอัปโหลด S3 (Tigris)
   },
 
+  // ponytail: ตั้ง Cache-Control เฉพาะ asset ใน public/ — /_next/static Next จัดการ immutable ให้เองแล้ว (ตั้งซ้ำ = warning + เพี้ยนตอน dev)
   headers: async () => [
     {
       source: '/:all*(svg|jpg|jpeg|png|webp|avif|ico|mp4)',
-      headers: [
-        {
-          key: 'Cache-Control',
-          value: 'public, max-age=31536000, immutable',
-        },
-      ],
-    },
-    {
-      source: '/_next/static/:path*',
       headers: [
         {
           key: 'Cache-Control',
