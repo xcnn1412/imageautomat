@@ -1,10 +1,11 @@
 "use client"
 
-import { useState, useRef, useEffect, useCallback } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Play, Pause, ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react"
 import { motion, useInView } from "framer-motion"
-import { SHOWCASE_ITEMS, ShowcaseItem } from "@/data/ads-showcase"
+import { SHOWCASE_ITEMS } from "@/data/ads-showcase"
 import { LazyVideo } from "@/components/lazy-video"
+import { useReelPlayer } from "@/components/use-reel-player"
 
 // Shuffle array helper function
 function shuffleArray<T>(array: T[]): T[] {
@@ -27,14 +28,10 @@ export function AdsSlideshow() {
     setShuffledItems(shuffleArray(SHOWCASE_ITEMS))
   }, [])
 
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(true)
-  const [isMuted, setIsMuted] = useState(true)
-  const [progress, setProgress] = useState(0)
-  const [isTransitioning, setIsTransitioning] = useState(false)
-  const [textVisible, setTextVisible] = useState(true)
-  const activeVideoRef = useRef<HTMLVideoElement>(null)
-  const progressInterval = useRef<ReturnType<typeof setInterval> | null>(null)
+  const {
+    currentIndex, isPlaying, isMuted, progress, isTransitioning, textVisible,
+    activeVideoRef, goToSlide, goNext, goPrev, togglePlay, toggleMute,
+  } = useReelPlayer(shuffledItems.length)
 
   const currentItem = shuffledItems[currentIndex] ?? shuffledItems[0]
 
@@ -61,90 +58,6 @@ export function AdsSlideshow() {
       }
     }
   }
-
-  const goToSlide = useCallback(
-    (index: number) => {
-      if (isTransitioning || index === currentIndex) return
-      setTextVisible(false)
-      setIsTransitioning(true)
-      setProgress(0)
-
-      setTimeout(() => {
-        setCurrentIndex(index)
-        setTimeout(() => {
-          setIsTransitioning(false)
-          setTextVisible(true)
-        }, 400)
-      }, 300)
-    },
-    [isTransitioning, currentIndex]
-  )
-
-  const goNext = useCallback(() => {
-    const nextIndex = (currentIndex + 1) % shuffledItems.length
-    goToSlide(nextIndex)
-  }, [currentIndex, shuffledItems.length, goToSlide])
-
-  const goPrev = useCallback(() => {
-    const prevIndex = (currentIndex - 1 + shuffledItems.length) % shuffledItems.length
-    goToSlide(prevIndex)
-  }, [currentIndex, shuffledItems.length, goToSlide])
-
-  const togglePlay = useCallback(() => {
-    setIsPlaying((prev) => !prev)
-  }, [])
-
-  const toggleMute = useCallback(() => {
-    setIsMuted((prev) => !prev)
-  }, [])
-
-  // Sync video playback state
-  useEffect(() => {
-    const video = activeVideoRef.current
-    if (!video) return
-
-    if (isPlaying) {
-      video.play().catch(() => {})
-    } else {
-      video.pause()
-    }
-  }, [isPlaying, currentIndex])
-
-  // Sync mute state
-  useEffect(() => {
-    const video = activeVideoRef.current
-    if (video) {
-      video.muted = isMuted
-    }
-  }, [isMuted])
-
-  // Progress bar + auto-advance
-  useEffect(() => {
-    const video = activeVideoRef.current
-    if (!video) return
-
-    const updateProgress = () => {
-      if (video.duration) {
-        const percent = (video.currentTime / video.duration) * 100
-        setProgress(percent)
-
-        // Auto-advance when video ends
-        if (video.ended) {
-          goNext()
-        }
-      }
-    }
-
-    if (isPlaying) {
-      progressInterval.current = setInterval(updateProgress, 100)
-    }
-
-    return () => {
-      if (progressInterval.current) {
-        clearInterval(progressInterval.current)
-      }
-    }
-  }, [isPlaying, goNext])
 
   return (
     <section

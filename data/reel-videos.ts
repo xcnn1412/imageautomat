@@ -1,12 +1,12 @@
 // ReelVideo Data — videos from public/slideshow/autoreel
-export interface ReelVideoItem {
+export interface ReelItem {
     id: string
     title: string
     description: string
     src: string
 }
 
-export const REEL_VIDEOS: ReelVideoItem[] = [
+export const REEL_VIDEOS: ReelItem[] = [
     {
         id: "reel-01",
         title: "ตู้ถ่ายรูป Reel Photobooth สร้างคลิปสั้นอัตโนมัติ",

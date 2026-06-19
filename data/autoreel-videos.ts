@@ -1,13 +1,8 @@
 // AutoReel Video Data
-export interface AutoReelVideo {
-  id: string
-  title: string
-  description: string
-  src: string
-}
+import type { ReelItem } from "./reel-videos"
 
 // AutoReel videos from public/slideshow/videos directory
-export const AUTOREEL_VIDEOS: AutoReelVideo[] = [
+export const AUTOREEL_VIDEOS: ReelItem[] = [
   {
     id: "signage-1",
     title: "ตู้ถ่ายรูป Signature PHOTOBOOTH สร้าง REEL อัตโนมัติ",

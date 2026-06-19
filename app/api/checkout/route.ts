@@ -6,6 +6,7 @@ import { computeTax } from "@/lib/tax"
 import { createPayment } from "@/lib/payments"
 import { isPaymentMethod, type PaymentMethod } from "@/lib/payment-methods"
 import { validateInvoice, buildAddressLine, type InvoiceInput } from "@/lib/invoice"
+import { siteOrigin } from "@/lib/constants"
 
 export const runtime = "nodejs"
 
@@ -151,7 +152,7 @@ export async function POST(req: NextRequest) {
       merchantOrderId,
       amountSatang: tax.total,
       note: `IMAGEAUTOMAT ${merchantOrderId}`,
-      origin: req.nextUrl.origin,
+      origin: siteOrigin(req.nextUrl.origin),
     })
     await prisma.order.update({ where: { id: order.id }, data: { ksherReference: reference } })
     // ponytail: นับ usedCount ตอนเริ่มจ่าย (ถ้า user ทิ้งจะ over-count เล็กน้อย) — ย้ายไป webhook ถ้าซีเรียส

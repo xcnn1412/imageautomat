@@ -5,8 +5,6 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { SoftwareHero } from "./software-hero"
 import { SoftwareFeatures } from "./software-features"
-import { SoftwareReelVideo } from "./software-reelvideo"
-import { SoftwareSignatureReel } from "./software-signaturereel"
 import { Software3Shot } from "./software-3shot"
 import { SoftwareVideoHeader } from "./software-video-header"
 import { SoftwareWorkflow } from "./software-workflow"
@@ -17,12 +15,18 @@ import { PaymentGatewaySlideshow } from "./payment-gateway-slideshow"
 
 const VideoGallery = dynamic(() => import("@/components/video-gallery").then(mod => ({ default: mod.VideoGallery })), {
     loading: () => <div className="py-12" />,
-    ssr: true,
 })
 
 const HomeSoftwareFeatures = dynamic(() => import("@/components/home-software-features").then(mod => ({ default: mod.HomeSoftwareFeatures })), {
     loading: () => <div className="py-12" />,
-    ssr: true,
+})
+
+const ReelVideo = dynamic(() => import("@/components/ReelVideo").then(mod => ({ default: mod.ReelVideo })), {
+    loading: () => <div className="py-12" />,
+})
+
+const SignatureReel = dynamic(() => import("@/components/SignatureReel").then(mod => ({ default: mod.SignatureReel })), {
+    loading: () => <div className="py-12" />,
 })
 
 export function SoftwarePageContent() {
@@ -36,8 +40,8 @@ export function SoftwarePageContent() {
             {/* <SoftwarePayment /> */}
             {/* <SoftwareFeatures /> */}
             {/* <HomeSoftwareFeatures /> */}
-            <SoftwareReelVideo />
-            <SoftwareSignatureReel />
+            <ReelVideo />
+            <SignatureReel />
             <Software3Shot />
             <SoftwareWorkflow />
             <SoftwareVideoHeader />

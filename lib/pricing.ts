@@ -20,7 +20,3 @@ export const unitTHBfor = (p: PriceFields, mode: PriceMode) =>
 
 export const unitSatangFor = (p: PriceFields, mode: PriceMode) =>
   unitTHBfor(p, mode) * 100
-
-// legacy compat — callers ที่ยังไม่รู้จัก mode ใช้ full เสมอ
-export const unitSatang = (priceTHB: number | null | undefined) => (priceTHB ?? DEPOSIT_THB) * 100
-export const unitTHB = (priceTHB: number | null | undefined) => priceTHB ?? DEPOSIT_THB
