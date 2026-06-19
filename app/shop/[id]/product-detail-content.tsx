@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, Check, MessageCircle, ShieldCheck } from "lucide-react"
+import { ArrowLeft, Check, MessageCircle, ShieldCheck, FileText, Truck, RotateCcw, ChevronRight } from "lucide-react"
 import { useSession, signIn } from "next-auth/react"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
@@ -177,11 +177,40 @@ export function ProductDetailContent({ product }: { product: Product }) {
               </div>
             )}
 
-            {/* Trust badge */}
-            <div className="mt-8 flex items-center gap-2 text-xs text-deep-space-blue/40">
-              <ShieldCheck className="h-4 w-4" />
-              ชำระเงินปลอดภัย · ส่งสินค้าพร้อมใบกำกับภาษี · ซัพพอร์ตหลังการขาย
-            </div>
+            {/* Policy summary + link to full policy */}
+            <Link
+              href="/policy"
+              className="group mt-8 block overflow-hidden rounded-2xl border border-gray-100 bg-linear-to-br from-gray-50/80 to-white p-5 transition-colors hover:border-tiger-orange/30"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-sm font-bold text-deep-space-blue">
+                  <FileText className="h-4 w-4 text-tiger-orange" />
+                  นโยบายการสั่งซื้อ
+                </div>
+                <span className="flex items-center gap-0.5 text-xs font-semibold text-tiger-orange">
+                  อ่านฉบับเต็ม
+                  <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </div>
+              <ul className="mt-4 grid gap-2.5 text-[13px] leading-snug text-deep-space-blue/70 sm:grid-cols-2">
+                <li className="flex items-start gap-2">
+                  <Truck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-deep-space-blue/40" />
+                  ผลิต 15–45 วันทำการ · ส่งฟรีในกรุงเทพฯ–ปริมณฑล
+                </li>
+                <li className="flex items-start gap-2">
+                  <ShieldCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-deep-space-blue/40" />
+                  รับประกันอุปกรณ์ไฟฟ้า · ออกใบกำกับภาษี
+                </li>
+                <li className="flex items-start gap-2">
+                  <FileText className="mt-0.5 h-3.5 w-3.5 shrink-0 text-deep-space-blue/40" />
+                  ราคาก่อน VAT 7% · เลือกจ่ายเต็ม/มัดจำได้
+                </li>
+                <li className="flex items-start gap-2">
+                  <RotateCcw className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-500" />
+                  ไม่มีนโยบายคืนสินค้า/คืนเงินทุกกรณี
+                </li>
+              </ul>
+            </Link>
           </div>
         </div>
       </div>
