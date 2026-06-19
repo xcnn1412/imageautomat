@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 export default async function ShopPage() {
     const products = await prisma.product.findMany({
-        where: { hidden: false },
+        where: { hidden: false, deletedAt: null },
         orderBy: [{ category: "asc" }, { id: "asc" }],
         select: { id: true, name: true, description: true, image: true, category: true, priceTHB: true, depositTHB: true },
     })

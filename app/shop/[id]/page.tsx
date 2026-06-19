@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProductDetailPage({ params }: Props) {
   const { id } = await params
   const product = await prisma.product.findUnique({ where: { id: Number(id) } })
-  if (!product) notFound()
+  if (!product || product.deletedAt || product.hidden) notFound()
 
   return <ProductDetailContent product={product} />
 }

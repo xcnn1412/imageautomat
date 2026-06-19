@@ -23,6 +23,9 @@ export const asOrderStatus = (s: string): OrderStatus => (isOrderStatus(s) ? s :
 
 // ออเดอร์พิเศษ (custom): Product.id >= ค่านี้ (ตั้งใน api/admin/custom-order)
 export const CUSTOM_PRODUCT_ID_BASE = 900000
+// สินค้าที่ admin สร้างเองในหน้า /admin/products: id ช่วง [500000, 900000)
+// เหนือช่วง catalog/software (กัน re-seed ทับ) + ต่ำกว่า custom (ไม่ถูกมองว่าเป็นออเดอร์พิเศษ)
+export const ADMIN_PRODUCT_ID_BASE = 500000
 // OrderItem.productRef = "buy-900001" → เป็นสินค้าออเดอร์พิเศษไหม
 export const isCustomProductRef = (ref: string): boolean => {
   const id = Number(ref.split("-").pop())

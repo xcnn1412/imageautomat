@@ -12,6 +12,9 @@ export const depositTHB = (p: PriceFields) => p.depositTHB ?? DEPOSIT_THB
 // มีราคาเต็มจำนวนขายจริงไหม — null / 0 / ติดลบ = ยังไม่ตั้ง (ให้สอบถามราคา ไม่ fallback ฿1,000)
 export const hasFullPrice = (p: PriceFields) => p.priceTHB != null && p.priceTHB > 0
 
+// ประเภทที่ขายผ่านตะกร้าได้ — ทุกประเภท ยกเว้น "rent" (เช่า = สอบถาม/ติดต่อเท่านั้น)
+export const isBuyableCategory = (category: string) => category !== "rent"
+
 export const unitTHBfor = (p: PriceFields, mode: PriceMode) =>
   mode === "deposit" ? depositTHB(p) : fullTHB(p)
 

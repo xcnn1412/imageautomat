@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
   if (!s?.user?.id) return NextResponse.json({ error: "unauthorized" }, { status: 401 })
   const { productId, priceMode } = await req.json()
   const product = await prisma.product.findUnique({ where: { id: Number(productId) } })
-  if (!product) return NextResponse.json({ error: "product not found" }, { status: 404 })
+  if (!product || product.deletedAt) return NextResponse.json({ error: "product not found" }, { status: 404 })
   const mode = toMode(priceMode)
   // ยังไม่ตั้งราคาเต็มจำนวน (null/0) → ห้ามเพิ่มแบบ full (กัน fallback ฿1,000) ให้ไปสอบถามราคาแทน
   if (mode === "full" && !hasFullPrice(product))

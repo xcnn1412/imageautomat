@@ -8,9 +8,7 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { useSession, signIn } from "next-auth/react"
 import { cn } from "@/lib/utils"
-import { DEPOSIT_THB } from "@/lib/pricing"
-
-type ShopCategory = "buy" | "rent" | "software"
+import { DEPOSIT_THB, isBuyableCategory } from "@/lib/pricing"
 
 type ShopProduct = {
     id: number
@@ -22,7 +20,8 @@ type ShopProduct = {
     depositTHB: number | null
 }
 
-const TABS: { key: ShopCategory; label: string; hint: string }[] = [
+// แท็บมาตรฐาน — ประเภทอื่นที่ admin เพิ่ม จะต่อท้ายแบบ dynamic
+const KNOWN_TABS: { key: string; label: string; hint: string }[] = [
     { key: "buy", label: "ซื้อตู้", hint: "เป็นเจ้าของตู้โฟโต้บูธ" },
     { key: "rent", label: "เช่าตู้", hint: "เช่าสำหรับงานอีเวนต์" },
     { key: "software", label: "Software", hint: "License ซอฟต์แวร์" },
@@ -37,12 +36,17 @@ const BADGE: Record<string, { label: string; cls: string }> = {
 const baht = (n: number) => `฿${n.toLocaleString("th-TH")}`
 
 export function ShopPageContent({ products }: { products: ShopProduct[] }) {
-    const [tab, setTab] = useState<ShopCategory>("buy")
+    const [tab, setTab] = useState<string>("buy")
     const { status } = useSession()
     const isAuthed = status === "authenticated"
 
+    // แท็บมาตรฐาน + ประเภทใหม่ที่มีสินค้าจริง (ต่อท้าย, label = ชื่อประเภท)
+    const known = new Set(KNOWN_TABS.map((t) => t.key))
+    const extra = [...new Set(products.map((p) => p.category))].filter((c) => !known.has(c))
+    const tabs = [...KNOWN_TABS, ...extra.map((c) => ({ key: c, label: c, hint: `หมวด ${c}` }))]
+
     const items = products.filter((p) => p.category === tab)
-    const activeHint = TABS.find((t) => t.key === tab)?.hint
+    const activeHint = tabs.find((t) => t.key === tab)?.hint
 
     return (
         <main className="min-h-screen bg-white">
@@ -61,8 +65,8 @@ export function ShopPageContent({ products }: { products: ShopProduct[] }) {
 
             {/* Sticky category tabs */}
             <div className="sticky top-20 z-30 border-b border-gray-100 bg-white/90 backdrop-blur-md lg:top-24">
-                <div className="mx-auto flex max-w-7xl gap-1 px-6 sm:gap-2 lg:px-8" role="tablist">
-                    {TABS.map((t) => {
+                <div className="mx-auto flex max-w-7xl gap-1 overflow-x-auto px-6 sm:gap-2 lg:px-8" role="tablist">
+                    {tabs.map((t) => {
                         const count = products.filter((p) => p.category === t.key).length
                         const active = tab === t.key
                         return (
@@ -114,7 +118,7 @@ export function ShopPageContent({ products }: { products: ShopProduct[] }) {
 }
 
 function ProductCard({ product: p, isAuthed }: { product: ShopProduct; isAuthed: boolean }) {
-    const badge = BADGE[p.category] ?? BADGE.buy
+    const badge = BADGE[p.category] ?? { label: p.category, cls: "bg-gray-100 text-gray-600" }
     const fullPrice = p.priceTHB
     const depositPrice = p.depositTHB ?? DEPOSIT_THB
 
@@ -150,7 +154,7 @@ function ProductCard({ product: p, isAuthed }: { product: ShopProduct; isAuthed:
                             <p className="text-lg font-bold text-deep-space-blue">
                                 {fullPrice ? baht(fullPrice) : p.category === "rent" ? "เช่ารายวัน / อีเวนต์" : "สอบถามราคา"}
                             </p>
-                            {(p.category === "buy" || p.category === "software") && (
+                            {isBuyableCategory(p.category) && (
                                 <p className="text-xs text-deep-space-blue/40">มัดจำ {baht(depositPrice)}</p>
                             )}
                         </div>

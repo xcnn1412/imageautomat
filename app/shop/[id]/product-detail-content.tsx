@@ -8,7 +8,7 @@ import { useSession, signIn } from "next-auth/react"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { AddToCartButton } from "@/components/cart/add-to-cart-button"
-import { DEPOSIT_THB, hasFullPrice, type PriceMode } from "@/lib/pricing"
+import { DEPOSIT_THB, hasFullPrice, isBuyableCategory, type PriceMode } from "@/lib/pricing"
 import type { Product } from "@prisma/client"
 
 const LINE = "https://lin.ee/Q5DSE1r"
@@ -28,7 +28,7 @@ export function ProductDetailContent({ product }: { product: Product }) {
   // ไม่มีราคาเต็มจำนวน (null/0) → default เป็นมัดจำ (full จะเป็นปุ่มสอบถามราคา)
   const [mode, setMode] = useState<PriceMode>(hasFullPrice(product) ? "full" : "deposit")
 
-  const canBuy = product.category === "buy" || product.category === "software"
+  const canBuy = isBuyableCategory(product.category)
   const cat = CAT_LABEL[product.category] ?? { label: product.category, cls: "bg-gray-100 text-gray-600" }
 
   const fullPrice = hasFullPrice(product) ? product.priceTHB : null

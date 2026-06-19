@@ -2,7 +2,7 @@ import { redirect } from "next/navigation"
 import Link from "next/link"
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
-import { isAdmin } from "@/lib/orders"
+import { isAdmin, CUSTOM_PRODUCT_ID_BASE } from "@/lib/orders"
 import { ProductManager } from "./product-manager"
 
 export const dynamic = "force-dynamic"
@@ -11,10 +11,11 @@ export default async function AdminProductsPage() {
   const session = await auth()
   if (!isAdmin(session)) redirect("/")
 
+  // โชว์สินค้า catalog + ที่ admin สร้างเอง (รวมที่ซ่อน/อยู่ถังขยะ) แต่กันออเดอร์พิเศษ (id >= CUSTOM_BASE) ไม่ให้ปน
   const rows = await prisma.product.findMany({
-    where: { hidden: false },
+    where: { id: { lt: CUSTOM_PRODUCT_ID_BASE } },
     orderBy: [{ category: "asc" }, { id: "asc" }],
-    select: { id: true, name: true, description: true, longDescription: true, features: true, specs: true, category: true, priceTHB: true, depositTHB: true, image: true, whtRate: true },
+    select: { id: true, name: true, description: true, longDescription: true, features: true, specs: true, category: true, priceTHB: true, depositTHB: true, image: true, whtRate: true, hidden: true, deletedAt: true },
   })
 
   return (
