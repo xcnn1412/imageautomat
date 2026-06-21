@@ -14,5 +14,7 @@ export async function PATCH(req: NextRequest) {
   if (!id || typeof approved !== "boolean") return NextResponse.json({ error: "bad request" }, { status: 400 })
 
   await prisma.user.update({ where: { id }, data: { approvedAt: approved ? new Date() : null } })
+  // signIn gate ทำงานแค่ตอน login → ระงับต้องลบ session เดิมด้วย ไม่งั้น user ที่ login ค้างยังใช้ได้จนหมดอายุ
+  if (!approved) await prisma.session.deleteMany({ where: { userId: id } })
   return NextResponse.json({ ok: true })
 }
