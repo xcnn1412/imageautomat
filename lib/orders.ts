@@ -34,12 +34,16 @@ export const isCustomProductRef = (ref: string): boolean => {
 
 // ponytail: gate admin ด้วย env ADMIN_EMAILS (คั่นด้วย comma) — ไม่ต้องเพิ่ม role column
 // เพิ่ม role ใน DB เมื่อ admin เยอะ/ต้องจัดการผ่าน UI
-export function isAdmin(session: Session | null): boolean {
-  const email = session?.user?.email?.toLowerCase()
-  if (!email) return false
+export function isAdminEmail(email: string | null | undefined): boolean {
+  const e = email?.toLowerCase()
+  if (!e) return false
   const admins = (process.env.ADMIN_EMAILS ?? "")
     .split(",")
-    .map((e) => e.trim().toLowerCase())
+    .map((x) => x.trim().toLowerCase())
     .filter(Boolean)
-  return admins.includes(email)
+  return admins.includes(e)
+}
+
+export function isAdmin(session: Session | null): boolean {
+  return isAdminEmail(session?.user?.email)
 }

@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation"
-import Link from "next/link"
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
 import { isAdmin, CUSTOM_PRODUCT_ID_BASE } from "@/lib/orders"
+import { AdminNav } from "@/components/admin-nav"
 import { ProductManager } from "./product-manager"
 
 export const dynamic = "force-dynamic"
@@ -21,11 +21,7 @@ export default async function AdminProductsPage() {
   return (
     <main className="min-h-screen bg-gray-50 px-6 py-10">
       <div className="mx-auto max-w-4xl">
-        <nav className="mb-6 flex gap-4 text-sm font-semibold">
-          <Link href="/admin/orders" className="text-deep-space-blue/50 hover:text-tiger-orange">ออเดอร์</Link>
-          <Link href="/admin/products" className="text-tiger-orange">สินค้า</Link>
-          <Link href="/admin/custom-order" className="text-deep-space-blue/50 hover:text-tiger-orange">ออเดอร์พิเศษ</Link>
-        </nav>
+        <AdminNav active="/admin/products" />
 
         <h1 className="font-serif text-3xl text-deep-space-blue">สินค้า · หัก ณ ที่จ่าย</h1>
         <p className="mb-6 mt-1 text-sm text-deep-space-blue/50">
