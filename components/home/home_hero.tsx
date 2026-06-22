@@ -56,7 +56,7 @@ export function HeroSection() {
             <h1 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-6xl xl:text-6xl text-deep-space-blue tracking-tight leading-[1.15]">
               <span className="whitespace-nowrap">ผู้นำตู้โฟโต้บูธ</span> <span className="whitespace-nowrap">ครบวงจร</span>
               <br />
-              <span className="inline-block bg-tiger-orange text-white px-6 py-3 rounded-2xl mt-3 text-3xl sm:text-4xl lg:text-5xl whitespace-nowrap">
+              <span className="inline-block bg-tiger-orange text-white px-4 py-2 sm:px-6 sm:py-3 rounded-2xl mt-3 text-2xl sm:text-4xl lg:text-5xl">
                 ให้เช่า ซื้อขาด และผลิต OEM
               </span>
             </h1>
@@ -173,7 +173,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 16 }}
                 transition={{ delay: 0.7, duration: 0.5 }}
-                className="absolute -bottom-5 -left-5 bg-white rounded-2xl px-4 py-3 shadow-xl border border-deep-space-blue/8 z-30 flex items-center gap-3"
+                className="absolute -bottom-3 -left-3 sm:-bottom-5 sm:-left-5 bg-white rounded-2xl px-4 py-3 shadow-xl border border-deep-space-blue/8 z-30 flex items-center gap-3"
               >
                 <div className="w-9 h-9 rounded-full bg-green-100 flex items-center justify-center shrink-0">
                   <span className="text-base">✓</span>
@@ -189,7 +189,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: -16 }}
                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -16 }}
                 transition={{ delay: 0.9, duration: 0.5 }}
-                className="absolute -top-5 -right-5 bg-white rounded-2xl px-4 py-3 shadow-xl border border-deep-space-blue/8 z-30 flex items-center gap-3"
+                className="absolute -top-3 -right-3 sm:-top-5 sm:-right-5 bg-white rounded-2xl px-4 py-3 shadow-xl border border-deep-space-blue/8 z-30 flex items-center gap-3"
               >
                 <div className="w-9 h-9 rounded-full bg-tiger-orange/10 flex items-center justify-center shrink-0">
                   <span className="text-base">⚡</span>
