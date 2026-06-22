@@ -7,7 +7,7 @@ import type { ReelItem } from "@/data/reel-videos"
 import { LazyVideo } from "@/components/lazy-video"
 import { useReelPlayer } from "@/components/use-reel-player"
 
-// แชร์ระหว่าง ReelVideo (home/software) กับ SignatureReel — ต่างแค่ data + ข้อความหัวข้อ
+// เครื่องเล่นรีลใช้ร่วม — เรียกหลายที่ (reel/signature) ต่างแค่ data + ข้อความหัวข้อ ส่งผ่าน props
 export function ReelSlideshow({
     id,
     eyebrow,

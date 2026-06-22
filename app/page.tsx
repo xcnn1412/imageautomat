@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/home/home_hero"
 import { TrustBar } from "@/components/home/home_trust_bar"
 import { ProductSection } from "@/components/home/home_product"
 import dynamic from "next/dynamic"
+import { AUTOREEL_VIDEOS } from "@/data/autoreel-videos"
 
 // Lazy load below-the-fold components to reduce initial JS bundle
 const HomeServicesSection = dynamic(() => import("@/components/home/home_services").then(mod => ({ default: mod.HomeServicesSection })), {
@@ -41,7 +42,7 @@ const VideoGallery = dynamic(() => import("@/components/video-gallery").then(mod
     loading: () => <div className="min-h-[500px]" />,
     ssr: true,
 })
-const SignatureReel = dynamic(() => import("@/components/SignatureReel").then(mod => ({ default: mod.SignatureReel })), {
+const ReelSlideshow = dynamic(() => import("@/components/reel-slideshow").then(mod => ({ default: mod.ReelSlideshow })), {
     loading: () => <div className="min-h-[500px]" />,
     ssr: true,
 })
@@ -195,7 +196,14 @@ export default function Home() {
             <CompetitiveAdvantagesSection />
             <SaleAndRental />
             <HomeProgramSelection />
-            <SignatureReel />
+            <ReelSlideshow
+                id="signature-photobooth"
+                eyebrow="ตู้ถ่าย REEL อัตโนมัติ"
+                titleLead="Signature"
+                titleSub="ตู้ REEL ลายเซ็นต์ พร้อมถ่ายภาพ"
+                description="ระบบสร้างวิดีโอ REEL อัตโนมัติ พร้อมโพสต์ลงทุก Platform"
+                videos={AUTOREEL_VIDEOS}
+            />
             <VideoGallery />
             <HomePaymentSystems />
             

@@ -1,0 +1,169 @@
+"use client"
+
+import { useCallback, useRef, useState } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
+import Image from 'next/image'
+import { motion, useInView } from 'framer-motion'
+
+// 🎯 เพิ่มรูปใหม่ → เปลี่ยนแค่ตัวเลขนี้ (เช่นมี photobooth_25.webp ให้ใส่ 25)
+const MAX_IMAGES = 24
+const SLIDESHOW_IMAGES = Array.from({ length: MAX_IMAGES }, (_, i) =>
+    `/slideshow/images/photobooth_${i + 1}.webp`
+)
+
+// คารูเซลรูป photobooth ใช้ร่วม home (รับผลิต) + rental (ให้เช่า) — ต่างแค่ header, alt, การ์ด/เงา
+export function ImageCarousel({
+    id,
+    header,
+    altPrefix,
+    cardExtraClass = "",
+    navShadow = "0 12px 30px rgba(25, 42, 86, 0.25)",
+}: {
+    id: string
+    header: React.ReactNode
+    altPrefix: string
+    cardExtraClass?: string
+    navShadow?: string
+}) {
+    const sectionRef = useRef(null)
+    const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
+    const [hoveredButton, setHoveredButton] = useState<'prev' | 'next' | null>(null)
+
+    const [emblaRef, emblaApi] = useEmblaCarousel(
+        { loop: true, align: 'center', skipSnaps: false },
+        [Autoplay({ delay: 4000, stopOnInteraction: false }) as any]
+    )
+
+    const scrollPrev = useCallback(() => { if (emblaApi) emblaApi.scrollPrev() }, [emblaApi])
+    const scrollNext = useCallback(() => { if (emblaApi) emblaApi.scrollNext() }, [emblaApi])
+
+    return (
+        <section
+            ref={sectionRef}
+            id={id}
+            className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white relative overflow-hidden"
+        >
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-deep-space-blue/3 to-transparent pointer-events-none" />
+
+            <motion.div
+                className="mx-auto max-w-7xl px-6 lg:px-8 relative"
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 0.6, staggerChildren: 0.15, delayChildren: 0.1 }}
+            >
+                <motion.div
+                    className="max-w-4xl mb-8 sm:mb-10 md:mb-12 lg:mb-16 text-center mx-auto"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                    {header}
+                </motion.div>
+
+                {/* Embla Carousel Container */}
+                <motion.div
+                    className="relative"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                >
+                    <div className="overflow-hidden" ref={emblaRef}>
+                        <div className="flex gap-4 lg:gap-6">
+                            {SLIDESHOW_IMAGES.map((image, index) => (
+                                <motion.div
+                                    key={index}
+                                    className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_85%] lg:flex-[0_0_70%]"
+                                    whileHover={{ scale: 1.02 }}
+                                    transition={{ duration: 0.4 }}
+                                >
+                                    <div className={`relative aspect-[4/3] w-full overflow-hidden rounded-2xl sm:rounded-3xl bg-white shadow-xl shadow-deep-space-blue/10 group ${cardExtraClass}`}>
+                                        <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-tiger-orange/5 via-transparent to-deep-space-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                                        <Image
+                                            src={image}
+                                            alt={`${altPrefix} ${index + 1}`}
+                                            fill
+                                            className="object-contain transition-all duration-700 group-hover:scale-105 group-hover:brightness-105"
+                                            sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 1024px) calc(85vw - 40px), 850px"
+                                            quality={index === 0 ? 50 : 40}
+                                            priority={index === 0}
+                                            loading={index === 0 ? "eager" : "lazy"}
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-deep-space-blue/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Navigation Buttons */}
+                    <motion.button
+                        onClick={scrollPrev}
+                        onHoverStart={() => setHoveredButton('prev')}
+                        onHoverEnd={() => setHoveredButton(null)}
+                        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white text-deep-space-blue rounded-full p-2.5 sm:p-3 md:p-4 shadow-lg shadow-deep-space-blue/15 focus:outline-none focus:ring-2 focus:ring-tiger-orange focus:ring-offset-2"
+                        aria-label="Previous image"
+                        whileHover={{ scale: 1.1, rotate: -3, boxShadow: navShadow }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    >
+                        <motion.svg
+                            className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+                            fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
+                            animate={hoveredButton === 'prev' ? { x: [-1, 1, -1] } : {}}
+                            transition={{ duration: 0.5, repeat: hoveredButton === 'prev' ? Infinity : 0 }}
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                        </motion.svg>
+                    </motion.button>
+
+                    <motion.button
+                        onClick={scrollNext}
+                        onHoverStart={() => setHoveredButton('next')}
+                        onHoverEnd={() => setHoveredButton(null)}
+                        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white text-deep-space-blue rounded-full p-2.5 sm:p-3 md:p-4 shadow-lg shadow-deep-space-blue/15 focus:outline-none focus:ring-2 focus:ring-tiger-orange focus:ring-offset-2"
+                        aria-label="Next image"
+                        whileHover={{ scale: 1.1, rotate: 3, boxShadow: navShadow }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    >
+                        <motion.svg
+                            className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+                            fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
+                            animate={hoveredButton === 'next' ? { x: [-1, 1, -1] } : {}}
+                            transition={{ duration: 0.5, repeat: hoveredButton === 'next' ? Infinity : 0 }}
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </motion.svg>
+                    </motion.button>
+                </motion.div>
+
+                {/* Auto Scroll Indicator */}
+                <motion.div
+                    className="mt-8 sm:mt-10 md:mt-12 flex justify-center gap-4 sm:gap-6 md:gap-8"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+                >
+                    <motion.div
+                        className="flex items-center gap-2 text-xs sm:text-sm text-deep-space-blue/50"
+                        animate={{ opacity: [0.4, 0.7, 0.4] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                        <motion.div
+                            className="w-8 sm:w-10 md:w-12 h-px bg-gradient-to-r from-transparent via-tiger-orange to-transparent"
+                            animate={{ scaleX: [0.8, 1.2, 0.8] }}
+                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                        />
+                        <span className="uppercase tracking-wider sm:tracking-widest font-medium">Auto Scroll</span>
+                        <motion.div
+                            className="w-8 sm:w-10 md:w-12 h-px bg-gradient-to-r from-transparent via-tiger-orange to-transparent"
+                            animate={{ scaleX: [1.2, 0.8, 1.2] }}
+                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                        />
+                    </motion.div>
+                </motion.div>
+            </motion.div>
+        </section>
+    )
+}
