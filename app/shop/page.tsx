@@ -1,9 +1,23 @@
 import type { Metadata } from "next"
+import { unstable_cache } from "next/cache"
 import { prisma } from "@/lib/prisma"
 import { ShopPageContent } from "./shop-page-content"
 import { PolicyNotice } from "@/components/policy-notice"
 
-export const revalidate = 60 // ISR — cache 60 วิ (สินค้า/ราคาที่ admin แก้ จะขึ้นภายใน 60 วิ)
+// render runtime เสมอ — กัน prerender ตอน build (Railway ต่อ DB internal ไม่ได้ตอน build)
+export const dynamic = "force-dynamic"
+
+// แต่ cache ผล query 60 วิ ลดโหลด DB (สินค้า/ราคาที่ admin แก้ จะขึ้นภายใน 60 วิ)
+const getProducts = unstable_cache(
+    () =>
+        prisma.product.findMany({
+            where: { hidden: false, deletedAt: null },
+            orderBy: [{ category: "asc" }, { id: "asc" }],
+            select: { id: true, name: true, description: true, image: true, category: true, priceTHB: true, depositTHB: true },
+        }),
+    ["shop-products"],
+    { revalidate: 60 },
+)
 
 export const metadata: Metadata = {
     title: "ช้อปตู้โฟโต้บูธ ซื้อ-เช่า-โครงสร้าง-ซอฟต์แวร์ — IMAGEAUTOMAT",
@@ -31,11 +45,7 @@ export const metadata: Metadata = {
 }
 
 export default async function ShopPage() {
-    const products = await prisma.product.findMany({
-        where: { hidden: false, deletedAt: null },
-        orderBy: [{ category: "asc" }, { id: "asc" }],
-        select: { id: true, name: true, description: true, image: true, category: true, priceTHB: true, depositTHB: true },
-    })
+    const products = await getProducts()
     return (
         <>
             <ShopPageContent products={products} />
