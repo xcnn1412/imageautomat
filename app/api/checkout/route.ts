@@ -7,6 +7,8 @@ import { createPayment } from "@/lib/payments"
 import { isPaymentMethod, type PaymentMethod } from "@/lib/payment-methods"
 import { validateInvoice, buildAddressLine, type InvoiceInput } from "@/lib/invoice"
 import { siteOrigin } from "@/lib/constants"
+import { rateLimit } from "@/lib/rate-limit"
+import { randomBytes } from "node:crypto"
 
 export const runtime = "nodejs"
 
@@ -64,6 +66,10 @@ export async function POST(req: NextRequest) {
   const s = await auth()
   if (!s?.user?.id) return NextResponse.json({ error: "unauthorized" }, { status: 401 })
 
+  // กันยิงสร้างออเดอร์รัว ๆ (5 ครั้ง/นาที ต่อผู้ใช้)
+  if (!rateLimit(`checkout:${s.user.id}`).ok)
+    return NextResponse.json({ error: "ทำรายการบ่อยเกินไป กรุณารอสักครู่แล้วลองใหม่" }, { status: 429 })
+
   const body = (await req.json()) as { code?: string; method?: string; invoice?: unknown; policyAccepted?: boolean }
   if (body.policyAccepted !== true)
     return NextResponse.json({ error: "กรุณายอมรับนโยบายการสั่งซื้อและคืนสินค้า" }, { status: 400 })
@@ -76,7 +82,8 @@ export async function POST(req: NextRequest) {
   const invoice = parsedInv // บังคับมีเสมอ — ทุกออเดอร์ต้องมีข้อมูลใบกำกับ
 
   // อ่านตะกร้าจาก DB แล้ว "คำนวณราคาใหม่ฝั่ง server" — ไม่เชื่อราคาจาก client
-  const cart = await prisma.cartItem.findMany({ where: { userId: s.user.id }, include: { product: true } })
+  // กรองสินค้าที่ถูก soft-delete ออก (ถ้าถูกลบหลังใส่ตะกร้า) — ไม่ขายของที่ลบแล้ว
+  const cart = await prisma.cartItem.findMany({ where: { userId: s.user.id, product: { deletedAt: null } }, include: { product: true } })
   if (cart.length === 0) return NextResponse.json({ error: "ตะกร้าว่าง" }, { status: 400 })
 
   // กันสินค้าที่ยังไม่ตั้งราคาเต็มจำนวน (null/0) แต่อยู่ในตะกร้าแบบ full (จะ fallback ฿1,000) — ต้องสอบถามราคา
@@ -119,7 +126,7 @@ export async function POST(req: NextRequest) {
   const isCompany = invoice?.type === "company"
   const tax = computeTax(items.map((i) => ({ base: i.unitAmount * i.qty, whtRate: i.whtRate })), discountAmount, isCompany)
 
-  const merchantOrderId = `IA${Date.now()}`
+  const merchantOrderId = `IA${Date.now()}${randomBytes(2).toString("hex")}` // suffix สุ่มกันชนเมื่อสร้างพร้อมกันใน ms เดียว
   const order = await prisma.order.create({
     data: {
       merchantOrderId,

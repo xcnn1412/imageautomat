@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma"
 import { ShopPageContent } from "./shop-page-content"
 import { PolicyNotice } from "@/components/policy-notice"
 
-export const dynamic = "force-dynamic"
+export const revalidate = 60 // ISR — cache 60 วิ (สินค้า/ราคาที่ admin แก้ จะขึ้นภายใน 60 วิ)
 
 export const metadata: Metadata = {
     title: "ช้อปตู้โฟโต้บูธ ซื้อ-เช่า-โครงสร้าง-ซอฟต์แวร์ — IMAGEAUTOMAT",

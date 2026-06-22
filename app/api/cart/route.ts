@@ -11,7 +11,7 @@ function toMode(raw: unknown): PriceMode {
 
 async function lines(userId: string) {
   const items = await prisma.cartItem.findMany({
-    where: { userId },
+    where: { userId, product: { deletedAt: null } }, // ซ่อนสินค้าที่ถูกลบไปแล้ว
     include: { product: true },
     orderBy: { createdAt: "asc" },
   })
@@ -64,7 +64,7 @@ export async function PATCH(req: NextRequest) {
   if (qty <= 0) {
     await prisma.cartItem.deleteMany({ where: { userId: s.user.id, productId: pid } })
   } else {
-    const data: { qty: number; priceMode?: string } = { qty: Number(qty) }
+    const data: { qty: number; priceMode?: string } = { qty: Math.max(1, Math.min(Number(qty) || 1, 99)) } // cap 1–99
     if (priceMode !== undefined) data.priceMode = toMode(priceMode)
     await prisma.cartItem.update({
       where: { userId_productId: { userId: s.user.id, productId: pid } },

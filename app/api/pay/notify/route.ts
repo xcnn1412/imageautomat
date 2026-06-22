@@ -23,8 +23,9 @@ export async function POST(req: NextRequest) {
   const merchantOrderId = body.merchant_order_id
   const paid = body.result === "SUCCESS" || body.status === "PAID" || body.pay_status === "PAID"
   if (merchantOrderId) {
+    // เปลี่ยนได้เฉพาะตอนยังไม่ผ่าน (pending/failed) — กัน webhook ซ้ำ/มาช้าทับสถานะที่ admin เลื่อนไปแล้ว (processing/shipped)
     await prisma.order
-      .update({ where: { merchantOrderId }, data: { status: paid ? "paid" : "failed" } })
+      .updateMany({ where: { merchantOrderId, status: { in: ["pending", "failed"] } }, data: { status: paid ? "paid" : "failed" } })
       .catch(() => {}) // order ไม่เจอ = ไม่ใช่ของเรา ปล่อยผ่าน
   }
   return NextResponse.json({ code: "SUCCESS" }) // ack ให้ Ksher หยุด retry
