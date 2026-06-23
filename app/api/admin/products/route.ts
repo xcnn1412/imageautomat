@@ -36,6 +36,11 @@ function parseFields(body: Record<string, unknown>, data: Record<string, any>): 
     if (!Number.isInteger(rate) || rate < 0 || rate > 100) return "bad whtRate"
     data.whtRate = rate
   }
+  if (body.stock !== undefined) {
+    const v = Number(body.stock)
+    if (!Number.isInteger(v) || v < 0) return "bad stock"
+    data.stock = v
+  }
   for (const key of ["priceTHB", "depositTHB"] as const) {
     if (body[key] === undefined) continue
     if (body[key] === null) { data[key] = null; continue }
@@ -71,7 +76,7 @@ export async function POST(req: NextRequest) {
   data.features ??= []
   const created = await prisma.product.create({
     data: data as Prisma.ProductUncheckedCreateInput,
-    select: { id: true, name: true, description: true, longDescription: true, features: true, specs: true, category: true, priceTHB: true, depositTHB: true, image: true, whtRate: true, hidden: true, deletedAt: true },
+    select: { id: true, name: true, description: true, longDescription: true, features: true, specs: true, category: true, priceTHB: true, depositTHB: true, image: true, whtRate: true, stock: true, hidden: true, deletedAt: true },
   })
   return NextResponse.json(created)
 }

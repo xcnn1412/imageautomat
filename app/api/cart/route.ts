@@ -44,6 +44,9 @@ export async function POST(req: NextRequest) {
   const { productId, priceMode } = await req.json()
   const product = await prisma.product.findUnique({ where: { id: Number(productId) } })
   if (!product || product.deletedAt) return NextResponse.json({ error: "product not found" }, { status: 404 })
+  // ponytail: กันแค่ของหมด (stock<=0). ไม่ cap qty-ต่อตะกร้า-vs-stock — เพิ่ม join qty ปัจจุบันถ้าต้องคุมเป๊ะ
+  if (product.category !== "rent" && product.stock <= 0)
+    return NextResponse.json({ error: "สินค้าหมด" }, { status: 400 })
   const mode = toMode(priceMode)
   // ยังไม่ตั้งราคาเต็มจำนวน (null/0) → ห้ามเพิ่มแบบ full (กัน fallback ฿1,000) ให้ไปสอบถามราคาแทน
   if (mode === "full" && !hasFullPrice(product))

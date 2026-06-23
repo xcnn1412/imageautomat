@@ -71,6 +71,7 @@ model Product {
   priceTHB        Int? // ราคาเต็ม ex-VAT
   depositTHB      Int? // ราคามัดจำ ex-VAT (null = ใช้ DEPOSIT_THB fallback)
   whtRate         Int        @default(0) // ภาษีหัก ณ ที่จ่าย %: 0 = ไม่หัก, 3 = บริการ, 5 = ซอฟต์แวร์
+  stock           Int        @default(0) // จำนวนคงเหลือ — 0 = สินค้าหมด (ตั้งที่ /admin/products)
   hidden          Boolean    @default(false) // ออเดอร์พิเศษ (custom) — ซ่อนจาก /shop, ยัดลงตะกร้า user โดยตรง
   deletedAt       DateTime?  // soft-delete: null = ใช้งาน, มีค่า = อยู่ถังขยะ (ซ่อนจาก shop/cart, กู้คืนได้)
   createdAt       DateTime   @default(now())

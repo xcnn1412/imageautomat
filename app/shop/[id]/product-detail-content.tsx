@@ -29,6 +29,7 @@ export function ProductDetailContent({ product }: { product: Product }) {
   const [mode, setMode] = useState<PriceMode>(hasFullPrice(product) ? "full" : "deposit")
 
   const canBuy = isBuyableCategory(product.category)
+  const soldOut = canBuy && product.stock <= 0
   const cat = CAT_LABEL[product.category] ?? { label: product.category, cls: "bg-gray-100 text-gray-600" }
 
   const fullPrice = hasFullPrice(product) ? product.priceTHB : null
@@ -78,6 +79,16 @@ export function ProductDetailContent({ product }: { product: Product }) {
             {canBuy && (
               <div className="mt-8">
                 {isAuthed ? (
+                  soldOut ? (
+                    <div className="rounded-2xl border-2 border-red-100 bg-red-50/50 p-5 text-center">
+                      <p className="text-sm font-bold text-red-600">สินค้าหมด</p>
+                      <p className="mt-1 text-xs text-deep-space-blue/50">สนใจสั่งจอง/สอบถามรอบผลิตถัดไป ติดต่อเราได้เลย</p>
+                      <Link href="/contact" className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-deep-space-blue px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-tiger-orange">
+                        <MessageCircle className="h-4 w-4" />
+                        สอบถาม / สั่งจอง
+                      </Link>
+                    </div>
+                  ) : (
                   <>
                     <p className="mb-3 text-xs font-bold uppercase tracking-widest text-deep-space-blue/40">เลือกราคา</p>
                     <div className="flex flex-col gap-3 sm:flex-row">
@@ -107,7 +118,9 @@ export function ProductDetailContent({ product }: { product: Product }) {
                         </div>
                       </label>
                     </div>
-                    <p className="mt-2 text-xs text-deep-space-blue/40">ราคาก่อน VAT 7% — จ่ายส่วนที่เหลือเมื่อรับสินค้า</p>
+                    <p className="mt-2 text-xs text-deep-space-blue/40">
+                      ราคาก่อน VAT 7% — จ่ายส่วนที่เหลือเมื่อรับสินค้า · <span className="text-emerald-600">เหลือ {product.stock} ชิ้น</span>
+                    </p>
 
                     {mode === "full" && fullPrice === null ? (
                       <Link
@@ -126,6 +139,7 @@ export function ProductDetailContent({ product }: { product: Product }) {
                       />
                     )}
                   </>
+                  )
                 ) : (
                   <button
                     onClick={() => signIn("google")}

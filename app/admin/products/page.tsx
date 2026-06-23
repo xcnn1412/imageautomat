@@ -15,7 +15,7 @@ export default async function AdminProductsPage() {
   const rows = await prisma.product.findMany({
     where: { id: { lt: CUSTOM_PRODUCT_ID_BASE } },
     orderBy: [{ category: "asc" }, { id: "asc" }],
-    select: { id: true, name: true, description: true, longDescription: true, features: true, specs: true, category: true, priceTHB: true, depositTHB: true, image: true, whtRate: true, hidden: true, deletedAt: true },
+    select: { id: true, name: true, description: true, longDescription: true, features: true, specs: true, category: true, priceTHB: true, depositTHB: true, image: true, whtRate: true, stock: true, hidden: true, deletedAt: true },
   })
 
   return (

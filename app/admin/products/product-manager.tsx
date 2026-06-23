@@ -21,6 +21,7 @@ export type AdminProduct = {
   depositTHB: number | null
   image: string
   whtRate: number
+  stock: number
   hidden: boolean
   deletedAt: Date | string | null
 }
@@ -53,7 +54,7 @@ function PayCell({ pay, whtRate }: { pay: ReturnType<typeof payablePreview> | nu
 // ─── EditDrawer (create + edit) ────────────────────────────────────────────────
 // product === null → โหมดสร้างใหม่ (POST, เริ่มแบบซ่อน) / มีค่า → โหมดแก้ไข (PATCH)
 
-const BLANK_FORM = { name: "", description: "", longDescription: "", image: "", category: "buy", priceTHB: "", depositTHB: "", whtRate: "0", features: "", specs: "" }
+const BLANK_FORM = { name: "", description: "", longDescription: "", image: "", category: "buy", priceTHB: "", depositTHB: "", whtRate: "0", stock: "0", features: "", specs: "" }
 
 function EditDrawer({ product, categoryOptions, onClose, onSaved, onCreated }: {
   product: AdminProduct | null
@@ -75,6 +76,7 @@ function EditDrawer({ product, categoryOptions, onClose, onSaved, onCreated }: {
           priceTHB: product.priceTHB !== null ? String(product.priceTHB) : "",
           depositTHB: product.depositTHB !== null ? String(product.depositTHB) : "",
           whtRate: String(product.whtRate),
+          stock: String(product.stock),
           features: product.features.join("\n"),
           specs: specs.map((s) => `${s.label}|${s.value}`).join("\n"),
         }
@@ -95,6 +97,7 @@ function EditDrawer({ product, categoryOptions, onClose, onSaved, onCreated }: {
     image: form.image,
     category: form.category,
     whtRate: Number(form.whtRate),
+    stock: Number(form.stock) || 0,
     priceTHB: form.priceTHB !== "" ? Number(form.priceTHB) : null,
     depositTHB: form.depositTHB !== "" ? Number(form.depositTHB) : null,
     features: form.features.split("\n").map((s) => s.trim()).filter(Boolean),
@@ -216,13 +219,20 @@ function EditDrawer({ product, categoryOptions, onClose, onSaved, onCreated }: {
             </div>
           </div>
 
-          <div>
-            <label className="mb-1 block text-xs font-semibold text-deep-space-blue/50">WHT (%)</label>
-            <select value={form.whtRate} onChange={set("whtRate")} className={field}>
-              <option value="0">0% — ไม่หัก (ซื้อสินค้า)</option>
-              <option value="3">3% — จ้างผลิต/บริการ</option>
-              <option value="5">5% — ค่าเช่า software</option>
-            </select>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="mb-1 block text-xs font-semibold text-deep-space-blue/50">WHT (%)</label>
+              <select value={form.whtRate} onChange={set("whtRate")} className={field}>
+                <option value="0">0% — ไม่หัก (ซื้อสินค้า)</option>
+                <option value="3">3% — จ้างผลิต/บริการ</option>
+                <option value="5">5% — ค่าเช่า software</option>
+              </select>
+            </div>
+            <div>
+              <label className="mb-1 block text-xs font-semibold text-deep-space-blue/50">จำนวนคงเหลือ (ชิ้น)</label>
+              <input type="number" min={0} value={form.stock} onChange={set("stock")} className={field} placeholder="0" />
+              <p className="mt-1 text-[11px] text-deep-space-blue/40">0 = สินค้าหมด (ซื้อไม่ได้บนร้าน)</p>
+            </div>
           </div>
 
           <div>
@@ -443,12 +453,13 @@ export function ProductManager({ products: initial }: { products: AdminProduct[]
               <th className="w-32 px-2 py-2.5 text-right">จ่ายเต็ม<br /><span className="font-normal opacity-60">รวม VAT</span></th>
               <th className="w-32 px-2 py-2.5 text-right">จ่ายมัดจำ<br /><span className="font-normal opacity-60">รวม VAT</span></th>
               <th className="w-24 px-2 py-2.5">WHT</th>
+              <th className="w-20 px-2 py-2.5 text-right">คงเหลือ</th>
               <th className="w-28 px-4 py-2.5" />
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
             {filtered.length === 0 ? (
-              <tr><td colSpan={10} className="px-4 py-10 text-center text-deep-space-blue/40">{view === "trash" ? "ถังขยะว่าง" : "ไม่พบสินค้า"}</td></tr>
+              <tr><td colSpan={11} className="px-4 py-10 text-center text-deep-space-blue/40">{view === "trash" ? "ถังขยะว่าง" : "ไม่พบสินค้า"}</td></tr>
             ) : (
               filtered.map((p) => {
                 const c = CAT[p.category] ?? { label: p.category, cls: "bg-gray-100 text-gray-600" }
@@ -482,6 +493,13 @@ export function ProductManager({ products: initial }: { products: AdminProduct[]
                         <span className="inline-block rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700">หัก {p.whtRate}%</span>
                       ) : (
                         <span className="text-xs text-deep-space-blue/30">ไม่หัก</span>
+                      )}
+                    </td>
+                    <td className="px-2 py-3 text-right tabular-nums">
+                      {p.stock > 0 ? (
+                        <span className="text-sm font-semibold text-deep-space-blue/70">{p.stock}</span>
+                      ) : (
+                        <span className="inline-block rounded-full bg-red-100 px-2 py-0.5 text-xs font-semibold text-red-600">หมด</span>
                       )}
                     </td>
                     <td className="px-4 py-3">

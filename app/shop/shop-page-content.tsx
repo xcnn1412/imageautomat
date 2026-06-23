@@ -18,6 +18,7 @@ type ShopProduct = {
     category: string
     priceTHB: number | null
     depositTHB: number | null
+    stock: number
 }
 
 // แท็บมาตรฐาน — ประเภทอื่นที่ admin เพิ่ม จะต่อท้ายแบบ dynamic
@@ -121,6 +122,7 @@ function ProductCard({ product: p, isAuthed }: { product: ShopProduct; isAuthed:
     const badge = BADGE[p.category] ?? { label: p.category, cls: "bg-gray-100 text-gray-600" }
     const fullPrice = p.priceTHB
     const depositPrice = p.depositTHB ?? DEPOSIT_THB
+    const soldOut = isBuyableCategory(p.category) && p.stock <= 0
 
     return (
         <Link
@@ -132,11 +134,16 @@ function ProductCard({ product: p, isAuthed }: { product: ShopProduct; isAuthed:
                 <span className={cn("absolute left-3 top-3 z-10 rounded-full px-2.5 py-1 text-[11px] font-bold", badge.cls)}>
                     {badge.label}
                 </span>
+                {soldOut && (
+                    <span className="absolute right-3 top-3 z-10 rounded-full bg-red-500/90 px-2.5 py-1 text-[11px] font-bold text-white">
+                        สินค้าหมด
+                    </span>
+                )}
                 <Image
                     src={p.image}
                     alt={p.name}
                     fill
-                    className="object-contain p-6 transition-transform duration-500 group-hover:scale-105"
+                    className={cn("object-contain p-6 transition-transform duration-500 group-hover:scale-105", soldOut && "opacity-40 grayscale")}
                     sizes="(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 25vw"
                     quality={80}
                 />
@@ -155,7 +162,14 @@ function ProductCard({ product: p, isAuthed }: { product: ShopProduct; isAuthed:
                                 {fullPrice ? baht(fullPrice) : p.category === "rent" ? "เช่ารายวัน / อีเวนต์" : "สอบถามราคา"}
                             </p>
                             {isBuyableCategory(p.category) && (
-                                <p className="text-xs text-deep-space-blue/40">มัดจำ {baht(depositPrice)}</p>
+                                <p className="text-xs text-deep-space-blue/40">
+                                    มัดจำ {baht(depositPrice)}
+                                    {soldOut ? (
+                                        <span className="ml-1 font-semibold text-red-500">· สินค้าหมด</span>
+                                    ) : (
+                                        <span className="ml-1 text-emerald-600">· เหลือ {p.stock} ชิ้น</span>
+                                    )}
+                                </p>
                             )}
                         </div>
                     ) : (

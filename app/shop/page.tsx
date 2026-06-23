@@ -13,7 +13,7 @@ const getProducts = unstable_cache(
         prisma.product.findMany({
             where: { hidden: false, deletedAt: null },
             orderBy: [{ category: "asc" }, { id: "asc" }],
-            select: { id: true, name: true, description: true, image: true, category: true, priceTHB: true, depositTHB: true },
+            select: { id: true, name: true, description: true, image: true, category: true, priceTHB: true, depositTHB: true, stock: true },
         }),
     ["shop-products"],
     { revalidate: 60 },
