@@ -19,7 +19,7 @@ export default async function AdminProductsPage() {
   })
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-10">
+    <main className="min-h-screen bg-gray-50 px-4 py-8 sm:px-6 sm:py-10">
       <div className="mx-auto max-w-4xl">
         <AdminNav active="/admin/products" />
 

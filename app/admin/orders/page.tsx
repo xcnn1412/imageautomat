@@ -47,7 +47,7 @@ export default async function AdminOrdersPage() {
   }))
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-10">
+    <main className="min-h-screen bg-gray-50 px-4 py-8 sm:px-6 sm:py-10">
       <div className="mx-auto max-w-5xl">
         <AdminNav active="/admin/orders" />
         <h1 className="mb-6 font-serif text-3xl text-deep-space-blue">จัดการออเดอร์</h1>

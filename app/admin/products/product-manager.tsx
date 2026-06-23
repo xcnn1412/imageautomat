@@ -391,6 +391,30 @@ export function ProductManager({ products: initial }: { products: AdminProduct[]
     await fetch(`/api/admin/products?id=${p.id}&restore=1`, { method: "DELETE" })
   }
 
+  // ปุ่มจัดการ — ใช้ร่วม table (desktop) + card (mobile)
+  const rowActions = (p: AdminProduct) =>
+    p.deletedAt ? (
+      <button onClick={() => restore(p)} title="กู้คืน"
+        className="inline-flex items-center gap-1 rounded-lg px-2 py-1.5 text-xs font-semibold text-emerald-600 transition-colors hover:bg-emerald-50">
+        <RotateCcw className="h-3.5 w-3.5" /> กู้คืน
+      </button>
+    ) : (
+      <div className="flex items-center gap-0.5">
+        <button onClick={() => toggleHidden(p)} title={p.hidden ? "แสดงบนร้าน" : "ซ่อนจากร้าน"}
+          className="rounded-lg p-2 text-deep-space-blue/30 transition-colors hover:bg-gray-100 hover:text-deep-space-blue">
+          {p.hidden ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+        </button>
+        <button onClick={() => setEditing(p)} title="แก้ไขรายละเอียด"
+          className="rounded-lg p-2 text-deep-space-blue/30 transition-colors hover:bg-tiger-orange/10 hover:text-tiger-orange">
+          <Pencil className="h-4 w-4" />
+        </button>
+        <button onClick={() => softDelete(p)} title="ลบ (ย้ายไปถังขยะ)"
+          className="rounded-lg p-2 text-deep-space-blue/30 transition-colors hover:bg-red-50 hover:text-red-500">
+          <Trash2 className="h-4 w-4" />
+        </button>
+      </div>
+    )
+
   return (
     <div>
       {/* View switch + add */}
@@ -439,8 +463,8 @@ export function ProductManager({ products: initial }: { products: AdminProduct[]
         </button>
       </div>
 
-      {/* Table */}
-      <div className="overflow-x-auto rounded-2xl border border-gray-100 bg-white shadow-sm">
+      {/* Table (desktop) — มือถือใช้ card ด้านล่างแทน (กันต้องเลื่อนแนวนอน 11 คอลัมน์) */}
+      <div className="hidden overflow-x-auto rounded-2xl border border-gray-100 bg-white shadow-sm md:block">
         <table className="w-full min-w-175 border-collapse text-sm">
           <thead>
             <tr className="border-b border-gray-100 bg-gray-50/60 text-left text-xs font-bold text-deep-space-blue/50">
@@ -502,35 +526,74 @@ export function ProductManager({ products: initial }: { products: AdminProduct[]
                         <span className="inline-block rounded-full bg-red-100 px-2 py-0.5 text-xs font-semibold text-red-600">หมด</span>
                       )}
                     </td>
-                    <td className="px-4 py-3">
-                      {p.deletedAt ? (
-                        <button onClick={() => restore(p)} title="กู้คืน"
-                          className="inline-flex items-center gap-1 rounded-lg px-2 py-1.5 text-xs font-semibold text-emerald-600 transition-colors hover:bg-emerald-50">
-                          <RotateCcw className="h-3.5 w-3.5" /> กู้คืน
-                        </button>
-                      ) : (
-                        <div className="flex items-center gap-0.5">
-                          <button onClick={() => toggleHidden(p)} title={p.hidden ? "แสดงบนร้าน" : "ซ่อนจากร้าน"}
-                            className="rounded-lg p-2 text-deep-space-blue/30 transition-colors hover:bg-gray-100 hover:text-deep-space-blue">
-                            {p.hidden ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                          </button>
-                          <button onClick={() => setEditing(p)} title="แก้ไขรายละเอียด"
-                            className="rounded-lg p-2 text-deep-space-blue/30 transition-colors hover:bg-tiger-orange/10 hover:text-tiger-orange">
-                            <Pencil className="h-4 w-4" />
-                          </button>
-                          <button onClick={() => softDelete(p)} title="ลบ (ย้ายไปถังขยะ)"
-                            className="rounded-lg p-2 text-deep-space-blue/30 transition-colors hover:bg-red-50 hover:text-red-500">
-                            <Trash2 className="h-4 w-4" />
-                          </button>
-                        </div>
-                      )}
-                    </td>
+                    <td className="px-4 py-3">{rowActions(p)}</td>
                   </tr>
                 )
               })
             )}
           </tbody>
         </table>
+      </div>
+
+      {/* Cards (mobile) — ข้อมูลเดียวกับตาราง จัดเป็นการ์ดอ่านง่ายบนจอแคบ */}
+      <div className="space-y-3 md:hidden">
+        {filtered.length === 0 ? (
+          <div className="rounded-2xl border border-dashed border-gray-200 bg-white py-12 text-center text-sm text-deep-space-blue/40">
+            {view === "trash" ? "ถังขยะว่าง" : "ไม่พบสินค้า"}
+          </div>
+        ) : (
+          filtered.map((p) => {
+            const c = CAT[p.category] ?? { label: p.category, cls: "bg-gray-100 text-gray-600" }
+            const payFull = p.priceTHB != null ? payablePreview(p.priceTHB, p.whtRate) : null
+            const payDep = payablePreview(p.depositTHB ?? DEPOSIT_THB, p.whtRate)
+            return (
+              <article key={p.id} className={`rounded-2xl border border-gray-100 bg-white p-4 shadow-sm ${p.deletedAt ? "opacity-60" : p.hidden ? "bg-amber-50/30" : ""}`}>
+                <div className="flex gap-3">
+                  <span className="relative block h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-gray-50">
+                    <Image src={p.image} alt={p.name} fill className="object-contain p-1" sizes="56px" />
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-1.5">
+                      <span className={`inline-block rounded-full px-2 py-0.5 text-[11px] font-semibold ${c.cls}`}>{c.label}</span>
+                      <span className="font-mono text-[11px] text-deep-space-blue/40">#{p.id}</span>
+                      {!p.deletedAt && p.hidden && <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-semibold text-amber-700">ซ่อน</span>}
+                    </div>
+                    <h3 className="mt-1 line-clamp-2 text-sm font-semibold text-deep-space-blue">{p.name}</h3>
+                  </div>
+                  <div className="shrink-0">{rowActions(p)}</div>
+                </div>
+
+                {/* ข้อมูลย่อ: ราคา · จ่ายจริง · WHT · คงเหลือ */}
+                <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-gray-50 pt-3 text-sm">
+                  <div className="flex justify-between">
+                    <dt className="text-deep-space-blue/40">ราคาเต็ม</dt>
+                    <dd className="font-semibold text-deep-space-blue/70">{baht(p.priceTHB)}</dd>
+                  </div>
+                  <div className="flex justify-between">
+                    <dt className="text-deep-space-blue/40">มัดจำ</dt>
+                    <dd className="text-deep-space-blue/60">{baht(p.depositTHB)}</dd>
+                  </div>
+                  <div className="flex justify-between">
+                    <dt className="text-deep-space-blue/40">จ่ายเต็ม</dt>
+                    <dd className="font-semibold text-deep-space-blue">{payFull ? bahtSat(payFull.personalSatang) : "—"}</dd>
+                  </div>
+                  <div className="flex justify-between">
+                    <dt className="text-deep-space-blue/40">จ่ายมัดจำ</dt>
+                    <dd className="font-semibold text-deep-space-blue">{bahtSat(payDep.personalSatang)}</dd>
+                  </div>
+                  <div className="flex justify-between">
+                    <dt className="text-deep-space-blue/40">WHT</dt>
+                    <dd>{p.whtRate > 0 ? <span className="font-semibold text-amber-700">หัก {p.whtRate}%</span> : <span className="text-deep-space-blue/30">ไม่หัก</span>}</dd>
+                  </div>
+                  <div className="flex justify-between">
+                    <dt className="text-deep-space-blue/40">คงเหลือ</dt>
+                    <dd>{p.stock > 0 ? <span className="font-semibold text-deep-space-blue/70">{p.stock} ชิ้น</span> : <span className="font-semibold text-red-600">หมด</span>}</dd>
+                  </div>
+                </dl>
+              </article>
+            )
+          })
+        )}
       </div>
 
       <p className="mt-3 text-xs text-deep-space-blue/40">แสดง {filtered.length} จาก {view === "trash" ? trash.length : active.length} รายการ</p>
