@@ -111,7 +111,7 @@ export function HomeStatsSection() {
 
                 {/* Stats Grid */}
                 <motion.div
-                    className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10"
+                    className="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
@@ -123,7 +123,7 @@ export function HomeStatsSection() {
                     {stats.map((stat, index) => (
                         <motion.div
                             key={index}
-                            className="relative text-center group"
+                            className="relative text-center group rounded-3xl bg-white/90 backdrop-blur-sm border border-deep-space-blue/[0.06] shadow-[0_2px_12px_rgba(2,48,71,0.06)] hover:shadow-[0_10px_30px_rgba(2,48,71,0.1)] hover:-translate-y-1 transition-all duration-500 px-4 py-8"
                             variants={{
                                 hidden: { opacity: 0, y: 30, scale: 0.9 },
                                 visible: {
@@ -137,9 +137,9 @@ export function HomeStatsSection() {
                             {/* Icon Container */}
                             <div className="relative inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-2xl mb-4 mx-auto">
                                 {/* Glow effect */}
-                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-50 blur-lg group-hover:blur-xl transition-all duration-500" />
+                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-50" />
                                 {/* Icon background */}
-                                <div className="relative w-full h-full rounded-2xl bg-white border border-gray-100 flex items-center justify-center group-hover:border-tiger-orange/30 group-hover:shadow-lg transition-all duration-500">
+                                <div className="relative w-full h-full rounded-2xl bg-slate-50 flex items-center justify-center group-hover:bg-tiger-orange/10 transition-colors duration-500">
                                     <stat.icon className={`w-8 h-8 md:w-10 md:h-10 ${stat.color} group-hover:scale-110 transition-transform duration-300`} />
                                 </div>
                             </div>

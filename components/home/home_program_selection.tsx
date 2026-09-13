@@ -41,7 +41,7 @@ const programs: ProgramItem[] = [
         gradientFrom: "from-tiger-orange",
         gradientTo: "to-amber-400",
         number: "01",
-        href: "/software#reel-photobooth",
+        href: "/photo-booth-software#reel-photobooth",
     },
     {
         icon: PenLine,
@@ -56,7 +56,7 @@ const programs: ProgramItem[] = [
         gradientFrom: "from-purple-500",
         gradientTo: "to-violet-400",
         number: "02",
-        href: "/software#signature-photobooth",
+        href: "/photo-booth-software#signature-photobooth",
     },
     {
         icon: MonitorPlay,
@@ -71,7 +71,7 @@ const programs: ProgramItem[] = [
         gradientFrom: "from-sky-500",
         gradientTo: "to-blue-400",
         number: "03",
-        href: "/software#liveview-photobooth",
+        href: "/photo-booth-software#liveview-photobooth",
     },
     {
         icon: Camera,
@@ -86,7 +86,7 @@ const programs: ProgramItem[] = [
         gradientFrom: "from-rose-500",
         gradientTo: "to-pink-400",
         number: "04",
-        href: "/software#3shot-photobooth",
+        href: "/photo-booth-software#3shot-photobooth",
     },
 ]
 

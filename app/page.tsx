@@ -2,16 +2,10 @@ import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/home/home_hero"
 import { TrustBar } from "@/components/home/home_trust_bar"
-import { ProductSection } from "@/components/home/home_product"
 import dynamic from "next/dynamic"
-import { AUTOREEL_VIDEOS } from "@/data/autoreel-videos"
 
 // Lazy load below-the-fold components to reduce initial JS bundle
 const HomeServicesSection = dynamic(() => import("@/components/home/home_services").then(mod => ({ default: mod.HomeServicesSection })), {
-    loading: () => <div className="min-h-[600px]" />,
-    ssr: true,
-})
-const UserJourneySection = dynamic(() => import("@/components/home/home_user_journey").then(mod => ({ default: mod.UserJourneySection })), {
     loading: () => <div className="min-h-[600px]" />,
     ssr: true,
 })
@@ -19,35 +13,12 @@ const CompetitiveAdvantagesSection = dynamic(() => import("@/components/home/hom
     loading: () => <div className="min-h-[600px]" />,
     ssr: true,
 })
-const SaleAndRental = dynamic(() => import("@/components/home/home_sale_rental").then(mod => ({ default: mod.SaleAndRental })), {
-    ssr: true,
-})
-const AdsSlideshow = dynamic(() => import("@/components/home/home_ads_slideshow").then(mod => ({ default: mod.AdsSlideshow })), {
+const HomeCapabilities = dynamic(() => import("@/components/home/home_capabilities").then(mod => ({ default: mod.HomeCapabilities })), {
     loading: () => <div className="min-h-[600px]" />,
-    ssr: true,
 })
-const HomeProgramSelection = dynamic(() => import("@/components/home/home_program_selection").then(mod => ({ default: mod.HomeProgramSelection })), {
-    loading: () => <div className="min-h-[400px]" />,
-    ssr: true,
-})
-const HomePaymentSystems = dynamic(() => import("@/components/home/home_payment_systems").then(mod => ({ default: mod.HomePaymentSystems })), {
-    loading: () => <div className="min-h-[400px]" />,
-    ssr: true,
-})
+
 const HomeStatsSection = dynamic(() => import("@/components/home/home_stats").then(mod => ({ default: mod.HomeStatsSection })), {
     loading: () => <div className="min-h-[400px]" />,
-    ssr: true,
-})
-const VideoGallery = dynamic(() => import("@/components/video-gallery").then(mod => ({ default: mod.VideoGallery })), {
-    loading: () => <div className="min-h-[500px]" />,
-    ssr: true,
-})
-const ReelSlideshow = dynamic(() => import("@/components/reel-slideshow").then(mod => ({ default: mod.ReelSlideshow })), {
-    loading: () => <div className="min-h-[500px]" />,
-    ssr: true,
-})
-const SlideshowSection = dynamic(() => import("@/components/home/home_slideshow").then(mod => ({ default: mod.SlideshowSection })), {
-    loading: () => <div className="min-h-[700px]" />,
     ssr: true,
 })
 const ContactSection = dynamic(() => import("@/components/home/home_contact").then(mod => ({ default: mod.ContactSection })), {
@@ -190,25 +161,9 @@ export default function Home() {
             <Navigation />
             <HeroSection />
             <TrustBar />
-            <HomeServicesSection />
-            <AdsSlideshow />
-            <UserJourneySection />
             <CompetitiveAdvantagesSection />
-            <SaleAndRental />
-            <HomeProgramSelection />
-            <ReelSlideshow
-                id="signature-photobooth"
-                eyebrow="ตู้ถ่าย REEL อัตโนมัติ"
-                titleLead="Signature"
-                titleSub="ตู้ REEL ลายเซ็นต์ พร้อมถ่ายภาพ"
-                description="ระบบสร้างวิดีโอ REEL อัตโนมัติ พร้อมโพสต์ลงทุก Platform"
-                videos={AUTOREEL_VIDEOS}
-            />
-            <VideoGallery />
-            <HomePaymentSystems />
-            
-            <ProductSection />
-            <SlideshowSection />
+            <HomeServicesSection />
+            <HomeCapabilities />
             
             <HomeStatsSection />
             <CustomerSlideShow />

@@ -10,6 +10,17 @@ const nextConfig: NextConfig = {
       destination: '/',
       permanent: true,
     },
+    // ponytail: URL เดิม → URL ใหม่ (SEO) — 301 กันลิงก์เก่าและอันดับที่มีอยู่หาย
+    { source: '/product/:path*', destination: '/buy-photo-booth/:path*', permanent: true },
+    { source: '/software/:path*', destination: '/photo-booth-software/:path*', permanent: true },
+    { source: '/oem/:path*', destination: '/oem-photo-booth/:path*', permanent: true },
+    { source: '/rental/:path*', destination: '/photo-booth-rental-revenue-share/:path*', permanent: true },
+    { source: '/shop/:path*', destination: '/shop-credit-card-payment/:path*', permanent: true },
+    { source: '/product', destination: '/buy-photo-booth', permanent: true },
+    { source: '/software', destination: '/photo-booth-software', permanent: true },
+    { source: '/oem', destination: '/oem-photo-booth', permanent: true },
+    { source: '/rental', destination: '/photo-booth-rental-revenue-share', permanent: true },
+    { source: '/shop', destination: '/shop-credit-card-payment', permanent: true },
   ],
 
   turbopack: {

@@ -52,10 +52,10 @@ export function CustomOrderList({ orders }: { orders: PendingCustomOrder[] }) {
               <article key={o.productId} className="flex items-center gap-3 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-700">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[14.5px] font-semibold text-amber-700">
                       <Clock className="h-3 w-3" /> รอลูกค้าชำระ
                     </span>
-                    <span className="text-[11px] text-deep-space-blue/40">{dt(o.createdAt)}</span>
+                    <span className="text-[14.5px] text-deep-space-blue/40">{dt(o.createdAt)}</span>
                   </div>
                   <h3 className="mt-1 truncate font-semibold text-deep-space-blue">{o.name}</h3>
                   <p className="truncate text-xs text-deep-space-blue/50">{o.userName ?? "—"} · {o.userEmail ?? "—"}</p>

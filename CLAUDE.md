@@ -29,7 +29,7 @@ npx prisma studio                 # แก้ DB เช่น เพิ่ม Di
 
 **Flow:** เพิ่มลงตะกร้า (ต้อง login ก่อน) → `/checkout` (โค้ดส่วนลด + ฟอร์มใบกำกับภาษี บุคคล/นิติบุคคล + เลือกช่องทางจ่าย) → `POST /api/checkout` (คิด VAT/WHT) → Ksher → webhook mark `paid`. ลูกค้าดูออเดอร์ที่ `/account/orders` (คลิกการ์ด → `/account/orders/[id]` มี stepper สถานะ + ใบกำกับ)
 
-**ข้อมูลสินค้า 2 ชั้น:** authoring อยู่ใน `data/catalogs.ts` (ซื้อ) + `data/products.ts` (เช่า, filter `type` มี "rental"); `data/shop.ts` รวมเป็น `shopItems` ให้หน้า `/shop`; `prisma db seed` ดันเข้า `Product` table (runtime source ของ cart/checkout). **seed ทับเฉพาะเนื้อหา (ชื่อ/รูป/คำอธิบาย) — `priceTHB`/`whtRate` เป็นของ admin (DB) ไม่ทับตอน re-seed**
+**ข้อมูลสินค้า 2 ชั้น:** authoring อยู่ใน `data/catalogs.ts` (ซื้อ) + `data/products.ts` (เช่า, filter `type` มี "rental"); `data/shop.ts` รวมเป็น `shopItems` ให้หน้า `/shop-credit-card-payment`; `prisma db seed` ดันเข้า `Product` table (runtime source ของ cart/checkout). **seed ทับเฉพาะเนื้อหา (ชื่อ/รูป/คำอธิบาย) — `priceTHB`/`whtRate` เป็นของ admin (DB) ไม่ทับตอน re-seed**
 
 **ราคา:** `lib/pricing.ts` — ราคา = **ก่อน VAT (ex-VAT)**. สินค้าที่ยังไม่ตั้ง `priceTHB` → fallback **มัดจำ ฿1,000/ชิ้น**. ตั้งราคา/ดูได้ที่หน้า admin `/admin/products`
 
@@ -47,7 +47,7 @@ npx prisma studio                 # แก้ DB เช่น เพิ่ม Di
 
 **ชำระเงิน:** `lib/payment-methods.ts` (client-safe, ไม่ import SDK) + `lib/payments.ts` (server, import SDK). dispatch ด้วย switch — `ksher_qr` (จริง, ShopeePay/PromptPay โผล่บน cashier) + `ksher_linkpay` (**ยัง mock**)
 
-**ราคาเฉพาะ login:** หน้า `/shop` ซ่อนราคาถ้ายังไม่ login (`useSession`)
+**ราคาเฉพาะ login:** หน้า `/shop-credit-card-payment` ซ่อนราคาถ้ายังไม่ login (`useSession`)
 
 ## จุดที่ยัง mock / ต้องทำต่อ (หา `ponytail:` ในโค้ด)
 - Ksher **LinkPay ยัง mock** (คืน URL ปลอม) — `lib/payments.ts`

@@ -151,11 +151,11 @@ function OrderCard({ o }: { o: AdminOrder }) {
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-50 px-5 py-3">
         <div className="flex flex-wrap items-center gap-2.5">
           {o.isCustom ? (
-            <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2.5 py-1 text-[11px] font-bold text-violet-700">
+            <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2.5 py-1 text-[14.5px] font-bold text-violet-700">
               <Sparkles className="h-3 w-3" /> ออเดอร์พิเศษ
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-2.5 py-1 text-[11px] font-bold text-deep-space-blue/50">
+            <span className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-2.5 py-1 text-[14.5px] font-bold text-deep-space-blue/50">
               <ShoppingBag className="h-3 w-3" /> ออเดอร์ปกติ
             </span>
           )}
@@ -188,7 +188,7 @@ function OrderCard({ o }: { o: AdminOrder }) {
         </div>
         <div className="text-right">
           <p className="text-lg font-bold text-deep-space-blue">{baht(o.total)}</p>
-          <p className="text-[11px] text-deep-space-blue/40">ยอดรับเข้าจริง</p>
+          <p className="text-[14.5px] text-deep-space-blue/40">ยอดรับเข้าจริง</p>
         </div>
       </div>
 
@@ -214,7 +214,7 @@ function OrderCard({ o }: { o: AdminOrder }) {
             <div className="rounded-xl border border-gray-100 p-3 text-sm">
               <div className="mb-1.5 flex items-center gap-2">
                 <span className="text-xs font-bold text-deep-space-blue/50">ใบกำกับภาษี</span>
-                <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${o.invoiceType === "company" ? "bg-indigo-100 text-indigo-700" : "bg-emerald-100 text-emerald-700"}`}>
+                <span className={`rounded-full px-2 py-0.5 text-[14.5px] font-semibold ${o.invoiceType === "company" ? "bg-indigo-100 text-indigo-700" : "bg-emerald-100 text-emerald-700"}`}>
                   {INV_TYPE[o.invoiceType] ?? o.invoiceType}
                 </span>
               </div>

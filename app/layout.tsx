@@ -1,6 +1,6 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Montserrat, IBM_Plex_Sans_Thai, Playfair_Display } from 'next/font/google'
+import { Montserrat, IBM_Plex_Sans_Thai, Playfair_Display, Playpen_Sans_Thai } from 'next/font/google'
 import { GoogleAnalytics } from '@/components/google-analytics'
 import { StickySocialMenu } from '@/components/sticky-social-menu'
 import { AppLoadingWrapper } from '@/components/loading/app-loading-wrapper'
@@ -25,6 +25,13 @@ const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: '--font-playfair',
   weight: ['400', '600', '700'],
+  display: 'swap',
+});
+
+// ponytail: ฟอนต์ลายมือไทย ใช้เฉพาะข้อความตกแต่งใน hero
+const playpenThai = Playpen_Sans_Thai({
+  subsets: ["thai"],
+  variable: '--font-playpen-thai',
   display: 'swap',
 });
 
@@ -76,23 +83,6 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
   },
 }
 
@@ -166,7 +156,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${montserrat.variable} ${ibmPlexSansThai.variable} ${playfairDisplay.variable} font-sans antialiased`} suppressHydrationWarning>
+      <body className={`${montserrat.variable} ${ibmPlexSansThai.variable} ${playfairDisplay.variable} ${playpenThai.variable} font-sans`} suppressHydrationWarning>
         <Providers>
           <AppLoadingWrapper>
             {children}

@@ -17,7 +17,7 @@ const pathOptions = [
       "บริการทั่วกรุงเทพฯ"
     ],
     icon: <Calendar className="w-8 h-8" />,
-    href: "/rental",
+    href: "/photo-booth-rental-revenue-share",
     gradient: "from-blue-600 via-blue-500 to-cyan-400",
     bgPattern: "bg-blue-50",
     accent: "text-blue-600"
@@ -34,7 +34,7 @@ const pathOptions = [
       "ซัพพอร์ต 24/7"
     ],
     icon: <ShoppingBag className="w-8 h-8" />,
-    href: "/product",
+    href: "/buy-photo-booth",
     gradient: "from-tiger-orange via-orange-500 to-yellow-400",
     bgPattern: "bg-orange-50",
     accent: "text-tiger-orange",
@@ -52,7 +52,7 @@ const pathOptions = [
       "Enterprise Support"
     ],
     icon: <Settings className="w-8 h-8" />,
-    href: "/software",
+    href: "/photo-booth-software",
     gradient: "from-purple-600 via-purple-500 to-pink-400",
     bgPattern: "bg-purple-50",
     accent: "text-purple-600"

@@ -45,7 +45,7 @@ export function SlideshowSection() {
                     </p>
                     <div className="mt-8">
                         <Link
-                            href="/oem"
+                            href="/oem-photo-booth"
                             className="inline-flex items-center gap-2 bg-tiger-orange hover:bg-tiger-orange/90 text-white font-bold px-8 py-4 text-base rounded-full transition-all duration-300 shadow-lg shadow-tiger-orange/30 hover:shadow-xl hover:shadow-tiger-orange/50 hover:scale-105 active:scale-95"
                         >
                             <span className="tracking-wide">รับผลิตโครงสร้าง</span>

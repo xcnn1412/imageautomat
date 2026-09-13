@@ -161,7 +161,7 @@ const SECTIONS: Section[] = [
 
 function LineItem({ line }: { line: Line }) {
   return (
-    <li className="flex gap-3 text-[15px] leading-7 text-deep-space-blue/75">
+    <li className="flex gap-3 text-[19.8px] leading-7 text-deep-space-blue/75">
       <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-tiger-orange/70" />
       <span>
         {typeof line === "string" ? line : (<><strong className="font-bold text-deep-space-blue">{line.b}</strong> {line.t}</>)}
@@ -224,7 +224,7 @@ export default function PolicyPage() {
                 </div>
 
                 <div className="mt-5 space-y-6 pl-12">
-                  {s.intro && <p className="text-[15px] leading-7 text-deep-space-blue/75">{s.intro}</p>}
+                  {s.intro && <p className="text-[19.8px] leading-7 text-deep-space-blue/75">{s.intro}</p>}
                   {s.groups.map((g, gi) => (
                     <div key={gi}>
                       {g.sub && (

@@ -135,7 +135,7 @@ export function ReelSlideshow({
                                     }`}
                             >
                                 <div className="mb-1.5 sm:mb-2 flex flex-wrap items-center gap-1.5 sm:gap-2">
-                                    <span className="inline-block rounded-full bg-tiger-orange px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-semibold text-white">
+                                    <span className="inline-block rounded-full bg-tiger-orange px-2 py-0.5 sm:px-3 sm:py-1 text-[13.2px] sm:text-xs font-semibold text-white">
                                         {String(currentIndex + 1).padStart(2, "0")} /{" "}
                                         {String(videos.length).padStart(2, "0")}
                                     </span>
@@ -245,7 +245,7 @@ export function ReelSlideshow({
                                     <div className="absolute inset-0 rounded-xl bg-tiger-orange/10" />
                                 )}
                             </div>
-                            <span className="absolute bottom-1 left-1 rounded-md bg-deep-space-blue/60 px-1.5 py-0.5 text-[10px] font-medium text-white backdrop-blur-sm">
+                            <span className="absolute bottom-1 left-1 rounded-md bg-deep-space-blue/60 px-1.5 py-0.5 text-[13.2px] font-medium text-white backdrop-blur-sm">
                                 {String(index + 1).padStart(2, "0")}
                             </span>
                         </motion.button>

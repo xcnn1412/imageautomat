@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signOut } from "next-auth/react"
 import { LogOut, Package, User } from "lucide-react"
 
 export function AuthButton() {
@@ -13,13 +13,13 @@ export function AuthButton() {
 
     if (!session?.user) {
         return (
-            <button
-                onClick={() => signIn("google")}
-                className="inline-flex items-center gap-2 rounded-full border border-deep-space-blue/15 px-5 py-2.5 text-sm font-bold text-deep-space-blue transition-colors hover:bg-deep-space-blue/5"
+            <Link
+                href="/login"
+                className="inline-flex items-center gap-1.5 rounded-full border border-deep-space-blue/15 px-4 py-2 text-[11px] font-bold text-deep-space-blue transition-colors hover:bg-deep-space-blue/5"
             >
-                <User className="h-4 w-4" />
+                <User className="h-3.5 w-3.5" />
                 เข้าสู่ระบบ
-            </button>
+            </Link>
         )
     }
 

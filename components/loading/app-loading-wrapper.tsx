@@ -6,8 +6,8 @@ import { CameraLoadingScreen } from "./camera-loading-screen"
 
 /**
  * Extract the main route segment from a pathname.
- * e.g. "/product" → "product", "/rental" → "rental", "/" → ""
- *      "/software#reel" → "software"
+ * e.g. "/buy-photo-booth" → "product", "/photo-booth-rental-revenue-share" → "rental", "/" → ""
+ *      "/photo-booth-software#reel" → "software"
  */
 function getMainSegment(pathname: string): string {
     const segments = pathname.split("/").filter(Boolean)

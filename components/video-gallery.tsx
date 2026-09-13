@@ -229,7 +229,7 @@ export function VideoGallery() {
               >
                 {CATEGORY_LABELS[cat]}
                 <span
-                  className={`ml-1 sm:ml-1.5 inline-block text-[10px] sm:text-xs ${isActive ? "text-white/70" : "text-deep-space-blue/40"
+                  className={`ml-1 sm:ml-1.5 inline-block text-[13.2px] sm:text-xs ${isActive ? "text-white/70" : "text-deep-space-blue/40"
                     }`}
                 >
                   {count}
@@ -278,11 +278,11 @@ export function VideoGallery() {
                   }`}
               >
                 <div className="mb-1.5 sm:mb-2 flex flex-wrap items-center gap-1.5 sm:gap-2">
-                  <span className="inline-block rounded-full bg-tiger-orange px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-semibold text-white">
+                  <span className="inline-block rounded-full bg-tiger-orange px-2 py-0.5 sm:px-3 sm:py-1 text-[13.2px] sm:text-xs font-semibold text-white">
                     {String(currentIndex + 1).padStart(2, "0")} /{" "}
                     {String(filteredVideos.length).padStart(2, "0")}
                   </span>
-                  <span className="inline-block rounded-full bg-white/15 px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-medium text-white backdrop-blur-sm capitalize">
+                  <span className="inline-block rounded-full bg-white/15 px-2 py-0.5 sm:px-3 sm:py-1 text-[13.2px] sm:text-xs font-medium text-white backdrop-blur-sm capitalize">
                     {CATEGORY_LABELS[currentVideo?.category as Category]}
                   </span>
                 </div>
@@ -391,7 +391,7 @@ export function VideoGallery() {
                   <div className="absolute inset-0 rounded-xl bg-tiger-orange/10" />
                 )}
               </div>
-              <span className="absolute bottom-1 left-1 rounded-md bg-deep-space-blue/60 px-1.5 py-0.5 text-[10px] font-medium text-white backdrop-blur-sm">
+              <span className="absolute bottom-1 left-1 rounded-md bg-deep-space-blue/60 px-1.5 py-0.5 text-[13.2px] font-medium text-white backdrop-blur-sm">
                 {String(index + 1).padStart(2, "0")}
               </span>
             </motion.button>

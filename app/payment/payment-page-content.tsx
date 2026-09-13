@@ -2,9 +2,9 @@
 
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-import { PaymentGatewaySlideshow } from "@/app/software/payment-gateway-slideshow"
-import { SoftwarePayment } from "@/app/software/software-payment"
-import { SoftwareCta } from "@/app/software/software-cta"
+import { PaymentGatewaySlideshow } from "@/app/photo-booth-software/payment-gateway-slideshow"
+import { SoftwarePayment } from "@/app/photo-booth-software/software-payment"
+import { SoftwareCta } from "@/app/photo-booth-software/software-cta"
 
 export function PaymentPageContent() {
     return (

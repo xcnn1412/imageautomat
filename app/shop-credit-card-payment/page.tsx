@@ -1,0 +1,55 @@
+import type { Metadata } from "next"
+import { unstable_cache } from "next/cache"
+import { prisma } from "@/lib/prisma"
+import { ShopPageContent } from "./shop-page-content"
+import { PolicyNotice } from "@/components/policy-notice"
+
+// render runtime เสมอ — กัน prerender ตอน build (Railway ต่อ DB internal ไม่ได้ตอน build)
+export const dynamic = "force-dynamic"
+
+// แต่ cache ผล query 60 วิ ลดโหลด DB (สินค้า/ราคาที่ admin แก้ จะขึ้นภายใน 60 วิ)
+const getProducts = unstable_cache(
+    () =>
+        prisma.product.findMany({
+            where: { hidden: false, deletedAt: null },
+            orderBy: [{ category: "asc" }, { id: "asc" }],
+            select: { id: true, name: true, description: true, image: true, category: true, priceTHB: true, depositTHB: true, stock: true },
+        }),
+    ["shop-products"],
+    { revalidate: 60 },
+)
+
+export const metadata: Metadata = {
+    title: "ช้อปตู้โฟโต้บูธ ซื้อ-เช่า-โครงสร้าง-ซอฟต์แวร์ — IMAGEAUTOMAT",
+    description:
+        "รวมทุกอย่างไว้ที่เดียว: ซื้อตู้ถ่ายรูป Photobooth, เช่าตู้โฟโต้บูธ, โครงสร้างตู้ และ License ซอฟต์แวร์ จ่ายออนไลน์ด้วย ShopeePay จาก IMAGEAUTOMAT",
+    keywords: [
+        "ช้อปตู้ถ่ายรูป",
+        "ซื้อตู้โฟโต้บูธ",
+        "เช่าตู้ถ่ายรูป",
+        "โครงสร้างตู้โฟโต้บูธ",
+        "ซอฟต์แวร์ photobooth",
+        "photobooth license",
+        "ShopeePay photobooth",
+        "IMAGEAUTOMAT",
+    ],
+    alternates: { canonical: "/shop-credit-card-payment" },
+    openGraph: {
+        title: "ช้อปตู้โฟโต้บูธ ซื้อ-เช่า-โครงสร้าง-ซอฟต์แวร์ | IMAGEAUTOMAT",
+        description: "รวมตู้ถ่ายรูปขาย เช่าตู้ โครงสร้าง และ License ซอฟต์แวร์ จ่ายออนไลน์ด้วย ShopeePay",
+        url: "https://www.imageautomat.com/shop-credit-card-payment",
+        type: "website",
+        siteName: "IMAGEAUTOMAT",
+        locale: "th_TH",
+    },
+}
+
+export default async function ShopPage() {
+    const products = await getProducts()
+    return (
+        <>
+            <ShopPageContent products={products} />
+            <PolicyNotice />
+        </>
+    )
+}

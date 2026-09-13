@@ -87,7 +87,7 @@ export function OrderStepper({ status }: { status: string }) {
               <Display className="h-[18px] w-[18px]" />
             </span>
             <span
-              className={`mt-2 whitespace-nowrap text-[11px] font-semibold transition-colors ${
+              className={`mt-2 whitespace-nowrap text-[14.5px] font-semibold transition-colors ${
                 isCurrent ? "text-tiger-orange" : reached ? "text-deep-space-blue" : "text-gray-300"
               }`}
             >

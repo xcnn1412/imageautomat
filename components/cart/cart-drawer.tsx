@@ -47,7 +47,7 @@ export function CartDrawer() {
                             </span>
                             <p className="font-semibold text-deep-space-blue">ตะกร้ายังว่างอยู่</p>
                             <p className="mt-1 text-sm text-deep-space-blue/40">เลือกสินค้าที่คุณสนใจได้เลย</p>
-                            <Link href="/shop" onClick={() => setOpen(false)} className="mt-5 rounded-full bg-deep-space-blue px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-tiger-orange">
+                            <Link href="/shop-credit-card-payment" onClick={() => setOpen(false)} className="mt-5 rounded-full bg-deep-space-blue px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-tiger-orange">
                                 เลือกสินค้า
                             </Link>
                         </div>
@@ -65,7 +65,7 @@ export function CartDrawer() {
                                         <p className="line-clamp-2 text-sm font-semibold text-deep-space-blue">{i.name}</p>
                                         <div className="mt-0.5 flex items-center gap-2">
                                             <p className="text-sm font-bold text-tiger-orange">{baht(i.unitTHB)}</p>
-                                            <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-semibold ${i.priceMode === "deposit" ? "bg-amber-100 text-amber-700" : "bg-gray-100 text-gray-500"}`}>
+                                            <span className={`rounded-full px-1.5 py-0.5 text-[13.2px] font-semibold ${i.priceMode === "deposit" ? "bg-amber-100 text-amber-700" : "bg-gray-100 text-gray-500"}`}>
                                                 {i.priceMode === "deposit" ? "มัดจำ" : "เต็มจำนวน"}
                                             </span>
                                         </div>

@@ -12,8 +12,8 @@ const footerLinks = [
   {
     title: "สินค้า",
     links: [
-      { label: "สินค้าของเรา", href: "/product" },
-      { label: "ซอฟต์แวร์ของเรา", href: "/software" },
+      { label: "สินค้าของเรา", href: "/buy-photo-booth" },
+      { label: "ซอฟต์แวร์ของเรา", href: "/photo-booth-software" },
       { label: "ระบบชำระเงิน", href: "/payment" },
     ],
   },
@@ -29,7 +29,7 @@ const footerLinks = [
 const socialLinks = [
   { icon: LineIcon, href: LINE_OA_URL, label: "LINE", external: true },
   { icon: Facebook, href: "https://www.facebook.com/imageautomat", label: "Facebook", external: true },
-  { icon: Phone, href: "tel:0636546249", label: "โทรหาเรา", external: false },
+  { icon: Phone, href: "tel:0635944429", label: "โทรหาเรา", external: false },
 ];
 
 export function Footer() {
@@ -58,10 +58,10 @@ export function Footer() {
                   href={social.href}
                   target={social.external ? "_blank" : undefined}
                   rel={social.external ? "noopener noreferrer" : undefined}
-                  className="w-10 h-10 flex items-center justify-center border border-[#023047]/10 hover:border-[#FB8500] hover:text-[#FB8500] text-[#023047]/60 transition-all duration-300"
+                  className="w-12 h-12 flex items-center justify-center border border-[#023047]/10 hover:border-[#FB8500] hover:text-[#FB8500] text-[#023047]/60 transition-all duration-300"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-4 h-4" />
+                  <social.icon className="w-[19px] h-[19px]" />
                 </a>
               ))}
             </div>
