@@ -1,17 +1,16 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { AwsClient } from "aws4fetch"
 import { randomUUID } from "node:crypto"
-import { auth } from "@/auth"
-import { isAdmin } from "@/lib/orders"
+import { requireAdmin } from "@/auth"
 
 export const runtime = "nodejs"
 
 const MAX_BYTES = 5 * 1024 * 1024 // 5MB
 
-// อัปโหลดรูปสินค้าขึ้น S3 (Tigris) — gate isAdmin, อัปผ่าน server (ไม่ต้องตั้ง CORS), คืน public URL
+// อัปโหลดรูปสินค้าขึ้น S3 (Tigris) — gate admin, อัปผ่าน server (ไม่ต้องตั้ง CORS), คืน public URL
 export async function POST(req: NextRequest) {
-  const s = await auth()
-  if (!isAdmin(s)) return NextResponse.json({ error: "forbidden" }, { status: 403 })
+  const forbidden = await requireAdmin()
+  if (forbidden) return forbidden
 
   const base = process.env.S3_PUBLIC_BASE
   const accessKeyId = process.env.S3_ACCESS_KEY_ID

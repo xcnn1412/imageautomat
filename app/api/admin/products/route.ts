@@ -1,8 +1,8 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { Prisma } from "@prisma/client"
-import { auth } from "@/auth"
+import { requireAdmin } from "@/auth"
 import { prisma } from "@/lib/prisma"
-import { isAdmin, ADMIN_PRODUCT_ID_BASE, CUSTOM_PRODUCT_ID_BASE } from "@/lib/orders"
+import { ADMIN_PRODUCT_ID_BASE, CUSTOM_PRODUCT_ID_BASE } from "@/lib/orders"
 
 export const runtime = "nodejs"
 
@@ -53,8 +53,8 @@ function parseFields(body: Record<string, unknown>, data: Record<string, any>): 
 
 // admin สร้างสินค้าใหม่ — gen id ในช่วง admin (ไม่ชน catalog/custom), เริ่มแบบซ่อน (hidden)
 export async function POST(req: NextRequest) {
-  const s = await auth()
-  if (!isAdmin(s)) return NextResponse.json({ error: "forbidden" }, { status: 403 })
+  const forbidden = await requireAdmin()
+  if (forbidden) return forbidden
 
   const body = (await req.json().catch(() => ({}))) as Record<string, unknown>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -83,8 +83,8 @@ export async function POST(req: NextRequest) {
 
 // admin แก้ข้อมูลสินค้าทุกฟิลด์ + toggle hidden — gate + validate ฝั่ง server
 export async function PATCH(req: NextRequest) {
-  const s = await auth()
-  if (!isAdmin(s)) return NextResponse.json({ error: "forbidden" }, { status: 403 })
+  const forbidden = await requireAdmin()
+  if (forbidden) return forbidden
 
   const body = (await req.json().catch(() => ({}))) as Record<string, unknown>
   const pid = Number(body.id)
@@ -104,8 +104,8 @@ export async function PATCH(req: NextRequest) {
 
 // soft-delete (?restore=1 = กู้คืน) — เคลียร์ตะกร้าตอนลบ กัน checkout เจอของที่ลบ
 export async function DELETE(req: NextRequest) {
-  const s = await auth()
-  if (!isAdmin(s)) return NextResponse.json({ error: "forbidden" }, { status: 403 })
+  const forbidden = await requireAdmin()
+  if (forbidden) return forbidden
 
   const pid = Number(req.nextUrl.searchParams.get("id"))
   if (!Number.isInteger(pid)) return NextResponse.json({ error: "bad request" }, { status: 400 })

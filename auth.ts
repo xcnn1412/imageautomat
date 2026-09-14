@@ -1,8 +1,9 @@
 import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
 import { PrismaAdapter } from "@auth/prisma-adapter"
+import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
-import { isAdminEmail } from "@/lib/orders"
+import { isAdminEmail, isAdmin } from "@/lib/orders"
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
     adapter: PrismaAdapter(prisma),
@@ -30,3 +31,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         },
     },
 })
+
+// gate API admin (ใช้ใน /api/admin/*): คืน NextResponse 403 ถ้าไม่ใช่ admin, null ถ้าผ่าน
+export async function requireAdmin(): Promise<NextResponse | null> {
+    return isAdmin(await auth()) ? null : NextResponse.json({ error: "forbidden" }, { status: 403 })
+}

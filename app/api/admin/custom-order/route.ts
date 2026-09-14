@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server"
-import { auth } from "@/auth"
+import { requireAdmin } from "@/auth"
 import { prisma } from "@/lib/prisma"
-import { isAdmin, CUSTOM_PRODUCT_ID_BASE } from "@/lib/orders"
+import { CUSTOM_PRODUCT_ID_BASE } from "@/lib/orders"
 
 export const runtime = "nodejs"
 
@@ -46,8 +46,8 @@ function parseFields(b: Record<string, unknown>): { error: string } | { data: Pr
 
 // สร้างสินค้าพิเศษ (hidden) แล้วยัดลงตะกร้า user คนเดียวโดยตรง
 export async function POST(req: NextRequest) {
-  const s = await auth()
-  if (!isAdmin(s)) return NextResponse.json({ error: "forbidden" }, { status: 403 })
+  const forbidden = await requireAdmin()
+  if (forbidden) return forbidden
 
   const b = (await req.json().catch(() => ({}))) as Record<string, unknown>
   const email = String(b.email ?? "").trim().toLowerCase()
@@ -77,8 +77,8 @@ export async function POST(req: NextRequest) {
 
 // แก้ไขออเดอร์พิเศษ — ได้เฉพาะตอนยังอยู่ในตะกร้า (ลูกค้ายังไม่กดชำระ)
 export async function PATCH(req: NextRequest) {
-  const s = await auth()
-  if (!isAdmin(s)) return NextResponse.json({ error: "forbidden" }, { status: 403 })
+  const forbidden = await requireAdmin()
+  if (forbidden) return forbidden
 
   const b = (await req.json().catch(() => ({}))) as Record<string, unknown>
   const pid = Number(b.productId)
@@ -101,8 +101,8 @@ export async function PATCH(req: NextRequest) {
 
 // ยกเลิกออเดอร์พิเศษ — เอาออกจากตะกร้าลูกค้า + ลบ hidden Product (ได้เฉพาะตอนยังไม่ชำระ)
 export async function DELETE(req: NextRequest) {
-  const s = await auth()
-  if (!isAdmin(s)) return NextResponse.json({ error: "forbidden" }, { status: 403 })
+  const forbidden = await requireAdmin()
+  if (forbidden) return forbidden
 
   const b = (await req.json().catch(() => ({}))) as Record<string, unknown>
   const pid = Number(b.productId)
