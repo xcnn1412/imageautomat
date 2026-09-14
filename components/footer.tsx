@@ -45,9 +45,12 @@ export function Footer() {
                 IMAGE<span className="text-[#FB8500]">AUTOMAT</span>
               </span>
             </Link>
-            <p className="text-[#023047]/60 leading-relaxed max-w-sm mb-8">
+            <p className="text-[#023047]/60 leading-relaxed max-w-sm mb-3">
               บริการเช่าและจำหน่ายตู้ถ่ายรูป Photobooth คุณภาพสูง
               สำหรับงานแต่งงาน งานอีเวนต์ และงานเปิดตัวสินค้า ทั่วประเทศไทย
+            </p>
+            <p className="text-sm text-[#023047]/40 mb-8">
+              ดำเนินการโดย IMAGELAND CO., LTD.
             </p>
 
             {/* Social Links */}
@@ -93,7 +96,7 @@ export function Footer() {
         <div className="py-8 border-t border-[#023047]/5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-[#023047]/40">
-              {new Date().getFullYear()} IMAGEAUTOMAT. All rights reserved.
+              © {new Date().getFullYear()} IMAGELAND CO., LTD. All rights reserved.
             </p>
             <div className="flex gap-8">
               <Link
