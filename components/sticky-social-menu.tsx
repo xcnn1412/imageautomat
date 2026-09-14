@@ -32,7 +32,7 @@ const socialItems = [
   {
     id: "whatsapp",
     label: "WhatsApp",
-    href: "https://wa.me/66636546249",
+    href: "https://wa.me/66635944429",
     icon: <WhatsAppIcon />,
     bg: "#25D366",
     glowColor: "rgba(37,211,102,0.5)",
@@ -52,7 +52,7 @@ const socialItems = [
   {
     id: "phone",
     label: "โทรหาเรา",
-    href: "tel:0636546249",
+    href: "tel:0635944429",
     icon: <Phone size={20} />,
     bg: "#FB8500",
     glowColor: "rgba(251,133,0,0.5)",
@@ -84,7 +84,7 @@ const mobileItems = [
   {
     id: "whatsapp",
     label: "WhatsApp",
-    href: "https://wa.me/66636546249",
+    href: "https://wa.me/66635944429",
     icon: <WhatsAppIcon />,
     bg: "#25D366",
     external: true,
@@ -92,7 +92,7 @@ const mobileItems = [
   {
     id: "phone",
     label: "โทรหาเรา",
-    href: "tel:0636546249",
+    href: "tel:0635944429",
     icon: <Phone size={20} />,
     bg: "#FB8500",
     external: false,
@@ -220,7 +220,7 @@ function MobileContactBar() {
           style={{ backgroundColor: item.bg }}
         >
           <span className="flex items-center justify-center w-6 h-6">{item.icon}</span>
-          <span className="text-[11px] font-semibold leading-none">{item.label}</span>
+          <span className="text-[14.5px] font-semibold leading-none">{item.label}</span>
           {/* Divider between items */}
           {i < mobileItems.length - 1 && (
             <span className="absolute right-0 top-1/4 h-1/2 w-px bg-white/20" />

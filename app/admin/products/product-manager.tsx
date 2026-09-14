@@ -43,7 +43,7 @@ function PayCell({ pay, whtRate }: { pay: ReturnType<typeof payablePreview> | nu
     <td className="px-2 py-3 text-right leading-tight">
       <span className="block text-sm font-semibold text-deep-space-blue">{pay ? bahtSat(pay.personalSatang) : "—"}</span>
       {pay && whtRate > 0 && (
-        <span className="block text-[11px] text-deep-space-blue/40" title="ผู้ซื้อนิติบุคคล: หัก ณ ที่จ่ายแล้ว">
+        <span className="block text-[14.5px] text-deep-space-blue/40" title="ผู้ซื้อนิติบุคคล: หัก ณ ที่จ่ายแล้ว">
           นิติฯ {bahtSat(pay.companySatang)}
         </span>
       )}
@@ -195,7 +195,7 @@ function EditDrawer({ product, categoryOptions, onClose, onSaved, onCreated }: {
                 </button>
               </div>
             )}
-            <p className="mt-1 text-[11px] text-deep-space-blue/40">เลือกจากที่มี หรือกด “+ ใหม่” เพื่อเพิ่มประเภทใหม่</p>
+            <p className="mt-1 text-[14.5px] text-deep-space-blue/40">เลือกจากที่มี หรือกด “+ ใหม่” เพื่อเพิ่มประเภทใหม่</p>
           </div>
 
           <div>
@@ -231,7 +231,7 @@ function EditDrawer({ product, categoryOptions, onClose, onSaved, onCreated }: {
             <div>
               <label className="mb-1 block text-xs font-semibold text-deep-space-blue/50">จำนวนคงเหลือ (ชิ้น)</label>
               <input type="number" min={0} value={form.stock} onChange={set("stock")} className={field} placeholder="0" />
-              <p className="mt-1 text-[11px] text-deep-space-blue/40">0 = สินค้าหมด (ซื้อไม่ได้บนร้าน)</p>
+              <p className="mt-1 text-[14.5px] text-deep-space-blue/40">0 = สินค้าหมด (ซื้อไม่ได้บนร้าน)</p>
             </div>
           </div>
 
@@ -268,14 +268,14 @@ function EditDrawer({ product, categoryOptions, onClose, onSaved, onCreated }: {
             <div className="mb-3 flex items-center justify-between">
               <h3 className="text-sm font-bold text-deep-space-blue">ยอดที่ต้องได้รับ</h3>
               {wht > 0 && (
-                <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-700">นิติบุคคล · หัก {wht}%</span>
+                <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[14.5px] font-semibold text-amber-700">นิติบุคคล · หัก {wht}%</span>
               )}
             </div>
 
             {/* breakdown ต่อโหมด — ใช้ table ให้คอลัมน์ตรงกันชัวร์ */}
             <table className="w-full text-sm">
               <thead>
-                <tr className="text-[11px] text-deep-space-blue/40">
+                <tr className="text-[14.5px] text-deep-space-blue/40">
                   <th className="pb-1.5 text-left font-bold" />
                   <th className="pb-1.5 text-right font-bold">ราคาเต็ม</th>
                   <th className="pb-1.5 text-right font-bold">ราคามัดจำ</th>
@@ -306,12 +306,12 @@ function EditDrawer({ product, categoryOptions, onClose, onSaved, onCreated }: {
             </div>
 
             {wht > 0 && (
-              <p className="mt-3 text-[11px] leading-relaxed text-deep-space-blue/40">
+              <p className="mt-3 text-[14.5px] leading-relaxed text-deep-space-blue/40">
                 * หัก ณ ที่จ่ายเฉพาะผู้ซื้อนิติบุคคล — บุคคลธรรมดาจ่ายเต็ม (ไม่หัก) · WHT รับเป็นใบ 50 ทวิ ไม่ใช่เงินสด
               </p>
             )}
             {!taxFull && (
-              <p className="mt-2 text-[11px] text-deep-space-blue/40">ยังไม่ได้ตั้งราคาเต็ม — กรอกช่อง “ราคาเต็ม” ด้านบนเพื่อดูยอด</p>
+              <p className="mt-2 text-[14.5px] text-deep-space-blue/40">ยังไม่ได้ตั้งราคาเต็ม — กรอกช่อง “ราคาเต็ม” ด้านบนเพื่อดูยอด</p>
             )}
           </div>
 
@@ -499,7 +499,7 @@ export function ProductManager({ products: initial }: { products: AdminProduct[]
                     <td className="px-2 py-3 font-mono text-xs text-deep-space-blue/40">#{p.id}</td>
                     <td className="px-2 py-3 text-deep-space-blue">
                       <span className="line-clamp-1" title={p.name}>{p.name}</span>
-                      {!p.deletedAt && p.hidden && <span className="ml-1 inline-block rounded bg-amber-100 px-1.5 py-0.5 align-middle text-[10px] font-semibold text-amber-700">ซ่อน</span>}
+                      {!p.deletedAt && p.hidden && <span className="ml-1 inline-block rounded bg-amber-100 px-1.5 py-0.5 align-middle text-[13.2px] font-semibold text-amber-700">ซ่อน</span>}
                     </td>
                     <td className="px-2 py-3">
                       <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${c.cls}`}>{c.label}</span>
@@ -554,9 +554,9 @@ export function ProductManager({ products: initial }: { products: AdminProduct[]
                   </span>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-1.5">
-                      <span className={`inline-block rounded-full px-2 py-0.5 text-[11px] font-semibold ${c.cls}`}>{c.label}</span>
-                      <span className="font-mono text-[11px] text-deep-space-blue/40">#{p.id}</span>
-                      {!p.deletedAt && p.hidden && <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-semibold text-amber-700">ซ่อน</span>}
+                      <span className={`inline-block rounded-full px-2 py-0.5 text-[14.5px] font-semibold ${c.cls}`}>{c.label}</span>
+                      <span className="font-mono text-[14.5px] text-deep-space-blue/40">#{p.id}</span>
+                      {!p.deletedAt && p.hidden && <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[13.2px] font-semibold text-amber-700">ซ่อน</span>}
                     </div>
                     <h3 className="mt-1 line-clamp-2 text-sm font-semibold text-deep-space-blue">{p.name}</h3>
                   </div>

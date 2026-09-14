@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useState } from "react"
-import { ArrowRight, Star, Sparkles } from "lucide-react"
+import { ArrowRight, Star } from "lucide-react"
 
 const products = [
     {
@@ -13,8 +13,6 @@ const products = [
         label: "PHOTOBOX",
         description: "ตู้ถ่ายรูปแบบคลาสสิค ดีไซน์เรียบหรู เหมาะสำหรับงานแต่งงานและงานทางการ",
         features: ["ใช้พื้นที่น้อย", "พิมพ์ได้ไม่จำกัด", "warp ตกแต่งตู้ได้", "เหมาะสำหรับงานอีเวนต์"],
-        badge: "ขายดี",
-        badgeColor: "bg-tiger-orange",
     },
     {
         id: 2,
@@ -24,8 +22,6 @@ const products = [
         label: "PHOTOBOOTH",
         description: "โฟโต้บูธสไตล์วินเทจร่วมสมัย",
         features: ["หน้าจอสัมผัส Full HD", "ผ้าม่านเลือกสีได้", "ไฟสตูดิโอ"],
-        badge: "Premium",
-        badgeColor: "bg-purple-600",
     },
     {
         id: 3,
@@ -35,52 +31,42 @@ const products = [
         label: "PHOTOBOOTH",
         description: "แพลตฟอร์มหมุน 360 องศา สร้างวิดีโอสุดเท่ที่ไวรัลได้ง่าย",
         features: ["วิดีโอ Slow-motion", "แชร์โซเชียลทันที", "พื้นที่กว้าง 1.2 ม."],
-        badge: "ยอดนิยม",
-        badgeColor: "bg-green-600",
     },
     {
         id: 4,
-        src: "/models/images/product-11-768x768.webp",
+        src: "/models/images/photobox-model5.png",
         name: "PHOTOBOX MODEL 4",
         nameTh: "โฟโต้บูธ โมเดลที่4",
         label: "PHOTOBOOTH",
         description: "ตู้ถ่ายรูปขนาดกะทัดรัด เคลื่อนย้ายง่าย เหมาะกับทุกขนาดงาน",
         features: ["น้ำหนักเบา", "ติดตั้งใน 15 นาที", "ประหยัดพื้นที่"],
-        badge: null,
-        badgeColor: "",
     },
     {
         id: 5,
-        src: "/models/images/product-12-768x768.webp",
+        src: "/models/images/photobox-model4.png",
         name: "PHOTOBOX MODEL 5",
         nameTh: "โฟโต้บูธ โมเดลที่5",
         label: "PHOTOBOOTH",
         description: "ดีไซน์ย้อนยุค สไตล์วินเทจ สร้างบรรยากาศพิเศษให้งานของคุณ",
         features: ["ฟิลเตอร์วินเทจ", "กรอบรูปคลาสสิค", "ม่านแดงหรูหรา"],
-        badge: null,
-        badgeColor: "",
     },
     {
         id: 6,
-        src: "/models/images/product-13-768x768.webp",
+        src: "/models/images/photobox-model3.png",
         name: "Camera 360",
         nameTh: "Camera 360",
         label: "PHOTOBOOTH",
         description: "กรอบไฟ LED เปลี่ยนสีได้ ปรับแต่งตามธีมงานได้อย่างอิสระ",
         features: ["RGB LED 16 ล้านสี", "รีโมทควบคุม", "เอฟเฟกต์เคลื่อนไหว"],
-        badge: "ใหม่",
-        badgeColor: "bg-sky-500",
     },
     {
         id: 7,
-        src: "/models/images/product-14-768x768.webp",
+        src: "/models/images/photobox-model2.png",
         name: "HIGH ANGLE PHOTOBOOTH",
         nameTh: "ตู้มุมสูง",
         label: "PHOTOBOOTH",
         description: "ชุดพรีเมียมครบเซ็ต รวมตู้ถ่ายรูป ไฟสตูดิโอ และอุปกรณ์ครบครัน",
         features: ["ชุดพร้อมใช้งาน", "ไฟสตูดิโอ Pro", "อุปกรณ์ Props ครบ"],
-        badge: "Best Value",
-        badgeColor: "bg-rose-500",
     },
 ]
 
@@ -88,7 +74,7 @@ export function ProductSection() {
     const [hoveredId, setHoveredId] = useState<number | null>(null)
 
     return (
-        <section id="products" className="py-32 lg:py-40 bg-gradient-to-b from-sky-blue-light/20 via-white to-orange-50/30 relative overflow-hidden">
+        <section id="products" className="py-14 sm:py-16 bg-gradient-to-b from-sky-blue-light/20 via-white to-orange-50/30 relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-[0.015]">
                 <div className="absolute inset-0" style={{
@@ -102,121 +88,28 @@ export function ProductSection() {
             <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-purple-400/5 to-pink-400/5 rounded-full blur-3xl" />
 
             <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
-                {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-20 lg:mb-24">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-tiger-orange/10 text-tiger-orange text-sm font-medium mb-6">
-                        <Sparkles className="w-4 h-4" />
-                        <span className="uppercase tracking-[0.2em]">Our Products</span>
-                    </div>
-                    <h2 className="font-sans font-extrabold text-4xl md:text-5xl lg:text-6xl text-deep-space-blue tracking-tight leading-[1.1]">
-                        เลือกตู้ถ่ายรูปที่ <span className="italic text-tiger-orange">ใช่</span>
-                        <br className="hidden md:block" /> สำหรับงานของคุณ
+                {/* Header — ชิดซ้าย ขนาดเท่าหัวข้อบล็อก OEM ด้านบน */}
+                <div className="mb-10">
+                    <p className="text-xs font-bold tracking-[0.3em] uppercase text-tiger-orange">Our Products</p>
+                    <h2 className="mt-4 font-sans font-extrabold text-3xl sm:text-4xl text-deep-space-blue leading-tight">
+                        แบบตู้ <span className="text-tiger-orange">Photo Booth</span> ยอดนิยมที่ลูกค้าสั่งทำมากที่สุด
                     </h2>
-                    <p className="mt-8 text-lg text-deep-space-blue/50 leading-relaxed max-w-2xl mx-auto">
-                        เรามีตู้ถ่ายรูปหลากหลายรูปแบบให้เลือก ทุกรุ่นมาพร้อมเทคโนโลยีล่าสุดและการออกแบบที่ทันสมัย
+                    <p className="mt-3 leading-relaxed text-deep-space-blue/60 max-w-4xl">
+                        รวมดีไซน์และทรงตู้ถ่ายรูปอัตโนมัติที่ได้รับความนิยม พร้อมบริการรับผลิตตู้ Photo Booth สั่งทำ
+                        ปรับสี รูปทรง และฟังก์ชันให้เหมาะกับแบรนด์และพื้นที่ใช้งานของคุณ
                     </p>
                 </div>
 
-                {/* Products Grid - Featured Layout */}
-                <div className="grid lg:grid-cols-12 gap-6 lg:gap-8">
-                    {/* Featured Product - Large */}
-                    <div
-                        className="lg:col-span-8 group relative bg-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500"
-                        onMouseEnter={() => setHoveredId(products[0].id)}
-                        onMouseLeave={() => setHoveredId(null)}
-                    >
-                        <div className="flex flex-col md:flex-row h-full">
-                            {/* Image Side */}
-                            <div className="relative w-full md:w-1/2 aspect-square md:aspect-auto">
-                                <Image
-                                    src={products[0].src}
-                                    alt={products[0].name}
-                                    fill
-                                    className="object-contain p-8 transition-transform duration-700 group-hover:scale-105"
-                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                    quality={80}
-                                    loading="lazy"
-                                />
-                                {products[0].badge && (
-                                    <span className={`absolute top-6 left-6 px-4 py-2 ${products[0].badgeColor} text-white text-xs font-bold uppercase tracking-wider rounded-full shadow-lg`}>
-                                        {products[0].badge}
-                                    </span>
-                                )}
-                            </div>
-                            {/* Content Side */}
-                            <div className="flex-1 p-8 lg:p-12 flex flex-col justify-center bg-gradient-to-br from-deep-space-blue to-deep-space-blue/90">
-                                <span className="text-tiger-orange text-sm font-medium uppercase tracking-[0.2em] mb-2">PHOTOBOOTH  </span>
-                                <h3 className="font-sans font-extrabold text-3xl lg:text-4xl text-white mb-2">
-                                    {products[0].name}
-                                </h3>
-                                <p className="text-white/60 text-lg mb-6">{products[0].nameTh}</p>
-                                <p className="text-white/80 leading-relaxed mb-8">
-                                    {products[0].description}
-                                </p>
-                                <ul className="space-y-3 mb-8">
-                                    {products[0].features.map((feature, idx) => (
-                                        <li key={idx} className="flex items-center gap-3 text-white/70">
-                                            <Star className="w-4 h-4 text-tiger-orange fill-tiger-orange" />
-                                            <span>{feature}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                                <a
-                                    href="#contact"
-                                    className="inline-flex items-center gap-2 px-8 py-4 bg-tiger-orange text-white font-medium rounded-full hover:bg-white hover:text-deep-space-blue transition-all duration-300 w-fit group/btn"
-                                >
-                                    <span>สอบถามราคา</span>
-                                    <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Secondary Products - Right Column */}
-                    <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-6 lg:gap-8">
-                        {products.slice(1, 3).map((product, idx) => (
-                            <div
-                                key={product.id}
-                                className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
-                                onMouseEnter={() => setHoveredId(product.id)}
-                                onMouseLeave={() => setHoveredId(null)}
-                            >
-                                <div className="relative aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100">
-                                    <Image
-                                        src={product.src}
-                                        alt={product.name}
-                                        fill
-                                        className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
-                                        sizes="(max-width: 1024px) 50vw, 25vw"
-                                        quality={75}
-                                        loading="lazy"
-                                    />
-                                    {product.badge && (
-                                        <span className={`absolute top-4 left-4 px-3 py-1 ${product.badgeColor} text-white text-xs font-bold uppercase tracking-wider rounded-full`}>
-                                            {product.badge}
-                                        </span>
-                                    )}
-                                </div>
-                                <div className="p-6 border-t border-gray-100">
-                                    <span className="text-tiger-orange text-xs font-medium uppercase tracking-[0.15em]">{product.label}</span>
-                                    <h3 className="font-sans font-bold text-xl text-deep-space-blue mt-1 mb-1">{product.name}</h3>
-                                    <p className="text-deep-space-blue/50 text-sm">{product.nameTh}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
                 {/* Bottom Grid - Remaining Products */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 mt-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
                     {products.slice(3).map((product, idx) => (
                         <div
                             key={product.id}
-                            className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
+                            className="group relative bg-slate-200 hover:bg-orange-100/70 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(2,48,71,0.09)] hover:shadow-[0_18px_45px_rgba(251,133,0,0.3)] transition-all duration-500 hover:-translate-y-2"
                             onMouseEnter={() => setHoveredId(product.id)}
                             onMouseLeave={() => setHoveredId(null)}
                         >
-                            <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100/50">
+                            <div className="relative aspect-square">
                                 <Image
                                     src={product.src}
                                     alt={product.name}
@@ -226,33 +119,17 @@ export function ProductSection() {
                                     quality={75}
                                     loading="lazy"
                                 />
-                                {product.badge && (
-                                    <span className={`absolute top-3 left-3 px-2.5 py-1 ${product.badgeColor} text-white text-[10px] font-bold uppercase tracking-wider rounded-full`}>
-                                        {product.badge}
-                                    </span>
-                                )}
-                                {/* Hover Overlay */}
-                                <div className={`absolute inset-0 bg-deep-space-blue/90 flex items-center justify-center transition-opacity duration-300 ${hoveredId === product.id ? 'opacity-100' : 'opacity-0'}`}>
-                                    <a
-                                        href="#contact"
-                                        className="px-6 py-3 bg-tiger-orange text-white text-sm font-medium rounded-full flex items-center gap-2 hover:bg-white hover:text-deep-space-blue transition-colors"
-                                    >
-                                        <span>ดูรายละเอียด</span>
-                                        <ArrowRight className="w-4 h-4" />
-                                    </a>
-                                </div>
                             </div>
-                            <div className="p-5 text-center border-t border-gray-100">
-                                <span className="text-tiger-orange text-[10px] font-medium uppercase tracking-[0.15em]">{product.label}</span>
-                                <h3 className="font-sans font-bold text-lg text-deep-space-blue mt-1">{product.name}</h3>
-                                <p className="text-deep-space-blue/40 text-xs mt-0.5">{product.nameTh}</p>
+                            <div className="p-5 text-center border-t border-white/60">
+                                <span className="text-tiger-orange text-[13.2px] font-medium uppercase tracking-[0.15em]">{product.label}</span>
+                                <p className="mt-1 text-[12.6px] font-light text-slate-500">สามารถผลิตสั่งทำได้หลายรูปแบบ</p>
                             </div>
                         </div>
                     ))}
                 </div>
 
                 {/* Bottom CTA */}
-                <div className="mt-20 text-center">
+                <div className="mt-12 text-center">
                     <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-8 p-6 sm:p-8 bg-deep-space-blue rounded-3xl">
                         <div className="text-center sm:text-left">
                             <p className="text-white/60 text-sm uppercase tracking-[0.2em] mb-1">

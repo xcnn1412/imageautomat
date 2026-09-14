@@ -130,10 +130,10 @@
 | Path | เนื้อหา |
 |---|---|
 | `/` | Home — Hero, Services, Ads, Software teaser, Stats, Video Gallery, Contact |
-| `/product` | จำหน่ายตู้ — hero, product grid, modal, CTA |
-| `/rental` | เช่าตู้ — packages, features, grid |
-| `/software` | ซอฟต์แวร์ Imageland — features, video demo, compatibility |
-| `/oem` | ผลิต OEM/ODM — hero, process, services |
+| `/buy-photo-booth` | จำหน่ายตู้ — hero, product grid, modal, CTA |
+| `/photo-booth-rental-revenue-share` | เช่าตู้ — packages, features, grid |
+| `/photo-booth-software` | ซอฟต์แวร์ Imageland — features, video demo, compatibility |
+| `/oem-photo-booth` | ผลิต OEM/ODM — hero, process, services |
 | `/payment` | ระบบรับชำระเงิน |
 | `/contact` | ติดต่อเรา |
 

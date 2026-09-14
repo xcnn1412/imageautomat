@@ -146,6 +146,23 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* ponytail: ขยายตัวอักษรทั้งเว็บ 1.32x ของ Tailwind default — override --text-* (ไม่แตะ rem ของ spacing) */
+@theme {
+  --text-xs: 0.99rem;
+  --text-sm: 1.155rem;
+  --text-base: 1.32rem;
+  --text-lg: 1.485rem;
+  --text-xl: 1.65rem;
+  --text-2xl: 1.98rem;
+  --text-3xl: 2.475rem;
+  --text-4xl: 2.97rem;
+  --text-5xl: 3.96rem;
+  --text-6xl: 4.95rem;
+  --text-7xl: 5.94rem;
+  --text-8xl: 7.92rem;
+  --text-9xl: 10.56rem;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -153,6 +170,9 @@
 
   body {
     @apply bg-background text-foreground;
+    /* ponytail: ข้อความที่ไม่มี class text-* ก็ใหญ่ตามธีม + เส้นหนาขึ้น (500) ให้อ่านชัด */
+    font-size: var(--text-base);
+    font-weight: 500;
   }
 }
 

@@ -12,7 +12,7 @@ const services = [
     gradient: "from-orange-500/20 to-amber-400/10",
     iconBg: "bg-orange-100 text-orange-600",
     stat: "Rental Setup",
-    href: "https://www.imageautomat.com/rental",
+    href: "https://www.imageautomat.com/photo-booth-rental-revenue-share",
   },
   {
     icon: Package,
@@ -22,7 +22,7 @@ const services = [
     gradient: "from-blue-500/20 to-sky-400/10",
     iconBg: "bg-blue-100 text-blue-600",
     stat: "Daily / Monthly",
-    href: "https://www.imageautomat.com/rental",
+    href: "https://www.imageautomat.com/photo-booth-rental-revenue-share",
   },
   {
     icon: Building2,
@@ -32,7 +32,7 @@ const services = [
     gradient: "from-purple-500/20 to-violet-400/10",
     iconBg: "bg-purple-100 text-purple-600",
     stat: "Pay-per-use",
-    href: "https://www.imageautomat.com/software",
+    href: "https://www.imageautomat.com/photo-booth-software",
   },
   {
     icon: PartyPopper,
@@ -42,7 +42,7 @@ const services = [
     gradient: "from-green-500/20 to-emerald-400/10",
     iconBg: "bg-green-100 text-green-600",
     stat: "Unlimited shots",
-    href: "https://www.imageautomat.com/software",
+    href: "https://www.imageautomat.com/photo-booth-software",
   },
 ]
 
@@ -91,7 +91,7 @@ export function ServicesSection() {
                 {/* Bottom fade */}
                 <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white/60 to-transparent" />
                 {/* Stat badge */}
-                <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#023047] text-white text-[10px] font-bold tracking-wide shadow-md">
+                <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#023047] text-white text-[13.2px] font-bold tracking-wide shadow-md">
                   {item.stat}
                 </span>
               </div>

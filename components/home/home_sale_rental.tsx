@@ -31,7 +31,7 @@ export function SaleAndRental() {
           className="group relative overflow-hidden rounded-3xl cursor-pointer"
         >
         <Link
-          href="/rental"
+          href="/photo-booth-rental-revenue-share"
           className="block"
         >
           {/* glow sweep on hover */}
@@ -55,7 +55,7 @@ export function SaleAndRental() {
             {/* Left — text content */}
             <div className="flex flex-col gap-4 max-w-xl">
               {/* eyebrow */}
-              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-white">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm px-4 py-1.5 text-[14.5px] font-bold uppercase tracking-[0.2em] text-white">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-60" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
@@ -78,7 +78,7 @@ export function SaleAndRental() {
                 {pills.map((p) => (
                   <span
                     key={p.text}
-                    className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/10 px-4 py-1.5 text-[13px] text-white/90 font-medium backdrop-blur-sm"
+                    className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/10 px-4 py-1.5 text-[17.2px] text-white/90 font-medium backdrop-blur-sm"
                   >
                     <span className="text-white/80">{p.icon}</span>
                     {p.text}
@@ -127,8 +127,8 @@ export function SaleAndRental() {
                   <ArrowRight size={18} strokeWidth={2.5} />
                 </motion.span>
               </motion.span>
-              <span className="text-[11px] text-white/45 font-medium tracking-wide">
-                www.imageautomat.com/rental
+              <span className="text-[14.5px] text-white/45 font-medium tracking-wide">
+                www.imageautomat.com/photo-booth-rental-revenue-share
               </span>
             </div>
           </div>

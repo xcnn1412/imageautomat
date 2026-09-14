@@ -65,7 +65,7 @@ export default function CheckoutPage() {
                 {items.length === 0 ? (
                     <div className="text-center">
                         <p className="text-deep-space-blue/50">ตะกร้าว่างเปล่า</p>
-                        <Link href="/shop" className="mt-4 inline-block font-bold text-tiger-orange">
+                        <Link href="/shop-credit-card-payment" className="mt-4 inline-block font-bold text-tiger-orange">
                             ไปเลือกสินค้า →
                         </Link>
                     </div>

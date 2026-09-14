@@ -43,13 +43,11 @@ export function HeroSection() {
               className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold text-[#023047] leading-[1.15] tracking-tight animate-fade-in-up"
               style={{ animationDelay: "100ms" }}
             >
-              ให้เช่าตู้ถ่ายภาพ &{" "}
+              เช่าตู้ถ่ายรูปและ{" "}
               <span className="relative inline-block bg-[#FB8500] text-white px-4 py-2 rounded-xl animate-orange-glow overflow-hidden">
                 <span className="absolute inset-0 -translate-x-full animate-auto-shimmer bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-12deg]" />
-                Photobooth
+                วางตู้แบ่งรายได้
               </span>
-              <br />
-              พร้อมติดตั้งทั่วไทย
             </h1>
 
             <p

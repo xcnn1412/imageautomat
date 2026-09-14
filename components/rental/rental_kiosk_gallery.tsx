@@ -90,7 +90,7 @@ export function KisokGallery() {
               {/* Label */}
               <div className="px-4 py-3 flex items-center justify-between border-t border-[#023047]/5">
                 <h3 className="text-sm font-bold text-[#023047]">{item.modelName}</h3>
-                <span className="text-[10px] font-semibold text-[#FB8500] bg-[#FB8500]/10 px-2 py-0.5 rounded-full">
+                <span className="text-[13.2px] font-semibold text-[#FB8500] bg-[#FB8500]/10 px-2 py-0.5 rounded-full">
                   เช่าได้
                 </span>
               </div>

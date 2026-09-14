@@ -38,8 +38,8 @@ const contactCards = [
     {
         icon: Phone,
         label: "โทรศัพท์",
-        value: "063-654-6249",
-        href: "tel:+66636546249",
+        value: "063-594-4429",
+        href: "tel:+66635944429",
         description: "โทรหาเราได้ทุกวัน",
         color: "from-tiger-orange to-amber-500",
         bgColor: "bg-tiger-orange/5",
@@ -185,11 +185,11 @@ export function ContactPageContent() {
                                 </span>
                             </a>
                             <a
-                                href="tel:+66636546249"
+                                href="tel:+66635944429"
                                 className="inline-flex items-center gap-2 text-white/60 hover:text-white font-medium transition-colors duration-300"
                             >
                                 <Phone className="w-4 h-4" />
-                                <span>063-654-6249</span>
+                                <span>063-594-4429</span>
                             </a>
                         </motion.div>
 
@@ -219,12 +219,12 @@ export function ContactPageContent() {
                             variants={itemVariants}
                             className="text-center mb-12"
                         >
-                            <h2 className="font-serif text-3xl md:text-4xl text-deep-space-blue tracking-tight mb-4">
-                                ช่องทาง
+                            <h1 className="font-serif text-3xl md:text-4xl text-deep-space-blue tracking-tight mb-4">
+                                ติดต่อ IMAGE AUTOMAT และ
                                 <span className="text-tiger-orange italic">
-                                    ติดต่อ
+                                    ขอใบเสนอราคา
                                 </span>
-                            </h2>
+                            </h1>
                             <p className="text-deep-space-blue/50 max-w-lg mx-auto">
                                 เลือกช่องทางที่สะดวกสำหรับคุณ
                                 ทีมงานพร้อมให้บริการ
@@ -379,7 +379,7 @@ export function ContactPageContent() {
                                                             })
                                                         }
                                                         className="w-full h-12 px-4 bg-deep-space-blue/[0.03] border border-deep-space-blue/10 rounded-xl focus:border-tiger-orange focus:ring-1 focus:ring-tiger-orange/20 text-deep-space-blue placeholder:text-deep-space-blue/25 transition-all duration-300 outline-none"
-                                                        placeholder="063-654-6249"
+                                                        placeholder="063-594-4429"
                                                         required
                                                     />
                                                 </div>

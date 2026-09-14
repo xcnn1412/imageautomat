@@ -92,7 +92,7 @@ export function HomePaymentSystems() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.1 }}
                         >
-                            <span className="inline-block text-[10px] sm:text-xs font-semibold text-deep-space-blue/40 tracking-[0.2em] uppercase mb-3">
+                            <span className="inline-block text-[13.2px] sm:text-xs font-semibold text-deep-space-blue/40 tracking-[0.2em] uppercase mb-3">
                                 Backend System
                             </span>
                             <h2

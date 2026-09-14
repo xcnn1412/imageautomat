@@ -29,7 +29,7 @@ npx prisma studio                 # แก้ DB เช่น เพิ่ม Di
 
 **Flow:** เพิ่มลงตะกร้า (ต้อง login ก่อน) → `/checkout` (โค้ดส่วนลด + ฟอร์มใบกำกับภาษี บุคคล/นิติบุคคล + เลือกช่องทางจ่าย) → `POST /api/checkout` (คิด VAT/WHT) → Ksher → webhook mark `paid`. ลูกค้าดูออเดอร์ที่ `/account/orders` (คลิกการ์ด → `/account/orders/[id]` มี stepper สถานะ + ใบกำกับ)
 
-**ข้อมูลสินค้า 2 ชั้น:** authoring อยู่ใน `data/catalogs.ts` (ซื้อ) + `data/products.ts` (เช่า, filter `type` มี "rental"); `prisma db seed` ดันเข้า `Product` table (runtime source ของ cart/checkout — หน้า `/shop` อ่านจาก Product table นี้โดยตรง). **seed ทับเฉพาะเนื้อหา (ชื่อ/รูป/คำอธิบาย) — `priceTHB`/`whtRate` เป็นของ admin (DB) ไม่ทับตอน re-seed**
+**ข้อมูลสินค้า 2 ชั้น:** authoring อยู่ใน `data/catalogs.ts` (ซื้อ) + `data/products.ts` (เช่า, filter `type` มี "rental"); `prisma db seed` ดันเข้า `Product` table (runtime source ของ cart/checkout — หน้า `/shop-credit-card-payment` อ่านจาก Product table นี้โดยตรง). **seed ทับเฉพาะเนื้อหา (ชื่อ/รูป/คำอธิบาย) — `priceTHB`/`whtRate` เป็นของ admin (DB) ไม่ทับตอน re-seed**
 
 **ราคา:** `lib/pricing.ts` — ราคา = **ก่อน VAT (ex-VAT)**. สินค้าที่ยังไม่ตั้ง `priceTHB` → fallback **มัดจำ ฿1,000/ชิ้น**. ตั้งราคา/ดูได้ที่หน้า admin `/admin/products`
 

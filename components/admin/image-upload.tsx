@@ -35,7 +35,7 @@ export function ImageUpload({ value, onChange }: { value: string; onChange: (url
           // eslint-disable-next-line @next/next/no-img-element -- thumb เล็ก ไม่ต้อง optimize + รองรับ host ใดก็ได้
           <img src={value} alt="" className="h-full w-full object-contain p-1" />
         ) : (
-          <span className="text-[10px] text-deep-space-blue/30">ไม่มีรูป</span>
+          <span className="text-[13.2px] text-deep-space-blue/30">ไม่มีรูป</span>
         )}
       </span>
       <div className="flex-1 space-y-1.5">

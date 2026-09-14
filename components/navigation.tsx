@@ -6,6 +6,7 @@ import Link from "next/link"
 import { Store, ShoppingCart, Calendar, Laptop, Factory, Phone, Star } from "lucide-react"
 import { AuthButton } from "@/components/auth-button"
 import { CartButton } from "@/components/cart/cart-button"
+import { LanguageSwitcher } from "@/components/language-switcher"
 import { LINE_OA_URL } from "@/lib/constants"
 
 // LINE Icon Component
@@ -16,11 +17,10 @@ const LineIcon = ({ className = "" }: { className?: string }) => (
 )
 
 const navLinks = [
-  { href: "/shop", label: "ร้านค้า", icon: Store, featured: false },
-  { href: "/product", label: "ซื้อตู้", icon: ShoppingCart, featured: false },
-  { href: "/rental", label: "เช่าตู้", icon: Calendar, featured: false },
-  { href: "/software", label: "ซอฟต์แวร์", icon: Laptop, featured: false },
-  { href: "/oem", label: "OEM", icon: Factory, featured: false },
+  { href: "/buy-photo-booth", label: "ซื้อตู้ถ่ายรูป", icon: ShoppingCart, featured: false },
+  { href: "/photo-booth-software", label: "ซื้อซอฟต์แวร์", icon: Laptop, featured: false },
+  { href: "/oem-photo-booth", label: "ผลิต OEM", icon: Factory, featured: false },
+  { href: "/photo-booth-rental-revenue-share", label: "เช่า / แบ่งรายได้", icon: Calendar, featured: false },
   { href: "/contact", label: "ติดต่อเรา", icon: Phone, featured: false },
 ]
 
@@ -55,16 +55,16 @@ export function Navigation() {
         }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex h-20 lg:h-24 items-center justify-between gap-4">
+        <div className="flex h-16 lg:h-[4.8rem] items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center group flex-shrink-0">
-            <span className="font-sans font-bold text-xl lg:text-2xl tracking-tight text-deep-space-blue">
+            <span className="font-sans font-bold text-[23px] lg:text-[28px] tracking-tight text-deep-space-blue">
               IMAGE<span className="text-tiger-orange">AUTOMAT</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-2 flex-1 justify-center">
+          <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
             {navLinks.map((link) => {
               const basePath = link.href.split("#")[0]
               const isActive = link.href.startsWith("#") ? pathname === "/" : pathname === basePath
@@ -75,13 +75,13 @@ export function Navigation() {
                   <Link
                     key={link.href}
                     href={resolveHref(link.href)}
-                    className="group relative inline-flex shrink-0 whitespace-nowrap items-center gap-2 px-5 py-2.5 rounded-full text-[15px] font-bold text-white transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden bg-gradient-to-r from-tiger-orange to-tiger-orange/90 shadow-md shadow-tiger-orange/25"
+                    className="group relative inline-flex shrink-0 whitespace-nowrap items-center gap-1.5 px-4 py-2 rounded-full text-[15px] font-bold text-white transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden bg-gradient-to-r from-tiger-orange to-tiger-orange/90 shadow-md shadow-tiger-orange/25"
                   >
                     {/* Shimmer effect */}
                     <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
 
                     {/* Star icon */}
-                    <Star className="relative z-10 w-4 h-4 fill-current" />
+                    <Star className="relative z-10 w-3.5 h-3.5 fill-current" />
 
                     {/* Text */}
                     <span className="relative z-10 tracking-normal">{link.label}</span>
@@ -94,9 +94,9 @@ export function Navigation() {
                 <Link
                   key={link.href}
                   href={resolveHref(link.href)}
-                  className="group relative inline-flex shrink-0 whitespace-nowrap items-center gap-2 px-4 py-2.5 rounded-lg text-[15px] font-semibold text-deep-space-blue/70 hover:text-deep-space-blue hover:bg-deep-space-blue/5 transition-all duration-300"
+                  className="group relative inline-flex shrink-0 whitespace-nowrap items-center gap-1.5 px-3 py-2 rounded-lg text-[15px] font-semibold text-deep-space-blue/70 hover:text-deep-space-blue hover:bg-deep-space-blue/5 transition-all duration-300"
                 >
-                  <link.icon className="w-4 h-4 text-deep-space-blue/50 group-hover:text-deep-space-blue transition-colors duration-300" />
+                  <link.icon className="w-[14px] h-[14px] text-deep-space-blue/50 group-hover:text-deep-space-blue transition-colors duration-300" />
                   <span className="relative tracking-normal">
                     {link.label}
                     <span className="absolute -bottom-0.5 left-0 h-0.5 w-0 rounded-full bg-tiger-orange transition-all duration-300 group-hover:w-full" />
@@ -106,29 +106,19 @@ export function Navigation() {
             })}
           </div>
 
-          {/* CTA Button - LINE (Desktop) */}
-          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
-            <CartButton />
-            <AuthButton />
-            <a
-              href={LINE_OA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative inline-flex items-center gap-2 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-6 py-2.5 text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#06C755]/25 hover:shadow-xl hover:shadow-[#06C755]/40 hover:scale-105 active:scale-95 overflow-hidden"
+          {/* Cart + Auth (Desktop) */}
+          <div className="hidden lg:flex items-center gap-1 flex-shrink-0">
+            <Link
+              href="/shop-credit-card-payment"
+              className="group inline-flex shrink-0 whitespace-nowrap items-center gap-1.5 px-3 py-2 rounded-lg text-[15px] font-semibold text-deep-space-blue/70 hover:text-deep-space-blue hover:bg-deep-space-blue/5 transition-all duration-300"
             >
-              {/* Shimmer effect */}
-              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12" />
-
-              {/* LINE Icon */}
-              <span className="relative z-10">
-                <LineIcon className="w-4 h-4" />
-              </span>
-
-              {/* Text */}
-              <span className="relative z-10 tracking-tight">
-                ขอราคาพิเศษ
-              </span>
-            </a>
+              <Store className="w-[14px] h-[14px] text-deep-space-blue/50 group-hover:text-deep-space-blue transition-colors duration-300" />
+              ซื้อสินค้าและชำระด้วยบัตร
+            </Link>
+            <AuthButton />
+            {/* ponytail: เส้นคั่นแยกตัวเลือกภาษาออกจากเมนูอื่น */}
+            <span className="mx-1 h-5 w-px bg-deep-space-blue/15" aria-hidden="true" />
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile Menu Button */}
