@@ -32,7 +32,9 @@ function sanitizeHeader(s: string): string {
 }
 
 export async function POST(req: NextRequest) {
+    // หลัง Cloudflare: cf-connecting-ip คือ IP จริง (x-forwarded-for ปลอมได้จากฝั่ง client)
     const ip =
+        req.headers.get("cf-connecting-ip") ||
         req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
         req.headers.get("x-real-ip") ||
         "unknown"

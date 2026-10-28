@@ -23,6 +23,7 @@ npx prisma studio                 # แก้ DB เช่น เพิ่ม Di
 - **`.env`** → `DATABASE_URL` เท่านั้น (Prisma CLI อ่านจากไฟล์นี้ ไม่อ่าน .env.local) — local ใช้ค่า `DATABASE_PUBLIC_URL` ของ Railway (proxy.rlwy.net), deploy ใช้ internal
 - **`.env.local`** → `AUTH_SECRET`, `AUTH_GOOGLE_ID/SECRET`, `KSHER_HOST/TOKEN/NOTIFY_URL`, `ADMIN_EMAILS`
 - `ADMIN_EMAILS` = อีเมล Google ของ admin (คั่นด้วย comma) — gate หน้า `/admin/*` ผ่าน `isAdmin()` ใน `lib/orders.ts`
+- `ORIGIN_KEY` (Railway เท่านั้น) = ค่าลับที่ Cloudflare Transform Rule ใส่มาใน header `x-origin-key` — `proxy.ts` ปฏิเสธ 403 ถ้าไม่ตรง (ไม่ตั้ง = ปิดการตรวจ) กันยิง IP ของ Railway ตรงข้าม Cloudflare
 - Google OAuth redirect URI: `<origin>/api/auth/callback/google`
 
 ## สถาปัตยกรรม e-commerce (ส่วนที่ไม่ชัดในโค้ด)
@@ -55,6 +56,11 @@ npx prisma studio                 # แก้ DB เช่น เพิ่ม Di
 - `priceTHB` ยังไม่ใส่หลายตัว → ใช้มัดจำ (ตั้งที่ `/admin/products`)
 - `discountCode.usedCount` นับตอนเริ่มจ่าย (อาจ over-count ถ้า user ทิ้ง)
 - ใบกำกับภาษี: เก็บข้อมูลแล้วแต่ยัง **ไม่ออก PDF** จริง; WHT หักจริงจากยอด Ksher → ลูกค้านิติบุคคลต้องส่งหนังสือรับรองหัก ณ ที่จ่าย (process นอกระบบ)
+
+## Infra / กันโจมตี
+- โดเมนอยู่หลัง **Cloudflare Free** (DNS ที่ Cloudflare, origin = Railway) — Under Attack Mode, rate limit `/api/*` 20 req/10s/IP, Configuration Rule ยกเว้น `/api/pay/notify` (webhook Ksher เป็น server ผ่าน challenge ไม่ได้), Cache Rule `/_next/image`
+- `proxy.ts` ล็อก origin ด้วย `ORIGIN_KEY` (ดู ENV) — ถ้าเปลี่ยนค่า ต้องเปลี่ยนทั้ง Transform Rule บน Cloudflare และ env บน Railway พร้อมกัน
+- `lib/rate-limit.ts` เป็น in-memory ต่อ instance — แนวหลังของ DB/อีเมลเท่านั้น ไม่ใช่กัน DDoS
 
 ## Convention
 - ใช้ markdown link `[file](path)` อ้างไฟล์ (ไม่ใช้ backtick)
