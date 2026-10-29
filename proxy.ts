@@ -5,6 +5,9 @@ import { NextResponse, type NextRequest } from "next/server"
 const KEY = process.env.ORIGIN_KEY
 
 export async function proxy(req: NextRequest) {
-  if (KEY && req.headers.get("x-origin-key") !== KEY) return new NextResponse(null, { status: 403 })
+  // ponytail: request ที่ไม่มี host = request ภายในของ next/image (fetchInternalImage สร้าง mock request ไม่ใส่ header)
+  // ต้องปล่อยผ่าน ไม่งั้นรูปใน public/ ขึ้น 400 ทั้งเว็บ — request จากข้างนอกผ่าน edge ของ Railway มี host เสมอ
+  const external = req.headers.has("host")
+  if (KEY && external && req.headers.get("x-origin-key") !== KEY) return new NextResponse(null, { status: 403 })
   return NextResponse.next()
 }
