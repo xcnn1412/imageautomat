@@ -23,7 +23,7 @@ npx prisma studio                 # แก้ DB เช่น เพิ่ม Di
 - **`.env`** → `DATABASE_URL` เท่านั้น (Prisma CLI อ่านจากไฟล์นี้ ไม่อ่าน .env.local) — local ใช้ค่า `DATABASE_PUBLIC_URL` ของ Railway (proxy.rlwy.net), deploy ใช้ internal
 - **`.env.local`** → `AUTH_SECRET`, `AUTH_GOOGLE_ID/SECRET`, `KSHER_HOST/TOKEN/NOTIFY_URL`, `ADMIN_EMAILS`
 - `ADMIN_EMAILS` = อีเมล Google ของ admin (คั่นด้วย comma) — gate หน้า `/admin/*` ผ่าน `isAdmin()` ใน `lib/orders.ts`
-- `ORIGIN_KEY` (Railway เท่านั้น) = ค่าลับที่ Cloudflare Transform Rule ใส่มาใน header `x-origin-key` — `proxy.ts` ปฏิเสธ 403 ถ้าไม่ตรง (ไม่ตั้ง = ปิดการตรวจ) กันยิง IP ของ Railway ตรงข้าม Cloudflare
+- `ORIGIN_KEY` (Railway เท่านั้น) = ค่าลับที่ Cloudflare Transform Rule ใส่มาใน header `x-origin-key` — `proxy.ts` ปฏิเสธ 403 ถ้าไม่ตรง (ไม่ตั้ง = ปิดการตรวจ, request ที่ไม่มี `host` = ภายในของ next/image ปล่อยผ่าน) ชั้นเสริมของ Tunnel ดูหัวข้อ Infra
 - Google OAuth redirect URI: `<origin>/api/auth/callback/google`
 
 ## สถาปัตยกรรม e-commerce (ส่วนที่ไม่ชัดในโค้ด)
@@ -57,10 +57,29 @@ npx prisma studio                 # แก้ DB เช่น เพิ่ม Di
 - `discountCode.usedCount` นับตอนเริ่มจ่าย (อาจ over-count ถ้า user ทิ้ง)
 - ใบกำกับภาษี: เก็บข้อมูลแล้วแต่ยัง **ไม่ออก PDF** จริง; WHT หักจริงจากยอด Ksher → ลูกค้านิติบุคคลต้องส่งหนังสือรับรองหัก ณ ที่จ่าย (process นอกระบบ)
 
-## Infra / กันโจมตี
-- โดเมนอยู่หลัง **Cloudflare Free** (DNS ที่ Cloudflare, origin = Railway) — Under Attack Mode, rate limit `/api/*` 20 req/10s/IP, Configuration Rule ยกเว้น `/api/pay/notify` (webhook Ksher เป็น server ผ่าน challenge ไม่ได้), Cache Rule `/_next/image`
-- `proxy.ts` ล็อก origin ด้วย `ORIGIN_KEY` (ดู ENV) — ถ้าเปลี่ยนค่า ต้องเปลี่ยนทั้ง Transform Rule บน Cloudflare และ env บน Railway พร้อมกัน
-- `lib/rate-limit.ts` เป็น in-memory ต่อ instance — แนวหลังของ DB/อีเมลเท่านั้น ไม่ใช่กัน DDoS
+## Infra / กันโจมตี (DDoS 28–29 ต.ค. 2026 — อ่านก่อนแตะ DNS หรือ Railway networking)
+
+**หลักการ: origin ต้องไม่มีทางเข้าจากอินเทอร์เน็ตเลย** ทุกชั้นให้ Cloudflare รับ
+- **L3/L4** (IP/ICMP/TCP/UDP flood) — IP ที่โลกเห็นเป็นของ Cloudflare เท่านั้น รับให้ฟรีอัตโนมัติ ไม่มีอะไรต้องตั้ง ห้ามมี DNS record ใดชี้ IP/hostname ของ Railway (ยกเว้น MX ที่ผ่าน Cloudflare ไม่ได้)
+- **L7** (HTTP flood) — Cloudflare Under Attack Mode, rate limit `/api/*` 20 req/10s/IP, Cache Rule `/_next/image`, Configuration Rule ยกเว้น `/api/pay/notify` (webhook Ksher ผ่าน challenge ไม่ได้)
+- **ทางเข้า origin = Cloudflare Tunnel** ชื่อ `railway` → service `cloudflared` บน Railway โปรเจกต์เดียวกัน → private network `imageautomat.railway.internal:8080`. service `imageautomat` **ต้องไม่มี public domain ใด ๆ** (ไม่มี custom domain, ไม่มี `*.up.railway.app`) ถ้ามี = เปิดช่องให้ยิง IP ของ Railway ตรงด้วย Host header (เหตุการณ์ 29 ต.ค.: 2.9M req ใน 2 นาที ล่ม 2 นาทีทั้งที่ proxy.ts ตอบ 403 เพราะปริมาณถึง container ก่อน)
+
+กฎเวลาเพิ่ม/ย้ายของ:
+- subdomain ใหม่ → เพิ่ม route ใน tunnel (`http://<ชื่อ private>.railway.internal:<port>`) ห้ามเพิ่ม custom domain บน Railway ชื่อ private ดูที่ Settings → Networking ของ service นั้น (มักไม่ตรงชื่อ service เช่น dashboard = `divine-cat`)
+- private network แยกตามโปรเจกต์ Railway → 1 โปรเจกต์ = 1 tunnel + 1 cloudflared (เช่น `imageLand_coupon-staff` อยู่โปรเจกต์ ai-local-relay ต้องใช้ tunnel แยก)
+- subdomain 2 ชั้น (`a.b.imageautomat.com`) ใช้กับ Cloudflare proxy ไม่ได้ (cert ฟรีครอบชั้นเดียว) ตั้งชื่อชั้นเดียวแทน
+- cloudflared บน Railway: image `cloudflare/cloudflared:latest`, start command `/usr/local/bin/cloudflared tunnel --no-autoupdate run` (Railway แทน ENTRYPOINT แบบ exec form ต้องใช้ path เต็ม และ redeploy ไม่ดึง config ใหม่ ต้อง trigger deploy ใหม่), env `TUNNEL_TOKEN` + `TUNNEL_TRANSPORT_PROTOCOL=http2`
+- `proxy.ts` ล็อก origin ด้วย `ORIGIN_KEY` เป็นชั้นเสริม — ตรวจเฉพาะ request ที่มี `host` เพราะ request ภายในของ `next/image` (ดึงไฟล์ `public/`) ไม่มี header เลย ถ้าตรวจทุกตัวรูปทั้งเว็บจะ 400. เปลี่ยนค่าต้องเปลี่ยน Transform Rule บน Cloudflare และ env Railway พร้อมกัน
+- `lib/rate-limit.ts` in-memory ต่อ instance — กัน spam DB/อีเมลเท่านั้น ไม่ใช่กัน DDoS
+- log HTTP ของ Railway ไม่เห็น traffic ที่มาทาง tunnel (เห็นแต่ deploy log) และ `srcIp` ในนั้นใช้แยก "ยิงตรง" กับ "ผ่าน Cloudflare" ไม่ได้
+
+ตรวจว่ายังปิดสนิท (รันได้เลย):
+```bash
+curl -sk -o /dev/null -w '%{http_code}
+' -H 'Host: www.imageautomat.com' https://69.46.46.54/   # ต้อง 404 (edge ไม่รู้จัก) ถ้า 200/403 = มี public domain หลุดกลับมา
+curl -s -o /dev/null -w '%{http_code}
+' https://www.imageautomat.com/                          # ต้อง 200 (ผ่าน Cloudflare → tunnel)
+```
 
 ## Convention
 - ใช้ markdown link `[file](path)` อ้างไฟล์ (ไม่ใช้ backtick)
