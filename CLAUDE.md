@@ -76,9 +76,10 @@ npx prisma studio                 # แก้ DB เช่น เพิ่ม Di
 ตรวจว่ายังปิดสนิท (รันได้เลย):
 ```bash
 curl -sk -o /dev/null -w '%{http_code}
-' -H 'Host: www.imageautomat.com' https://69.46.46.54/   # ต้อง 404 (edge ไม่รู้จัก) ถ้า 200/403 = มี public domain หลุดกลับมา
+' -H 'Host: www.imageautomat.com' https://69.46.46.54/        # ต้อง 404 (edge ไม่รู้จัก) ถ้า 200/403 = มี public domain หลุดกลับมา
+curl -sI https://www.imageautomat.com/ | grep -iE '^(HTTP|server|cf-mitigated)'                         # server: cloudflare และสถานะ 200 (หรือ 403 + cf-mitigated: challenge = Under Attack ท้า curl ปกติ) ถ้า 502/530 = tunnel/cloudflared ตาย
 curl -s -o /dev/null -w '%{http_code}
-' https://www.imageautomat.com/                          # ต้อง 200 (ผ่าน Cloudflare → tunnel)
+' -X POST https://www.imageautomat.com/api/pay/notify           # ต้อง 400/401 จากแอป ถ้า 403/503 = Configuration Rule ยกเว้น webhook หลุด Ksher จะยิงไม่ถึง
 ```
 
 ## Convention
