@@ -40,7 +40,7 @@ const socialLinks = [
     label: "Facebook",
     external: true,
   },
-  { icon: Phone, href: "tel:0635944429", label: "โทรหาเรา", external: false },
+  { icon: Phone, href: "tel:0656246394", label: "โทรหาเรา", external: false },
 ];
 
 export function Footer() {
@@ -56,15 +56,15 @@ export function Footer() {
               className="inline-block mb-6"
               aria-label="IMAGEAUTOMAT Home"
             >
-              <span className="font-sans font-bold text-2xl text-[#023047]">
-                IMAGE<span className="text-[#FB8500]">AUTOMAT</span>
+              <span className="font-sans font-bold text-2xl text-deep-space-blue">
+                IMAGE<span className="text-tiger-orange">AUTOMAT</span>
               </span>
             </Link>
-            <p className="text-[#023047]/60 leading-relaxed max-w-sm mb-3">
+            <p className="text-deep-space-blue/60 leading-relaxed max-w-sm mb-3">
               บริการเช่าและจำหน่ายตู้ถ่ายรูป Photobooth คุณภาพสูง
               สำหรับงานแต่งงาน งานอีเวนต์ และงานเปิดตัวสินค้า ทั่วประเทศไทย
             </p>
-            <p className="text-sm text-[#023047]/40 mb-8">
+            <p className="text-sm text-deep-space-blue/40 mb-8">
               ดำเนินการโดย บริษัท อิมเมจแลนด์ จำกัด
             </p>
 
@@ -76,7 +76,7 @@ export function Footer() {
                   href={social.href}
                   target={social.external ? "_blank" : undefined}
                   rel={social.external ? "noopener noreferrer" : undefined}
-                  className="w-12 h-12 flex items-center justify-center border border-[#023047]/10 hover:border-[#FB8500] hover:text-[#FB8500] text-[#023047]/60 transition-all duration-300"
+                  className="w-12 h-12 flex items-center justify-center border border-[#023047]/10 hover:border-[#FB8500] hover:text-tiger-orange text-deep-space-blue/60 transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon className="w-[19px] h-[19px]" />
@@ -88,7 +88,7 @@ export function Footer() {
           {/* Links */}
           {footerLinks.map((section) => (
             <nav key={section.title} aria-label={section.title}>
-              <h4 className="text-xs tracking-[0.2em] uppercase text-[#023047] mb-6">
+              <h4 className="text-xs tracking-[0.2em] uppercase text-deep-space-blue mb-6">
                 {section.title}
               </h4>
               <ul className="space-y-4">
@@ -96,7 +96,7 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-[#023047]/60 hover:text-[#FB8500] transition-colors duration-300"
+                      className="text-deep-space-blue/60 hover:text-tiger-orange transition-colors duration-300"
                     >
                       {link.label}
                     </Link>
@@ -110,20 +110,20 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="py-8 border-t border-[#023047]/5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-[#023047]/40">
+            <p className="text-sm text-deep-space-blue/40">
               © {new Date().getFullYear()} IMAGELAND CO., LTD. All rights
               reserved.
             </p>
             <div className="flex gap-8">
               <Link
                 href="/policy"
-                className="text-sm text-[#023047]/40 hover:text-[#FB8500] transition-colors duration-300"
+                className="text-sm text-deep-space-blue/40 hover:text-tiger-orange transition-colors duration-300"
               >
                 นโยบายการสั่งซื้อ/คืนสินค้า
               </Link>
               <a
                 href="#"
-                className="text-sm text-[#023047]/40 hover:text-[#FB8500] transition-colors duration-300"
+                className="text-sm text-deep-space-blue/40 hover:text-tiger-orange transition-colors duration-300"
               >
                 Terms of Service
               </a>

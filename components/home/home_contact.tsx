@@ -16,7 +16,7 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+66 63 594 4429",
+    value: "+66 65 624 6394",
   },
   {
     icon: Mail,
@@ -81,7 +81,7 @@ export function ContactSection() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left Content */}
           <div>
-            <p className="text-sm tracking-[0.3em] uppercase text-[#FB8500] mb-6">
+            <p className="text-sm tracking-[0.3em] uppercase text-tiger-orange mb-6">
               Contact
             </p>
             <h2
@@ -101,7 +101,7 @@ export function ContactSection() {
               {contactInfo.map((info) => (
                 <div key={info.label} className="flex items-center gap-5">
                   <div className="w-12 h-12 flex items-center justify-center border border-white/10">
-                    <info.icon className="w-5 h-5 text-[#FB8500]" />
+                    <info.icon className="w-5 h-5 text-tiger-orange" />
                   </div>
                   <div>
                     <p className="text-xs tracking-[0.2em] uppercase text-white/40 mb-1">
@@ -122,16 +122,16 @@ export function ContactSection() {
                   <div className="w-16 h-16 flex items-center justify-center bg-[#023047] mb-6">
                     <Check className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="font-sans font-bold text-2xl text-[#023047] mb-3">
+                  <h3 className="font-sans font-bold text-2xl text-deep-space-blue mb-3">
                     Thank You
                   </h3>
-                  <p className="text-[#023047]/60">
+                  <p className="text-deep-space-blue/60">
                     We will respond within 24 hours.
                   </p>
                 </div>
               ) : (
                 <>
-                  <h3 className="font-sans font-bold text-2xl text-[#023047] mb-8">
+                  <h3 className="font-sans font-bold text-2xl text-deep-space-blue mb-8">
                     Get in Touch
                   </h3>
 
@@ -140,7 +140,7 @@ export function ContactSection() {
                       <div>
                         <label
                           htmlFor="name"
-                          className="block text-xs tracking-[0.15em] uppercase text-[#023047]/60 mb-3"
+                          className="block text-xs tracking-[0.15em] uppercase text-deep-space-blue/60 mb-3"
                         >
                           Name
                         </label>
@@ -151,7 +151,7 @@ export function ContactSection() {
                           onChange={(e) =>
                             setFormData({ ...formData, name: e.target.value })
                           }
-                          className="w-full h-12 px-0 bg-transparent border-0 border-b border-[#023047]/20 rounded-none focus:border-[#FB8500] focus:ring-0 text-[#023047] placeholder:text-[#023047]/30"
+                          className="w-full h-12 px-0 bg-transparent border-0 border-b border-[#023047]/20 rounded-none focus:border-[#FB8500] focus:ring-0 text-deep-space-blue placeholder:text-deep-space-blue/30"
                           placeholder="Your name"
                           required
                         />
@@ -159,7 +159,7 @@ export function ContactSection() {
                       <div>
                         <label
                           htmlFor="email"
-                          className="block text-xs tracking-[0.15em] uppercase text-[#023047]/60 mb-3"
+                          className="block text-xs tracking-[0.15em] uppercase text-deep-space-blue/60 mb-3"
                         >
                           Email
                         </label>
@@ -170,7 +170,7 @@ export function ContactSection() {
                           onChange={(e) =>
                             setFormData({ ...formData, email: e.target.value })
                           }
-                          className="w-full h-12 px-0 bg-transparent border-0 border-b border-[#023047]/20 rounded-none focus:border-[#FB8500] focus:ring-0 text-[#023047] placeholder:text-[#023047]/30"
+                          className="w-full h-12 px-0 bg-transparent border-0 border-b border-[#023047]/20 rounded-none focus:border-[#FB8500] focus:ring-0 text-deep-space-blue placeholder:text-deep-space-blue/30"
                           placeholder="your@email.com"
                           required
                         />
@@ -181,7 +181,7 @@ export function ContactSection() {
                       <div>
                         <label
                           htmlFor="phone"
-                          className="block text-xs tracking-[0.15em] uppercase text-[#023047]/60 mb-3"
+                          className="block text-xs tracking-[0.15em] uppercase text-deep-space-blue/60 mb-3"
                         >
                           Phone
                         </label>
@@ -192,14 +192,14 @@ export function ContactSection() {
                           onChange={(e) =>
                             setFormData({ ...formData, phone: e.target.value })
                           }
-                          className="w-full h-12 px-0 bg-transparent border-0 border-b border-[#023047]/20 rounded-none focus:border-[#FB8500] focus:ring-0 text-[#023047] placeholder:text-[#023047]/30"
-                          placeholder="+66 62 424 9936"
+                          className="w-full h-12 px-0 bg-transparent border-0 border-b border-[#023047]/20 rounded-none focus:border-[#FB8500] focus:ring-0 text-deep-space-blue placeholder:text-deep-space-blue/30"
+                          placeholder="+66 65 624 6394"
                         />
                       </div>
                       <div>
                         <label
                           htmlFor="eventDate"
-                          className="block text-xs tracking-[0.15em] uppercase text-[#023047]/60 mb-3"
+                          className="block text-xs tracking-[0.15em] uppercase text-deep-space-blue/60 mb-3"
                         >
                           Event Date
                         </label>
@@ -213,7 +213,7 @@ export function ContactSection() {
                               eventDate: e.target.value,
                             })
                           }
-                          className="w-full h-12 px-0 bg-transparent border-0 border-b border-[#023047]/20 rounded-none focus:border-[#FB8500] focus:ring-0 text-[#023047]"
+                          className="w-full h-12 px-0 bg-transparent border-0 border-b border-[#023047]/20 rounded-none focus:border-[#FB8500] focus:ring-0 text-deep-space-blue"
                         />
                       </div>
                     </div>
@@ -221,7 +221,7 @@ export function ContactSection() {
                     <div>
                       <label
                         htmlFor="eventType"
-                        className="block text-xs tracking-[0.15em] uppercase text-[#023047]/60 mb-3"
+                        className="block text-xs tracking-[0.15em] uppercase text-deep-space-blue/60 mb-3"
                       >
                         Event Type
                       </label>
@@ -231,7 +231,7 @@ export function ContactSection() {
                         onChange={(e) =>
                           setFormData({ ...formData, eventType: e.target.value })
                         }
-                        className="w-full h-12 px-0 bg-transparent border-0 border-b border-[#023047]/20 rounded-none focus:border-[#FB8500] focus:ring-0 text-[#023047]"
+                        className="w-full h-12 px-0 bg-transparent border-0 border-b border-[#023047]/20 rounded-none focus:border-[#FB8500] focus:ring-0 text-deep-space-blue"
                       >
                         <option value="">Select event type</option>
                         <option value="wedding">Wedding</option>
@@ -246,7 +246,7 @@ export function ContactSection() {
                     <div>
                       <label
                         htmlFor="message"
-                        className="block text-xs tracking-[0.15em] uppercase text-[#023047]/60 mb-3"
+                        className="block text-xs tracking-[0.15em] uppercase text-deep-space-blue/60 mb-3"
                       >
                         Message
                       </label>
@@ -256,7 +256,7 @@ export function ContactSection() {
                         onChange={(e) =>
                           setFormData({ ...formData, message: e.target.value })
                         }
-                        className="w-full px-0 py-3 bg-transparent border-0 border-b border-[#023047]/20 rounded-none focus:border-[#FB8500] focus:ring-0 text-[#023047] placeholder:text-[#023047]/30 resize-none"
+                        className="w-full px-0 py-3 bg-transparent border-0 border-b border-[#023047]/20 rounded-none focus:border-[#FB8500] focus:ring-0 text-deep-space-blue placeholder:text-deep-space-blue/30 resize-none"
                         placeholder="Tell us about your event..."
                         rows={3}
                       />

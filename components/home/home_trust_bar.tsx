@@ -20,8 +20,8 @@ export function TrustBar() {
         {track.map(({ icon: Icon, value, label }, i) => (
           <div key={i} className="flex shrink-0 items-center gap-3 whitespace-nowrap">
             <Icon className="w-[22px] h-[22px] shrink-0 text-white" strokeWidth={1.75} />
-            <span className="text-[13px] font-bold text-white">{value}</span>
-            <span className="text-[11px] text-white/85">{label}</span>
+            <span className="text-[20px] font-bold text-white">{value}</span>
+            <span className="text-[20px] text-white/85">{label}</span>
             <span className="ml-10 sm:ml-14 w-px h-6 bg-white/30" aria-hidden="true" />
           </div>
         ))}

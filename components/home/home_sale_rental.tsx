@@ -90,7 +90,7 @@ export function SaleAndRental() {
             {/* Right — CTA */}
             <div className="flex flex-col items-center sm:items-end gap-3 shrink-0">
               <motion.span
-                className="relative inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-base font-bold text-[#D16900] overflow-hidden shadow-lg shadow-black/10"
+                className="relative inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-base font-bold text-tiger-orange overflow-hidden shadow-lg shadow-black/10"
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 8px 32px rgba(0,0,0,0.15)",

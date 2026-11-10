@@ -195,7 +195,7 @@ export function SoftwarePayment() {
                             {/* Top row — icon + label */}
                             <div className="flex items-start justify-between mb-5 sm:mb-6 relative z-10">
                                 <div>
-                                    <span className="text-[13.2px] sm:text-xs font-semibold text-deep-space-blue/30 uppercase tracking-[0.2em]">
+                                    <span className="text-[20px] font-semibold text-deep-space-blue/30 uppercase tracking-[0.2em]">
                                         {mode.label}
                                     </span>
                                 </div>
@@ -271,7 +271,7 @@ export function SoftwarePayment() {
                     <div className="relative z-10">
                         {/* Header */}
                         <div className="text-center mb-8 sm:mb-10">
-                            <span className="inline-block text-[13.2px] sm:text-xs font-semibold text-tiger-orange tracking-[0.2em] uppercase mb-3">
+                            <span className="inline-block text-[20px] font-semibold text-tiger-orange tracking-[0.2em] uppercase mb-3">
                                 Why Choose Us
                             </span>
                             <h3

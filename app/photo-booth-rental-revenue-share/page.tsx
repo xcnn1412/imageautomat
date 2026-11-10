@@ -56,7 +56,7 @@ const jsonLd = {
                 "@type": "Organization",
                 name: "IMAGEAUTOMAT",
                 url: "https://www.imageautomat.com",
-                telephone: "+66-63-594-4429",
+                telephone: "+66-65-624-6394",
                 sameAs: [LINE_OA_URL],
             },
             areaServed: {

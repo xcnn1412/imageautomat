@@ -17,7 +17,7 @@ const baht = (n: number) => `฿${n.toLocaleString("th-TH")}`
 const CAT_LABEL: Record<string, { label: string; cls: string }> = {
   buy: { label: "ซื้อ", cls: "bg-tiger-orange/10 text-tiger-orange" },
   rent: { label: "เช่า", cls: "bg-deep-space-blue/10 text-deep-space-blue" },
-  software: { label: "License", cls: "bg-violet-100 text-violet-700" },
+  software: { label: "License", cls: "bg-tiger-orange/10 text-tiger-orange" },
 }
 
 type Spec = { label: string; value: string }
@@ -30,7 +30,7 @@ export function ProductDetailContent({ product }: { product: Product }) {
 
   const canBuy = isBuyableCategory(product.category)
   const soldOut = canBuy && product.stock <= 0
-  const cat = CAT_LABEL[product.category] ?? { label: product.category, cls: "bg-gray-100 text-gray-600" }
+  const cat = CAT_LABEL[product.category] ?? { label: product.category, cls: "bg-gray-100 text-deep-space-blue/70" }
 
   const fullPrice = hasFullPrice(product) ? product.priceTHB : null
   const depositPrice = product.depositTHB ?? DEPOSIT_THB
@@ -68,7 +68,7 @@ export function ProductDetailContent({ product }: { product: Product }) {
 
           {/* Info */}
           <div className="flex flex-col">
-            <h1 className="font-serif text-3xl leading-tight text-deep-space-blue lg:text-4xl">{product.name}</h1>
+            <h1 className="text-3xl leading-tight text-deep-space-blue lg:text-4xl">{product.name}</h1>
             <p className="mt-3 text-base leading-relaxed text-deep-space-blue/60">{product.description}</p>
 
             {product.longDescription && (

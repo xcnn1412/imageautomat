@@ -205,7 +205,7 @@ export default function PolicyPage() {
         {/* Header */}
         <div className="border-b border-gray-100 pb-8">
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-tiger-orange">IMAGEAUTOMAT</span>
-          <h1 className="mt-3 font-serif text-4xl leading-tight text-deep-space-blue lg:text-5xl">นโยบายการสั่งซื้อและคืนสินค้า</h1>
+          <h1 className="mt-3 text-4xl leading-tight text-deep-space-blue lg:text-5xl">นโยบายการสั่งซื้อและคืนสินค้า</h1>
           <p className="mt-5 rounded-xl bg-gray-50 px-4 py-3.5 text-sm leading-relaxed text-deep-space-blue/60">
             โปรดอ่านเงื่อนไขต่อไปนี้โดยละเอียดก่อนสั่งซื้อ การกดยืนยันชำระเงินและการติ๊กยอมรับเงื่อนไข ถือว่าท่านได้อ่าน เข้าใจ และยอมรับนโยบายฉบับนี้ทั้งหมดแล้ว
           </p>
@@ -217,10 +217,10 @@ export default function PolicyPage() {
             return (
               <section key={s.id} id={s.id} className="scroll-mt-28">
                 <div className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-tiger-orange/10 font-serif text-base font-bold text-tiger-orange">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-tiger-orange/10 text-base font-bold text-tiger-orange">
                     {i + 1}
                   </span>
-                  <h2 className="font-serif text-2xl text-deep-space-blue">{title}</h2>
+                  <h2 className="text-2xl text-deep-space-blue">{title}</h2>
                 </div>
 
                 <div className="mt-5 space-y-6 pl-12">

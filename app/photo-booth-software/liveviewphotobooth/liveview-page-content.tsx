@@ -159,7 +159,7 @@ function HeroSection() {
                         <Sparkles className="w-4 h-4" />
                         <span className="uppercase tracking-[0.2em]">Liveview Photobooth</span>
                     </div>
-                    <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1] mb-6">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1] mb-6">
                         ภาพที่มีชีวิตด้วย
                         <br />
                         <span className="text-tiger-orange">Pre-capture</span>
@@ -229,12 +229,12 @@ function WhatIsSection() {
             <div className="mx-auto max-w-6xl px-6 grid gap-12 lg:grid-cols-2 items-center">
                 <div className="space-y-6">
                     <div className="text-xs uppercase tracking-[0.3em] text-tiger-orange">What is Liveview?</div>
-                    <h2 className="text-3xl lg:text-4xl font-semibold text-slate-900">
+                    <h2 className="text-3xl lg:text-4xl font-semibold text-deep-space-blue">
                         Liveview Photobooth คือภาพที่ขยับได้
                         <br />
                         ก่อนกดชัตเตอร์เท่านั้น
                     </h2>
-                    <p className="text-base text-slate-600 leading-relaxed">
+                    <p className="text-base text-deep-space-blue/70 leading-relaxed">
                         Liveview Photobooth คือโหมดพิเศษของซอฟต์แวร์ IMAGEAUTOMAT ที่ใช้เทคโนโลยี Pre-capture
                         เพื่อบันทึกการเคลื่อนไหวก่อนผู้ใช้งานกดชัตเตอร์ครั้งสุดท้าย จึงได้ Living Portrait
                         ที่ขยับได้ พร้อม GIF หรือ Video ที่พร้อมแชร์ทันทีจากชุดเครื่องเดียว
@@ -245,7 +245,7 @@ function WhatIsSection() {
                                 <span className="shrink-0 w-5 h-5 rounded-full bg-linear-to-br from-orange-500 to-amber-400 flex items-center justify-center mt-0.5">
                                     <Check className="w-3 h-3 text-white" strokeWidth={3} />
                                 </span>
-                                <span className="text-sm text-slate-600">{point}</span>
+                                <span className="text-sm text-deep-space-blue/70">{point}</span>
                             </div>
                         ))}
                     </div>
@@ -255,7 +255,7 @@ function WhatIsSection() {
                     <div className="absolute bottom-0 left-0 w-32 h-32 bg-sky-400/10 rounded-full blur-2xl pointer-events-none" />
                     <div className="relative">
                         <p className="text-xs uppercase tracking-[0.35em] text-tiger-orange mb-3">IMAGEAUTOMAT Liveview</p>
-                        <h3 className="text-2xl font-serif text-white mb-4">Pre-capture + Living Portrait</h3>
+                        <h3 className="text-2xl text-white mb-4">Pre-capture + Living Portrait</h3>
                         <p className="text-sm text-white/60 leading-relaxed mb-6">
                             เก็บช่วงเวลาเล็ก ๆ ก่อนแท็บชัตเตอร์ ใช้ AI คัดเลือกช่วงเวลาธรรมชาติที่สุด
                             ผสานกับการพิมพ์ภาพทันที และแชร์ผลลัพธ์ผ่าน QR Code หรือ LINE ได้ภายในไม่กี่วินาที
@@ -288,10 +288,10 @@ function FeaturesSection() {
             <div className="mx-auto max-w-6xl px-6">
                 <div className="text-center max-w-3xl mx-auto mb-12">
                     <p className="text-xs uppercase tracking-[0.35em] text-tiger-orange mb-3">Features</p>
-                    <h2 className="text-3xl lg:text-4xl font-semibold text-slate-900">
+                    <h2 className="text-3xl lg:text-4xl font-semibold text-deep-space-blue">
                         ฟีเจอร์ Liveview Photobooth ที่เน้นความจริงจังและเรียบง่าย
                     </h2>
-                    <p className="text-sm text-slate-600 mt-3">
+                    <p className="text-sm text-deep-space-blue/70 mt-3">
                         ซอฟต์แวร์เดียวที่จัดการ Pre-capture, Living Portrait, GIF, Video, AI Effect และการพิมพ์รูป
                         ได้ทันทีโดยไม่ต้องเปลี่ยนอินเทอร์เฟซ
                     </p>
@@ -312,8 +312,8 @@ function FeaturesSection() {
                             <div className={`w-12 h-12 rounded-xl bg-linear-to-br ${feature.gradient} flex items-center justify-center mb-5 shadow-sm`}>
                                 <feature.icon className="w-5 h-5 text-white" strokeWidth={2} />
                             </div>
-                            <h3 className="text-base font-semibold text-slate-900 mb-2">{feature.title}</h3>
-                            <p className="text-sm text-slate-600 leading-relaxed">{feature.description}</p>
+                            <h3 className="text-base font-semibold text-deep-space-blue mb-2">{feature.title}</h3>
+                            <p className="text-sm text-deep-space-blue/70 leading-relaxed">{feature.description}</p>
                         </motion.article>
                     ))}
                 </motion.div>
@@ -328,11 +328,11 @@ function HowItWorksSection() {
         <section className="py-20 bg-white" aria-label="ขั้นตอนการใช้งาน Liveview Photobooth Software">
             <div className="mx-auto max-w-6xl px-6">
                 <div className="text-center max-w-3xl mx-auto mb-12">
-                    <p className="text-xs uppercase tracking-[0.3em] text-slate-500 mb-3">How It Works</p>
-                    <h2 className="text-3xl lg:text-4xl font-semibold text-slate-900">
+                    <p className="text-xs uppercase tracking-[0.3em] text-deep-space-blue/60 mb-3">How It Works</p>
+                    <h2 className="text-3xl lg:text-4xl font-semibold text-deep-space-blue">
                         ใช้งาน Liveview Photobooth ใน 4 ขั้นตอนเรียบง่าย
                     </h2>
-                    <p className="text-sm text-slate-600 mt-3">
+                    <p className="text-sm text-deep-space-blue/70 mt-3">
                         ระบบออกแบบให้ผู้ใช้งานทำทุกอย่างได้เองในตู้ ไม่ต้องมีทีมงานคอยตั้งค่า
                     </p>
                 </div>
@@ -349,11 +349,11 @@ function HowItWorksSection() {
                             <div className={`w-14 h-14 mx-auto rounded-full bg-linear-to-br ${item.gradient} flex items-center justify-center text-white font-bold text-base mb-4 shadow-sm`}>
                                 {item.step}
                             </div>
-                            <div className="flex items-center justify-center gap-2 text-slate-700 font-semibold mb-2">
+                            <div className="flex items-center justify-center gap-2 text-deep-space-blue font-semibold mb-2">
                                 <item.icon className="w-4 h-4" />
                                 <span className="text-sm">{item.title}</span>
                             </div>
-                            <p className="text-xs text-slate-500 leading-relaxed">{item.description}</p>
+                            <p className="text-xs text-deep-space-blue/60 leading-relaxed">{item.description}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -411,9 +411,9 @@ function ComparisonSection() {
         <section className="py-20 bg-slate-50" aria-label="โหมด Photobooth ที่เหมาะสมกับแต่ละงาน">
             <div className="mx-auto max-w-6xl px-6">
                 <div className="text-center max-w-3xl mx-auto mb-12">
-                    <p className="text-xs uppercase tracking-[0.35em] text-slate-500 mb-3">Which Mode Fits?</p>
-                    <h2 className="text-3xl lg:text-4xl font-semibold text-slate-900">เลือกโหมดให้เหมาะกับงาน</h2>
-                    <p className="text-sm text-slate-600 mt-3">
+                    <p className="text-xs uppercase tracking-[0.35em] text-deep-space-blue/60 mb-3">Which Mode Fits?</p>
+                    <h2 className="text-3xl lg:text-4xl font-semibold text-deep-space-blue">เลือกโหมดให้เหมาะกับงาน</h2>
+                    <p className="text-sm text-deep-space-blue/70 mt-3">
                         ซอฟต์แวร์ IMAGEAUTOMAT รวม 4 โหมดไว้ในแพ็กเกจเดียว — เลือกใช้ได้ตามสไตล์ของงานนั้นได้เลย
                     </p>
                 </div>
@@ -426,7 +426,7 @@ function ComparisonSection() {
                             {/* Header */}
                             <div className={`bg-linear-to-br ${mode.gradient} px-5 pt-5 pb-6`}>
                                 {mode.badge && (
-                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-tiger-orange text-white text-[13.2px] font-bold rounded-full uppercase tracking-wider mb-2">
+                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-tiger-orange text-white text-[20px] font-bold rounded-full uppercase tracking-wider mb-2">
                                         ✦ แนะนำ
                                     </span>
                                 )}
@@ -436,16 +436,16 @@ function ComparisonSection() {
                             </div>
                             {/* Body */}
                             <div className="px-5 py-4 flex-1 flex flex-col gap-4">
-                                <p className="text-xs text-slate-600 leading-relaxed">{mode.desc}</p>
+                                <p className="text-xs text-deep-space-blue/70 leading-relaxed">{mode.desc}</p>
                                 <div>
-                                    <p className="text-[13.2px] uppercase tracking-[0.2em] text-slate-400 mb-2">เหมาะกับงาน</p>
+                                    <p className="text-[20px] uppercase tracking-[0.2em] text-deep-space-blue/45 mb-2">เหมาะกับงาน</p>
                                     <ul className="space-y-1.5">
                                         {mode.best.map((item) => (
                                             <li key={item} className="flex items-start gap-2">
                                                 <span className="shrink-0 w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center mt-0.5">
                                                     <Check className="w-2.5 h-2.5 text-emerald-600" strokeWidth={3} />
                                                 </span>
-                                                <span className="text-xs text-slate-700">{item}</span>
+                                                <span className="text-xs text-deep-space-blue">{item}</span>
                                             </li>
                                         ))}
                                     </ul>
@@ -455,7 +455,7 @@ function ComparisonSection() {
                     ))}
                 </div>
                 <div className="mt-6 rounded-2xl border border-orange-100 bg-orange-50/50 p-5">
-                    <p className="text-sm text-slate-700 text-center">
+                    <p className="text-sm text-deep-space-blue text-center">
                         ทุกโหมดรวมอยู่ในซอฟต์แวร์ IMAGEAUTOMAT ชุดเดียว — ไม่ต้องซื้อแยก ไม่มีค่าสมาชิกรายเดือน อัปเดตฟรีตลอดชีพ
                     </p>
                 </div>
@@ -472,10 +472,10 @@ function UseCasesSection() {
         <section ref={ref} className="py-20 bg-white" aria-label="งานที่เหมาะกับ Liveview Photobooth">
             <div className="mx-auto max-w-6xl px-6">
                 <div className="text-center max-w-3xl mx-auto mb-12">
-                    <h2 className="text-3xl lg:text-4xl font-semibold text-slate-900">
+                    <h2 className="text-3xl lg:text-4xl font-semibold text-deep-space-blue">
                         Liveview Photobooth เหมาะกับงานที่ต้องการความชัดเจน
                     </h2>
-                    <p className="text-sm text-slate-600 mt-3">
+                    <p className="text-sm text-deep-space-blue/70 mt-3">
                         เหมาะสำหรับงานแต่งงาน คอนเสิร์ต งานอีเวนต์พรีเมียม หรือพื้นที่ป๊อปอัปที่ต้องการความล้ำหน้าในทุกช็อต
                     </p>
                 </div>
@@ -493,8 +493,8 @@ function UseCasesSection() {
                             className="rounded-2xl border border-slate-200 bg-linear-to-br from-white to-slate-50 p-6 shadow-sm hover:shadow-md hover:border-orange-100 transition-all duration-300 cursor-default"
                         >
                             <div className="text-3xl mb-3">{uc.icon}</div>
-                            <div className="text-sm font-semibold text-slate-900 mb-1.5">{uc.label}</div>
-                            <p className="text-xs text-slate-500 leading-relaxed">{uc.desc}</p>
+                            <div className="text-sm font-semibold text-deep-space-blue mb-1.5">{uc.label}</div>
+                            <p className="text-xs text-deep-space-blue/60 leading-relaxed">{uc.desc}</p>
                         </motion.div>
                     ))}
                 </motion.div>
@@ -528,7 +528,7 @@ function FaqSection() {
         },
         {
             q: "สามารถทดลองใช้ก่อนซื้อได้ไหม?",
-            a: "ได้ครับ ทีมงาน IMAGEAUTOMAT ยินดีสาธิตซอฟต์แวร์รวมถึงโหมด Liveview Photobooth ก่อนตัดสินใจ ติดต่อผ่าน LINE @imageautomat หรือโทร 063-594-4429",
+            a: "ได้ครับ ทีมงาน IMAGEAUTOMAT ยินดีสาธิตซอฟต์แวร์รวมถึงโหมด Liveview Photobooth ก่อนตัดสินใจ ติดต่อผ่าน LINE @imageautomat หรือโทร 065-624-6394",
         },
     ]
 
@@ -537,10 +537,10 @@ function FaqSection() {
             <div className="mx-auto max-w-4xl px-6 lg:px-8">
                 <div className="text-center mb-12">
                     <p className="text-xs uppercase tracking-[0.35em] text-tiger-orange mb-3">FAQ</p>
-                    <h2 className="font-serif text-3xl md:text-4xl text-slate-900 tracking-tight leading-[1.1] mb-4">
+                    <h2 className="text-3xl md:text-4xl text-deep-space-blue tracking-tight leading-[1.1] mb-4">
                         คำถามที่พบบ่อย Liveview Photobooth
                     </h2>
-                    <p className="text-slate-500">ทุกข้อสงสัยเกี่ยวกับซอฟต์แวร์ตู้ถ่ายรูปของเรา</p>
+                    <p className="text-deep-space-blue/60">ทุกข้อสงสัยเกี่ยวกับซอฟต์แวร์ตู้ถ่ายรูปของเรา</p>
                 </div>
                 <div className="space-y-4">
                     {faqItems.map((item, i) => (
@@ -548,13 +548,13 @@ function FaqSection() {
                             key={i}
                             className="bg-white rounded-2xl p-6 border border-slate-100 hover:border-orange-200 hover:shadow-sm transition-all duration-300"
                         >
-                            <h3 className="font-bold text-slate-900 mb-3 flex items-start gap-3">
+                            <h3 className="font-bold text-deep-space-blue mb-3 flex items-start gap-3">
                                 <span className="shrink-0 w-6 h-6 rounded-full bg-linear-to-br from-tiger-orange to-amber-400 text-white text-xs font-bold flex items-center justify-center mt-0.5">
                                     {i + 1}
                                 </span>
                                 {item.q}
                             </h3>
-                            <p className="text-slate-600 leading-relaxed pl-9">{item.a}</p>
+                            <p className="text-deep-space-blue/70 leading-relaxed pl-9">{item.a}</p>
                         </div>
                     ))}
                 </div>
@@ -573,7 +573,7 @@ function CtaSection() {
                     <div className="absolute bottom-0 left-0 w-48 h-48 bg-sky-400/10 rounded-full blur-[60px] pointer-events-none" />
                     <div className="relative">
                         <p className="text-xs uppercase tracking-[0.35em] text-tiger-orange mb-4">สนใจ Liveview Photobooth?</p>
-                        <h2 className="font-serif text-3xl lg:text-4xl text-white tracking-tight leading-tight mb-4">
+                        <h2 className="text-3xl lg:text-4xl text-white tracking-tight leading-tight mb-4">
                             ทดลองสาธิต Liveview Photobooth
                             <br />
                             <span className="text-tiger-orange">ฟรี ไม่มีเงื่อนไข</span>
@@ -615,10 +615,10 @@ export function LiveviewPageContent() {
             <HeroSection />
             <section className="pt-12 lg:pt-16 pb-0 bg-white" aria-label="ตัวอย่างผลงานวิดีโอ Liveview Photobooth">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-8">
-                    <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-slate-900 tracking-tight leading-[1.1] mb-4">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl text-deep-space-blue tracking-tight leading-[1.1] mb-4">
                         ตัวอย่างผลงาน — Liveview Photobooth
                     </h2>
-                    <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-deep-space-blue/70 max-w-2xl mx-auto">
                         ผลลัพธ์ภาพเคลื่อนไหวจากซอฟต์แวร์ Liveview Photobooth โดย IMAGEAUTOMAT
                     </p>
                 </div>

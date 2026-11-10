@@ -128,7 +128,7 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                 </motion.span>
                                 <motion.h1
                                     variants={itemVariants}
-                                    className="font-serif text-3xl md:text-4xl lg:text-5xl text-white tracking-tight leading-[1.15] mb-4"
+                                    className="text-3xl md:text-4xl lg:text-5xl text-white tracking-tight leading-[1.15] mb-4"
                                 >
                                     {job.title}
                                 </motion.h1>
@@ -170,11 +170,11 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                         </span>
                                     </a>
                                     <a
-                                        href="tel:+66624249936"
+                                        href="tel:+66656246394"
                                         className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 backdrop-blur-sm text-white font-semibold px-6 py-3.5 rounded-full text-sm transition-all duration-300 border border-white/10"
                                     >
                                         <Phone className="w-4 h-4" />
-                                        <span>062-424-9936</span>
+                                        <span>065-624-6394</span>
                                     </a>
                                 </motion.div>
                             </div>
@@ -207,10 +207,10 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                             <Layers className="w-5 h-5 text-violet-600" />
                                         </div>
                                         <div>
-                                            <p className="text-xs tracking-[0.2em] uppercase text-violet-600/80 font-semibold mb-0.5">
+                                            <p className="text-xs tracking-[0.2em] uppercase text-tiger-orange/80 font-semibold mb-0.5">
                                                 Tech Stack
                                             </p>
-                                            <h2 className="font-serif text-xl md:text-2xl text-deep-space-blue">
+                                            <h2 className="text-xl md:text-2xl text-deep-space-blue">
                                                 เทคโนโลยีที่จะได้ใช้
                                             </h2>
                                         </div>
@@ -243,7 +243,7 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                     <div className="w-11 h-11 rounded-xl bg-tiger-orange/10 flex items-center justify-center">
                                         <ListChecks className="w-5 h-5 text-tiger-orange" />
                                     </div>
-                                    <h2 className="font-serif text-2xl text-deep-space-blue">
+                                    <h2 className="text-2xl text-deep-space-blue">
                                         หน้าที่ความรับผิดชอบ
                                     </h2>
                                 </div>
@@ -271,7 +271,7 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                     <div className="w-11 h-11 rounded-xl bg-sky-500/10 flex items-center justify-center">
                                         <UserCheck className="w-5 h-5 text-sky-600" />
                                     </div>
-                                    <h2 className="font-serif text-2xl text-deep-space-blue">
+                                    <h2 className="text-2xl text-deep-space-blue">
                                         คุณสมบัติผู้สมัคร
                                     </h2>
                                 </div>
@@ -300,7 +300,7 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                 <div className="w-11 h-11 rounded-xl bg-violet-500/10 flex items-center justify-center">
                                     <FileCheck className="w-5 h-5 text-violet-600" />
                                 </div>
-                                <h2 className="font-serif text-2xl text-deep-space-blue">
+                                <h2 className="text-2xl text-deep-space-blue">
                                     เอกสารที่ต้องใช้สมัครงาน
                                 </h2>
                             </div>
@@ -393,7 +393,7 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-tiger-orange/20 mb-6">
                                     <Sparkles className="w-7 h-7 text-tiger-orange" />
                                 </div>
-                                <h2 className="font-serif text-3xl md:text-4xl text-white tracking-tight mb-4">
+                                <h2 className="text-3xl md:text-4xl text-white tracking-tight mb-4">
                                     สนใจตำแหน่งนี้ใช่ไหม?
                                 </h2>
                                 <p className="text-white/60 text-base md:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
@@ -425,7 +425,7 @@ export function JobDetailContent({ slug }: { slug: string }) {
                                 </div>
                                 <div className="flex items-center justify-center gap-3 text-sm text-white/40">
                                     <Phone className="w-4 h-4" />
-                                    <span>หรือโทร 062-424-9936</span>
+                                    <span>หรือโทร 065-624-6394</span>
                                 </div>
                             </div>
                         </motion.div>

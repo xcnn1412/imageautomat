@@ -153,7 +153,7 @@ export function CustomOrderForm() {
       </button>
 
       {result?.ok === true && (
-        <p className="rounded-lg bg-green-50 px-4 py-3 text-sm font-semibold text-green-700">
+        <p className="rounded-lg bg-green-50 px-4 py-3 text-sm font-semibold text-tiger-orange">
           ✓ สร้างสำเร็จ — สินค้า #{result.productId} อยู่ในตะกร้าลูกค้าแล้ว ({baht(result.amount)})
         </p>
       )}

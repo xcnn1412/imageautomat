@@ -23,7 +23,7 @@ export default async function AdminProductsPage() {
       <div className="mx-auto max-w-4xl">
         <AdminNav active="/admin/products" />
 
-        <h1 className="font-serif text-3xl text-deep-space-blue">สินค้า · หัก ณ ที่จ่าย</h1>
+        <h1 className="text-3xl text-deep-space-blue">สินค้า · หัก ณ ที่จ่าย</h1>
         <p className="mb-6 mt-1 text-sm text-deep-space-blue/50">
           ตั้งอัตราหัก ณ ที่จ่ายต่อสินค้า — จ้างผลิต 3% · ค่าเช่า software 5% · อื่นๆ ไม่หัก · VAT 7% คิดทุกชิ้นอัตโนมัติ
         </p>

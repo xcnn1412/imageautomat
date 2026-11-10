@@ -27,9 +27,9 @@ export type AdminProduct = {
 }
 
 const CAT: Record<string, { label: string; cls: string }> = {
-  buy: { label: "ซื้อ", cls: "bg-blue-100 text-blue-700" },
-  rent: { label: "เช่า", cls: "bg-purple-100 text-purple-700" },
-  software: { label: "Software", cls: "bg-violet-100 text-violet-700" },
+  buy: { label: "ซื้อ", cls: "bg-tiger-orange/10 text-tiger-orange" },
+  rent: { label: "เช่า", cls: "bg-tiger-orange/10 text-tiger-orange" },
+  software: { label: "Software", cls: "bg-tiger-orange/10 text-tiger-orange" },
 }
 
 type CatFilter = "all" | "buy" | "rent" | "software"
@@ -155,7 +155,7 @@ function EditDrawer({ product, categoryOptions, onClose, onSaved, onCreated }: {
         {/* Header */}
         <header className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
           <div>
-            <h2 className="font-serif text-xl text-deep-space-blue">{isNew ? "เพิ่มสินค้า" : "แก้ไขสินค้า"}</h2>
+            <h2 className="text-xl text-deep-space-blue">{isNew ? "เพิ่มสินค้า" : "แก้ไขสินค้า"}</h2>
             <p className="text-xs text-deep-space-blue/40">{isNew ? "สร้างใหม่ — เริ่มแบบซ่อน กดแสดงเมื่อพร้อมขาย" : `#${product!.id} · ${product!.name}`}</p>
           </div>
           <button onClick={onClose} className="rounded-full p-2 text-deep-space-blue/50 hover:bg-gray-100"><X className="h-5 w-5" /></button>
@@ -244,7 +244,7 @@ function EditDrawer({ product, categoryOptions, onClose, onSaved, onCreated }: {
               rows={4}
               value={form.features}
               onChange={set("features")}
-              className={`${field} font-mono text-xs`}
+              className={`${field} tabular-nums text-xs`}
               placeholder={"พร้อมใช้งานทันที\nฟรีขนส่งในกรุงเทพฯ"}
             />
           </div>
@@ -258,7 +258,7 @@ function EditDrawer({ product, categoryOptions, onClose, onSaved, onCreated }: {
               rows={4}
               value={form.specs}
               onChange={set("specs")}
-              className={`${field} font-mono text-xs`}
+              className={`${field} tabular-nums text-xs`}
               placeholder={"ขนาด|80 x 80 x 180 cm\nน้ำหนัก|55 kg"}
             />
           </div>
@@ -486,7 +486,7 @@ export function ProductManager({ products: initial }: { products: AdminProduct[]
               <tr><td colSpan={11} className="px-4 py-10 text-center text-deep-space-blue/40">{view === "trash" ? "ถังขยะว่าง" : "ไม่พบสินค้า"}</td></tr>
             ) : (
               filtered.map((p) => {
-                const c = CAT[p.category] ?? { label: p.category, cls: "bg-gray-100 text-gray-600" }
+                const c = CAT[p.category] ?? { label: p.category, cls: "bg-gray-100 text-deep-space-blue/70" }
                 const payFull = p.priceTHB != null ? payablePreview(p.priceTHB, p.whtRate) : null
                 const payDep = payablePreview(p.depositTHB ?? DEPOSIT_THB, p.whtRate)
                 return (
@@ -496,10 +496,10 @@ export function ProductManager({ products: initial }: { products: AdminProduct[]
                         <Image src={p.image} alt={p.name} fill className="object-contain p-1" sizes="44px" />
                       </span>
                     </td>
-                    <td className="px-2 py-3 font-mono text-xs text-deep-space-blue/40">#{p.id}</td>
+                    <td className="px-2 py-3 tabular-nums text-xs text-deep-space-blue/40">#{p.id}</td>
                     <td className="px-2 py-3 text-deep-space-blue">
                       <span className="line-clamp-1" title={p.name}>{p.name}</span>
-                      {!p.deletedAt && p.hidden && <span className="ml-1 inline-block rounded bg-amber-100 px-1.5 py-0.5 align-middle text-[13.2px] font-semibold text-amber-700">ซ่อน</span>}
+                      {!p.deletedAt && p.hidden && <span className="ml-1 inline-block rounded bg-amber-100 px-1.5 py-0.5 align-middle text-[20px] font-semibold text-amber-700">ซ่อน</span>}
                     </td>
                     <td className="px-2 py-3">
                       <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${c.cls}`}>{c.label}</span>
@@ -543,7 +543,7 @@ export function ProductManager({ products: initial }: { products: AdminProduct[]
           </div>
         ) : (
           filtered.map((p) => {
-            const c = CAT[p.category] ?? { label: p.category, cls: "bg-gray-100 text-gray-600" }
+            const c = CAT[p.category] ?? { label: p.category, cls: "bg-gray-100 text-deep-space-blue/70" }
             const payFull = p.priceTHB != null ? payablePreview(p.priceTHB, p.whtRate) : null
             const payDep = payablePreview(p.depositTHB ?? DEPOSIT_THB, p.whtRate)
             return (
@@ -555,8 +555,8 @@ export function ProductManager({ products: initial }: { products: AdminProduct[]
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-1.5">
                       <span className={`inline-block rounded-full px-2 py-0.5 text-[14.5px] font-semibold ${c.cls}`}>{c.label}</span>
-                      <span className="font-mono text-[14.5px] text-deep-space-blue/40">#{p.id}</span>
-                      {!p.deletedAt && p.hidden && <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[13.2px] font-semibold text-amber-700">ซ่อน</span>}
+                      <span className="tabular-nums text-[14.5px] text-deep-space-blue/40">#{p.id}</span>
+                      {!p.deletedAt && p.hidden && <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[20px] font-semibold text-amber-700">ซ่อน</span>}
                     </div>
                     <h3 className="mt-1 line-clamp-2 text-sm font-semibold text-deep-space-blue">{p.name}</h3>
                   </div>

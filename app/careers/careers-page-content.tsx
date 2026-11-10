@@ -146,7 +146,7 @@ export function CareersPageContent() {
 
                         <motion.h1
                             variants={itemVariants}
-                            className="font-serif text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1] mb-6"
+                            className="text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1] mb-6"
                         >
                             ร่วมเป็นทีมเดียวกับ{" "}
                             <span className="text-tiger-orange italic">
@@ -201,7 +201,7 @@ export function CareersPageContent() {
                                 { value: "10+", label: "ปีในวงการ Photobooth" },
                             ].map((stat) => (
                                 <div key={stat.label} className="text-center">
-                                    <div className="font-serif text-3xl md:text-4xl text-tiger-orange mb-1">
+                                    <div className="text-3xl md:text-4xl text-tiger-orange mb-1">
                                         {stat.value}
                                     </div>
                                     <div className="text-xs sm:text-sm text-white/50">
@@ -232,7 +232,7 @@ export function CareersPageContent() {
                                 <Heart className="w-4 h-4" />
                                 Why Join Us
                             </span>
-                            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-deep-space-blue tracking-tight mb-4">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl text-deep-space-blue tracking-tight mb-4">
                                 ทำไมต้องร่วมงานกับ{" "}
                                 <span className="text-tiger-orange italic">
                                     เรา
@@ -255,7 +255,7 @@ export function CareersPageContent() {
                                     <div className="w-12 h-12 rounded-xl bg-tiger-orange/10 group-hover:bg-tiger-orange/20 flex items-center justify-center mb-5 transition-colors duration-300">
                                         <benefit.icon className="w-6 h-6 text-tiger-orange" />
                                     </div>
-                                    <h3 className="font-serif text-xl text-deep-space-blue mb-2">
+                                    <h3 className="text-xl text-deep-space-blue mb-2">
                                         {benefit.title}
                                     </h3>
                                     <p className="text-sm text-deep-space-blue/60 leading-relaxed">
@@ -289,7 +289,7 @@ export function CareersPageContent() {
                                 <Briefcase className="w-4 h-4" />
                                 Open Positions
                             </span>
-                            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-deep-space-blue tracking-tight mb-4">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl text-deep-space-blue tracking-tight mb-4">
                                 ตำแหน่งที่{" "}
                                 <span className="text-tiger-orange italic">
                                     เปิดรับ
@@ -326,7 +326,7 @@ export function CareersPageContent() {
                                             <p className="text-xs tracking-[0.2em] uppercase text-deep-space-blue/40 mb-2">
                                                 {job.subtitle}
                                             </p>
-                                            <h3 className="font-serif text-xl text-deep-space-blue leading-tight">
+                                            <h3 className="text-xl text-deep-space-blue leading-tight">
                                                 {job.title}
                                             </h3>
                                         </div>
@@ -381,7 +381,7 @@ export function CareersPageContent() {
                                 <Sparkles className="w-4 h-4" />
                                 How to Apply
                             </span>
-                            <h2 className="font-serif text-3xl md:text-4xl text-deep-space-blue tracking-tight mb-4">
+                            <h2 className="text-3xl md:text-4xl text-deep-space-blue tracking-tight mb-4">
                                 ขั้นตอน
                                 <span className="text-tiger-orange italic">
                                     สมัครงาน
@@ -400,10 +400,10 @@ export function CareersPageContent() {
                                         <div className="hidden md:block absolute top-12 left-[calc(50%+2rem)] right-0 h-px bg-gradient-to-r from-tiger-orange/30 to-transparent" />
                                     )}
                                     <div className="bg-deep-space-blue/[0.02] hover:bg-deep-space-blue/[0.04] rounded-2xl p-7 border border-deep-space-blue/5 transition-colors duration-300 h-full">
-                                        <div className="font-serif text-5xl text-tiger-orange/20 mb-4 leading-none">
+                                        <div className="text-5xl text-tiger-orange/20 mb-4 leading-none">
                                             {step.number}
                                         </div>
-                                        <h3 className="font-serif text-xl text-deep-space-blue mb-2">
+                                        <h3 className="text-xl text-deep-space-blue mb-2">
                                             {step.title}
                                         </h3>
                                         <p className="text-sm text-deep-space-blue/60 leading-relaxed">
@@ -436,7 +436,7 @@ export function CareersPageContent() {
                                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-tiger-orange/20 mb-6">
                                     <MessageCircle className="w-7 h-7 text-tiger-orange" />
                                 </div>
-                                <h2 className="font-serif text-3xl md:text-4xl text-white tracking-tight mb-4">
+                                <h2 className="text-3xl md:text-4xl text-white tracking-tight mb-4">
                                     พร้อมร่วมทีมกับเราแล้วใช่ไหม?
                                 </h2>
                                 <p className="text-white/60 text-base md:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
@@ -459,11 +459,11 @@ export function CareersPageContent() {
                                         <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                     </a>
                                     <a
-                                        href="tel:+66624249936"
+                                        href="tel:+66656246394"
                                         className="inline-flex items-center gap-2 text-white/70 hover:text-white font-semibold px-4 py-3 transition-colors duration-300"
                                     >
                                         <Phone className="w-4 h-4" />
-                                        <span>062-424-9936</span>
+                                        <span>065-624-6394</span>
                                     </a>
                                     <a
                                         href="mailto:imageautomat@gmail.com?subject=สมัครงาน IMAGE AUTOMAT"

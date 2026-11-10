@@ -151,7 +151,7 @@ function OrderCard({ o }: { o: AdminOrder }) {
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-50 px-5 py-3">
         <div className="flex flex-wrap items-center gap-2.5">
           {o.isCustom ? (
-            <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2.5 py-1 text-[14.5px] font-bold text-violet-700">
+            <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2.5 py-1 text-[14.5px] font-bold text-tiger-orange">
               <Sparkles className="h-3 w-3" /> ออเดอร์พิเศษ
             </span>
           ) : (
@@ -159,7 +159,7 @@ function OrderCard({ o }: { o: AdminOrder }) {
               <ShoppingBag className="h-3 w-3" /> ออเดอร์ปกติ
             </span>
           )}
-          <span className="font-mono text-sm font-bold text-deep-space-blue">{o.merchantOrderId}</span>
+          <span className="tabular-nums text-sm font-bold text-deep-space-blue">{o.merchantOrderId}</span>
           <span className="flex items-center gap-1 text-xs text-deep-space-blue/40">
             <Clock className="h-3 w-3" /> {dt(o.createdAt)}
           </span>
@@ -177,7 +177,7 @@ function OrderCard({ o }: { o: AdminOrder }) {
             <User className="h-4 w-4 text-deep-space-blue/40" />
             {o.userName ?? "—"}
           </span>
-          <span className="inline-flex items-center gap-1 rounded-md bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700">
+          <span className="inline-flex items-center gap-1 rounded-md bg-blue-50 px-2 py-0.5 text-xs font-medium text-tiger-orange">
             <CreditCard className="h-3 w-3" /> {PAY_LABEL[o.paymentMethod] ?? o.paymentMethod}
           </span>
           {o.invoiceType && (

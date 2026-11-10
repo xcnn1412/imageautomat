@@ -196,7 +196,7 @@ export function CompetitiveAdvantagesSection() {
                 <div className="flex items-baseline gap-2 whitespace-nowrap text-[16px] lg:text-[min(1.38vw,16px)]">
                   <span
                     className={`font-sans font-bold leading-none ${
-                      index % 2 === 0 ? "text-tiger-orange" : "text-slate-400"
+                      index % 2 === 0 ? "text-tiger-orange" : "text-deep-space-blue/45"
                     }`}
                   >
                     {item.no}

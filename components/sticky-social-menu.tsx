@@ -32,7 +32,7 @@ const socialItems = [
   {
     id: "whatsapp",
     label: "WhatsApp",
-    href: "https://wa.me/66635944429",
+    href: "https://wa.me/66656246394",
     icon: <WhatsAppIcon />,
     bg: "#25D366",
     glowColor: "rgba(37,211,102,0.5)",
@@ -52,7 +52,7 @@ const socialItems = [
   {
     id: "phone",
     label: "โทรหาเรา",
-    href: "tel:0635944429",
+    href: "tel:0656246394",
     icon: <Phone size={20} />,
     bg: "#FB8500",
     glowColor: "rgba(251,133,0,0.5)",
@@ -84,7 +84,7 @@ const mobileItems = [
   {
     id: "whatsapp",
     label: "WhatsApp",
-    href: "https://wa.me/66635944429",
+    href: "https://wa.me/66656246394",
     icon: <WhatsAppIcon />,
     bg: "#25D366",
     external: true,
@@ -92,7 +92,7 @@ const mobileItems = [
   {
     id: "phone",
     label: "โทรหาเรา",
-    href: "tel:0635944429",
+    href: "tel:0656246394",
     icon: <Phone size={20} />,
     bg: "#FB8500",
     external: false,

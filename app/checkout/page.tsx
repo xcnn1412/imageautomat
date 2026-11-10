@@ -60,7 +60,7 @@ export default function CheckoutPage() {
         <main className="min-h-screen bg-white">
             <Navigation />
             <section className="mx-auto max-w-2xl px-6 pb-24 pt-28 lg:pt-36">
-                <h1 className="mb-8 font-serif text-3xl text-deep-space-blue lg:text-4xl">ชำระเงิน</h1>
+                <h1 className="mb-8 text-3xl text-deep-space-blue lg:text-4xl">ชำระเงิน</h1>
 
                 {items.length === 0 ? (
                     <div className="text-center">

@@ -45,7 +45,7 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
                 </Link>
 
                 <div className="mb-2 flex items-center justify-between gap-3">
-                    <h1 className="font-serif text-2xl text-deep-space-blue lg:text-3xl">{o.merchantOrderId}</h1>
+                    <h1 className="text-2xl text-deep-space-blue lg:text-3xl">{o.merchantOrderId}</h1>
                     <StatusBadge status={o.status} size="lg" />
                 </div>
                 <p className="mb-8 text-sm text-deep-space-blue/40">สั่งซื้อเมื่อ {dt(o.createdAt)}</p>

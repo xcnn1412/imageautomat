@@ -91,7 +91,7 @@ export function NotFoundContent() {
                             4
                             <span className="absolute inset-0 animate-shimmer-404 rounded-2xl" />
                         </span>
-                        <span className="text-[#023047] relative inline-block animate-wiggle-404">
+                        <span className="text-deep-space-blue relative inline-block animate-wiggle-404">
                             0
                         </span>
                         <span className="relative">

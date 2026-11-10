@@ -52,7 +52,7 @@ const programs: ProgramItem[] = [
             "ผสมลายเซ็นเข้ากับคลิป Reel",
             "เหมาะกับงาน Event พรีเมียม",
         ],
-        accentColor: "text-purple-500",
+        accentColor: "text-tiger-orange",
         gradientFrom: "from-purple-500",
         gradientTo: "to-violet-400",
         number: "02",
@@ -67,7 +67,7 @@ const programs: ProgramItem[] = [
             "เอฟเฟกต์มืออาชีพในตัว",
             "สร้างประสบการณ์ที่แตกต่าง",
         ],
-        accentColor: "text-sky-500",
+        accentColor: "text-tiger-orange",
         gradientFrom: "from-sky-500",
         gradientTo: "to-blue-400",
         number: "03",
@@ -96,7 +96,7 @@ const programs: ProgramItem[] = [
 export function HomeProgramSelection() {
     return (
         <section
-            className="w-full bg-[#FAFAFA] py-16 sm:py-20 md:py-24 lg:py-28 px-4 md:px-8 relative overflow-hidden"
+            className="w-full bg-[#FAFAFA] pt-12 md:pt-14 lg:pt-16 pb-10 md:pb-12 px-4 md:px-8 relative overflow-hidden"
             aria-label="เลือกโปรแกรมโฟโต้บูธที่ใช่สำหรับงานของคุณ"
         >
             {/* Subtle top divider — visual bridge from prev section */}
@@ -120,16 +120,14 @@ export function HomeProgramSelection() {
                     </div>
 
                     <h2
-                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-deep-space-blue mb-4 sm:mb-5"
+                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-deep-space-blue mb-4 sm:mb-5 md:whitespace-nowrap"
                         style={{ lineHeight: "1.35" }}
                     >
-                        เลือกโปรแกรมที่ใช่
-                        <br className="hidden sm:block" />
-                        <span className="text-tiger-orange">ให้ตรงกับงานของคุณ</span>
+                        เลือกโปรแกรมที่ใช่<span className="text-tiger-orange">ให้ตรงกับงานของคุณ</span>
                     </h2>
 
                     <p
-                        className="text-sm sm:text-base md:text-lg text-deep-space-blue/50 max-w-xl mx-auto"
+                        className="text-sm sm:text-base md:text-lg text-deep-space-blue/50 mx-auto sm:whitespace-nowrap"
                         style={{ lineHeight: "1.8" }}
                     >
                         ซอฟต์แวร์ Photobooth 4 รูปแบบ ครอบคลุมทุกรูปแบบงานอีเวนต์

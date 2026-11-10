@@ -20,10 +20,10 @@ const softwareFeatures = [
 ]
 
 const paymentFeatures = [
-  { icon: CreditCard, title: "ระบบชำระเงิน", en: "PAYMENT", description: "รองรับหลายช่องทาง\nปลอดภัย รวดเร็ว" },
-  { icon: Ticket, title: "ระบบคูปอง", en: "COUPON", description: "สร้างและจัดการคูปอง\nส่วนลดได้ง่าย ยืดหยุ่น" },
-  { icon: CalendarCheck, title: "ระบบอีเวนต์", en: "EVENT", description: "จัดการงานอีเวนต์ได้\nอย่างมีประสิทธิภาพ ครบวงจร" },
-  { icon: Globe, title: "ระบบจัดการหลังบ้าน", en: "DASHBOARD", description: "ระบบจัดการหลังบ้าน\nผ่าน Website Online 100%" },
+  { icon: CreditCard, title: "ระบบชำระเงิน", en: "PAYMENT", description: ["รองรับหลายช่องทาง", "ปลอดภัย รวดเร็ว"] },
+  { icon: Ticket, title: "ระบบคูปอง", en: "COUPON", description: ["สร้างและจัดการ", "คูปองส่วนลด", "ได้ง่าย ยืดหยุ่น"] },
+  { icon: CalendarCheck, title: "ระบบอีเวนต์", en: "EVENT", description: ["จัดการงานอีเวนต์", "ได้อย่างมีประสิทธิภาพ", "ครบวงจร"] },
+  { icon: Globe, title: "ระบบจัดการหลังบ้าน", en: "DASHBOARD", description: ["ระบบจัดการหลังบ้าน", "ผ่าน Website", "Online 100%"] },
 ]
 
 const rentalModes = [
@@ -109,7 +109,7 @@ export function HomeCapabilities() {
                   <span className="mx-auto flex w-14 h-14 items-center justify-center rounded-2xl bg-white shadow-[0_2px_10px_rgba(2,48,71,0.08)]">
                     <Icon className="w-6 h-6 text-deep-space-blue" strokeWidth={1.6} />
                   </span>
-                  <span className="mt-2 block min-h-[2.6em] text-[12px] leading-snug text-deep-space-blue/60 text-balance">{label}</span>
+                  <span className="mt-2 block min-h-[2.6em] text-[20px] leading-snug text-deep-space-blue/60 text-balance">{label}</span>
                 </li>
               ))}
             </ul>
@@ -145,7 +145,12 @@ export function HomeCapabilities() {
                   </span>
                   <h3 className="mt-4 font-sans font-bold text-[14px] leading-snug text-white">{title}</h3>
                   <p className="font-bold text-[14px] tracking-[0.1em] text-white/85">{en}</p>
-                  <p className="mt-3 text-[12px] font-light leading-relaxed text-white/90 whitespace-pre-line">{description}</p>
+                  <p className="mt-3 text-[16px] font-light leading-relaxed text-white/90">
+                    {/* ponytail: ตัดบรรทัดได้เฉพาะระหว่างวลี — กันตัดกลางคำแบบ "ช่อง/ทาง" */}
+                    {description.map((phrase) => (
+                      <span key={phrase} className="inline-block whitespace-nowrap mr-[0.3em]">{phrase}</span>
+                    ))}
+                  </p>
                 </li>
               ))}
             </ul>

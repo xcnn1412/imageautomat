@@ -168,7 +168,7 @@ function EditDrawer({ order, onClose }: { order: PendingCustomOrder; onClose: ()
       <aside className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-white shadow-2xl">
         <header className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
           <div>
-            <h2 className="font-serif text-xl text-deep-space-blue">แก้ไขออเดอร์พิเศษ</h2>
+            <h2 className="text-xl text-deep-space-blue">แก้ไขออเดอร์พิเศษ</h2>
             <p className="truncate text-xs text-deep-space-blue/40">#{order.productId} · {order.userEmail ?? "—"}</p>
           </div>
           <button onClick={onClose} className="rounded-full p-2 text-deep-space-blue/50 hover:bg-gray-100"><X className="h-5 w-5" /></button>

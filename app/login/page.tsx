@@ -14,7 +14,7 @@ export default function LoginPage() {
         <main className="min-h-screen bg-background">
             <Navigation />
             <section className="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center px-6 py-24">
-                <h1 className="font-serif text-3xl tracking-tight text-deep-space-blue lg:text-4xl">
+                <h1 className="text-3xl tracking-tight text-deep-space-blue lg:text-4xl">
                     เข้าสู่ระบบสมาชิก IMAGE AUTOMAT
                 </h1>
                 <p className="mt-3 text-deep-space-blue/60">

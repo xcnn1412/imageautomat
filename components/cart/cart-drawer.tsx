@@ -29,7 +29,7 @@ export function CartDrawer() {
                             <ShoppingBag className="h-5 w-5" />
                         </span>
                         <div>
-                            <h2 className="font-serif text-xl leading-none text-deep-space-blue">ตะกร้าของคุณ</h2>
+                            <h2 className="text-xl leading-none text-deep-space-blue">ตะกร้าของคุณ</h2>
                             <p className="mt-1 text-xs text-deep-space-blue/40">{count} ชิ้น</p>
                         </div>
                     </div>
@@ -65,7 +65,7 @@ export function CartDrawer() {
                                         <p className="line-clamp-2 text-sm font-semibold text-deep-space-blue">{i.name}</p>
                                         <div className="mt-0.5 flex items-center gap-2">
                                             <p className="text-sm font-bold text-tiger-orange">{baht(i.unitTHB)}</p>
-                                            <span className={`rounded-full px-1.5 py-0.5 text-[13.2px] font-semibold ${i.priceMode === "deposit" ? "bg-amber-100 text-amber-700" : "bg-gray-100 text-gray-500"}`}>
+                                            <span className={`rounded-full px-1.5 py-0.5 text-[20px] font-semibold ${i.priceMode === "deposit" ? "bg-amber-100 text-amber-700" : "bg-gray-100 text-deep-space-blue/60"}`}>
                                                 {i.priceMode === "deposit" ? "มัดจำ" : "เต็มจำนวน"}
                                             </span>
                                         </div>

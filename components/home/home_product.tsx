@@ -121,8 +121,8 @@ export function ProductSection() {
                                 />
                             </div>
                             <div className="p-5 text-center border-t border-white/60">
-                                <span className="text-tiger-orange text-[13.2px] font-medium uppercase tracking-[0.15em]">{product.label}</span>
-                                <p className="mt-1 text-[12.6px] font-light text-slate-500">สามารถผลิตสั่งทำได้หลายรูปแบบ</p>
+                                <span className="text-tiger-orange text-[20px] font-medium uppercase tracking-[0.15em]">{product.label}</span>
+                                <p className="mt-1 text-[20px] font-light text-deep-space-blue/60">สามารถผลิตสั่งทำได้หลายรูปแบบ</p>
                             </div>
                         </div>
                     ))}

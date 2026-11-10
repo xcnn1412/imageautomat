@@ -31,7 +31,7 @@ const KNOWN_TABS: { key: string; label: string; hint: string }[] = [
 const BADGE: Record<string, { label: string; cls: string }> = {
     buy: { label: "ซื้อ", cls: "bg-tiger-orange/10 text-tiger-orange" },
     rent: { label: "เช่า", cls: "bg-deep-space-blue/10 text-deep-space-blue" },
-    software: { label: "License", cls: "bg-violet-100 text-violet-700" },
+    software: { label: "License", cls: "bg-tiger-orange/10 text-tiger-orange" },
 }
 
 const baht = (n: number) => `฿${n.toLocaleString("th-TH")}`
@@ -57,7 +57,7 @@ export function ShopPageContent({ products }: { products: ShopProduct[] }) {
             <header className="border-b border-gray-100 bg-linear-to-b from-gray-50/80 to-white">
                 <div className="mx-auto max-w-7xl px-6 pb-10 pt-28 lg:px-8 lg:pb-12 lg:pt-36">
                     <span className="text-xs font-bold uppercase tracking-[0.25em] text-tiger-orange">IMAGEAUTOMAT SHOP</span>
-                    <h1 className="mt-3 font-serif text-4xl tracking-tight text-deep-space-blue lg:text-6xl">ซื้อสินค้า IMAGE AUTOMAT และชำระด้วยบัตรเครดิต</h1>
+                    <h1 className="mt-3 text-4xl tracking-tight text-deep-space-blue lg:text-6xl">ซื้อสินค้า IMAGE AUTOMAT และชำระด้วยบัตรเครดิต</h1>
                     <p className="mt-3 max-w-xl text-base text-deep-space-blue/60 lg:text-lg">
                         ตู้โฟโต้บูธ ซื้อ · เช่า · ซอฟต์แวร์ — สั่งซื้อและชำระเงินออนไลน์ได้ทันที
                     </p>
@@ -119,7 +119,7 @@ export function ShopPageContent({ products }: { products: ShopProduct[] }) {
 }
 
 function ProductCard({ product: p, isAuthed }: { product: ShopProduct; isAuthed: boolean }) {
-    const badge = BADGE[p.category] ?? { label: p.category, cls: "bg-gray-100 text-gray-600" }
+    const badge = BADGE[p.category] ?? { label: p.category, cls: "bg-gray-100 text-deep-space-blue/70" }
     const fullPrice = p.priceTHB
     const depositPrice = p.depositTHB ?? DEPOSIT_THB
     const soldOut = isBuyableCategory(p.category) && p.stock <= 0

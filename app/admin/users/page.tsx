@@ -23,7 +23,7 @@ export default async function AdminUsersPage() {
     <main className="min-h-screen bg-gray-50 px-4 py-8 sm:px-6 sm:py-10">
       <div className="mx-auto max-w-3xl">
         <AdminNav active="/admin/users" />
-        <h1 className="font-serif text-3xl text-deep-space-blue">สมาชิก</h1>
+        <h1 className="text-3xl text-deep-space-blue">สมาชิก</h1>
         <p className="mb-6 mt-1 text-sm text-deep-space-blue/50">
           {pending > 0 ? `มี ${pending} บัญชีรอการอนุมัติ` : "ไม่มีบัญชีรอการอนุมัติ"} — อนุมัติแล้วผู้ใช้จึงจะเข้าสู่ระบบได้
         </p>

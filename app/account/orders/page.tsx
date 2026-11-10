@@ -28,7 +28,7 @@ export default async function OrdersPage() {
         <main className="min-h-screen bg-white">
             <Navigation />
             <section className="mx-auto max-w-3xl px-6 pb-24 pt-28 lg:pt-36">
-                <h1 className="mb-8 font-serif text-3xl text-deep-space-blue lg:text-4xl">ออเดอร์ของฉัน</h1>
+                <h1 className="mb-8 text-3xl text-deep-space-blue lg:text-4xl">ออเดอร์ของฉัน</h1>
 
                 {orders.length === 0 ? (
                     <p className="text-deep-space-blue/50">ยังไม่มีออเดอร์</p>

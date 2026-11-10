@@ -52,13 +52,13 @@ export function FAQSection() {
     <section id="faq" className="py-20 lg:py-32 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#FB8500]/10 text-[#FB8500] text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#FB8500]/10 text-tiger-orange text-xs font-semibold tracking-[0.3em] uppercase mb-4">
             FAQ
           </span>
-          <h2 className="text-3xl lg:text-4xl font-extrabold text-[#023047]">
-            FAQ <span className="text-[#FB8500]">ให้เช่าตู้ถ่ายภาพ</span>
+          <h2 className="text-3xl lg:text-4xl font-extrabold text-deep-space-blue">
+            FAQ <span className="text-tiger-orange">ให้เช่าตู้ถ่ายภาพ</span>
           </h2>
-          <p className="mt-4 text-lg text-[#023047]/60">
+          <p className="mt-4 text-lg text-deep-space-blue/60">
             คำตอบเรื่องราคา แพ็กเกจเช่า การติดตั้ง และการใช้งานจริง สำหรับธุรกิจให้เช่าตู้ถ่ายภาพและให้เช่า Photobooth
           </p>
         </div>
@@ -66,10 +66,10 @@ export function FAQSection() {
         <Accordion type="single" collapsible className="w-full">
           {faqs.map((faq, index) => (
             <AccordionItem key={index} value={`item-${index}`} className="border-border">
-              <AccordionTrigger className="text-left text-[#023047] hover:text-[#FB8500] hover:no-underline">
+              <AccordionTrigger className="text-left text-deep-space-blue hover:text-tiger-orange hover:no-underline">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-[#023047]/60 leading-relaxed">
+              <AccordionContent className="text-deep-space-blue/60 leading-relaxed">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

@@ -38,8 +38,8 @@ const contactCards = [
     {
         icon: Phone,
         label: "โทรศัพท์",
-        value: "063-594-4429",
-        href: "tel:+66635944429",
+        value: "065-624-6394",
+        href: "tel:+66656246394",
         description: "โทรหาเราได้ทุกวัน",
         color: "from-tiger-orange to-amber-500",
         bgColor: "bg-tiger-orange/5",
@@ -141,7 +141,7 @@ export function ContactPageContent() {
                     >
                         <motion.span
                             variants={itemVariants}
-                            className="inline-flex items-center gap-2 text-sm font-semibold text-tiger-orange uppercase tracking-[0.3em] mb-6"
+                            className="inline-flex items-center gap-2 text-sm font-semibold text-tiger-orange uppercase tracking-[0.2em] mb-5"
                         >
                             <Send className="w-4 h-4" />
                             Contact Us
@@ -149,22 +149,17 @@ export function ContactPageContent() {
 
                         <motion.h1
                             variants={itemVariants}
-                            className="font-serif text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1] mb-6"
+                            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.3] mb-5"
                         >
-                            ติดต่อ{" "}
-                            <span className="text-tiger-orange italic">
-                                เรา
-                            </span>
+                            ติดต่อเรา
                         </motion.h1>
 
                         <motion.p
                             variants={itemVariants}
-                            className="text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl mx-auto mb-8"
+                            className="text-lg md:text-xl text-white/70 leading-relaxed mx-auto mb-10 text-center"
                         >
-                            พร้อมให้บริการเช่าตู้ถ่ายรูป Photobooth
-                            สำหรับทุกงานอีเวนต์
-                            <br className="hidden md:block" />
-                            สอบถามราคาพิเศษได้ทันที
+                            <span className="block md:whitespace-nowrap">พร้อมให้บริการเช่าตู้ถ่ายรูป Photobooth สำหรับทุกงานอีเวนต์</span>
+                            <span className="block">สอบถามราคาพิเศษได้ทันที</span>
                         </motion.p>
 
                         {/* Quick contact */}
@@ -176,36 +171,36 @@ export function ContactPageContent() {
                                 href={LINE_OA_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group relative inline-flex items-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-[#06C755]/20 hover:shadow-xl hover:shadow-[#06C755]/40 hover:scale-105 active:scale-95 overflow-hidden"
+                                className="group relative inline-flex w-72 justify-center items-center gap-3 bg-[#06C755] hover:bg-[#05b04b] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-[#06C755]/20 hover:shadow-xl hover:shadow-[#06C755]/40 hover:scale-105 active:scale-95 overflow-hidden"
                             >
                                 <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                                 <LineIcon className="relative z-10 w-5 h-5" />
                                 <span className="relative z-10">
-                                    แชท LINE @imageautomat
+                                    @imageautomat
                                 </span>
                             </a>
                             <a
-                                href="tel:+66635944429"
-                                className="inline-flex items-center gap-2 text-white/60 hover:text-white font-medium transition-colors duration-300"
+                                href="tel:+66656246394"
+                                className="inline-flex w-72 justify-center items-center gap-3 bg-tiger-orange hover:bg-tiger-orange/90 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-tiger-orange/20 hover:shadow-xl hover:shadow-tiger-orange/40 hover:scale-105 active:scale-95"
                             >
-                                <Phone className="w-4 h-4" />
-                                <span>063-594-4429</span>
+                                <Phone className="w-5 h-5" />
+                                <span>065-624-6394</span>
                             </a>
                         </motion.div>
 
                         {/* Opening hours badge */}
                         <motion.div
                             variants={itemVariants}
-                            className="mt-10 inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-5 py-2.5 text-sm text-white/50"
+                            className="mt-8 inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-5 py-2.5 text-sm text-white/70"
                         >
                             <Clock className="w-4 h-4 text-tiger-orange" />
-                            เปิดให้บริการทุกวัน 09:00 – 21:00 น.
+                            เปิดให้บริการทุกวัน 09:00 – 18:00 น.
                         </motion.div>
                     </motion.div>
                 </section>
 
                 {/* ─── Contact Cards ─── */}
-                <section className="py-16 lg:py-24 bg-white relative overflow-hidden">
+                <section className="pt-16 pb-10 lg:pt-24 lg:pb-12 bg-white relative overflow-hidden">
                     <div className="absolute top-20 left-10 w-72 h-72 bg-tiger-orange/5 rounded-full blur-3xl" />
 
                     <motion.div
@@ -219,61 +214,44 @@ export function ContactPageContent() {
                             variants={itemVariants}
                             className="text-center mb-12"
                         >
-                            <h1 className="font-serif text-3xl md:text-4xl text-deep-space-blue tracking-tight mb-4">
-                                ติดต่อ IMAGE AUTOMAT และ
-                                <span className="text-tiger-orange italic">
+                            <h2 className="text-2xl md:text-[2rem] font-bold text-deep-space-blue leading-snug mb-3">
+                                ติดต่อ IMAGE AUTOMAT และ{" "}
+                                <span className="text-tiger-orange">
                                     ขอใบเสนอราคา
                                 </span>
-                            </h1>
-                            <p className="text-deep-space-blue/50 max-w-lg mx-auto">
-                                เลือกช่องทางที่สะดวกสำหรับคุณ
-                                ทีมงานพร้อมให้บริการ
+                            </h2>
+                            <p className="text-deep-space-blue/60 md:text-lg mx-auto sm:whitespace-nowrap">
+                                เลือกช่องทางที่สะดวกสำหรับคุณ ทีมงานพร้อมให้บริการ
                             </p>
                         </motion.div>
 
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                        <div className="mx-auto grid max-w-4xl gap-4 md:grid-cols-2 md:gap-5">
                             {contactCards.map((card) => (
                                 <motion.a
                                     key={card.label}
                                     href={card.href}
-                                    target={
-                                        card.href.startsWith("http")
-                                            ? "_blank"
-                                            : undefined
-                                    }
-                                    rel={
-                                        card.href.startsWith("http")
-                                            ? "noopener noreferrer"
-                                            : undefined
-                                    }
+                                    target={card.href.startsWith("http") ? "_blank" : undefined}
+                                    rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}
                                     variants={itemVariants}
-                                    whileHover={{ y: -6, scale: 1.02 }}
-                                    whileTap={{ scale: 0.97 }}
-                                    className={`group relative flex flex-col items-center text-center p-8 rounded-2xl ${card.bgColor} border border-transparent hover:border-gray-100 hover:shadow-xl transition-all duration-500 cursor-pointer`}
+                                    whileHover={{ y: -4 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className={`group flex items-center gap-5 rounded-2xl border border-deep-space-blue/5 ${card.bgColor} p-5 sm:p-6 transition-shadow duration-300 hover:shadow-lg`}
                                 >
-                                    {/* Icon */}
-                                    <div
-                                        className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${card.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
-                                    >
+                                    <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${card.color} shadow-md`}>
                                         {card.isLine ? (
-                                            <LineIcon className="w-6 h-6 text-white" />
+                                            <LineIcon className="h-6 w-6 text-white" />
                                         ) : (
-                                            <card.icon
-                                                className="w-6 h-6 text-white"
-                                                strokeWidth={1.8}
-                                            />
+                                            <card.icon className="h-6 w-6 text-white" strokeWidth={1.8} />
                                         )}
                                     </div>
-
-                                    <p className="text-xs tracking-[0.2em] uppercase text-deep-space-blue/40 mb-1.5">
-                                        {card.label}
-                                    </p>
-                                    <p className="font-serif text-lg text-deep-space-blue font-semibold mb-1">
-                                        {card.value}
-                                    </p>
-                                    <p className="text-sm text-deep-space-blue/40">
-                                        {card.description}
-                                    </p>
+                                    <div className="min-w-0 flex-1">
+                                        <p className="text-sm font-medium text-deep-space-blue/50">{card.label}</p>
+                                        <p className="whitespace-nowrap text-lg font-bold leading-snug text-deep-space-blue sm:text-xl">{card.value}</p>
+                                        <p className="whitespace-nowrap text-sm text-deep-space-blue/60">{card.description}</p>
+                                    </div>
+                                    {card.href !== "#" && (
+                                        <ArrowRight className="h-5 w-5 shrink-0 text-deep-space-blue/30 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-deep-space-blue/60" />
+                                    )}
                                 </motion.a>
                             ))}
                         </div>
@@ -281,7 +259,7 @@ export function ContactPageContent() {
                 </section>
 
                 {/* ─── Form + Map Section ─── */}
-                <section className="py-16 lg:py-24 bg-deep-space-blue/[0.02] relative overflow-hidden">
+                <section className="py-10 lg:py-14 bg-deep-space-blue/[0.02] relative overflow-hidden">
                     <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
 
                     <motion.div
@@ -294,7 +272,7 @@ export function ContactPageContent() {
                         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
                             {/* Left — Form */}
                             <motion.div variants={itemVariants}>
-                                <div className="bg-white rounded-3xl shadow-xl shadow-deep-space-blue/5 p-8 md:p-10 border border-gray-100/80">
+                                <div className="rounded-3xl border border-tiger-orange/20 bg-gradient-to-b from-[#fff6ec] to-[#fffaf5] p-6 md:p-8 shadow-xl shadow-tiger-orange/10">
                                     {isSubmitted ? (
                                         <div className="flex flex-col items-center justify-center py-16 text-center">
                                             <motion.div
@@ -310,21 +288,21 @@ export function ContactPageContent() {
                                             >
                                                 <Check className="w-8 h-8 text-white" />
                                             </motion.div>
-                                            <h3 className="font-serif text-2xl text-deep-space-blue mb-3">
+                                            <h3 className="text-2xl font-bold text-deep-space-blue mb-3">
                                                 ส่งข้อมูลเรียบร้อย!
                                             </h3>
-                                            <p className="text-deep-space-blue/50">
+                                            <p className="text-deep-space-blue/60">
                                                 ทีมงานจะติดต่อกลับภายใน 24
                                                 ชั่วโมง
                                             </p>
                                         </div>
                                     ) : (
                                         <>
-                                            <div className="mb-8">
-                                                <h3 className="font-serif text-2xl text-deep-space-blue mb-2">
+                                            <div className="mb-6 border-b border-tiger-orange/15 pb-5">
+                                                <h3 className="text-2xl font-bold text-deep-space-blue mb-1">
                                                     ส่งข้อมูลหาเรา
                                                 </h3>
-                                                <p className="text-sm text-deep-space-blue/40">
+                                                <p className="text-deep-space-blue/60 leading-relaxed">
                                                     กรอกรายละเอียดงานของคุณ
                                                     เราจะติดต่อกลับพร้อมราคาพิเศษ
                                                 </p>
@@ -332,15 +310,16 @@ export function ContactPageContent() {
 
                                             <form
                                                 onSubmit={handleSubmit}
-                                                className="space-y-6"
+                                                className="space-y-4"
                                             >
                                                 {/* Name */}
                                                 <div>
                                                     <label
                                                         htmlFor="contact-name"
-                                                        className="block text-xs tracking-[0.15em] uppercase text-deep-space-blue/50 mb-2"
+                                                        className="block text-[15px] font-semibold text-deep-space-blue mb-1.5"
                                                     >
                                                         ชื่อ – นามสกุล
+                                                        <span className="ml-0.5 text-tiger-orange">*</span>
                                                     </label>
                                                     <input
                                                         id="contact-name"
@@ -353,7 +332,7 @@ export function ContactPageContent() {
                                                                     .value,
                                                             })
                                                         }
-                                                        className="w-full h-12 px-4 bg-deep-space-blue/[0.03] border border-deep-space-blue/10 rounded-xl focus:border-tiger-orange focus:ring-1 focus:ring-tiger-orange/20 text-deep-space-blue placeholder:text-deep-space-blue/25 transition-all duration-300 outline-none"
+                                                        className="h-12 w-full rounded-xl border border-[#ecd9c6] bg-white px-4 text-base text-deep-space-blue shadow-sm outline-none transition placeholder:text-deep-space-blue/45 hover:border-tiger-orange/50 focus:border-tiger-orange focus:ring-4 focus:ring-tiger-orange/15 data-[empty=true]:text-deep-space-blue/45"
                                                         placeholder="ชื่อของคุณ"
                                                         required
                                                     />
@@ -363,9 +342,10 @@ export function ContactPageContent() {
                                                 <div>
                                                     <label
                                                         htmlFor="contact-phone"
-                                                        className="block text-xs tracking-[0.15em] uppercase text-deep-space-blue/50 mb-2"
+                                                        className="block text-[15px] font-semibold text-deep-space-blue mb-1.5"
                                                     >
                                                         เบอร์โทรศัพท์
+                                                        <span className="ml-0.5 text-tiger-orange">*</span>
                                                     </label>
                                                     <input
                                                         id="contact-phone"
@@ -378,18 +358,18 @@ export function ContactPageContent() {
                                                                     .value,
                                                             })
                                                         }
-                                                        className="w-full h-12 px-4 bg-deep-space-blue/[0.03] border border-deep-space-blue/10 rounded-xl focus:border-tiger-orange focus:ring-1 focus:ring-tiger-orange/20 text-deep-space-blue placeholder:text-deep-space-blue/25 transition-all duration-300 outline-none"
-                                                        placeholder="063-594-4429"
+                                                        className="h-12 w-full rounded-xl border border-[#ecd9c6] bg-white px-4 text-base text-deep-space-blue shadow-sm outline-none transition placeholder:text-deep-space-blue/45 hover:border-tiger-orange/50 focus:border-tiger-orange focus:ring-4 focus:ring-tiger-orange/15 data-[empty=true]:text-deep-space-blue/45"
+                                                        placeholder="065-624-6394"
                                                         required
                                                     />
                                                 </div>
 
-                                                <div className="grid sm:grid-cols-2 gap-6">
+                                                <div className="grid sm:grid-cols-2 gap-4">
                                                     {/* Event Type */}
                                                     <div>
                                                         <label
                                                             htmlFor="contact-event-type"
-                                                            className="block text-xs tracking-[0.15em] uppercase text-deep-space-blue/50 mb-2"
+                                                            className="block text-[15px] font-semibold text-deep-space-blue mb-1.5"
                                                         >
                                                             ประเภทงาน
                                                         </label>
@@ -398,6 +378,7 @@ export function ContactPageContent() {
                                                             value={
                                                                 formData.eventType
                                                             }
+                                                            data-empty={!formData.eventType}
                                                             onChange={(e) =>
                                                                 setFormData({
                                                                     ...formData,
@@ -406,7 +387,7 @@ export function ContactPageContent() {
                                                                             .value,
                                                                 })
                                                             }
-                                                            className="w-full h-12 px-4 bg-deep-space-blue/[0.03] border border-deep-space-blue/10 rounded-xl focus:border-tiger-orange focus:ring-1 focus:ring-tiger-orange/20 text-deep-space-blue transition-all duration-300 outline-none"
+                                                            className="h-12 w-full rounded-xl border border-[#ecd9c6] bg-white px-4 text-base text-deep-space-blue shadow-sm outline-none transition placeholder:text-deep-space-blue/45 hover:border-tiger-orange/50 focus:border-tiger-orange focus:ring-4 focus:ring-tiger-orange/15 data-[empty=true]:text-deep-space-blue/45"
                                                         >
                                                             <option value="">
                                                                 เลือกประเภทงาน
@@ -437,7 +418,7 @@ export function ContactPageContent() {
                                                     <div>
                                                         <label
                                                             htmlFor="contact-event-date"
-                                                            className="block text-xs tracking-[0.15em] uppercase text-deep-space-blue/50 mb-2"
+                                                            className="block text-[15px] font-semibold text-deep-space-blue mb-1.5"
                                                         >
                                                             วันจัดงาน
                                                         </label>
@@ -447,6 +428,7 @@ export function ContactPageContent() {
                                                             value={
                                                                 formData.eventDate
                                                             }
+                                                            data-empty={!formData.eventDate}
                                                             onChange={(e) =>
                                                                 setFormData({
                                                                     ...formData,
@@ -455,7 +437,7 @@ export function ContactPageContent() {
                                                                             .value,
                                                                 })
                                                             }
-                                                            className="w-full h-12 px-4 bg-deep-space-blue/[0.03] border border-deep-space-blue/10 rounded-xl focus:border-tiger-orange focus:ring-1 focus:ring-tiger-orange/20 text-deep-space-blue transition-all duration-300 outline-none"
+                                                            className="h-12 w-full rounded-xl border border-[#ecd9c6] bg-white px-4 text-base text-deep-space-blue shadow-sm outline-none transition placeholder:text-deep-space-blue/45 hover:border-tiger-orange/50 focus:border-tiger-orange focus:ring-4 focus:ring-tiger-orange/15 data-[empty=true]:text-deep-space-blue/45"
                                                         />
                                                     </div>
                                                 </div>
@@ -464,7 +446,7 @@ export function ContactPageContent() {
                                                 <div>
                                                     <label
                                                         htmlFor="contact-message"
-                                                        className="block text-xs tracking-[0.15em] uppercase text-deep-space-blue/50 mb-2"
+                                                        className="block text-[15px] font-semibold text-deep-space-blue mb-1.5"
                                                     >
                                                         ข้อความเพิ่มเติม
                                                     </label>
@@ -481,7 +463,7 @@ export function ContactPageContent() {
                                                                         .value,
                                                             })
                                                         }
-                                                        className="w-full px-4 py-3 bg-deep-space-blue/[0.03] border border-deep-space-blue/10 rounded-xl focus:border-tiger-orange focus:ring-1 focus:ring-tiger-orange/20 text-deep-space-blue placeholder:text-deep-space-blue/25 transition-all duration-300 outline-none resize-none"
+                                                        className="py-3 w-full rounded-xl border border-[#ecd9c6] bg-white px-4 text-base text-deep-space-blue shadow-sm outline-none transition placeholder:text-deep-space-blue/45 hover:border-tiger-orange/50 focus:border-tiger-orange focus:ring-4 focus:ring-tiger-orange/15 resize-none"
                                                         placeholder="บอกเราเกี่ยวกับงานของคุณ..."
                                                         rows={4}
                                                     />
@@ -490,7 +472,7 @@ export function ContactPageContent() {
                                                 {/* Submit */}
                                                 <button
                                                     type="submit"
-                                                    className="group w-full relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-tiger-orange to-amber-500 hover:from-tiger-orange hover:to-tiger-orange text-white font-bold h-14 rounded-xl text-sm tracking-wide transition-all duration-300 shadow-lg shadow-tiger-orange/20 hover:shadow-xl hover:shadow-tiger-orange/30 hover:scale-[1.01] active:scale-[0.99] overflow-hidden"
+                                                    className="group w-full relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-tiger-orange to-amber-500 hover:from-tiger-orange hover:to-tiger-orange text-white font-bold h-14 rounded-xl text-base transition-all duration-300 shadow-lg shadow-tiger-orange/20 hover:shadow-xl hover:shadow-tiger-orange/30 hover:scale-[1.01] active:scale-[0.99] overflow-hidden"
                                                 >
                                                     <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                                                     <span className="relative z-10">
@@ -512,7 +494,7 @@ export function ContactPageContent() {
                                 {/* Why us card */}
                                 <div className="bg-deep-space-blue rounded-3xl p-8 md:p-10 text-white relative overflow-hidden">
                                     <div className="absolute top-0 right-0 w-40 h-40 bg-tiger-orange/10 rounded-full blur-3xl" />
-                                    <h3 className="font-serif text-2xl mb-6 relative">
+                                    <h3 className="text-2xl font-bold leading-snug mb-6 relative">
                                         ทำไมต้อง{" "}
                                         <span className="text-tiger-orange">
                                             IMAGE AUTOMAT
@@ -528,9 +510,9 @@ export function ContactPageContent() {
                                         ].map((item) => (
                                             <li
                                                 key={item}
-                                                className="flex items-start gap-3 text-white/70"
+                                                className="flex items-start gap-3 text-white/80 leading-relaxed"
                                             >
-                                                <div className="w-5 h-5 rounded-full bg-tiger-orange/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                <div className="w-5 h-5 rounded-full bg-tiger-orange/20 flex items-center justify-center flex-shrink-0 mt-1">
                                                     <Check className="w-3 h-3 text-tiger-orange" />
                                                 </div>
                                                 {item}
@@ -540,22 +522,22 @@ export function ContactPageContent() {
                                 </div>
 
                                 {/* Hours card */}
-                                <div className="bg-white rounded-3xl p-8 shadow-lg shadow-deep-space-blue/5 border border-gray-100/80">
+                                <div className="bg-white rounded-3xl p-8 md:p-10 shadow-lg shadow-deep-space-blue/5 border border-gray-100/80">
                                     <div className="flex items-center gap-3 mb-4">
                                         <div className="w-10 h-10 rounded-xl bg-tiger-orange/10 flex items-center justify-center">
                                             <Clock className="w-5 h-5 text-tiger-orange" />
                                         </div>
-                                        <h4 className="font-serif text-lg text-deep-space-blue">
+                                        <h3 className="text-xl font-bold text-deep-space-blue">
                                             เวลาทำการ
-                                        </h4>
+                                        </h3>
                                     </div>
-                                    <div className="space-y-3 text-sm">
+                                    <div className="space-y-1">
                                         <div className="flex justify-between items-center py-2 border-b border-deep-space-blue/5">
                                             <span className="text-deep-space-blue/60">
                                                 จันทร์ – ศุกร์
                                             </span>
                                             <span className="text-deep-space-blue font-medium">
-                                                09:00 – 21:00
+                                                09:00 – 18:00
                                             </span>
                                         </div>
                                         <div className="flex justify-between items-center py-2 border-b border-deep-space-blue/5">
@@ -563,7 +545,7 @@ export function ContactPageContent() {
                                                 เสาร์ – อาทิตย์
                                             </span>
                                             <span className="text-deep-space-blue font-medium">
-                                                09:00 – 21:00
+                                                09:00 – 18:00
                                             </span>
                                         </div>
                                         <div className="flex justify-between items-center py-2">
@@ -596,9 +578,9 @@ export function ContactPageContent() {
                             variants={itemVariants}
                             className="text-center mb-12"
                         >
-                            <h2 className="font-serif text-3xl md:text-4xl text-deep-space-blue tracking-tight mb-4">
+                            <h2 className="text-2xl md:text-[2rem] font-bold text-deep-space-blue leading-snug">
                                 คำถามที่พบ
-                                <span className="text-tiger-orange italic">
+                                <span className="text-tiger-orange">
                                     บ่อย
                                 </span>
                             </h2>
@@ -611,13 +593,13 @@ export function ContactPageContent() {
                                     variants={itemVariants}
                                     className="group bg-deep-space-blue/[0.02] hover:bg-deep-space-blue/[0.04] rounded-2xl border border-deep-space-blue/5 transition-colors duration-300 h-fit"
                                 >
-                                    <summary className="flex items-center justify-between cursor-pointer p-5 sm:p-6 text-deep-space-blue font-medium list-none text-sm sm:text-base">
+                                    <summary className="flex items-center justify-between cursor-pointer p-5 sm:p-6 text-deep-space-blue font-semibold leading-snug list-none text-base">
                                         <span>{faq.q}</span>
                                         <span className="ml-3 flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-tiger-orange/10 flex items-center justify-center text-tiger-orange group-open:rotate-45 transition-transform duration-300 text-sm">
                                             +
                                         </span>
                                     </summary>
-                                    <div className="px-5 sm:px-6 pb-5 sm:pb-6 text-deep-space-blue/60 leading-relaxed text-sm">
+                                    <div className="px-5 sm:px-6 pb-5 sm:pb-6 text-deep-space-blue/70 leading-relaxed">
                                         {faq.a}
                                     </div>
                                 </motion.details>

@@ -28,7 +28,7 @@ export function PolicyNotice() {
         <button onClick={ack} aria-label="ปิด" className="absolute right-4 top-4 text-deep-space-blue/40 hover:text-deep-space-blue">
           <X className="h-5 w-5" />
         </button>
-        <h2 className="font-serif text-xl text-deep-space-blue">ก่อนสั่งซื้อ โปรดทราบ</h2>
+        <h2 className="text-xl text-deep-space-blue">ก่อนสั่งซื้อ โปรดทราบ</h2>
         <ul className="mt-4 space-y-2 text-sm leading-relaxed text-deep-space-blue/70">
           <li>• ราคาทุกชิ้นเป็นราคาก่อน VAT 7% (คิดเพิ่มตอนชำระเงิน)</li>
           <li>• โครงสร้าง Photobooth ใช้เวลาผลิต 15–45 วันทำการหลังชำระเงิน</li>

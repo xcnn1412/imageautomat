@@ -20,7 +20,7 @@ const pathOptions = [
     href: "/photo-booth-rental-revenue-share",
     gradient: "from-blue-600 via-blue-500 to-cyan-400",
     bgPattern: "bg-blue-50",
-    accent: "text-blue-600"
+    accent: "text-tiger-orange"
   },
   {
     id: "product",
@@ -55,7 +55,7 @@ const pathOptions = [
     href: "/photo-booth-software",
     gradient: "from-purple-600 via-purple-500 to-pink-400",
     bgPattern: "bg-purple-50",
-    accent: "text-purple-600"
+    accent: "text-tiger-orange"
   }
 ]
 

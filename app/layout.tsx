@@ -1,9 +1,8 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Montserrat, IBM_Plex_Sans_Thai, Playfair_Display, Playpen_Sans_Thai } from 'next/font/google'
+import { Montserrat, IBM_Plex_Sans_Thai } from 'next/font/google'
 import { GoogleAnalytics } from '@/components/google-analytics'
 import { StickySocialMenu } from '@/components/sticky-social-menu'
-import { AppLoadingWrapper } from '@/components/loading/app-loading-wrapper'
 import { Providers } from './providers'
 import './globals.css'
 
@@ -21,19 +20,7 @@ const ibmPlexSansThai = IBM_Plex_Sans_Thai({
   display: 'swap',
 });
 
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-  variable: '--font-playfair',
-  weight: ['400', '600', '700'],
-  display: 'swap',
-});
 
-// ponytail: ฟอนต์ลายมือไทย ใช้เฉพาะข้อความตกแต่งใน hero
-const playpenThai = Playpen_Sans_Thai({
-  subsets: ["thai"],
-  variable: '--font-playpen-thai',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: {
@@ -156,11 +143,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${montserrat.variable} ${ibmPlexSansThai.variable} ${playfairDisplay.variable} ${playpenThai.variable} font-sans`} suppressHydrationWarning>
+      <body className={`${montserrat.variable} ${ibmPlexSansThai.variable} font-sans`} suppressHydrationWarning>
         <Providers>
-          <AppLoadingWrapper>
-            {children}
-          </AppLoadingWrapper>
+          {children}
           <StickySocialMenu />
         </Providers>
         {/* Spacer so mobile bottom bar never covers content */}

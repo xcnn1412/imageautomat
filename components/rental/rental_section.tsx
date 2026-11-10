@@ -76,7 +76,7 @@ const plans = [
     cardClass: "bg-[#FB8500]/5 border-[#FB8500] shadow-[#FB8500]/10",
     iconClass: "bg-[#FB8500] text-white",
     barClass: "from-[#FB8500] to-[#FB8500]/70",
-    checkClass: "bg-[#FB8500]/15 text-[#FB8500]",
+    checkClass: "bg-[#FB8500]/15 text-tiger-orange",
     tagClass: "bg-[#FB8500] text-white",
     features: [
       "ตู้ถ่ายภาพ / Photobooth พร้อมใช้",
@@ -95,18 +95,18 @@ const plans = [
 
 export function RentalSection() {
   return (
-    <section id="rental" className="py-20 lg:py-32 bg-white">
+    <section id="rental" className="pt-10 pb-20 lg:pt-14 lg:pb-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Heading */}
         <div className="text-center mb-14">
-          <span className="inline-block px-4 py-1.5 mb-4 rounded-full bg-[#FB8500]/10 text-[#FB8500] text-xs font-semibold tracking-[0.3em] uppercase">
+          <span className="inline-block px-4 py-1.5 mb-4 rounded-full bg-[#FB8500]/10 text-tiger-orange text-xs font-semibold tracking-[0.3em] uppercase">
             บริการเช่าแบบครบวงจร
           </span>
-          <h2 className="text-3xl lg:text-4xl font-extrabold text-[#023047]">
-            แพ็กเกจ<span className="text-[#FB8500]">ให้เช่าตู้ถ่ายภาพพร้อมโปรแกรม</span>
+          <h2 className="text-3xl lg:text-4xl font-extrabold text-deep-space-blue">
+            แพ็กเกจ<span className="text-tiger-orange">ให้เช่าตู้ถ่ายภาพพร้อมโปรแกรม</span>
           </h2>
-          <p className="mt-4 text-lg text-[#023047]/60 max-w-2xl mx-auto">
+          <p className="mt-4 text-lg text-deep-space-blue/60 max-w-2xl mx-auto">
             ไม่ต้องลงทุนซื้อขาด เลือกแผนเช่ารายวัน รายเดือน หรือรายปี สำหรับให้เช่าตู้ถ่ายภาพและให้เช่า Photobooth พร้อมอุปกรณ์ครบชุด
           </p>
         </div>
@@ -119,11 +119,11 @@ export function RentalSection() {
               className="flex flex-col items-center text-center gap-4 p-6 rounded-2xl bg-white border border-[#023047]/10 shadow-sm"
             >
               <div className="w-14 h-14 rounded-2xl bg-[#FB8500]/10 flex items-center justify-center shrink-0">
-                <item.icon className="size-7 text-[#FB8500]" />
+                <item.icon className="size-7 text-tiger-orange" />
               </div>
               <div>
-                <h3 className="font-semibold text-[#023047]">{item.title}</h3>
-                <p className="mt-1 text-sm text-[#023047]/55">{item.description}</p>
+                <h3 className="font-semibold text-deep-space-blue">{item.title}</h3>
+                <p className="mt-1 text-sm text-deep-space-blue/55">{item.description}</p>
               </div>
             </div>
           ))}
@@ -131,14 +131,14 @@ export function RentalSection() {
           {/* Payment card */}
           <div className="flex flex-col items-center text-center gap-4 p-6 rounded-2xl bg-white border border-[#023047]/10 shadow-sm">
             <div className="w-14 h-14 rounded-2xl bg-[#FB8500]/10 flex items-center justify-center shrink-0">
-              <Wallet className="size-7 text-[#FB8500]" />
+              <Wallet className="size-7 text-tiger-orange" />
             </div>
             <div className="w-full">
-              <h3 className="font-semibold text-[#023047]">ช่องทางชำระเงิน</h3>
-              <p className="mt-1 text-sm text-[#023047]/55 mb-3">รองรับ e-Wallet และ QR Payment สำหรับธุรกิจให้เช่าตู้ถ่ายภาพครบทุกเจ้า</p>
+              <h3 className="font-semibold text-deep-space-blue">ช่องทางชำระเงิน</h3>
+              <p className="mt-1 text-sm text-deep-space-blue/55 mb-3">รองรับ e-Wallet และ QR Payment สำหรับธุรกิจให้เช่าตู้ถ่ายภาพครบทุกเจ้า</p>
               <div className="flex flex-wrap justify-center gap-1.5">
                 {[
-                  { label: "Thai QR", bg: "bg-[#1a3a6b]/10", text: "text-[#1a3a6b]", border: "border-[#1a3a6b]/20", dot: "bg-[#1a3a6b]" },
+                  { label: "Thai QR", bg: "bg-[#1a3a6b]/10", text: "text-deep-space-blue", border: "border-[#1a3a6b]/20", dot: "bg-[#1a3a6b]" },
                   { label: "ShopeePay", bg: "bg-[#EE4D2D]/10", text: "text-[#EE4D2D]", border: "border-[#EE4D2D]/20", dot: "bg-[#EE4D2D]" },
                   { label: "TrueMoney", bg: "bg-[#FF6600]/10", text: "text-[#FF6600]", border: "border-[#FF6600]/20", dot: "bg-[#FF6600]" },
                   { label: "Alipay", bg: "bg-[#1677FF]/10", text: "text-[#1677FF]", border: "border-[#1677FF]/20", dot: "bg-[#1677FF]" },
@@ -188,14 +188,14 @@ export function RentalSection() {
                     <plan.icon className="size-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-[#023047]">{plan.name}</h3>
-                    <div className="text-2xl font-extrabold text-[#FB8500] leading-none mt-0.5">
+                    <h3 className="text-xl font-bold text-deep-space-blue">{plan.name}</h3>
+                    <div className="text-2xl font-extrabold text-tiger-orange leading-none mt-0.5">
                       {plan.duration}
                     </div>
                   </div>
                 </div>
 
-                <p className="text-sm text-[#023047]/60 mb-6">{plan.description}</p>
+                <p className="text-sm text-deep-space-blue/60 mb-6">{plan.description}</p>
 
                 <ul className="space-y-3 mb-8 flex-1">
                   {plan.features.map((f) => (
@@ -203,7 +203,7 @@ export function RentalSection() {
                       <div className={cn("flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5", plan.checkClass)}>
                         <Check className="size-3" />
                       </div>
-                      <span className="text-[#023047]/80">{f}</span>
+                      <span className="text-deep-space-blue/80">{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -221,19 +221,19 @@ export function RentalSection() {
         </div>
 
         {/* Trust note */}
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-muted-foreground">
-          <span className="flex items-center gap-2 text-[#023047]/60">
-            <ShieldCheck className="size-4 text-[#FB8500] shrink-0" />
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-deep-space-blue/60">
+          <span className="flex items-center gap-2 text-deep-space-blue/60">
+            <ShieldCheck className="size-4 text-tiger-orange shrink-0" />
             ตู้มีประกันตลอดระยะเช่า
           </span>
           <span className="hidden sm:block w-px h-4 bg-[#023047]/15" />
-          <span className="flex items-center gap-2 text-[#023047]/60">
-            <BadgeCheck className="size-4 text-[#FB8500] shrink-0" />
+          <span className="flex items-center gap-2 text-deep-space-blue/60">
+            <BadgeCheck className="size-4 text-tiger-orange shrink-0" />
             ติดตั้งฟรี ไม่มีค่าใช้จ่ายแอบแฝง
           </span>
           <span className="hidden sm:block w-px h-4 bg-[#023047]/15" />
-          <span className="flex items-center gap-2 text-[#023047]/60">
-            <Check className="size-4 text-[#FB8500] shrink-0" />
+          <span className="flex items-center gap-2 text-deep-space-blue/60">
+            <Check className="size-4 text-tiger-orange shrink-0" />
             ยืดหยุ่น ต่ออายุหรือเปลี่ยนแผนได้
           </span>
         </div>

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
-import { Store, ShoppingCart, Calendar, Laptop, Factory, Phone, Star } from "lucide-react"
+import { Store, ShoppingCart, Calendar, Laptop, Phone, Star } from "lucide-react"
 import { AuthButton } from "@/components/auth-button"
 import { CartButton } from "@/components/cart/cart-button"
 import { LanguageSwitcher } from "@/components/language-switcher"
@@ -19,7 +19,6 @@ const LineIcon = ({ className = "" }: { className?: string }) => (
 const navLinks = [
   { href: "/buy-photo-booth", label: "ซื้อตู้ถ่ายรูป", icon: ShoppingCart, featured: false },
   { href: "/photo-booth-software", label: "ซื้อซอฟต์แวร์", icon: Laptop, featured: false },
-  { href: "/oem-photo-booth", label: "ผลิต OEM", icon: Factory, featured: false },
   { href: "/photo-booth-rental-revenue-share", label: "เช่า / แบ่งรายได้", icon: Calendar, featured: false },
   { href: "/contact", label: "ติดต่อเรา", icon: Phone, featured: false },
 ]

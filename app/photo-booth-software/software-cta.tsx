@@ -19,7 +19,7 @@ export function SoftwareCta() {
                         <p className="text-white/40 text-sm uppercase tracking-[0.25em] mb-4">
                             สนใจซอฟต์แวร์?
                         </p>
-                        <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white mb-6 leading-tight">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl text-white mb-6 leading-tight">
                             เริ่มต้น<span className="text-tiger-orange">ธุรกิจตู้ถ่ายรูป</span>
                             <br className="hidden md:block" />ด้วยซอฟต์แวร์ Photobooth จากเรา
                         </h2>

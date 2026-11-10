@@ -57,7 +57,7 @@ const programs: ProgramItem[] = [
             "ผสมลายเซ็นเข้ากับคลิป Reel",
             "เหมาะกับงาน Event พรีเมียม",
         ],
-        accentColor: "text-purple-500",
+        accentColor: "text-tiger-orange",
         gradientFrom: "from-purple-500",
         gradientTo: "to-violet-400",
         number: "02",
@@ -72,7 +72,7 @@ const programs: ProgramItem[] = [
             "เอฟเฟกต์มืออาชีพในตัว",
             "สร้างประสบการณ์ที่แตกต่าง",
         ],
-        accentColor: "text-sky-500",
+        accentColor: "text-tiger-orange",
         gradientFrom: "from-sky-500",
         gradientTo: "to-blue-400",
         number: "03",
@@ -300,7 +300,7 @@ export function HomeSoftwareFeatures() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.1 }}
                         >
-                            <span className="inline-block text-[13.2px] sm:text-xs font-semibold text-deep-space-blue/40 tracking-[0.2em] uppercase mb-3">
+                            <span className="inline-block text-[20px] font-semibold text-deep-space-blue/40 tracking-[0.2em] uppercase mb-3">
                                 Backend System
                             </span>
                             <h4

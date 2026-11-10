@@ -10,7 +10,7 @@ export default function PendingPage() {
         <span className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
           <Clock className="h-8 w-8 text-amber-600" />
         </span>
-        <h1 className="font-serif text-2xl text-deep-space-blue">รอการอนุมัติจากผู้ดูแลระบบ</h1>
+        <h1 className="text-2xl text-deep-space-blue">รอการอนุมัติจากผู้ดูแลระบบ</h1>
         <p className="mt-3 text-sm leading-relaxed text-deep-space-blue/60">
           ขอบคุณที่สมัครสมาชิก! บัญชีของคุณอยู่ระหว่างรอผู้ดูแลระบบอนุมัติ
           เมื่อได้รับการอนุมัติแล้ว คุณจะสามารถเข้าสู่ระบบและใช้งานได้ทันที

@@ -41,7 +41,7 @@ export default async function AdminCustomOrderPage() {
       <div className="mx-auto max-w-3xl">
         <AdminNav active="/admin/custom-order" />
 
-        <h1 className="font-serif text-3xl text-deep-space-blue">สร้างออเดอร์พิเศษ</h1>
+        <h1 className="text-3xl text-deep-space-blue">สร้างออเดอร์พิเศษ</h1>
         <p className="mb-6 mt-1 text-sm text-deep-space-blue/50">
           สร้างสินค้าเฉพาะกิจ (ซ่อนจากหน้าร้าน) แล้วใส่ลงตะกร้าลูกค้าโดยตรง — ลูกค้าเปิดตะกร้าแล้วชำระเงินได้ทันที
         </p>

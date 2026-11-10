@@ -15,7 +15,7 @@ export function AuthButton() {
         return (
             <Link
                 href="/login"
-                className="inline-flex items-center gap-1.5 rounded-full border border-deep-space-blue/15 px-4 py-2 text-[11px] font-bold text-deep-space-blue transition-colors hover:bg-deep-space-blue/5"
+                className="inline-flex items-center gap-1.5 rounded-full border border-deep-space-blue/15 px-4 py-2 text-[20px] font-bold text-deep-space-blue transition-colors hover:bg-deep-space-blue/5"
             >
                 <User className="h-3.5 w-3.5" />
                 เข้าสู่ระบบ

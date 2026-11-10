@@ -10,7 +10,7 @@ const services = [
     description: 'ให้คำปรึกษาการเริ่มธุรกิจให้เช่าตู้ถ่ายภาพและให้เช่า Photobooth ตั้งแต่เลือกโมเดลรายได้ อุปกรณ์ ไปจนถึงแผนการติดตั้งใช้งานจริง',
     image: "/photoboothkiosk/packagedetail.webp",
     gradient: "from-orange-500/20 to-amber-400/10",
-    iconBg: "bg-orange-100 text-orange-600",
+    iconBg: "bg-tiger-orange/10 text-tiger-orange",
     stat: "Rental Setup",
     href: "https://www.imageautomat.com/photo-booth-rental-revenue-share",
   },
@@ -50,7 +50,7 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative py-20 lg:py-32 overflow-hidden"
+      className="relative pt-12 pb-12 lg:pt-16 lg:pb-16 overflow-hidden"
       style={{ background: "linear-gradient(180deg, rgba(142,202,230,0.10) 0%, #ffffff 100%)" }}
     >
       {/* Decorative blurred circles */}
@@ -60,13 +60,13 @@ export function ServicesSection() {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-14">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#FB8500]/10 text-[#FB8500] text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#FB8500]/10 text-tiger-orange text-xs font-semibold tracking-[0.3em] uppercase mb-4">
             RENTAL SOLUTIONS
           </span>
-          <h2 className="text-3xl lg:text-5xl font-extrabold text-[#023047] tracking-tight">
-            แพ็กเกจ<span className="text-[#FB8500]">ให้เช่าตู้ถ่ายภาพ ครบวงจร</span>
+          <h2 className="text-3xl lg:text-5xl font-extrabold text-deep-space-blue tracking-tight">
+            แพ็กเกจ<span className="text-tiger-orange">ให้เช่าตู้ถ่ายภาพ ครบวงจร</span>
           </h2>
-          <p className="mt-4 text-[#023047]/60 max-w-xl mx-auto text-base lg:text-lg">
+          <p className="mt-4 text-deep-space-blue/60 max-w-xl mx-auto text-base lg:text-lg">
             เลือกแพ็กเกจให้เช่าตู้ถ่ายภาพและให้เช่า Photobooth ที่เหมาะกับงานของคุณ พร้อมติดตั้งและซัพพอร์ตครบตั้งแต่ต้นจนจบ
           </p>
         </div>
@@ -91,7 +91,7 @@ export function ServicesSection() {
                 {/* Bottom fade */}
                 <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white/60 to-transparent" />
                 {/* Stat badge */}
-                <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#023047] text-white text-[13.2px] font-bold tracking-wide shadow-md">
+                <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#023047] text-white text-[20px] font-bold tracking-wide shadow-md">
                   {item.stat}
                 </span>
               </div>
@@ -102,16 +102,16 @@ export function ServicesSection() {
                   <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${item.iconBg}`}>
                     <item.icon className="size-4" />
                   </div>
-                  <h3 className="font-semibold text-[#023047] text-sm leading-tight">{item.title}</h3>
+                  <h3 className="font-semibold text-deep-space-blue text-sm leading-tight">{item.title}</h3>
                 </div>
-                <p className="text-[#023047]/60 text-sm leading-relaxed mb-4">
+                <p className="text-deep-space-blue/60 text-sm leading-relaxed mb-4">
                   {item.description}
                 </p>
                 <a
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#FB8500] hover:gap-2.5 transition-all duration-200"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-tiger-orange hover:gap-2.5 transition-all duration-200"
                 >
                   ขอรายละเอียดแพ็กเกจ
                   <ArrowRight className="size-3.5" />

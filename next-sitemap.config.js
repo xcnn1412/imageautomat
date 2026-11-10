@@ -9,7 +9,6 @@ module.exports = {
             '/photo-booth-software': 0.85,
             '/photo-booth-software/liveviewphotobooth': 0.85,
             '/photo-booth-rental-revenue-share': 0.8,
-            '/oem-photo-booth': 0.75,
             '/payment': 0.7,
             '/careers': 0.6,
             '/careers/admin-sale': 0.65,

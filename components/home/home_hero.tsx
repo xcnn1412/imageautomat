@@ -48,8 +48,7 @@ export function HeroSection() {
       {/* ponytail: วางระดับ section (กว้างเต็มจอ) ให้ไปอยู่ขอบขวาบน พ้นกรอบวิดีโอที่ถูกดันเข้าด้วย xl:pr-[190px] */}
       <div className="absolute right-[6vw] top-[max(18%,96px)] w-[14.8vw] xl:w-[190px] z-20 rotate-[-8deg] text-center pointer-events-none select-none">
         <p
-          className="text-[2.34vw] xl:text-[30px] font-normal leading-[1.4] text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)]"
-          style={{ fontFamily: "var(--font-playpen-thai), cursive" }}
+          className="text-[2.34vw] xl:text-[30px] font-bold leading-[1.4] text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)]"
         >
           ทุกช่วงเวลา
           <br />

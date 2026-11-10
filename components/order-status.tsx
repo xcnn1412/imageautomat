@@ -81,14 +81,14 @@ export function OrderStepper({ status }: { status: string }) {
               className={`relative z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 transition-all duration-300 ${
                 reached
                   ? "border-transparent bg-gradient-to-br from-tiger-orange to-amber-500 text-white shadow-lg shadow-tiger-orange/30 [animation:stepPopIn_.5s_ease-out_both]"
-                  : "border-gray-200 bg-gray-50 text-gray-300"
+                  : "border-gray-200 bg-gray-50 text-deep-space-blue/35"
               } ${isCurrent ? "scale-110 ring-4 ring-tiger-orange/20 [animation:stepGlow_2s_ease-in-out_infinite]" : ""}`}
             >
               <Display className="h-[18px] w-[18px]" />
             </span>
             <span
               className={`mt-2 whitespace-nowrap text-[14.5px] font-semibold transition-colors ${
-                isCurrent ? "text-tiger-orange" : reached ? "text-deep-space-blue" : "text-gray-300"
+                isCurrent ? "text-tiger-orange" : reached ? "text-deep-space-blue" : "text-deep-space-blue/35"
               }`}
             >
               {ORDER_STATUS[st].label}
